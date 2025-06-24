@@ -13,7 +13,7 @@ export default function StoreFeatured() {
   return (
     <section className="py-16 px-2 md:px-8" id="featured">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-[#377DFF] mb-2 text-center"
+        className="text-2xl md:text-3xl font-bold text-[#00308A] mb-2 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -41,7 +41,7 @@ export default function StoreFeatured() {
               viewport={{ once: true }}
             >
               <img src={f.img} alt={f.title} className="w-full h-40 object-cover rounded-xl mb-4" />
-              <h3 className="text-lg font-bold text-[#377DFF] mb-2">{f.title}</h3>
+              <h3 className="text-lg font-bold text-[#00308A] mb-2">{f.title}</h3>
               <p className="text-blue-900/80">{f.desc}</p>
             </motion.div>
           </SwiperSlide>

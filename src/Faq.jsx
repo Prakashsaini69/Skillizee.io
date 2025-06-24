@@ -72,7 +72,7 @@ export default function Faq() {
     <section className="max-w-6xl mx-auto my-16 px-6 md:px-10 py-8 border border-[#377DFF] border-[1.5px] rounded-2xl min-h-[480px] flex flex-col justify-center">
       {/* FAQ Heading */}
       <h3 className="text-2xl md:text-3xl font-extrabold mb-8 text-center">
-        Frequently Asked <span className="text-[#377DFF]">Questions</span>
+        Frequently Asked <span className="text-[#00308A]">Questions</span>
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
         {[0, 1].map(col => (

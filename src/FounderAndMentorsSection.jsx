@@ -94,7 +94,7 @@ export default function FounderAndMentorsSection() {
         {/* Left: Text */}
         <div className="flex-1 text-center md:text-left flex flex-col justify-center">
           <h3 className="text-2xl md:text-3xl font-extrabold mb-4">
-            About the <span className="text-[#377DFF]">founder</span>
+            About the <span className="text-[#00308A]">founder</span>
           </h3>
           <p className="text-gray-700 text-base md:text-lg mb-4">{founderText.desc1}</p>
           <p className="text-gray-700 text-base md:text-lg">{founderText.desc2}</p>
@@ -135,7 +135,7 @@ export default function FounderAndMentorsSection() {
         </div>
       </div>
       {/* Mentors Heading */}
-      <h3 className="text-2xl md:text-3xl font-bold text-center text-[#377DFF] mb-8">Meet Our Mentors</h3>
+      <h3 className="text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-8">Meet Our Mentors</h3>
       {/* Mentors Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {MENTORS.map((mentor, i) => (
@@ -162,7 +162,7 @@ export default function FounderAndMentorsSection() {
             </motion.div>
             {/* Blue card with name and company, pops out below */}
             <motion.div
-              className="w-[90%] bg-[#377DFF] rounded-xl flex flex-col items-center py-3 px-2 shadow-lg -mt-16"
+              className="w-[90%] bg-[#00308A] rounded-xl flex flex-col items-center py-3 px-2 shadow-lg -mt-16"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}

@@ -5,12 +5,12 @@ export default function SkillAssessmentBanner() {
     <div className="w-full rounded-3xl bg-blue-100 flex flex-col md:flex-row items-center justify-between px-6 pt-8 md:pt-10 my-10 mb-20 shadow-sm relative overflow-hidden">
       <div className="flex-1 pb-8 md:pb-10">
         <h2 className="text-2xl md:text-4xl font-bold mb-2">
-          Discover Your <span className="text-[#377DFF]">Skill Assessment</span> Report
+          Discover Your <span className="text-[#00308A]">Skill Assessment</span> Report
         </h2>
-        <p className="text-gray-700 text-base md:text-lg mb-6">
+        <p className="text-[#00308A] text-base md:text-lg mb-6">
           Get a detailed analysis of your <span className="font-semibold">personality</span>, <span className="font-semibold">skills</span>, and <span className="font-semibold">career fit</span>. Uncover your strengths and areas for growth to make informed career decisions!
         </p>
-        <button className="mt-2 px-6 py-3 bg-[#377DFF] text-white font-bold rounded-xl shadow hover:bg-blue-600 transition-all text-lg">
+        <button className="mt-2 px-6 py-3 bg-[#00308A] text-white font-bold rounded-xl shadow hover:bg-blue-600 transition-all text-lg">
           Take the Test
         </button>
       </div>

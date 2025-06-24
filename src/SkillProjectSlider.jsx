@@ -18,7 +18,7 @@ export default function SkillProjectSlider() {
   const swiperRef = useRef(null);
   return (
     <section className="w-full max-w-5xl mx-auto my-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#377DFF]">Harvard Case Studies</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#00308A]">Harvard Case Studies</h2>
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         spaceBetween={32}
@@ -45,11 +45,11 @@ export default function SkillProjectSlider() {
                 {card.badge && (
                   <span className="absolute top-3 right-3 bg-[#FF6B00] text-white text-xs font-bold px-3 py-1 rounded-full shadow">{card.badge}</span>
                 )}
-                <span className="absolute bottom-3 left-3 bg-white/90 text-[#377DFF] font-bold text-xs px-4 py-1 rounded-full shadow border border-blue-100">{card.session}</span>
+                <span className="absolute bottom-3 left-3 bg-white/90 text-[#00308A] font-bold text-xs px-4 py-1 rounded-full shadow border border-blue-100">{card.session}</span>
               </div>
               <div className="mt-4 mb-2 transition-transform duration-500 scale-100">
                 <h3 className="text-xl font-bold text-[#1A2954] mb-1 leading-tight">{card.title}</h3>
-                <p className="text-base text-[#377DFF] font-medium leading-snug">{card.subtitle}</p>
+                <p className="text-base text-[#00308A] font-medium leading-snug">{card.subtitle}</p>
               </div>
             </div>
           </SwiperSlide>

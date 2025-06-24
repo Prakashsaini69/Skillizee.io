@@ -124,7 +124,7 @@ export default function StudentLandscape() {
       })}
       {/* Center Counter */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full">
-        <span className="text-5xl md:text-6xl font-extrabold text-[#377DFF] tracking-tight">
+        <span className="text-5xl md:text-6xl font-extrabold text-[#00308A] tracking-tight">
           {count.toLocaleString()}
         </span>
         <span className="mt-2 text-xl md:text-2xl text-[#222] font-medium">

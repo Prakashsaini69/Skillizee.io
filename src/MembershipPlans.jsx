@@ -66,14 +66,14 @@ const cardVariants = {
 export default function MembershipPlans() {
   return (
     <section className="w-full max-w-6xl mx-auto px-2 py-10">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#377DFF" }}>Membership Packages</h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Membership Packages</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan, idx) => (
           <motion.div
             key={plan.name}
             className={`relative flex flex-col items-center text-center rounded-2xl border transition-all duration-300 px-4 py-7 ${
               plan.highlight
-                ? "bg-gradient-to-br from-blue-900 to-blue-700 text-white border-blue-800 scale-105 z-10 shadow-2xl premium-glow-shadow"
+                ? "bg-gradient-to-br from-[#00308A] to-blue-800 text-white border-blue-800 scale-105 z-10 shadow-2xl premium-glow-shadow"
                 : "bg-white border-blue-200 shadow-lg"
             }`}
             style={{ minHeight: 400 }}
@@ -107,7 +107,7 @@ export default function MembershipPlans() {
               className={`mt-auto w-full py-2.5 rounded-full font-bold text-base transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-center ${
                 plan.highlight
                   ? "bg-white text-blue-900 hover:bg-blue-100"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-[#00308A] text-white hover:bg-blue-700"
               }`}
             >
               Enroll Now

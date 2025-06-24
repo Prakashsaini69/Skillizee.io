@@ -5,36 +5,36 @@ const TESTIMONIALS = [
   {
     review: "I have met Aarna, and her vision for education is what schools need today. SkilliZee is a platform that nurtures real-world leadership, not just test scores. It cultivates young minds to think, reflect, and grow — exactly the skills we look for in global leaders.",
     parent: "Alanna Lazarowich",
-    child: "Guest Professor, Kellogg University",
-    designation: "",
-    image: "https://randomuser.me/api/portraits/women/1.jpg"
+    company: "Kellogg University",
+    designation: "Guest Professor",
+    image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749020679/Rectangle_236_mnoxxq.png"
   },
   {
     review: "In a world where skill gaps show up well before employment, SkilliZee bridges them right at the school level. It's data-driven, strategic, and scalable — a model every institution should explore.",
     parent: "Kartik Vyas",
-    child: "Engagement Manager, McKinsey & Company",
-    designation: "",
-    image: "https://randomuser.me/api/portraits/men/2.jpg"
+    company: "McKinsey & Company",
+    designation: "Engagement Manager",
+    image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749020678/Rectangle_237_xgbima.png"
   },
   {
     review: "At startups, we value thinkers and doers — and SkilliZee is creating them from Grade 4. It's rare to find an educational solution that's so aligned with the real-world pace and problem-solving mindset.",
     parent: "Utkarsh Verma",
-    child: "Ex-Director at Zepto & Swiggy",
-    designation: "",
+    company: "Zepto & Swiggy",
+    designation: "Ex-Director",
     image: "https://randomuser.me/api/portraits/men/3.jpg"
   },
   {
     review: "SkilliZee doesn't just build skills — it builds brands. Each student becomes a unique story of growth, ready for top universities and beyond — and that's smart positioning by any school's standards.",
     parent: "Kiran Padeda",
-    child: "Professor of Marketing, Indian School of Business (ISB)",
-    designation: "",
+    company: "Indian School of Business (ISB)",
+    designation: "Professor of Marketing", 
     image: "https://randomuser.me/api/portraits/men/4.jpg"
   },
   {
     review: "At LinkedIn, we see the growing need for early, authentic skill-building. SkilliZee's approach to creating lifetime learner profiles is a brilliant step toward preparing future-ready individuals.",
     parent: "Henry Lee",
-    child: "LinkedIn | Enterprise Talent & Learning Solutions | Youth and Students",
-    designation: "",
+    company: "LinkedIn",
+    designation: "Manager",
     image: "https://randomuser.me/api/portraits/men/5.jpg"
   },
 ];
@@ -75,9 +75,10 @@ export default function ParentTestimonialCard() {
           <p className="text-white/90 text-base leading-relaxed mb-4 mt-2">“{testimonial.review}”</p>
           <div className="mt-auto flex flex-col gap-1 mb-8">
             <span className="text-white font-semibold text-sm">{testimonial.parent} <br></br>
-            <span className="text-white/60 font-normal">(Parent of {testimonial.child})</span>
+            <span className="text-blue-100 text-xs">{testimonial.designation}</span> <br></br>
+            <span className="text-white/60 font-normal">{testimonial.company}</span>
             </span>
-            <span className="text-blue-100 text-xs">{testimonial.designation}</span>
+            
           </div>
           <motion.img
             src={testimonial.image}

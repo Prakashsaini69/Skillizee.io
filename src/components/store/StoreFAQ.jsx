@@ -11,7 +11,7 @@ export default function StoreFAQ() {
   return (
     <section className="py-16 px-2 md:px-8" id="faq">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-[#377DFF] mb-2 text-center"
+        className="text-2xl md:text-3xl font-bold text-[#00308A] mb-2 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -38,7 +38,7 @@ export default function StoreFAQ() {
             transition={{ duration: 0.5, delay: 0.1 * i }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-bold text-[#377DFF] mb-2">{f.q}</h4>
+            <h4 className="text-lg font-bold text-[#00308A] mb-2">{f.q}</h4>
             <p className="text-blue-900/80">{f.a}</p>
           </motion.div>
         ))}

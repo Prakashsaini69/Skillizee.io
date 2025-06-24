@@ -29,7 +29,7 @@ export default function Resources() {
   return (
     <section className="py-16 px-4 bg-gradient-to-r from-purple-50 to-blue-50">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-center text-[#377DFF] mb-10"
+        className="text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}

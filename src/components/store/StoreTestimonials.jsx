@@ -13,7 +13,7 @@ export default function StoreTestimonials() {
   return (
     <section className="py-16 px-2 md:px-8" id="testimonials">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-[#377DFF] mb-2 text-center"
+        className="text-2xl md:text-3xl font-bold text-[#00308A] mb-2 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -40,9 +40,9 @@ export default function StoreTestimonials() {
             transition={{ duration: 0.5, delay: 0.1 * i }}
             viewport={{ once: true }}
           >
-            <img src={t.img} alt={t.name} className="w-16 h-16 object-cover rounded-full mb-4 border-2 border-[#377DFF]" />
+            <img src={t.img} alt={t.name} className="w-16 h-16 object-cover rounded-full mb-4 border-2 border-[#00308A]" />
             <p className="text-blue-900/80 mb-2">“{t.quote}”</p>
-            <h4 className="text-base font-bold text-[#377DFF]">{t.name}</h4>
+            <h4 className="text-base font-bold text-[#00308A]">{t.name}</h4>
           </motion.div>
         ))}
       </div>

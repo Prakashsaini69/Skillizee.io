@@ -230,7 +230,7 @@ export default function Courses() {
   return (
     <section className="py-16 px-4 bg-gradient-to-l from-blue-50 to-purple-50">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-center text-[#377DFF] mb-6"
+        className="text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -298,7 +298,7 @@ export default function Courses() {
                     <CardBody className="flex flex-col gap-2 px-4 py-3">
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-1">
-                          <div className="bg-[#F7F7F7] text-[#377DFF] font-bold px-2 py-1 text-xs rounded-full flex items-center gap-1 min-w-[90px] justify-center">
+                          <div className="bg-[#F7F7F7] text-[#00308A] font-bold px-2 py-1 text-xs rounded-full flex items-center gap-1 min-w-[90px] justify-center">
                             <span>10x Learning</span>
                             <StarIcon className="w-4 h-4 text-yellow-400 ml-1" />
                           </div>
@@ -322,7 +322,7 @@ export default function Courses() {
                       <div className="flex items-center justify-between mt-1 mb-2">
                         <div className="flex flex-col items-start">
                           <span className="text-xs text-gray-500 line-through">₹999</span>
-                          <span className="text-lg font-bold text-[#377DFF]">₹499</span>
+                          <span className="text-lg font-bold text-[#00308A]">₹499</span>
                         </div>
                         <span className="bg-green-100 text-green-600 text-xs font-bold px-2 py-1 rounded-lg">50% OFF</span>
                       </div>
@@ -330,7 +330,7 @@ export default function Courses() {
                     <CardFooter className="pt-0 pb-4 px-4 flex flex-col gap-2">
                       <Button
                         fullWidth
-                        className="bg-gradient-to-r from-[#377DFF] to-[#4F8CFF] text-white font-bold rounded-xl py-2 text-base shadow hover:scale-105 hover:shadow-lg transition-all duration-300"
+                        className="bg-gradient-to-r from-[#00308A] to-[#4F8CFF] text-white font-bold rounded-xl py-2 text-base shadow hover:scale-105 hover:shadow-lg transition-all duration-300"
                         onClick={() => window.open('https://www.skillizee.io/courses/Amazon-Go-68412e3a3359575c70b0b715', '_blank')}
                       >
                         Enroll Now

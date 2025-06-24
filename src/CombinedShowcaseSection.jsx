@@ -14,7 +14,7 @@ export default function CombinedShowcaseSection() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="text-2xl md:text-3xl font-extrabold text-[#377DFF] mb-8 text-center">From the students of SkilliZee</h2>
+      <h2 className="text-2xl md:text-3xl font-extrabold text-[#00308A] mb-8 text-center">From the students of SkilliZee</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 md:h-[520px]">
         {/* Left: Parent Testimonial, portrait */}
         <div className="row-span-2 col-span-1 h-full">

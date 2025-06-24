@@ -74,7 +74,7 @@ export default function Hero() {
           {["🔁 Lifetime Access", "💳 14-Day Refund Policy", "👥 4.4+ Lakh Enrolled"].map((badge, i) => (
             <motion.span
               key={badge}
-              className="bg-white/80 text-blue-700 px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md border border-blue-100"
+              className="bg-white/80 text-[#00308A] px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md border border-blue-100"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.2 }}
