@@ -13,7 +13,7 @@ export const courses = [
     duration: "8 weeks",
     level: "Beginner",
     description: "Learn HTML, CSS, and JavaScript fundamentals to build responsive websites.",
-    link: "/courses/MERN-Stack"
+    link: "https://login.skillizee.io/courses/MERN-Stack"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const courses = [
     duration: "12 weeks",
     level: "Intermediate",
     description: "Master Python, statistics, and machine learning algorithms.",
-    link: "/courses/data-science-essentials"
+    link: "https://login.skillizee.io/courses/data-science-essentials"
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const courses = [
     duration: "6 weeks",
     level: "Beginner",
     description: "Learn SEO, social media marketing, and content strategy.",
-    link: "/courses/digital-marketing-mastery"
+    link: "https://login.skillizee.io/courses/digital-marketing-mastery"
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ export const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     description: "Master user interface and user experience design fundamentals.",
-    link: "/courses/ui-ux-design-principles"
+    link: "https://login.skillizee.io/courses/ui-ux-design-principles"
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ export const courses = [
     duration: "14 weeks",
     level: "Advanced",
     description: "Build iOS and Android apps using React Native and Flutter.",
-    link: "/courses/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development"
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ export const courses = [
     duration: "8 weeks",
     level: "Intermediate",
     description: "Learn to analyze business data and make data-driven decisions.",
-    link: "/courses/business-analytics"
+    link: "https://login.skillizee.io/courses/business-analytics"
   },
   {
     id: 7,
@@ -103,7 +103,7 @@ export const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     description: "Understand cybersecurity threats and protection strategies.",
-    link: "/courses/cybersecurity-fundamentals"
+    link: "https://login.skillizee.io/courses/cybersecurity-fundamentals"
   },
   {
     id: 8,
@@ -118,7 +118,7 @@ export const courses = [
     duration: "12 weeks",
     level: "Advanced",
     description: "Master AWS services and cloud infrastructure deployment.",
-    link: "/courses/cloud-computing-aws"
+    link: "https://login.skillizee.io/courses/cloud-computing-aws"
   },
   {
     id: 9,
@@ -133,7 +133,7 @@ export const courses = [
     duration: "6 weeks",
     level: "Beginner",
     description: "Learn Adobe Creative Suite and design principles.",
-    link: "/courses/graphic-design-masterclass"
+    link: "https://login.skillizee.io/courses/graphic-design-masterclass"
   },
   {
     id: 10,
@@ -148,7 +148,7 @@ export const courses = [
     duration: "8 weeks",
     level: "Beginner",
     description: "Start your programming journey with Python fundamentals.",
-    link: "/courses/python-for-beginners"
+    link: "https://login.skillizee.io/courses/python-for-beginners"
   },
   {
     id: 11,
@@ -163,7 +163,7 @@ export const courses = [
     duration: "6 weeks",
     level: "Intermediate",
     description: "Build and scale successful e-commerce businesses.",
-    link: "/courses/ecommerce-strategy"
+    link: "https://login.skillizee.io/courses/ecommerce-strategy"
   },
   {
     id: 12,
@@ -178,7 +178,7 @@ export const courses = [
     duration: "16 weeks",
     level: "Advanced",
     description: "Introduction to machine learning and neural networks.",
-    link: "/courses/artificial-intelligence-basics"
+    link: "https://login.skillizee.io/courses/artificial-intelligence-basics"
   }
 ];
 
@@ -194,7 +194,7 @@ export const internships = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
     description: "Work on real-world projects using React, Vue.js, and modern web technologies.",
-    link: "/internships/frontend-development"
+    link: "https://login.skillizee.io/courses/frontend-development"
   },
   {
     id: 2,
@@ -207,7 +207,7 @@ export const internships = [
     enrolledStudents: 156,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Analyze large datasets and build predictive models using Python and ML.",
-    link: "/internships/data-science"
+    link: "https://login.skillizee.io/courses/data-science"
   },
   {
     id: 3,
@@ -220,7 +220,7 @@ export const internships = [
     enrolledStudents: 89,
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop",
     description: "Design user interfaces and conduct user research for mobile apps.",
-    link: "/internships/ui-ux-design"
+    link: "https://login.skillizee.io/courses/ui-ux-design"
   },
   {
     id: 4,
@@ -233,7 +233,7 @@ export const internships = [
     enrolledStudents: 312,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
     description: "Manage social media campaigns and SEO strategies for clients.",
-    link: "/internships/digital-marketing"
+    link: "https://login.skillizee.io/courses/digital-marketing"
   },
   {
     id: 5,
@@ -246,7 +246,7 @@ export const internships = [
     enrolledStudents: 178,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop APIs and database systems using Node.js and MongoDB.",
-    link: "/internships/backend-development"
+    link: "https://login.skillizee.io/courses/backend-development"
   },
   {
     id: 6,
@@ -259,7 +259,7 @@ export const internships = [
     enrolledStudents: 67,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
     description: "Learn penetration testing and security assessment techniques.",
-    link: "/internships/cybersecurity"
+    link: "https://login.skillizee.io/courses/cybersecurity"
   },
   {
     id: 7,
@@ -272,7 +272,7 @@ export const internships = [
     enrolledStudents: 134,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
     description: "Work with AWS, Azure, and Google Cloud platforms.",
-    link: "/internships/cloud-computing"
+    link: "https://login.skillizee.io/courses/cloud-computing"
   },
   {
     id: 8,
@@ -285,7 +285,7 @@ export const internships = [
     enrolledStudents: 145,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop iOS and Android applications using React Native.",
-    link: "/internships/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development"
   }
 ];
 
@@ -301,7 +301,7 @@ export const sbpls = [
     enrolledStudents: 456,
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
     description: "Build a complete e-commerce website with payment integration.",
-    link: "/sbpls/ecommerce-website"
+    link: "https://login.skillizee.io/courses/ecommerce-website"
   },
   {
     id: 2,
@@ -314,7 +314,7 @@ export const sbpls = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Create a predictive model for real-world data analysis.",
-    link: "/sbpls/machine-learning-model"
+    link: "https://login.skillizee.io/courses/machine-learning-model"
   },
   {
     id: 3,
@@ -327,7 +327,7 @@ export const sbpls = [
     enrolledStudents: 189,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop a full-featured mobile application from scratch.",
-    link: "/sbpls/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development"
   },
   {
     id: 4,
@@ -340,7 +340,7 @@ export const sbpls = [
     enrolledStudents: 567,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
     description: "Plan and execute a complete digital marketing strategy.",
-    link: "/sbpls/digital-marketing-campaign"
+    link: "https://login.skillizee.io/courses/digital-marketing-campaign"
   },
   {
     id: 5,
@@ -353,7 +353,7 @@ export const sbpls = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop",
     description: "Create a comprehensive design system for web applications.",
-    link: "/sbpls/ui-ux-design-system"
+    link: "https://login.skillizee.io/courses/ui-ux-design-system"
   },
   {
     id: 6,
@@ -366,7 +366,7 @@ export const sbpls = [
     enrolledStudents: 123,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
     description: "Conduct security audits and vulnerability assessments.",
-    link: "/sbpls/cybersecurity-assessment"
+    link: "https://login.skillizee.io/courses/cybersecurity-assessment"
   },
   {
     id: 7,
@@ -379,7 +379,7 @@ export const sbpls = [
     enrolledStudents: 178,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
     description: "Design and deploy scalable cloud infrastructure solutions.",
-    link: "/sbpls/cloud-infrastructure"
+    link: "https://login.skillizee.io/courses/cloud-infrastructure"
   },
   {
     id: 8,
@@ -392,7 +392,7 @@ export const sbpls = [
     enrolledStudents: 345,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Create interactive dashboards for business data visualization.",
-    link: "/sbpls/business-analytics-dashboard"
+    link: "https://login.skillizee.io/courses/business-analytics-dashboard"
   }
 ];
 
@@ -411,7 +411,7 @@ export const memberships = [
       "Mobile app access"
     ],
     popular: false,
-    link: "/memberships/starter-plan"
+    link: "https://login.skillizee.io/courses/starter-plan"
   },
   {
     id: 2,
@@ -428,7 +428,7 @@ export const memberships = [
       "Job placement assistance"
     ],
     popular: true,
-    link: "/memberships/professional-plan"
+    link: "https://login.skillizee.io/courses/professional-plan"
   },
   {
     id: 3,
@@ -446,6 +446,6 @@ export const memberships = [
       "Resume building services"
     ],
     popular: false,
-    link: "/memberships/enterprise-plan"
+    link: "https://login.skillizee.io/courses/enterprise-plan"
   }
 ]; 
