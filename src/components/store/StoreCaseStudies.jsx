@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { sbpls } from "./courseData";
+import { caseStudies } from "./courseData";
 import CourseCard from "./CourseCard";
 
 const CARDS_TO_SHOW = 3;
 
-export default function StoreSPBLs({ gradeGroup }) {
+export default function StoreCaseStudies({ gradeGroup }) {
   const [viewMore, setViewMore] = useState(false);
   const [flipping, setFlipping] = useState([false, false, false]);
   const prevGrade = useRef(gradeGroup);
   const sectionRef = useRef(null);
 
-  const filteredSPBLs = gradeGroup === "all"
-    ? sbpls
-    : sbpls.filter(c => c.gradeGroup === gradeGroup);
+  const filteredCaseStudies = gradeGroup === "all"
+    ? caseStudies
+    : caseStudies.filter(c => c.gradeGroup === gradeGroup);
 
   // Handle flipping animation on grade change
   useEffect(() => {
@@ -59,10 +59,10 @@ export default function StoreSPBLs({ gradeGroup }) {
     setTimeout(() => setViewMore(false), 400);
   };
 
-  const visibleSPBLs = viewMore ? filteredSPBLs : filteredSPBLs.slice(0, CARDS_TO_SHOW);
+  const visibleCaseStudies = viewMore ? filteredCaseStudies : filteredCaseStudies.slice(0, CARDS_TO_SHOW);
 
   return (
-    <section className="py-16 px-2 md:px-8" id="spbls" ref={sectionRef}>
+    <section className="py-16 px-2 md:px-8" id="case-studies" ref={sectionRef}>
       <motion.h2
         className="text-2xl md:text-3xl font-bold text-[#00308A] mb-2 text-center"
         initial={{ opacity: 0, y: 30 }}
@@ -70,7 +70,7 @@ export default function StoreSPBLs({ gradeGroup }) {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        Skill Project Based Learning
+        Case Studies
       </motion.h2>
       <motion.p
         className="text-center text-[#00308A] mb-8 max-w-2xl mx-auto"
@@ -79,21 +79,21 @@ export default function StoreSPBLs({ gradeGroup }) {
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
       >
-        Learn by doing with our hands-on project-based learning programs.
+        Explore real-world business and technology case studies for deeper insights.
       </motion.p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {visibleSPBLs.map((spbl, i) => (
+        {visibleCaseStudies.map((cs, i) => (
           <motion.div
-            key={spbl.id}
+            key={cs.id}
             animate={flipping[i] ? { rotateY: 180 } : { rotateY: 0 }}
             transition={{ duration: 0.5, delay: flipping[i] ? i * 0.12 : 0 }}
             style={{ transformStyle: 'preserve-3d' }}
           >
-            <CourseCard course={spbl} delay={i * 0.1} />
+            <CourseCard course={cs} delay={i * 0.1} />
           </motion.div>
         ))}
       </div>
-      {filteredSPBLs.length > CARDS_TO_SHOW && !viewMore && (
+      {filteredCaseStudies.length > CARDS_TO_SHOW && !viewMore && (
         <div className="flex justify-center mt-8">
           <button
             className="px-4 py-2 rounded bg-[#00308A] text-white font-bold shadow hover:bg-blue-700 transition"
@@ -103,7 +103,7 @@ export default function StoreSPBLs({ gradeGroup }) {
           </button>
         </div>
       )}
-      {viewMore && filteredSPBLs.length > CARDS_TO_SHOW && (
+      {viewMore && filteredCaseStudies.length > CARDS_TO_SHOW && (
         <div className="flex justify-center mt-4">
           <button
             className="px-4 py-2 rounded bg-gray-200 text-[#00308A] font-bold shadow hover:bg-gray-300 transition"

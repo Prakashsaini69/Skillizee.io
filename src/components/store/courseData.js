@@ -13,7 +13,8 @@ export const courses = [
     duration: "8 weeks",
     level: "Beginner",
     description: "Learn HTML, CSS, and JavaScript fundamentals to build responsive websites.",
-    link: "https://login.skillizee.io/courses/MERN-Stack"
+    link: "https://login.skillizee.io/courses/MERN-Stack",
+    gradeGroup: "7-12"
   },
   {
     id: 2,
@@ -28,7 +29,8 @@ export const courses = [
     duration: "12 weeks",
     level: "Intermediate",
     description: "Master Python, statistics, and machine learning algorithms.",
-    link: "https://login.skillizee.io/courses/data-science-essentials"
+    link: "https://login.skillizee.io/courses/data-science-essentials",
+    gradeGroup: "7-12"
   },
   {
     id: 3,
@@ -43,7 +45,8 @@ export const courses = [
     duration: "6 weeks",
     level: "Beginner",
     description: "Learn SEO, social media marketing, and content strategy.",
-    link: "https://login.skillizee.io/courses/digital-marketing-mastery"
+    link: "https://login.skillizee.io/courses/digital-marketing-mastery",
+    gradeGroup: "7-12"
   },
   {
     id: 4,
@@ -58,7 +61,8 @@ export const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     description: "Master user interface and user experience design fundamentals.",
-    link: "https://login.skillizee.io/courses/ui-ux-design-principles"
+    link: "https://login.skillizee.io/courses/ui-ux-design-principles",
+    gradeGroup: "7-12"
   },
   {
     id: 5,
@@ -73,7 +77,8 @@ export const courses = [
     duration: "14 weeks",
     level: "Advanced",
     description: "Build iOS and Android apps using React Native and Flutter.",
-    link: "https://login.skillizee.io/courses/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development",
+    gradeGroup: "7-12"
   },
   {
     id: 6,
@@ -88,7 +93,8 @@ export const courses = [
     duration: "8 weeks",
     level: "Intermediate",
     description: "Learn to analyze business data and make data-driven decisions.",
-    link: "https://login.skillizee.io/courses/business-analytics"
+    link: "https://login.skillizee.io/courses/business-analytics",
+    gradeGroup: "7-12"
   },
   {
     id: 7,
@@ -103,7 +109,8 @@ export const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     description: "Understand cybersecurity threats and protection strategies.",
-    link: "https://login.skillizee.io/courses/cybersecurity-fundamentals"
+    link: "https://login.skillizee.io/courses/cybersecurity-fundamentals",
+    gradeGroup: "7-12"
   },
   {
     id: 8,
@@ -118,7 +125,8 @@ export const courses = [
     duration: "12 weeks",
     level: "Advanced",
     description: "Master AWS services and cloud infrastructure deployment.",
-    link: "https://login.skillizee.io/courses/cloud-computing-aws"
+    link: "https://login.skillizee.io/courses/cloud-computing-aws",
+    gradeGroup: "4-6"
   },
   {
     id: 9,
@@ -133,7 +141,8 @@ export const courses = [
     duration: "6 weeks",
     level: "Beginner",
     description: "Learn Adobe Creative Suite and design principles.",
-    link: "https://login.skillizee.io/courses/graphic-design-masterclass"
+    link: "https://login.skillizee.io/courses/graphic-design-masterclass",
+    gradeGroup: "4-6"
   },
   {
     id: 10,
@@ -148,7 +157,8 @@ export const courses = [
     duration: "8 weeks",
     level: "Beginner",
     description: "Start your programming journey with Python fundamentals.",
-    link: "https://login.skillizee.io/courses/python-for-beginners"
+    link: "https://login.skillizee.io/courses/python-for-beginners",
+    gradeGroup: "4-6"
   },
   {
     id: 11,
@@ -163,7 +173,8 @@ export const courses = [
     duration: "6 weeks",
     level: "Intermediate",
     description: "Build and scale successful e-commerce businesses.",
-    link: "https://login.skillizee.io/courses/ecommerce-strategy"
+    link: "https://login.skillizee.io/courses/ecommerce-strategy",
+    gradeGroup: "7-12"
   },
   {
     id: 12,
@@ -178,7 +189,8 @@ export const courses = [
     duration: "16 weeks",
     level: "Advanced",
     description: "Introduction to machine learning and neural networks.",
-    link: "https://login.skillizee.io/courses/artificial-intelligence-basics"
+    link: "https://login.skillizee.io/courses/artificial-intelligence-basics",
+    gradeGroup: "7-12"
   }
 ];
 
@@ -194,7 +206,8 @@ export const internships = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
     description: "Work on real-world projects using React, Vue.js, and modern web technologies.",
-    link: "https://login.skillizee.io/courses/frontend-development"
+    link: "https://login.skillizee.io/courses/frontend-development",
+    gradeGroup: "7-12"
   },
   {
     id: 2,
@@ -207,7 +220,8 @@ export const internships = [
     enrolledStudents: 156,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Analyze large datasets and build predictive models using Python and ML.",
-    link: "https://login.skillizee.io/courses/data-science"
+    link: "https://login.skillizee.io/courses/data-science",
+    gradeGroup: "7-12"
   },
   {
     id: 3,
@@ -220,7 +234,8 @@ export const internships = [
     enrolledStudents: 89,
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop",
     description: "Design user interfaces and conduct user research for mobile apps.",
-    link: "https://login.skillizee.io/courses/ui-ux-design"
+    link: "https://login.skillizee.io/courses/ui-ux-design",
+    gradeGroup: "7-12"
   },
   {
     id: 4,
@@ -233,7 +248,8 @@ export const internships = [
     enrolledStudents: 312,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
     description: "Manage social media campaigns and SEO strategies for clients.",
-    link: "https://login.skillizee.io/courses/digital-marketing"
+    link: "https://login.skillizee.io/courses/digital-marketing",
+    gradeGroup: "4-6"
   },
   {
     id: 5,
@@ -246,7 +262,8 @@ export const internships = [
     enrolledStudents: 178,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop APIs and database systems using Node.js and MongoDB.",
-    link: "https://login.skillizee.io/courses/backend-development"
+    link: "https://login.skillizee.io/courses/backend-development",
+    gradeGroup: "7-12"
   },
   {
     id: 6,
@@ -259,7 +276,8 @@ export const internships = [
     enrolledStudents: 67,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
     description: "Learn penetration testing and security assessment techniques.",
-    link: "https://login.skillizee.io/courses/cybersecurity"
+    link: "https://login.skillizee.io/courses/cybersecurity",
+    gradeGroup: "7-12"
   },
   {
     id: 7,
@@ -272,7 +290,8 @@ export const internships = [
     enrolledStudents: 134,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
     description: "Work with AWS, Azure, and Google Cloud platforms.",
-    link: "https://login.skillizee.io/courses/cloud-computing"
+    link: "https://login.skillizee.io/courses/cloud-computing",
+    gradeGroup: "4-6"
   },
   {
     id: 8,
@@ -285,7 +304,8 @@ export const internships = [
     enrolledStudents: 145,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop iOS and Android applications using React Native.",
-    link: "https://login.skillizee.io/courses/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development",
+    gradeGroup: "4-6"
   }
 ];
 
@@ -301,7 +321,8 @@ export const sbpls = [
     enrolledStudents: 456,
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
     description: "Build a complete e-commerce website with payment integration.",
-    link: "https://login.skillizee.io/courses/ecommerce-website"
+    link: "https://login.skillizee.io/courses/ecommerce-website",
+    gradeGroup: "7-12"
   },
   {
     id: 2,
@@ -314,7 +335,8 @@ export const sbpls = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Create a predictive model for real-world data analysis.",
-    link: "https://login.skillizee.io/courses/machine-learning-model"
+    link: "https://login.skillizee.io/courses/machine-learning-model",
+    gradeGroup: "7-12"
   },
   {
     id: 3,
@@ -327,7 +349,8 @@ export const sbpls = [
     enrolledStudents: 189,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
     description: "Develop a full-featured mobile application from scratch.",
-    link: "https://login.skillizee.io/courses/mobile-app-development"
+    link: "https://login.skillizee.io/courses/mobile-app-development",
+    gradeGroup: "4-6"
   },
   {
     id: 4,
@@ -340,7 +363,8 @@ export const sbpls = [
     enrolledStudents: 567,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
     description: "Plan and execute a complete digital marketing strategy.",
-    link: "https://login.skillizee.io/courses/digital-marketing-campaign"
+    link: "https://login.skillizee.io/courses/digital-marketing-campaign",
+    gradeGroup: "4-6"
   },
   {
     id: 5,
@@ -353,7 +377,8 @@ export const sbpls = [
     enrolledStudents: 234,
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop",
     description: "Create a comprehensive design system for web applications.",
-    link: "https://login.skillizee.io/courses/ui-ux-design-system"
+    link: "https://login.skillizee.io/courses/ui-ux-design-system",
+    gradeGroup: "7-12"
   },
   {
     id: 6,
@@ -366,7 +391,8 @@ export const sbpls = [
     enrolledStudents: 123,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
     description: "Conduct security audits and vulnerability assessments.",
-    link: "https://login.skillizee.io/courses/cybersecurity-assessment"
+    link: "https://login.skillizee.io/courses/cybersecurity-assessment",
+    gradeGroup: "7-12"
   },
   {
     id: 7,
@@ -379,7 +405,8 @@ export const sbpls = [
     enrolledStudents: 178,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
     description: "Design and deploy scalable cloud infrastructure solutions.",
-    link: "https://login.skillizee.io/courses/cloud-infrastructure"
+    link: "https://login.skillizee.io/courses/cloud-infrastructure",
+    gradeGroup: "4-6"
   },
   {
     id: 8,
@@ -392,9 +419,125 @@ export const sbpls = [
     enrolledStudents: 345,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
     description: "Create interactive dashboards for business data visualization.",
-    link: "https://login.skillizee.io/courses/business-analytics-dashboard"
+    link: "https://login.skillizee.io/courses/business-analytics-dashboard",
+    gradeGroup: "7-12"
   }
 ];
+
+export const caseStudies = [
+    {
+      id: 1,
+      title: "Nike: Building a Global Brand",
+      category: "Business Strategy",
+      duration: "2 weeks",
+      price: 99,
+      originalPrice: 199,
+      rating: 4.9,
+      enrolledStudents: 3120,
+      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=250&fit=crop",
+      description: "Analyze Nike's marketing and branding strategies that made it a global powerhouse.",
+      link: "https://login.skillizee.io/courses/nike-case-study",
+      gradeGroup: "7-12"
+    },
+    {
+      id: 2,
+      title: "Amazon Go: The Future of Retail",
+      category: "Technology & Innovation",
+      duration: "2 weeks",
+      price: 99,
+      originalPrice: 199,
+      rating: 4.8,
+      enrolledStudents: 2890,
+      image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=250&fit=crop",
+      description: "Explore the technology and business model behind Amazon's checkout-free stores.",
+      link: "https://login.skillizee.io/courses/amazon-go-case-study",
+      gradeGroup: "7-12"
+    },
+    {
+      id: 3,
+      title: "Zepto vs. Blinkit: The Q-Commerce Race",
+      category: "Startup Ecosystem",
+      duration: "3 weeks",
+      price: 149,
+      originalPrice: 299,
+      rating: 4.7,
+      enrolledStudents: 2540,
+      image: "https://images.unsplash.com/photo-1607346256330-1689377ce054?w=400&h=250&fit=crop",
+      description: "A deep dive into the competitive strategies of quick commerce giants in India.",
+      link: "https://login.skillizee.io/courses/q-commerce-case-study",
+      gradeGroup: "7-12"
+    },
+    {
+      id: 4,
+      title: "Lenskart: A Vision for India",
+      category: "Business & Entrepreneurship",
+      duration: "2 weeks",
+      price: 99,
+      originalPrice: 199,
+      rating: 4.8,
+      enrolledStudents: 2980,
+      image: "https://images.unsplash.com/photo-1577234286675-fc92131eb23c?w=400&h=250&fit=crop",
+      description: "Learn how Lenskart disrupted the Indian eyewear market with its omnichannel strategy.",
+      link: "https://login.skillizee.io/courses/lenskart-case-study",
+      gradeGroup: "4-6"
+    },
+    {
+      id: 5,
+      title: "Maggie: The 2-Minute Noodle Empire",
+      category: "Marketing & Branding",
+      duration: "2 weeks",
+      price: 99,
+      originalPrice: 199,
+      rating: 4.9,
+      enrolledStudents: 3500,
+      image: "https://images.unsplash.com/photo-1621873495943-73a4b025af5a?w=400&h=250&fit=crop",
+      description: "Uncover the secrets behind Maggie's enduring brand loyalty and market dominance.",
+      link: "https://login.skillizee.io/courses/maggie-case-study",
+      gradeGroup: "4-6"
+    },
+    {
+      id: 6,
+      title: "Tesla: The Electric Revolution",
+      category: "Innovation & Technology",
+      duration: "3 weeks",
+      price: 149,
+      originalPrice: 299,
+      rating: 4.9,
+      enrolledStudents: 4100,
+      image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=250&fit=crop",
+      description: "Analyze how Tesla redefined the automotive industry with its electric vehicles and vision.",
+      link: "https://login.skillizee.io/courses/tesla-case-study",
+      gradeGroup: "7-12"
+    },
+    {
+      id: 7,
+      title: "Netflix: The Streaming King",
+      category: "Business Models",
+      duration: "3 weeks",
+      price: 149,
+      originalPrice: 299,
+      rating: 4.8,
+      enrolledStudents: 3800,
+      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=250&fit=crop",
+      description: "From DVDs by mail to a global streaming giant, learn the story of Netflix's growth.",
+      link: "https://login.skillizee.io/courses/netflix-case-study",
+      gradeGroup: "4-6"
+    },
+    {
+      id: 8,
+      title: "Swiggy vs. Zomato: Food Delivery Wars",
+      category: "Competitive Strategy",
+      duration: "2 weeks",
+      price: 99,
+      originalPrice: 199,
+      rating: 4.7,
+      enrolledStudents: 2900,
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=250&fit=crop",
+      description: "A comparative analysis of the business strategies of India's leading food delivery platforms.",
+      link: "https://login.skillizee.io/courses/food-delivery-case-study",
+      gradeGroup: "7-12"
+    }
+  ];
 
 export const memberships = [
   {
