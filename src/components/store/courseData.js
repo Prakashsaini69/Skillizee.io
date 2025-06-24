@@ -554,7 +554,7 @@ export const memberships = [
       "Mobile app access"
     ],
     popular: false,
-    link: "https://login.skillizee.io/courses/starter-plan"
+    link: "https://login.skillizee.io/courses/Membership-1"
   },
   {
     id: 2,
