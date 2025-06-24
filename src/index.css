@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.footer-skillizee {
+  background: #0a1532;
+  color: #fff;
+  padding: 64px 0 32px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -2px 32px 0 rgba(0,0,0,0.12);
+}
+.footer-skillizee .footer-logo {
+  height: 56px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 16px #377dff88);
+  transition: filter 0.4s;
+}
+.footer-skillizee .footer-logo:hover {
+  filter: drop-shadow(0 0 32px #377dffcc);
+}
+.footer-skillizee .footer-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #3b82f6 0%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer-skillizee .footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 32px 0 16px 0;
+}
+.footer-skillizee .footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid #2d3652;
+  color: #fff;
+  font-size: 1.4rem;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.footer-skillizee .footer-socials a:hover {
+  background: #377dff;
+  color: #fff;
+  box-shadow: 0 0 16px #377dff99;
+}
+.footer-skillizee .footer-copyright {
+  font-size: 1rem;
+  color: #b0b8d1;
+  margin-top: 12px;
+  letter-spacing: 0.01em;
+}
