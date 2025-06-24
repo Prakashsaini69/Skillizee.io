@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Ensure Vite is executable
-      run: chmod +x node_modules/.bin/vite
+    - name: Build project
+      run: npm run build
 
     - name: Checkout code
       uses: actions/checkout@v3
