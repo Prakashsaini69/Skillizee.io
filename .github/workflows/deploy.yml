@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build project
-      run: npm run build
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -23,9 +21,11 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./
 
     - name: Build project
-      run: npm run build  # or 'vite build' or 'next build' if needed
+      run: npm run build # or 'vite build' or 'next build' if needed
+      working-directory: ./
 
     - name: Upload to Hostinger via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
