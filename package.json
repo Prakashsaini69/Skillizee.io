@@ -12,7 +12,9 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@material-tailwind/react": "^2.1.10",
-    "framer-motion": "^12.15.0",
+    "@mui/icons-material": "^7.1.2",
+    "@mui/material": "^7.1.2",
+    "framer-motion": "^12.19.2",
     "lottie-react": "^2.4.1",
     "react": "^19.1.0",
     "react-countdown": "^2.3.6",
