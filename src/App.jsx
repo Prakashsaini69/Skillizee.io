@@ -15,9 +15,7 @@ import Faq from "./components/common/Faq";
 import "./index.css";
 import { motion } from "framer-motion";
 import WallOfFame from "./pages/WallOfFame/WallOfFame";
-import Store from "./pages/StoreV2/StoreV2";
-
-const CourseStorePage = React.lazy(() => import('./pages/CourseStorePage/CourseStorePage'));
+import Store from "./pages/Store";
 
 function Header({ hide }) {
   const location = useLocation();

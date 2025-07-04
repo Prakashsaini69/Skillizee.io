@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { memberships } from "../CourseStorePage/courseData";
+import { memberships } from "./courseData";
 
 export default function StoreMemberships() {
   return (
