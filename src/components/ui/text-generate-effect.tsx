@@ -9,12 +9,14 @@ export const TextGenerateEffect = ({
   filter = true,
   duration = 0.5,
   style,
+  onDone,
 }: {
   words: string;
   className?: string;
   filter?: boolean;
   duration?: number;
   style?: React.CSSProperties;
+  onDone?: () => void;
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
@@ -28,9 +30,10 @@ export const TextGenerateEffect = ({
       {
         duration: duration ? duration : 1,
         delay: stagger(0.2),
+        onComplete: onDone,
       }
     );
-  }, [scope.current]);
+  }, [scope.current, onDone]);
 
   const renderWords = () => {
     return (

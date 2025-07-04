@@ -45,7 +45,7 @@ export default function StoreInternships({ gradeGroup }) {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-2 md:px-8 mb-10 bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:bg-gray-900 rounded-2xl shadow-lg border border-[#00308A]/10"
+      className="py-16 px-4 md:px-16 xl:px-32 mb-10 bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:bg-gray-900 rounded-2xl shadow-lg border border-[#00308A]/10"
       id="internship"
     >
       <motion.h2
@@ -67,7 +67,7 @@ export default function StoreInternships({ gradeGroup }) {
         Real-world internship experiences for students to build their portfolios and skills.
       </motion.p>
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        className="flex flex-wrap gap-8 justify-center items-stretch w-full"
         animate={{ height: containerHeight, opacity: 1 }}
         initial={{ opacity: 0 }}
         transition={{ duration: 0.4 }}
@@ -83,12 +83,13 @@ export default function StoreInternships({ gradeGroup }) {
               animate="animate"
               exit="exit"
               layout
+              className="flex-1 min-w-[260px] max-w-[350px]"
             >
               <CourseCard
                 image={internship.image}
                 title={internship.title}
                 enrolled={internship.enrolled}
-                rating={internship.rating}
+                rating={Number(internship.rating).toFixed(1)}
                 price={internship.price}
                 onEnroll={() => window.open(internship.link, '_blank')}
               />

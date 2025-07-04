@@ -8,6 +8,7 @@ import StoreFAQTabs from "./StoreFAQTabs";
 import Footer from "../../components/common/Footer";
 import StoreMemberships from "./StoreMemberships";
 import HeroSection from "./HeroSection";
+import { HoverBorderGradient } from "../../components/ui/hover-border-gradient";
 
 const navLinks = [
   { id: "internship", label: "Internship" },
@@ -71,16 +72,23 @@ export default function Store() {
           }
           .glassmorphism-bg.scrolled {
             background: rgba(255,255,255,0.92);
-            border: 2.5px solid #FFD700;
+            border: 2.5px solidrgb(98, 87, 255);
             box-shadow: 0 12px 40px 0 rgba(31,38,135,0.22);
           }
         `}</style>
         <nav ref={navRef} className="glassmorphism-bg sticky top-0 z-40 flex flex-wrap items-center justify-between gap-4 px-6 py-3 mb-8 shadow-lg">
           <div className="flex gap-2">
             {navLinks.map(link => (
-              <a key={link.id} href={`#${link.id}`} className="px-4 py-2 rounded-full font-semibold text-[#00308A] hover:bg-[#FFD700] hover:text-[#00308A] transition-all duration-200">
+              <HoverBorderGradient
+                key={link.id}
+                as="a"
+                href={`#${link.id}`}
+                className="px-4 py-2 rounded-full font-semibold text-[#00308A] bg-white focus:bg-white focus:text-[#00308A] transition-all duration-200 shadow-sm"
+                duration={1.2}
+                style={{ background: 'white' }}
+              >
                 {link.label}
-              </a>
+              </HoverBorderGradient>
             ))}
           </div>
           <select
