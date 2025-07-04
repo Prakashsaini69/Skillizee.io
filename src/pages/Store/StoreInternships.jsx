@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { internships } from "./courseData";
 import CourseCard from "../../components/ui/course-card";
+import { FollowerPointerCard } from "../../components/ui/following-pointer";
 
 const CARDS_TO_SHOW = 3;
 
@@ -83,16 +84,18 @@ export default function StoreInternships({ gradeGroup }) {
               animate="animate"
               exit="exit"
               layout
-              className="flex-1 min-w-[260px] max-w-[350px]"
+              className="flex-1 min-w-[220px] max-w-[320px] basis-[320px]"
             >
-              <CourseCard
-                image={internship.image}
-                title={internship.title}
-                enrolled={internship.enrolled}
-                rating={Number(internship.rating).toFixed(1)}
-                price={internship.price}
-                onEnroll={() => window.open(internship.link, '_blank')}
-              />
+              <FollowerPointerCard title={internship.title}>
+                <CourseCard
+                  image={internship.image}
+                  title={internship.title}
+                  enrolled={internship.enrolled}
+                  rating={Number(internship.rating).toFixed(1)}
+                  price={internship.price}
+                  onEnroll={() => window.open(internship.link, '_blank')}
+                />
+              </FollowerPointerCard>
             </motion.div>
           ))}
         </AnimatePresence>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sbpls } from "./courseData";
 import CourseCard from "../../components/ui/course-card";
+import { FollowerPointerCard } from "../../components/ui/following-pointer";
 
 const CARDS_TO_SHOW = 3;
 
@@ -75,23 +76,26 @@ export default function StoreSPBLs({ gradeGroup }) {
         ref={cardsContainerRef}
       >
         <AnimatePresence initial={false}>
-          {visibleSPBLs.map((sbpl, i) => (
+          {visibleSPBLs.map((spbl, i) => (
             <motion.div
-              key={sbpl.id}
+              key={spbl.id}
               variants={cardVariants}
               initial="initial"
               animate="animate"
               exit="exit"
               layout
+              className="flex-1 min-w-[220px] max-w-[320px] basis-[320px]"
             >
-              <CourseCard
-                image={sbpl.image}
-                title={sbpl.title}
-                enrolled={sbpl.enrolled}
-                rating={sbpl.rating}
-                price={sbpl.price}
-                onEnroll={() => window.open(sbpl.link, '_blank')}
-              />
+              <FollowerPointerCard title={spbl.title}>
+                <CourseCard
+                  image={spbl.image}
+                  title={spbl.title}
+                  enrolled={spbl.enrolled}
+                  rating={Number(spbl.rating).toFixed(1)}
+                  price={spbl.price}
+                  onEnroll={() => window.open(spbl.link, '_blank')}
+                />
+              </FollowerPointerCard>
             </motion.div>
           ))}
         </AnimatePresence>

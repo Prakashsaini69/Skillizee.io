@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { courses } from "./courseData";
 import CourseCard from "../../components/ui/course-card";
+import { FollowerPointerCard } from "../../components/ui/following-pointer";
 
 const CARDS_TO_SHOW = 3;
 
@@ -83,15 +84,18 @@ export default function StoreCourses({ gradeGroup }) {
               animate="animate"
               exit="exit"
               layout
+              className="flex-1 min-w-[220px] max-w-[320px] basis-[320px]"
             >
-              <CourseCard
-                image={course.image}
-                title={course.title}
-                enrolled={course.enrolled}
-                rating={course.rating}
-                price={course.price}
-                onEnroll={() => window.open(course.link, '_blank')}
-              />
+              <FollowerPointerCard title={course.title}>
+                <CourseCard
+                  image={course.image}
+                  title={course.title}
+                  enrolled={course.enrolled}
+                  rating={Number(course.rating).toFixed(1)}
+                  price={course.price}
+                  onEnroll={() => window.open(course.link, '_blank')}
+                />
+              </FollowerPointerCard>
             </motion.div>
           ))}
         </AnimatePresence>

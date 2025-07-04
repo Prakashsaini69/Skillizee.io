@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { caseStudies } from "./courseData";
 import CourseCard from "../../components/ui/course-card";
+import { FollowerPointerCard } from "../../components/ui/following-pointer";
 
 const CARDS_TO_SHOW = 3;
 
@@ -76,23 +77,26 @@ export default function StoreCaseStudies({ gradeGroup }) {
         ref={cardsContainerRef}
       >
         <AnimatePresence initial={false}>
-          {visibleCaseStudies.map((cs, i) => (
+          {visibleCaseStudies.map((caseStudy, i) => (
             <motion.div
-              key={cs.id}
+              key={caseStudy.id}
               variants={cardVariants}
               initial="initial"
               animate="animate"
               exit="exit"
               layout
+              className="flex-1 min-w-[220px] max-w-[320px] basis-[320px]"
             >
-              <CourseCard
-                image={cs.image}
-                title={cs.title}
-                enrolled={cs.enrolled}
-                rating={cs.rating}
-                price={cs.price}
-                onEnroll={() => window.open(cs.link, '_blank')}
-              />
+              <FollowerPointerCard title={caseStudy.title}>
+                <CourseCard
+                  image={caseStudy.image}
+                  title={caseStudy.title}
+                  enrolled={caseStudy.enrolled}
+                  rating={Number(caseStudy.rating).toFixed(1)}
+                  price={caseStudy.price}
+                  onEnroll={() => window.open(caseStudy.link, '_blank')}
+                />
+              </FollowerPointerCard>
             </motion.div>
           ))}
         </AnimatePresence>
