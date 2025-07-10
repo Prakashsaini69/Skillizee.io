@@ -41,7 +41,7 @@ function Header({ hide }) {
         </div>
         <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
           <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>
-          <Link to="/wall-of-fame" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/wall-of-fame" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Wall of Fame</Link>
+          {/* <Link to="/wall-of-fame" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/wall-of-fame" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Wall of Fame</Link> */}
           {/* <Link to="/store" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Our Programs</Link> */}
           {/* <Link to="/course-store" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/course-store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Course Store</Link> */}
           <Link to="/store" element={<Store />} className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Store</Link>

@@ -10,7 +10,7 @@ export default function HeroSection() {
   const handleHeadlineDone = () => setShowFlip(true);
 
   return (
-    <WavyBackground className="max-w-4xl mx-auto pb-40">
+    <WavyBackground className="max-w-4xl mx-auto pb-40 font-wonktown">
       <div className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-center mb-2" style={{ color: "#00308A", textShadow: "0 2px 8px rgba(0,48,138,0.10)" }}>
         {!showFlip ? (
           <TextGenerateEffect

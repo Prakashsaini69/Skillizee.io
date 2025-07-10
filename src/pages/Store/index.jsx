@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import StoreInternships from "./StoreInternships";
 import StoreCourses from "./StoreCourses";
@@ -23,11 +23,33 @@ const gradeGroups = ["all", "4-6", "7-12"];
 
 export default function Store() {
   const [selectedGradeGroup, setSelectedGradeGroup] = useState("all");
-  const navRef = React.useRef(null);
-  React.useEffect(() => {
+  const [isSticky, setIsSticky] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
+  const navRef = useRef(null);
+  const heroRef = useRef(null);
+
+  useEffect(() => {
     const nav = navRef.current;
-    if (!nav) return;
-    const handler = (e) => {
+    const hero = heroRef.current;
+    if (!nav || !hero) return;
+
+    // Set navHeight for placeholder
+    setNavHeight(nav.offsetHeight);
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const navHeightLocal = nav.offsetHeight;
+      setNavHeight(navHeightLocal);
+      // Sticky if scrolled past hero section
+      if (currentScrollY > heroBottom - navHeightLocal) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    const handleNavClick = (e) => {
       const anchor = e.target.closest('a');
       if (anchor && nav.contains(anchor) && anchor.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
@@ -41,42 +63,74 @@ export default function Store() {
         }
       }
     };
-    nav.addEventListener("click", handler);
-    const onScroll = () => {
-      if (window.scrollY > 10) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    };
-    window.addEventListener('scroll', onScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    nav.addEventListener("click", handleNavClick);
+    window.addEventListener('resize', () => setNavHeight(nav.offsetHeight));
+
     return () => {
-      nav.removeEventListener("click", handler);
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', handleScroll);
+      nav.removeEventListener("click", handleNavClick);
+      window.removeEventListener('resize', () => setNavHeight(nav.offsetHeight));
     };
   }, []);
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-purple-100 min-h-screen w-full overflow-x-hidden">
-      <HeroSection />
+      <div ref={heroRef}>
+        <HeroSection />
+      </div>
       <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-8 mx-auto">
         <style>{`
           .glassmorphism-bg {
             border-radius: 1rem;
-            background: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.6);
             backdrop-filter: blur(24px) saturate(160%);
             -webkit-backdrop-filter: blur(24px) saturate(160%);
             box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
             border: 2px solid rgba(0,48,138,0.13);
-            transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2rem);
+            max-width: calc(72rem - 2rem);
+            transition: top 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), background 0.3s cubic-bezier(.4,0,.2,1), border 0.3s cubic-bezier(.4,0,.2,1);
+            position: relative;
+            z-index: 40;
           }
-          .glassmorphism-bg.scrolled {
-            background: rgba(255,255,255,0.92);
-            border: 2.5px solidrgb(98, 87, 255);
-            box-shadow: 0 12px 40px 0 rgba(31,38,135,0.22);
+          .glassmorphism-bg.sticky {
+            position: fixed;
+            top: 1rem;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(32px) saturate(180%);
+            -webkit-backdrop-filter: blur(32px) saturate(180%);
+            box-shadow: 0 16px 48px 0 rgba(31,38,135,0.25);
+            border: 2.5px solid rgba(0,48,138,0.2);
+            animation: slideDown 0.3s ease-out;
+          }
+          @keyframes slideDown {
+            from {
+              top: -100px;
+              opacity: 0;
+            }
+            to {
+              top: 1rem;
+              opacity: 1;
+            }
+          }
+          .nav-placeholder {
+            height: 0;
+            transition: height 0.3s cubic-bezier(.4,0,.2,1);
+          }
+          .nav-placeholder.active {
+            height: ${navHeight}px;
           }
         `}</style>
-        <nav ref={navRef} className="glassmorphism-bg sticky top-0 z-40 flex flex-wrap items-center justify-between gap-4 px-6 py-3 mb-8 shadow-lg">
+        {/* Placeholder div to prevent content jump when navbar becomes sticky */}
+        <div className={`nav-placeholder${isSticky ? ' active' : ''}`}></div>
+        <nav
+          ref={navRef}
+          className={`glassmorphism-bg flex flex-wrap items-center justify-between gap-4 px-6 py-3 mb-8 shadow-lg transition-all duration-300${isSticky ? ' sticky' : ''}`}
+        >
           <div className="flex gap-2">
             {navLinks.map(link => (
               <HoverBorderGradient
@@ -116,9 +170,9 @@ export default function Store() {
         <section className="scroll-mt-32" id="packages">
           <h2 className="text-2xl font-bold leading-tight tracking-tight px-4 pb-4 pt-8 text-[#1F2937]">Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-10 ">
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row items-stretch justify-start rounded-xl shadow-lg bg-[#F3F4F6] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-[#00308A]/50"
-              >
+            >
               <div className="w-full sm:w-2/5 h-48 sm:h-auto bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80)' }}></div>
               <div className="flex flex-1 flex-col items-start justify-between p-5 gap-3">
                 <div>
@@ -130,16 +184,16 @@ export default function Store() {
                   </div>
                   <p className="text-xl font-bold text-[#00308A] mt-2">₹449 <span className="text-sm text-[#4B5563] line-through">₹497</span></p>
                 </div>
-                <motion.button 
+                <motion.button
                   className="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-[#00308A] text-[#00308A] text-xs font-medium leading-normal hover:bg-[#00308A] hover:text-white transition-colors"
                 >
                   <span className="truncate">Explore Package</span>
                 </motion.button>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row items-stretch justify-start rounded-xl shadow-lg bg-[#F3F4F6] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-[#00308A]/50"
-              >
+            >
               <div className="w-full sm:w-2/5 h-48 sm:h-auto bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80)' }}></div>
               <div className="flex flex-1 flex-col items-start justify-between p-5 gap-3">
                 <div>
@@ -151,7 +205,7 @@ export default function Store() {
                   </div>
                   <p className="text-xl font-bold text-[#00308A] mt-2">₹399 <span className="text-sm text-[#4B5563] line-through">₹477</span></p>
                 </div>
-                <motion.button 
+                <motion.button
                   className="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-[#00308A] text-[#00308A] text-xs font-medium leading-normal hover:bg-[#00308A] hover:text-white transition-colors"
                 >
                   <span className="truncate">Explore Package</span>
