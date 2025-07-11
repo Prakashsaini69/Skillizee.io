@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=400&h=400&q=80",
-  "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=400&h=400&q=80",
-  "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=400&h=400&q=80",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235785/IMG_0272_kciihj.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235786/IMG_0241_lrvcmr.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235788/IMG_3747_gn9peb.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235791/IMG_E8169_qocimx.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235796/IMG_0378_f9t9i8.jpg",
 ];
 
 const variants = {
