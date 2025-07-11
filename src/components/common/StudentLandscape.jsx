@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const AVATARS = [
-  "https://randomuser.me/api/portraits/women/44.jpg",
-  "https://randomuser.me/api/portraits/men/32.jpg",
-  "https://randomuser.me/api/portraits/men/45.jpg",
-  "https://randomuser.me/api/portraits/women/65.jpg",
-  "https://randomuser.me/api/portraits/men/12.jpg",
-  "https://randomuser.me/api/portraits/women/22.jpg",
-  "https://randomuser.me/api/portraits/men/23.jpg",
-  "https://randomuser.me/api/portraits/women/33.jpg",
-  "https://randomuser.me/api/portraits/men/54.jpg",
-  "https://randomuser.me/api/portraits/women/55.jpg",
-  "https://randomuser.me/api/portraits/men/66.jpg",
-  "https://randomuser.me/api/portraits/women/77.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234974/c998e26464fcf80e2a31e683c6f181e1_dcsvfp.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234972/4dddcfc826925d62934cefdb6e331fd4_choonf.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234971/1b6866e21f59b354222026abd6f5bdd3_a4lpo1.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234969/2ff7ed87c2d0fcaeaf1c949ace493df1_j7onci.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234968/1e6a3a9107ae15f456b1a614db1bf03d_awa4hq.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234966/c71d4d2d58891ffb17d31616d451789a_bokai0.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234965/f83755d48f5455e0250b1cb230154b0c_nap9h8.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234965/2b5067a9a4c4bdd4342b3a226c579113_x1mz1t.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234964/26c5f5db415df689733d4eaab6cc51ca_wf2yun.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235359/f74084f7ae61c25e78f5ad33147eb7b6_vmwjje.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235358/26443a270dcbde7704c2d27f3c2f1adf_cphkpc.jpg",
+  "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235357/c4d85461bb1b4740bc3905f2b9e0a9c3_jlh1jl.jpg",
 ];
 
 function useLiveAnimatedCounter(target, initialDuration = 2500, liveInterval = 4500, start = false) {
