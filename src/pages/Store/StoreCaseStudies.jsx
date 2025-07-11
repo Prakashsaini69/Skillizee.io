@@ -34,6 +34,7 @@ export default function StoreCaseStudies({ gradeGroup }) {
             studentsEnrolled={course.studentsEnrolled}
             gradeGroup={course.gradeGroup}
             onEnroll={() => handleEnroll(course)}
+            color={course.color}
           />
         </div>
       ))}

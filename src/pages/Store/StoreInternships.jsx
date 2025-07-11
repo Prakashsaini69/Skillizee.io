@@ -34,6 +34,7 @@ export default function StoreInternships({ gradeGroup }) {
             studentsEnrolled={course.studentsEnrolled}
             gradeGroup={course.gradeGroup}
             onEnroll={() => handleEnroll(course)}
+            color={course.color}
           />
         </div>
       ))}

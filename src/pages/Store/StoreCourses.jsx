@@ -34,6 +34,7 @@ export default function StoreCourses({ gradeGroup }) {
             studentsEnrolled={course.studentsEnrolled}
             gradeGroup={course.gradeGroup}
             onEnroll={() => handleEnroll(course)}
+            color={course.color}
           />
         </div>
       ))}

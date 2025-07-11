@@ -1,14 +1,25 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
+// Helper: Convert hex color to rgba
+function hexToRgba(hex, alpha = 1) {
+  let c = hex.replace('#', '');
+  if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+  const num = parseInt(c, 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 const TiltedCard = ({
   imageSrc,
   altText = 'Tilted card image',
   captionText = '',
   containerHeight = '300px',
   containerWidth = '100%',
-  imageHeight = '300px',
-  imageWidth = '300px',
+  imageHeight = '180px',
+  imageWidth = '100%',
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
   showMobileWarning = true,
@@ -20,6 +31,7 @@ const TiltedCard = ({
   rating,
   studentsEnrolled,
   onEnroll,
+  color = '#FFB300',
   children,
   ...props
 }) => {
@@ -52,10 +64,13 @@ const TiltedCard = ({
     setOpacity(0);
   };
 
+  // Gradient for the overlay background only
+  const overlayGradient = `linear-gradient(to bottom, ${hexToRgba(color, 0.08)} 0%, ${hexToRgba(color, 1)} 100%)`;
+
   return (
     <figure
       ref={cardRef}
-      className="relative w-full h-full flex flex-col items-center justify-center"
+      className="relative w-full h-full flex flex-col items-center justify-start bg-white rounded-[15px] overflow-hidden"
       style={{ height: containerHeight, width: containerWidth, perspective: 800 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
@@ -68,8 +83,8 @@ const TiltedCard = ({
         </div>
       )}
       <motion.div
-        className="relative [transform-style:preserve-3d]"
-        style={{ width: imageWidth, height: imageHeight }}
+        className="w-full h-full flex flex-col bg-white"
+        style={{ height: containerHeight, width: imageWidth, ["transformStyle"]: "preserve-3d" }}
         animate={{
           rotateX: isHovered ? rotate.x : 0,
           rotateY: isHovered ? rotate.y : 0,
@@ -77,23 +92,27 @@ const TiltedCard = ({
         }}
         transition={{ type: 'spring', damping: 30, stiffness: 100, mass: 2 }}
       >
-        {/* Image */}
-        <img
-          src={imageSrc}
-          alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{ width: imageWidth, height: imageHeight }}
-        />
-        {/* Overlay content always visible if displayOverlayContent */}
+        {/* Image at the top, not stretched, original aspect ratio, plain white background */}
+        <div className="w-full overflow-hidden" style={{ height: imageHeight, background: '#fff' }}>
+          <img
+            src={imageSrc}
+            alt={altText}
+            className="w-full h-full object-cover"
+            style={{ display: 'block' }}
+          />
+        </div>
+        {/* Overlay/content in the colored area only */}
         {displayOverlayContent && (
-          <motion.div
-            className="absolute top-0 left-0 z-[2] w-full h-full will-change-transform [transform:translateZ(30px)] flex flex-col justify-end"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="p-5">
-              <div className="bg-white/90 rounded-xl shadow px-4 py-3 flex flex-col gap-2">
+          <div className="flex-1 flex flex-col justify-end">
+            <div
+              className="p-5"
+              style={{
+                background: overlayGradient,
+                borderBottomLeftRadius: 15,
+                borderBottomRightRadius: 15,
+              }}
+            >
+              <div className="bg-white/80 rounded-xl shadow px-4 py-3 flex flex-col gap-2">
                 <div className="text-lg font-bold text-gray-900 truncate">{title}</div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>Rating: {rating} ⭐</span>
@@ -114,7 +133,7 @@ const TiltedCard = ({
               </div>
               {children}
             </div>
-          </motion.div>
+          </div>
         )}
       </motion.div>
       {/* Tooltip/cursor tracker */}

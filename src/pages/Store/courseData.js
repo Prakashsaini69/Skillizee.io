@@ -9,6 +9,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#ddcae6', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -19,6 +20,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#ddcae6', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -29,6 +31,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#ddcae6', // <--- Change this to any valid CSS color
     },
   ],
   shortCourses: [
@@ -41,6 +44,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -51,6 +55,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -61,6 +66,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
   ],
   sbpls: [
@@ -73,6 +79,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -83,6 +90,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -93,6 +101,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
   ],
   caseStudies: [
@@ -105,6 +114,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -115,6 +125,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#00308A', // <--- Change this to any valid CSS color
     },
     {
       id: 'intern1',
@@ -125,6 +136,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
   ],
   packages: [
@@ -137,6 +149,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: '#',
       gradeGroup: '7-12',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'pack2',
@@ -147,6 +160,7 @@ const courseData = {
       studentsEnrolled: 4600,
       link: '#',
       gradeGroup: '4-6',
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
   ],
   memberships: [
@@ -163,6 +177,7 @@ const courseData = {
       link: '#',
       gradeGroup: 'all',
       popular: true,
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
     {
       id: 'mem2',
@@ -177,6 +192,7 @@ const courseData = {
       link: '#',
       gradeGroup: 'all',
       popular: false,
+      color: '#FFB300', // <--- Change this to any valid CSS color
     },
   ],
 };
