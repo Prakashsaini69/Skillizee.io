@@ -35,7 +35,9 @@ export default function Hero() {
         backgroundImage: 'url(https://res.cloudinary.com/dpstp4ovd/image/upload/v1748863808/123123123123_nhewwk.svg)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top center',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover', // changed from 'contain' to 'cover'
+        width: '100%',
+        minHeight: '60vh',
       }}
     >
       {/* Animated background shapes */}
@@ -71,10 +73,13 @@ export default function Hero() {
             },
           }}
         >
-          {["🔁 Lifetime Access", "💳 14-Day Refund Policy", "👥 4.4+ Lakh Enrolled"].map((badge, i) => (
+          {[
+            "🔁 Lifetime Access",
+            "👥 2.2+ Lakh Enrolled"
+          ].map((badge, i) => (
             <motion.span
               key={badge}
-              className="bg-white/80 text-[#00308A] px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md border border-blue-100"
+              className="text-[#ffffff] px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md "
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.2 }}
@@ -87,6 +92,12 @@ export default function Hero() {
           whileHover={{ scale: 1.07, boxShadow: "0 8px 32px 0 rgba(76,110,245,0.25)" }}
           whileTap={{ scale: 0.97 }}
           className="relative group bg-gradient-to-r from-blue-600 to-purple-500 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-purple-200"
+          onClick={() => {
+            const el = document.getElementById('courses-section');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
         >
           <span className="relative z-10">Explore SkilliZee Courses</span>
           <span className="absolute left-0 top-0 w-full h-full bg-white opacity-0 group-hover:opacity-10 transition-all duration-500 rounded-full blur-xl"></span>

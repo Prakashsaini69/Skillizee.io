@@ -10,6 +10,7 @@ export interface CourseCardProps {
   rating: number;
   price: number | string;
   onEnroll?: () => void;
+  color?: string; // Add color prop
 }
 
 export default function CourseCard({
@@ -19,10 +20,19 @@ export default function CourseCard({
   rating,
   price,
   onEnroll,
+  color,
 }: CourseCardProps) {
+  // Only use as className if it's a Tailwind class (from-, bg-, to-)
+  const isClass = color && (color.startsWith('from-') || color.startsWith('bg-') || color.startsWith('to-'));
+  // Use as style if it's a hex or CSS color
+  const isStyle = color && !isClass;
+  console.log('CourseCard color:', color);
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[22rem] h-auto rounded-xl p-4 border transition-all">
+      <CardBody
+        style={{ background: color?.trim() || '#ffb300' }}
+        className="w-full sm:w-[22rem] h-auto rounded-xl p-4 border transition-all flex flex-col items-center"
+      >
         <CardItem translateZ={100} className="w-full mb-4">
           <img
             src={image}

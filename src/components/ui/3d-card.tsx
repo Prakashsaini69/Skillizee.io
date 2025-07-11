@@ -75,9 +75,11 @@ export const CardContainer = ({
 export const CardBody = ({
   children,
   className,
+  ...rest
 }: {
   children: React.ReactNode;
   className?: string;
+  [key: string]: any;
 }) => {
   return (
     <div
@@ -85,6 +87,7 @@ export const CardBody = ({
         "w-full [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]",
         className
       )}
+      {...rest}
     >
       {children}
     </div>
