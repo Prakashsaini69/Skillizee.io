@@ -12,6 +12,19 @@ function hexToRgba(hex, alpha = 1) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+const UserIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block mr-1 align-text-bottom">
+    <circle cx="10" cy="6" r="4" fill="#888"/>
+    <ellipse cx="10" cy="15" rx="7" ry="4" fill="#888"/>
+  </svg>
+);
+
+const StarIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block align-text-bottom">
+    <path d="M10 2l2.39 4.84L18 7.27l-3.91 3.81L14.18 18 10 15.27 5.82 18l.91-6.92L2 7.27l5.61-.43L10 2z" fill="#FFC107"/>
+  </svg>
+);
+
 const TiltedCard = ({
   imageSrc,
   altText = 'Tilted card image',
@@ -31,7 +44,9 @@ const TiltedCard = ({
   rating,
   studentsEnrolled,
   onEnroll,
+  originalPrice,
   color = '#FFB300',
+  badgeIcon,
   children,
   ...props
 }) => {
@@ -77,6 +92,12 @@ const TiltedCard = ({
       onMouseLeave={handleMouseLeave}
       {...props}
     >
+      {/* Animated badge/icon in top-left if present */}
+      {badgeIcon && (
+        <div className="absolute top-2 left-2 z-20">
+          <img src={badgeIcon} alt="badge" className="w-12 h-12 animate-bounce" />
+        </div>
+      )}
       {showMobileWarning && (
         <div className="absolute top-4 text-center text-sm block sm:hidden z-30">
           This effect is not optimized for mobile. Check on desktop.
@@ -105,21 +126,36 @@ const TiltedCard = ({
         {displayOverlayContent && (
           <div className="flex-1 flex flex-col justify-end">
             <div
-              className="p-5"
+              className="p-5 pt-0"
               style={{
                 background: overlayGradient,
                 borderBottomLeftRadius: 15,
                 borderBottomRightRadius: 15,
               }}
             >
-              <div className="bg-white/80 rounded-xl shadow px-4 py-3 flex flex-col gap-2">
-                <div className="text-lg font-bold text-gray-900 truncate">{title}</div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span>Rating: {rating} ⭐</span>
-                  <span>•</span>
-                  <span>{studentsEnrolled} Enrolled</span>
+              <div className="bg-white/80 rounded-xl mt-2 shadow px-4 py-3 flex flex-col gap-2">
+                <div className="flex items-center justify-between w-full">
+                  <div className="text-lg font-bold text-gray-900 truncate">
+                    {title}
+                  </div>
+                  <span className="flex items-center gap-1 text-base font-normal text-gray-700">
+                    <StarIcon />
+                    {rating}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
+                  {/* Enrolled students with user icon */}
+                  <span className="flex items-center gap-1">
+                    <UserIcon />
+                    {studentsEnrolled} Enrolled
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 mt-1">
+                  {originalPrice && originalPrice > price && (
+                    <span className="text-sm text-gray-400 line-through">
+                      ₹{originalPrice}
+                    </span>
+                  )}
                   <span className="text-base font-semibold text-[#00308A]">
                     {price === 0 ? 'Free' : `₹${price}`}
                   </span>
