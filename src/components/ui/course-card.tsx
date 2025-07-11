@@ -31,32 +31,33 @@ export default function CourseCard({
     <CardContainer className="inter-var">
       <CardBody
         style={{ background: color?.trim() || '#ffb300' }}
-        className="w-full sm:w-[22rem] h-auto rounded-xl p-4 border transition-all flex flex-col items-center"
+        className="w-full sm:w-[22rem] h-auto rounded-xl p-4 border transition-all"
       >
         <CardItem translateZ={100} className="w-full mb-4">
           <img
             src={image}
             alt="Course Thumbnail"
-            className="h-48 w-full object-cover rounded-lg shadow-sm group-hover/card:shadow-lg"
+            className="h-48 w-full object-cover rounded-lg shadow-sm group-hover/card:shadow-lg border-2 border-black"
+            style={{ background: 'transparent' }}
           />
         </CardItem>
-        <CardItem translateZ={60} className="text-lg font-semibold text-gray-800 dark:text-white">
+        <CardItem translateZ={60} className="text-lg font-semibold text-white text-left w-full">
           {title}
         </CardItem>
-        <CardItem translateZ={40} className="text-sm text-gray-500 mt-1 dark:text-neutral-400">
+        <CardItem translateZ={40} className="text-sm text-white mt-1 text-left w-full">
           {enrolled} students enrolled • ⭐ {rating}
         </CardItem>
-        <CardItem translateZ={30} className="text-base font-bold text-black dark:text-white mt-2">
+        <CardItem translateZ={30} className="text-base font-bold text-white mt-2 text-left w-full">
           ₹{price}
         </CardItem>
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-start mt-6 w-full">
           <CardItem
             translateZ={20}
             as="button"
             onClick={onEnroll}
-            className="px-4 py-2 rounded-md bg-black text-white dark:bg-white dark:text-black text-sm font-semibold hover:scale-105 transition-transform"
+            className="px-4 py-2 rounded-md bg-black text-white text-sm font-semibold hover:scale-105 transition-transform w-full text-left"
           >
-            Enroll Now
+            <span className="w-full block text-center">Enroll Now</span>
           </CardItem>
         </div>
       </CardBody>

@@ -4,18 +4,11 @@ import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-const PROJECTS = [
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749279440/Starbucks_gdq1th.png", title: "Starbucks case study", subtitle: "How Starbucks Became a Billion-Dollar Business?", session: "1 session - 1h 15m", badge: "NEW" },
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749279449/Netflix_zoxmzc.png", title: "Netflix Case study", subtitle: "The Success Story of Netflix", session: "1 session - 1h 15m", badge: "" },
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749199308/Nike_dqpdtk.png", title: "Nike Case study", subtitle: "How Nike and Michael Jordan Changed the Game Forever?", session: "1 session - 1h 15m", badge: "" },
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749199308/Zomato_lleo9b.png", title: "Zomato case study", subtitle: "A Secret Move that Saved Zomato", session: "1 session - 1h 15m", badge: "" },
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749199308/Dairymilk_vgvmlr.png", title: "Cadbury Case study", subtitle: "How Cadbury Turned Crisis into Trust", session: "1 session - 1h 15m", badge: "" },
-  { img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749199309/Maggie_zjvem4.png", title: "Maggi Case study", subtitle: "The Recipe for a Remarkable Comeback", session: "1 session - 1h 15m", badge: "" },
-];
+import courseData from "../../pages/Store/courseData";
 
 export default function SkillProjectSlider() {
   const swiperRef = useRef(null);
+  const caseStudies = courseData.caseStudies;
   return (
     <section className="w-full max-w-5xl mx-auto my-12">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#00308A]">Harvard Case Studies</h2>
@@ -37,20 +30,15 @@ export default function SkillProjectSlider() {
         }}
         onSwiper={swiper => (swiperRef.current = swiper)}
       >
-        {PROJECTS.map((card, idx) => (
-          <SwiperSlide key={card.title + idx}>
-            <div className="flex flex-col items-start w-full max-w-md mx-auto transition-transform duration-500 scale-100 z-10">
-              <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden relative w-full " style={{ aspectRatio: '16/9' }}>
-                <img src={card.img} alt={card.title} className="w-full h-full object-cover rounded-2xl" />
-                {card.badge && (
-                  <span className="absolute top-3 right-3 bg-[#FF6B00] text-white text-xs font-bold px-3 py-1 rounded-full shadow">{card.badge}</span>
-                )}
-                <span className="absolute bottom-3 left-3 bg-white/90 text-[#00308A] font-bold text-xs px-4 py-1 rounded-full shadow border border-blue-100">{card.session}</span>
-              </div>
-              <div className="mt-4 mb-2 transition-transform duration-500 scale-100">
-                <h3 className="text-xl font-bold text-[#1A2954] mb-1 leading-tight">{card.title}</h3>
-                <p className="text-base text-[#00308A] font-medium leading-snug">{card.subtitle}</p>
-              </div>
+        {caseStudies.map((study, i) => (
+          <SwiperSlide key={study.title}>
+            <div className="flex flex-col items-center cursor-pointer" onClick={() => window.open(study.link, '_blank')}>
+              <img
+                src={study.image}
+                alt={study.title}
+                className="w-full h-64 object-cover rounded-xl border-2 border-black mb-2"
+              />
+              <div className="text-center text-lg font-bold text-[#00308A] mt-2">{study.title}</div>
             </div>
           </SwiperSlide>
         ))}
