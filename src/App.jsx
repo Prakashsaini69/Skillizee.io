@@ -16,6 +16,7 @@ import "./index.css";
 import { motion } from "framer-motion";
 import WallOfFame from "./pages/WallOfFame/WallOfFame";
 import Store from "./pages/Store";
+// import Lanyard from "./components/ui/Lanyard";
 
 function Header({ hide }) {
   const location = useLocation();
@@ -35,9 +36,9 @@ function Header({ hide }) {
       className={`transition-opacity duration-500 ${hide || !visible ? 'opacity-0 pointer-events-none' : 'opacity-100'} z-50 shadow-lg`}
       style={{ background: '#00308A', position: 'relative' }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         <div className="flex items-center gap-3">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1746694511/Skillizee_WHITE_logo1_f5hpbh.png" alt="SkilliZee Logo" className="h-10 drop-shadow-lg" />
+          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" alt="SkilliZee Logo" className="h-10 drop-shadow-lg" />
         </div>
         <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
           <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>
@@ -47,6 +48,7 @@ function Header({ hide }) {
           <Link to="/store" element={<Store />} className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Store</Link>
           <a href="https://login.skillizee.io/s/authenticate" target="_blank" rel="noopener noreferrer" className="bg-[#00308A] text-white px-4 py-1.5 rounded-full shadow hover:bg-purple-600 transition">Dashboard</a>
         </nav>
+        {/* Lanyard Card removed as per user request */}
       </div>
     </header>
   );
