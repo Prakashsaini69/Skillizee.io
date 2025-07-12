@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const logoUrl = "https://res.cloudinary.com/dpstp4ovd/image/upload/v1749191341/skillizeelogo_r7pqim.png";
+const logoUrl = "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png";
 
 const socials = [
   {
