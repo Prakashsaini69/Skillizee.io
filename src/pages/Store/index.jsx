@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import StoreInternships from "./StoreInternships";
 import StoreCourses from "./StoreCourses";
 import StoreSPBLs from "./StoreSPBLs";
@@ -9,6 +12,11 @@ import Footer from "../../components/common/Footer";
 import StoreMemberships from "./StoreMemberships";
 import HeroSection from "./HeroSection";
 import { HoverBorderGradient } from "../../components/ui/hover-border-gradient";
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const navLinks = [
   { id: "internship", label: "Internship" },
@@ -20,35 +28,50 @@ const navLinks = [
 ];
 
 const gradeGroups = ["all", "4-6", "7-12"];
+const mainMenuLinks = [
+  { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
+  { label: "Dashboard", href: "/dashboard" },
+];
 
 export default function Store() {
   const [selectedGradeGroup, setSelectedGradeGroup] = useState("all");
-  const [isSticky, setIsSticky] = useState(false);
-  const [navHeight, setNavHeight] = useState(0);
   const navRef = useRef(null);
   const heroRef = useRef(null);
+  const placeholderRef = useRef(null);
+  const [mainMenuOpen, setMainMenuOpen] = useState(false);
 
   useEffect(() => {
     const nav = navRef.current;
     const hero = heroRef.current;
-    if (!nav || !hero) return;
-
-    // Set navHeight for placeholder
-    setNavHeight(nav.offsetHeight);
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const navHeightLocal = nav.offsetHeight;
-      setNavHeight(navHeightLocal);
-      // Sticky if scrolled past hero section
-      if (currentScrollY > heroBottom - navHeightLocal) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
+    const placeholder = placeholderRef.current;
+    if (!nav || !hero || !placeholder) return;
+    gsap.set(nav, { position: "relative", top: 0, left: "", transform: "", width: "100%", maxWidth: "100%" });
+    gsap.set(placeholder, { height: 0 });
+    const initialNavHeight = nav.offsetHeight;
+    let isSticky = false;
+    const trigger = ScrollTrigger.create({
+      trigger: hero,
+      start: "bottom top",
+      end: "bottom top",
+      onEnter: () => {
+        if (!isSticky) {
+          isSticky = true;
+          gsap.to(placeholder, { height: initialNavHeight, duration: 0.3, ease: "power2.out" });
+          gsap.set(nav, { left: "50%", transform: "translateX(-50%)" });
+          gsap.to(nav, { position: "fixed", top: "1rem", width: "calc(100% - 2rem)", maxWidth: "calc(72rem - 2rem)", height: initialNavHeight, duration: 0.3, ease: "power2.out", onComplete: () => { nav.classList.add("sticky-active"); } });
+        }
+      },
+      onLeaveBack: () => {
+        if (isSticky) {
+          isSticky = false;
+          gsap.to(placeholder, { height: 0, duration: 0.3, ease: "power2.out" });
+          gsap.set(nav, { left: "", transform: "" });
+          gsap.to(nav, { position: "relative", top: 0, width: "100%", maxWidth: "100%", height: initialNavHeight, duration: 0.3, ease: "power2.out", onComplete: () => { nav.classList.remove("sticky-active"); } });
+        }
+      },
+    });
+    // Smooth scroll for nav links
     const handleNavClick = (e) => {
       const anchor = e.target.closest('a');
       if (anchor && nav.contains(anchor) && anchor.getAttribute('href')?.startsWith('#')) {
@@ -59,27 +82,99 @@ export default function Store() {
           const headerOffset = nav.offsetHeight + 16;
           const elementPosition = el.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          gsap.to(window, {
+            duration: 1,
+            scrollTo: { y: offsetPosition, autoKill: false },
+            ease: "power2.out"
+          });
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
     nav.addEventListener("click", handleNavClick);
-    window.addEventListener('resize', () => setNavHeight(nav.offsetHeight));
-
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      trigger.kill();
       nav.removeEventListener("click", handleNavClick);
-      window.removeEventListener('resize', () => setNavHeight(nav.offsetHeight));
     };
   }, []);
+
+  // Mobile menu scroll handler
+  const handleMobileCategoryClick = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const navHeight = navRef.current ? navRef.current.offsetHeight : 0;
+      const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden">
       <div ref={heroRef}>
         <HeroSection />
       </div>
+      {/* Mobile Header with Hamburger and Main Menu */}
+      <div className="sm:hidden sticky top-0 z-[110] bg-white flex items-center justify-between px-4 py-3 shadow-md">
+        <Menu as="div" className="relative w-full flex justify-between items-center">
+          <span className="font-bold text-[#00308A] text-lg">Categories</span>
+          <Menu.Button className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow font-semibold text-[#00308A] focus:outline-none">
+            <span>Browse</span>
+            <ChevronDownIcon className="w-5 h-5 text-[#00308A]" aria-hidden="true" />
+          </Menu.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-200"
+            enterFrom="transform opacity-0 -translate-y-2"
+            enterTo="transform opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="transform opacity-100 translate-y-0"
+            leaveTo="transform opacity-0 -translate-y-2"
+          >
+            <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right bg-white rounded-b-xl shadow-lg ring-1 ring-black/5 focus:outline-none z-[120]">
+              <div className="py-2">
+                {navLinks.map(link => (
+                  <Menu.Item key={link.id}>
+                    {({ active }) => (
+                      <button
+                        onClick={() => {
+                          const el = document.getElementById(link.id);
+                          if (el) {
+                            const navHeight = navRef.current ? navRef.current.offsetHeight : 0;
+                            const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                          }
+                        }}
+                        className={`w-full text-left px-4 py-2 rounded font-semibold text-[#00308A] ${active ? 'bg-blue-50' : ''}`}
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </Menu.Item>
+                ))}
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
+      </div>
+      {/* Main Menu Slide-in (Mobile Only) */}
+      <motion.div
+        initial={false}
+        animate={mainMenuOpen ? { x: 0, opacity: 1 } : { x: "100%", opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="sm:hidden fixed top-0 right-0 w-3/4 max-w-xs h-full bg-white shadow-lg z-[120] flex flex-col pt-20 px-6"
+        style={{ pointerEvents: mainMenuOpen ? 'auto' : 'none' }}
+      >
+        {mainMenuLinks.map(link => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="block py-3 px-2 text-lg font-semibold text-[#00308A] hover:bg-blue-50 rounded transition"
+            onClick={() => setMainMenuOpen(false)}
+          >
+            {link.label}
+          </a>
+        ))}
+      </motion.div>
+      {/* Desktop Nav Bar */}
       <div className="w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-8 mx-auto">
         <style>{`
           .glassmorphism-bg {
@@ -89,47 +184,25 @@ export default function Store() {
             -webkit-backdrop-filter: blur(24px) saturate(160%);
             box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
             border: none;
-            left: 50%;
-            transform: translateX(-50%);
+            z-index: 40;
             width: calc(100% - 2rem);
             max-width: calc(72rem - 2rem);
-            transition: top 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), background 0.3s cubic-bezier(.4,0,.2,1), border 0.3s cubic-bezier(.4,0,.2,1);
-            position: relative;
-            z-index: 40;
+            transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1), background 0.3s cubic-bezier(.4,0,.2,1), border 0.3s cubic-bezier(.4,0,.2,1);
+            overflow: hidden;
           }
-          .glassmorphism-bg.sticky {
-            position: fixed;
-            top: 1rem;
-            background: transparent;
+          .glassmorphism-bg.sticky-active {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(32px) saturate(180%);
             -webkit-backdrop-filter: blur(32px) saturate(180%);
             box-shadow: 0 16px 48px 0 rgba(31,38,135,0.25);
-            border: none;
-            animation: slideDown 0.3s ease-out;
-          }
-          @keyframes slideDown {
-            from {
-              top: -100px;
-              opacity: 0;
-            }
-            to {
-              top: 1rem;
-              opacity: 1;
-            }
-          }
-          .nav-placeholder {
-            height: 0;
-            transition: height 0.3s cubic-bezier(.4,0,.2,1);
-          }
-          .nav-placeholder.active {
-            height: ${navHeight}px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
           }
         `}</style>
-        {/* Placeholder div to prevent content jump when navbar becomes sticky */}
-        <div className={`nav-placeholder${isSticky ? ' active' : ''}`}></div>
+        {/* Placeholder to prevent content jump */}
+        <div ref={placeholderRef} aria-hidden="true" className="hidden sm:block" />
         <nav
           ref={navRef}
-          className={`glassmorphism-bg flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 px-2 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 shadow-lg transition-all duration-300 max-w-full${isSticky ? ' sticky' : ''}`}
+          className="glassmorphism-bg flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 px-2 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 shadow-lg max-w-full hidden sm:flex"
           style={{overflowX: 'auto', WebkitOverflowScrolling: 'touch'}}
         >
           <div className="flex gap-2 overflow-x-auto whitespace-nowrap w-full sm:w-auto pb-2 sm:pb-0">
