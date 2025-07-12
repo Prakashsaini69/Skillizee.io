@@ -39,7 +39,7 @@ export default function Store() {
   const navRef = useRef(null);
   const heroRef = useRef(null);
   const placeholderRef = useRef(null);
-  const [mainMenuOpen, setMainMenuOpen] = useState(false);
+  // Remove: const [mainMenuOpen, setMainMenuOpen] = useState(false);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -98,28 +98,67 @@ export default function Store() {
   }, []);
 
   // Mobile menu scroll handler
-  const handleMobileCategoryClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const navHeight = navRef.current ? navRef.current.offsetHeight : 0;
-      const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+  // Remove: const handleMobileCategoryClick = (id) => {
+  // Remove:   const el = document.getElementById(id);
+  // Remove:   if (el) {
+  // Remove:     const navHeight = navRef.current ? navRef.current.offsetHeight : 0;
+  // Remove:     const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+  // Remove:     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+  // Remove:   }
+  // Remove: };
+
+  // Add a state to store the mobile bar height
+  const [mobileBarHeight, setMobileBarHeight] = useState(0);
+  const mobileBarRef = useRef(null);
+  const [mobileBarSticky, setMobileBarSticky] = useState(false);
+
+  useEffect(() => {
+    if (mobileBarRef.current) {
+      setMobileBarHeight(mobileBarRef.current.offsetHeight);
     }
-  };
+    const handleResize = () => {
+      if (mobileBarRef.current) {
+        setMobileBarHeight(mobileBarRef.current.offsetHeight);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileBarRef.current || !heroRef.current) return;
+    let trigger;
+    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+      trigger = ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: 'bottom top',
+        end: 'bottom top',
+        onEnter: () => setMobileBarSticky(true),
+        onLeaveBack: () => setMobileBarSticky(false),
+      });
+    });
+    return () => { if (trigger) trigger.kill(); };
+  }, []);
 
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden">
       <div ref={heroRef}>
         <HeroSection />
       </div>
-      {/* Mobile Header with Hamburger and Main Menu */}
-      <div className="sm:hidden sticky top-0 z-[110] bg-white flex items-center justify-between px-4 py-3 shadow-md">
-        <Menu as="div" className="relative w-full flex justify-between items-center">
-          <span className="font-bold text-[#00308A] text-lg">Categories</span>
-          <Menu.Button className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow font-semibold text-[#00308A] focus:outline-none">
-            <span>Browse</span>
-            <ChevronDownIcon className="w-5 h-5 text-[#00308A]" aria-hidden="true" />
-          </Menu.Button>
+      {/* Mobile Category Bar (Sticky on scroll) */}
+      <div ref={mobileBarRef}
+        className={`sm:hidden ${mobileBarSticky
+          ? 'fixed top-0 left-0 right-0 z-[110] bg-white/60 backdrop-blur-xl border border-white/30 shadow-md mx-2 rounded-xl mt-2 max-w-screen-sm mx-auto'
+          : 'relative bg-white mx-2 mt-2'} px-4 py-3 transition-all duration-300`}
+      >
+        <Menu as="div" className="relative w-full">
+          <div className="flex items-center justify-between">
+            <span className="font-bold text-[#00308A] text-lg">Categories</span>
+            <Menu.Button className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow font-semibold text-[#00308A] focus:outline-none">
+              <span>Browse</span>
+              <ChevronDownIcon className="w-5 h-5 text-[#00308A]" aria-hidden="true" />
+            </Menu.Button>
+          </div>
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
@@ -129,7 +168,7 @@ export default function Store() {
             leaveFrom="transform opacity-100 translate-y-0"
             leaveTo="transform opacity-0 -translate-y-2"
           >
-            <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right bg-white rounded-b-xl shadow-lg ring-1 ring-black/5 focus:outline-none z-[120]">
+            <Menu.Items className="absolute left-0 right-0 mt-2 w-full origin-top bg-white rounded-b-xl shadow-lg ring-1 ring-black/5 focus:outline-none z-[120]">
               <div className="py-2">
                 {navLinks.map(link => (
                   <Menu.Item key={link.id}>
@@ -155,25 +194,12 @@ export default function Store() {
           </Transition>
         </Menu>
       </div>
+      {/* Placeholder to prevent content jump */}
+      <div className="sm:hidden" style={{ height: mobileBarSticky ? mobileBarHeight : 0 }} />
       {/* Main Menu Slide-in (Mobile Only) */}
-      <motion.div
-        initial={false}
-        animate={mainMenuOpen ? { x: 0, opacity: 1 } : { x: "100%", opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="sm:hidden fixed top-0 right-0 w-3/4 max-w-xs h-full bg-white shadow-lg z-[120] flex flex-col pt-20 px-6"
-        style={{ pointerEvents: mainMenuOpen ? 'auto' : 'none' }}
-      >
-        {mainMenuLinks.map(link => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="block py-3 px-2 text-lg font-semibold text-[#00308A] hover:bg-blue-50 rounded transition"
-            onClick={() => setMainMenuOpen(false)}
-          >
-            {link.label}
-          </a>
-        ))}
-      </motion.div>
+      {/* Remove the motion.div for the main menu slide-in (mobile only) that has an empty animate prop. */}
+      {/* Only keep the Headless UI Menu for the category dropdown in the mobile header. */}
+      {/* Do not render the motion.div for the main menu in this file. */}
       {/* Desktop Nav Bar */}
       <div className="w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-8 mx-auto">
         <style>{`
