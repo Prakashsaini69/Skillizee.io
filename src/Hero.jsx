@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import introVideo from "./assets/Introvideo.mp4";
 import { motion } from "framer-motion";
 
 const words = ["Skills", "Projects", "Impacts"];
@@ -108,10 +109,13 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}
         >
-          <img
-            src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1742546405/samples/animals/three-dogs.jpg"
-            alt="Video thumbnail"
+          <video
+            src={introVideo}
+            autoPlay
+            loop
+            playsInline
             className="rounded-xl shadow-2xl w-full max-w-xl border-4 border-white/80"
+            style={{ objectFit: 'cover' }}
           />
         </motion.div>
       </motion.div>

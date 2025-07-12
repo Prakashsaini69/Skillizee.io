@@ -28,7 +28,7 @@ const TESTIMONIALS = [
     parent: "Kiran Padeda",
     company: "Indian School of Business (ISB)",
     designation: "Professor of Marketing", 
-    image: "https://randomuser.me/api/portraits/men/4.jpg"
+    image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752310483/rs_w_1503_h_1000_cg_true_e2td2u.png"
   },
   {
     review: "At LinkedIn, we see the growing need for early, authentic skill-building. SkilliZee's approach to creating lifetime learner profiles is a brilliant step toward preparing future-ready individuals.",

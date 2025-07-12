@@ -1,43 +1,27 @@
-import React, { useState } from "react";
-import { WavyBackground } from "../../components/ui/wavy-background";
-import { TextGenerateEffect } from "../../components/ui/text-generate-effect";
-import { FlipWords } from "../../components/ui/flip-words";
+import React from "react";
+import { AnimatedBeamMultipleInput } from "../../components/ui/AnimatedBeamMultipleInput";
+import TrueFocus from "../../components/ui/TrueFocus";
 
 export default function HeroSection() {
-  const [showFlip, setShowFlip] = useState(false);
-
-  // Handler to trigger flip after text generate effect
-  const handleHeadlineDone = () => setShowFlip(true);
-
   return (
-    <WavyBackground
-      className="max-w-4xl mx-auto pb-40 font-wonktown"
-      backgroundFill="#ffffff"
-      colors={["#38bdf8", "#818cf8", "#c084fc","#e879f9","#22d3ee"]}
-    >
-      <div className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-center mb-2" style={{ color: "#00308A", textShadow: "0 2px 8px rgba(0,48,138,0.10)" }}>
-        {!showFlip ? (
-          <TextGenerateEffect
-            words="All the Skills"
-            className="inline"
-            style={{ color: "#00308A" }}
-            onDone={handleHeadlineDone}
+    <section className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#00308A] via-[#00308A]/80 to-white py-20">
+      <div className="w-full flex flex-col items-center justify-center gap-12">
+        {/* Centered, larger Beam Component without border */}
+        <div className="flex justify-center items-center w-full" style={{ maxWidth: 700 }}>
+          <AnimatedBeamMultipleInput className="" style={{ transform: 'scale(1.25)', border: 'none', boxShadow: 'none' }} />
+        </div>
+        {/* Hero Text: horizontal, below the beam */}
+        <div className="w-full flex justify-center items-center">
+          <TrueFocus 
+            sentence="Skills Knowledge Experience"
+            manualMode={false}
+            blurAmount={5}
+            borderColor="#38bdf8"
+            animationDuration={1.5}
+            pauseBetweenAnimations={1}
           />
-        ) : (
-          <>
-            All the{' '}
-            <FlipWords words={["Skills","Experience", "Knowledge"]} className="inline-block" />
-          </>
-        )}
+        </div>
       </div>
-      <TextGenerateEffect
-        words="you need in one place"
-        className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center mt-2"
-        style={{
-          color: "#00308A",
-          textShadow: "0 2px 8px rgba(0,48,138,0.10)",
-        }}
-      />
-    </WavyBackground>
+    </section>
   );
 } 
