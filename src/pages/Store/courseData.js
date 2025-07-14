@@ -33,7 +33,7 @@ const courseData = {
       studentsEnrolled: 0,
       link: 'https://login.skillizee.io/courses/Gud-Gum---Internship-1752474022582-6874a1a661ef9553b3eb43da',
       gradeGroup: '7-12',
-      color: '#1c2965', // <--- Change this to any valid CSS color
+      color: '#90a153', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
     
