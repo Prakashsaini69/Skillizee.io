@@ -24,6 +24,18 @@ const courseData = {
       color: '#1c2965', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
+    {
+      id: 'intern3',
+      title: 'Gud Gum',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752473601/Coming_Soon_uzqpwj.svg',
+      price: 2999,
+      rating: null,
+      studentsEnrolled: 0,
+      link: 'https://login.skillizee.io/courses/Gud-Gum---Internship-1752474022582-6874a1a661ef9553b3eb43da',
+      gradeGroup: '7-12',
+      color: '#1c2965', // <--- Change this to any valid CSS color
+      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
+    },
     
   ],
   shortCourses: [
