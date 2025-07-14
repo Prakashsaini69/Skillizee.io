@@ -1,27 +1,36 @@
 import React from "react";
-import { AnimatedBeamMultipleInput } from "../../components/ui/AnimatedBeamMultipleInput";
-import TrueFocus from "../../components/ui/TrueFocus";
+import { WavyBackground } from "../../components/ui/wavy-background";
+import { FlipWords } from "../../components/ui/flip-words";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#00308A] via-[#00308A]/80 to-white py-20">
-      <div className="w-full flex flex-col items-center justify-center gap-12">
-        {/* Centered, larger Beam Component without border */}
-        <div className="flex justify-center items-center w-full" style={{ maxWidth: 700 }}>
-          <AnimatedBeamMultipleInput className="" style={{ transform: 'scale(1.25)', border: 'none', boxShadow: 'none' }} />
-        </div>
-        {/* Hero Text: horizontal, below the beam */}
-        <div className="w-full flex justify-center items-center">
-          <TrueFocus 
-            sentence="Skills Knowledge Experience"
-            manualMode={false}
-            blurAmount={5}
-            borderColor="#38bdf8"
-            animationDuration={1.5}
-            pauseBetweenAnimations={1}
-          />
-        </div>
+    <WavyBackground
+      containerClassName="h-screen flex flex-col justify-center items-center relative"
+      blur={10}
+      speed="fast"
+      waveOpacity={0.5}
+      colors={["#38bdf8", "#818cf8", "#c084fc", "#e879f9", "#22d3ee"]}
+      backgroundFill="#fff"
+    >
+      <div className="flex flex-col items-center justify-center gap-4 relative z-10">
+        <motion.h1
+          className="text-4xl md:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          All the <FlipWords words={["Skills", "Knowledge", "Experience"]} className="inline-block" />
+        </motion.h1>
+        <motion.h2
+          className="text-4xl md:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
+          you need at one place
+        </motion.h2>
       </div>
-    </section>
+    </WavyBackground>
   );
 } 
