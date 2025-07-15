@@ -21,7 +21,7 @@ const TESTIMONIALS = [
     parent: "Utkarsh Verma",
     company: "Zepto & Swiggy",
     designation: "Ex-Director",
-    image: "https://randomuser.me/api/portraits/men/3.jpg"
+    image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752576563/utkarshverma_axzf4b.png"
   },
   {
     review: "SkilliZee doesn't just build skills — it builds brands. Each student becomes a unique story of growth, ready for top universities and beyond — and that's smart positioning by any school's standards.",
@@ -29,13 +29,6 @@ const TESTIMONIALS = [
     company: "Indian School of Business (ISB)",
     designation: "Professor of Marketing", 
     image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752310483/rs_w_1503_h_1000_cg_true_e2td2u.png"
-  },
-  {
-    review: "At LinkedIn, we see the growing need for early, authentic skill-building. SkilliZee's approach to creating lifetime learner profiles is a brilliant step toward preparing future-ready individuals.",
-    parent: "Henry Lee",
-    company: "LinkedIn",
-    designation: "Manager",
-    image: "https://randomuser.me/api/portraits/men/5.jpg"
   },
 ];
 
