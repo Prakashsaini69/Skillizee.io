@@ -58,7 +58,7 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
+      link: 'https://login.skillizee.io/courses/How-do-solar-panels-work-686780f59120923fa5e35455',
       gradeGroup: '7-12',
       color: '#00a064', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -84,7 +84,7 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
+      link: 'https://login.skillizee.io/courses/Budget-Boss--Virtual-Finance-Fair-68638cb36b74c511f3f9c297',
       gradeGroup: '7-12',
       color: '#1b478c', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
