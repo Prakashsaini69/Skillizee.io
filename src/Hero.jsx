@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import introVideo from "./assets/Introvideo.mp4";
+import introPoster from "./assets/Introvideo-poster.png";
 import { motion } from "framer-motion";
 
 const words = ["Skills", "Projects", "Impacts"];
@@ -9,6 +10,8 @@ export default function Hero() {
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const typingTimeout = useRef();
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
@@ -29,6 +32,18 @@ export default function Hero() {
     return () => clearTimeout(typingTimeout.current);
   }, [displayed, isDeleting, wordIndex]);
 
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
   return (
     <section
       className="w-full min-h-[60vh] flex flex-col items-center justify-center pb-16 px-4 text-center relative overflow-hidden"
@@ -36,7 +51,7 @@ export default function Hero() {
         backgroundImage: 'url(https://res.cloudinary.com/dpstp4ovd/image/upload/v1748863808/123123123123_nhewwk.svg)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top center',
-        backgroundSize: 'cover', // changed from 'contain' to 'cover'
+        backgroundSize: 'cover',
         width: '100%',
         minHeight: '60vh',
       }}
@@ -60,7 +75,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="text-lg md:text-1xl text-white/80 mb-6 font-normal"
         > 
-          Colleges and careers demand skills, not just scores. With SkilliZee's LMS,<br />
+          Colleges and careers demand skills, not just scores. With Online Skill Center,<br />
           they gain skills, internships, & case study mastery—before it's too late to stand out.
         </motion.p>
         <motion.div
@@ -74,10 +89,7 @@ export default function Hero() {
             },
           }}
         >
-          {[
-            "🔁 Lifetime Access",
-            "👥 2.2+ Lakh Enrolled"
-          ].map((badge, i) => (
+          {["🔁 Lifetime Access", "👥 2.2+ Lakh Enrolled"].map((badge, i) => (
             <motion.span
               key={badge}
               className="text-[#ffffff] px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md "
@@ -109,14 +121,32 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}
         >
-          <video
-            src={introVideo}
-            autoPlay
-            loop
-            playsInline
-            className="rounded-xl shadow-2xl w-full max-w-xl border-4 border-white/80"
-            style={{ objectFit: 'cover' }}
-          />
+          <div className="relative w-full max-w-xl">
+            <video
+              ref={videoRef}
+              src={introVideo}
+              preload="metadata"
+              poster={introPoster}
+              controls={false}
+              className="rounded-xl shadow-2xl w-full border-4 border-white/80 cursor-pointer"
+              style={{ objectFit: 'cover' }}
+              onClick={handlePlayPause}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            />
+            {!isPlaying && (
+              <button
+                onClick={handlePlayPause}
+                className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition rounded-xl"
+                style={{ pointerEvents: 'auto' }}
+                aria-label="Play video"
+              >
+                <svg width="64" height="64" fill="white" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            )}
+          </div>
         </motion.div>
       </motion.div>
     </section>

@@ -27,7 +27,7 @@ const courseData = {
     {
       id: 'intern3',
       title: 'Gud Gum',
-      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752473601/Coming_Soon_uzqpwj.svg',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752645331/Coming_Soon_1_qekytc.svg',
       price: 2999,
       rating: null,
       studentsEnrolled: 0,

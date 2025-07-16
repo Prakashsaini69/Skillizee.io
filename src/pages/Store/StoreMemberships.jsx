@@ -8,7 +8,7 @@ const plans = [
     ),
     name: "Basic Plan",
     language: "English | Notes Only",
-    price: "₹399/-",
+    price: "₹5399/-",
     features: [
       { text: "Live Classes", included: true },
       { text: "Skill Assessment Test", included: true },
@@ -26,7 +26,7 @@ const plans = [
     ),
     name: "Standard Plan",
     language: "English and Hindi | Videos & Notes",
-    price: "₹499/-",
+    price: "₹6499/-",
     features: [
       { text: "Live Classes", included: true },
       { text: "Skill Assessment Test", included: true },
@@ -44,7 +44,7 @@ const plans = [
     ),
     name: "Premium Plan",
     language: "English and Hindi | Access Everything",
-    price: "₹699/-",
+    price: "₹7699/-",
     features: [
       { text: "Live Classes", included: true },
       { text: "Skill Assessment Test", included: true },
