@@ -122,30 +122,16 @@ export default function Hero() {
           transition={{ delay: 0.7 }}
         >
           <div className="relative w-full max-w-xl">
-            <video
-              ref={videoRef}
-              src={introVideo}
-              preload="metadata"
-              poster={introPoster}
-              controls={false}
-              className="rounded-xl shadow-2xl w-full border-4 border-white/80 cursor-pointer"
-              style={{ objectFit: 'cover' }}
-              onClick={handlePlayPause}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            />
-            {!isPlaying && (
-              <button
-                onClick={handlePlayPause}
-                className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition rounded-xl"
-                style={{ pointerEvents: 'auto' }}
-                aria-label="Play video"
-              >
-                <svg width="64" height="64" fill="white" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
-            )}
+            <iframe
+              src="https://drive.google.com/file/d/1_E-LMwKTR0l3ub1Q6oIR7Vgj9i1p3DB1/preview"
+              width="100%"
+              height="360"
+              allow="autoplay"
+              allowFullScreen
+              className="rounded-xl shadow-2xl w-full border-4 border-white/80"
+              style={{ objectFit: 'cover', minHeight: 240 }}
+              title="Intro Video"
+            ></iframe>
           </div>
         </motion.div>
       </motion.div>
