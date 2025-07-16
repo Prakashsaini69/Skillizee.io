@@ -41,13 +41,13 @@ export default function CourseCard({
             style={{ background: 'transparent' }}
           />
         </CardItem>
-        <CardItem translateZ={60} className="text-lg font-semibold text-white text-left w-full">
+        <CardItem translateZ={60} className="text-lg font-semibold text-white drop-shadow text-left w-full">
           {title}
         </CardItem>
-        <CardItem translateZ={40} className="text-sm text-white mt-1 text-left w-full">
+        <CardItem translateZ={40} className="text-sm text-white drop-shadow mt-1 text-left w-full">
           {enrolled} students enrolled • ⭐ {rating}
         </CardItem>
-        <CardItem translateZ={30} className="text-base font-bold text-white mt-2 text-left w-full">
+        <CardItem translateZ={30} className="text-base font-bold text-white drop-shadow mt-2 text-left w-full">
           ₹{price}
         </CardItem>
         <div className="flex justify-start mt-6 w-full">

@@ -11,7 +11,7 @@ export default function SkillProjectSlider() {
   const caseStudies = courseData.caseStudies;
   return (
     <section className="w-full max-w-5xl mx-auto my-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#00308A]">Harvard Case Studies</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#00308A]">Case Studies</h2>
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         spaceBetween={32}

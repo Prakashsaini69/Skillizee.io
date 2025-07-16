@@ -16,15 +16,19 @@ export default function PartnerSection() {
         {/* Right: Partner logos in white card */}
         <div className="bg-white rounded-md shadow-lg flex flex-col md:flex-row items-center justify-center px-20 py-4 gap-6 md:gap-12 w-full md:w-auto">
           <div className="flex flex-col items-center">
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1748947936/ecell_bits_y4fomq.png" alt="BITS Hyderabad E-cell" className="h-14 md:h-20 w-auto mb-1" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663819/Group_1618872732_jmddsr.svg" alt="BITS Hyderabad E-cell" className="h-14 md:h-20 w-auto mb-1" />
             {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">BITS Hyderabad E-cell</span> */}
           </div>
           <div className="flex flex-col items-center">
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1748947935/eCell_xwbiw1.png" alt="IIT Bombay E-cell" className="h-14 md:h-20 w-auto mb-1" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663818/Group_1618872730_lqcxsn.svg" alt="IIT Bombay E-cell" className="h-14 md:h-20 w-auto mb-1" />
             {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">IIT BOMBAY E-cell</span> */}
           </div>
           <div className="flex flex-col items-center">
             <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1748948447/istart_eiiojg.png" alt="iSTART" className="h-16 md:h-20 w-auto mb-1" />
+            {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">iSTART</span> */}
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663821/stem_png_3_ukv0yb.svg" alt="Stem" className="h-16 md:h-28 w-auto mb-1" />
             {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">iSTART</span> */}
           </div>
         </div>

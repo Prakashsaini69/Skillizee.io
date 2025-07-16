@@ -103,7 +103,10 @@ export default function MembershipPlans() {
                 ))}
               </ul>
             </div>
-            <button
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe1MsVLVJbLjNjPUQ4rq10KYDpYMQhum7ICCycN3PDE9jDT1w/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`mt-auto w-full py-2.5 rounded-full font-bold text-base transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-center ${
                 plan.highlight
                   ? "bg-white text-blue-900 hover:bg-blue-100"
@@ -111,7 +114,7 @@ export default function MembershipPlans() {
               }`}
             >
               Enroll Now
-            </button>
+            </a>
             <div className={`text-xs mt-3 text-center w-full ${plan.highlight ? "text-blue-100" : "text-gray-500"}`}>100% Refund | Lifetime Access</div>
           </motion.div>
         ))}

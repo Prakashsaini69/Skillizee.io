@@ -127,7 +127,7 @@ export default function FounderAndMentorsSection() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="w-60 h-60 object-contain"
+                className="w-100 h-90 object-contain"
                 style={{ borderRadius: 24 }}
               />
             </AnimatePresence>

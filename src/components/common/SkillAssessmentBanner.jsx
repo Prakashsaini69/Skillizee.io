@@ -19,19 +19,19 @@ export default function SkillAssessmentBanner() {
         </button>
       </div>
       {/* Illustration with two overlapping images */}
-      <div className="flex-1 flex justify-end mt-6 md:mt-0 relative min-h-[180px] md:min-h-[260px]">
+      <div className="flex-1 flex justify-center items-end gap-4 mt-6 md:mt-0 relative min-h-[180px] md:min-h-[260px]">
         {/* Small image (left, lower, bigger and closer) */}
         <img
           src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1749028233/SkillReport-1_b93psf.png"
           alt="Skill Report Example 1"
-          className="absolute left-8 bottom-0 w-40 md:w-56 shadow-lg rounded-lg z-20 -mb-2"
+          className="w-32 md:w-56 shadow-lg rounded-lg z-20 mb-0 md:absolute md:left-8 md:bottom-0"
           style={{ boxShadow: '0 4px 16px rgba(55,125,255,0.10)' }}
         />
         {/* Large image (right, higher) */}
         <img
           src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1749028234/SkillReport-2_ut0uyc.png"
           alt="Skill Report Example 2"
-          className="absolute right-0 top-0 w-48 md:w-80 shadow-xl rounded-lg z-20"
+          className="w-40 md:w-80 shadow-xl rounded-lg z-20 md:absolute md:right-0 md:top-0"
           style={{ boxShadow: '0 8px 32px rgba(55,125,255,0.13)' }}
         />
       </div>

@@ -46,7 +46,7 @@ export default function Footer() {
         viewport={{ once: true }}
       />
       <motion.div
-        className="footer-heading "
+        className="footer-heading text-[10px] sm:text-xs md:text-base font-extrabold text-white text-center sm:whitespace-nowrap"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}

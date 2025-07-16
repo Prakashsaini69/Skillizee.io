@@ -111,7 +111,7 @@ function Header({ hide }) {
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         <div className="flex items-center gap-3">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" alt="SkilliZee Logo" className="h-10 drop-shadow-lg" />
+          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" alt="SkilliZee Logo" className="h-16 drop-shadow-lg" />
         </div>
         <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
           <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>

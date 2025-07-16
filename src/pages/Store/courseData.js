@@ -9,7 +9,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: '7-12',
-      color: '#ddcae6', // <--- Change this to any valid CSS color
+      color: '#c345ff', // <--- Change this to any valid CSS color
       badgeIcon: "https://www.flaticon.com/free-animated-icon/fire_16767287?term=fire&page=1&position=1&origin=search&related_id=16767287" // or a GIF/SVG/PNG
     },
     {
@@ -27,7 +27,7 @@ const courseData = {
     {
       id: 'intern3',
       title: 'Gud Gum',
-      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752645331/Coming_Soon_1_qekytc.svg',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752658464/Coming_Soon_2_nnjfw4.svg',
       price: 2999,
       rating: null,
       studentsEnrolled: 0,
@@ -110,7 +110,7 @@ const courseData = {
       studentsEnrolled: 5200,
       link: 'https://login.skillizee.io/courses/Personal-Finance---Insurance-6863760d347740632a849a65',
       gradeGroup: '7-12',
-      color: '#ffdd5b', // <--- Change this to any valid CSS color
+      color: '#ffb800', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
   ],

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import introVideo from "./assets/Introvideo.mp4";
-import introPoster from "./assets/Introvideo-poster.png";
+import heroPoster from "./assets/ImageThumbnail.svg"; // Use your poster image
 import { motion } from "framer-motion";
 
 const words = ["Skills", "Projects", "Impacts"];
@@ -12,6 +11,7 @@ export default function Hero() {
   const typingTimeout = useRef();
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
@@ -75,7 +75,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="text-lg md:text-1xl text-white/80 mb-6 font-normal"
         > 
-          Colleges and careers demand skills, not just scores. With Online Skill Center,<br />
+          Colleges and careers demand skills, not just scores. With SkilliZee Online Skill Center,<br />
           they gain skills, internships, & case study mastery—before it's too late to stand out.
         </motion.p>
         <motion.div
@@ -122,16 +122,33 @@ export default function Hero() {
           transition={{ delay: 0.7 }}
         >
           <div className="relative w-full max-w-xl">
-            <iframe
-              src="https://drive.google.com/file/d/1_E-LMwKTR0l3ub1Q6oIR7Vgj9i1p3DB1/preview"
-              width="100%"
-              height="360"
-              allow="autoplay"
-              allowFullScreen
-              className="rounded-xl shadow-2xl w-full border-4 border-white/80"
-              style={{ objectFit: 'cover', minHeight: 240 }}
-              title="Intro Video"
-            ></iframe>
+            {!showVideo ? (
+              <div className="relative cursor-pointer" onClick={() => setShowVideo(true)}>
+                <img src={heroPoster} alt="Intro Video Poster" className="rounded-xl shadow-2xl w-full border-4 border-white/80" style={{ objectFit: 'cover', minHeight: 240 }} />
+                <button
+                  className="absolute inset-0 flex items-center justify-center w-full h-full bg-black/30 rounded-xl"
+                  style={{ pointerEvents: 'none' }}
+                  tabIndex={-1}
+                  aria-label="Play Video"
+                >
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="32" fill="#00308A" fillOpacity="0.8" />
+                    <polygon points="26,20 48,32 26,44" fill="#fff" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/cHZTuN2mtIE?autoplay=1&rel=0"
+                width="100%"
+                height="360"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="rounded-xl shadow-2xl w-full border-4 border-white/80"
+                style={{ objectFit: 'cover', minHeight: 240 }}
+                title="Intro Video"
+              />
+            )}
           </div>
         </motion.div>
       </motion.div>
