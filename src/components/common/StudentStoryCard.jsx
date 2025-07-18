@@ -31,7 +31,7 @@ const stories = [
       { text: "Published a book that educates kids about the natural world" },
       { text: "Had her blog featured by Harvard Business Publishing after covering the Mt. Everest teamwork simulation" },
     ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832707/6691475e26c1206d3319f922_Mathew_Student_Story_with_Product_1-min_t1n5pj.webp", // Replace with your combined image
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832695/6691475ea1fa17ba48849c4e_Frame_175-min_jufneg.webp", // Replace with your combined image
   },
   {
     name: "Matthew",
@@ -44,7 +44,7 @@ const stories = [
       { text: "Built video games and videos using AI" },
       { text: "Wrote a book that educates kids about the natural world" },
     ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832695/6691475ea1fa17ba48849c4e_Frame_175-min_jufneg.webp", // Replace with your combined image
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832707/6691475e26c1206d3319f922_Mathew_Student_Story_with_Product_1-min_t1n5pj.webp", // Replace with your combined image
   },
 ];
 
