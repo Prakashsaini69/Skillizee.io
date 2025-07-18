@@ -4,8 +4,8 @@ const companies = [
   { name: "ThePrint", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752835590/theprint_kfqacb.svg" },
   { name: "Silicon India", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752835590/sliconindia_oyinyu.svg" },
   { name: "Midday", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752835916/midday_2_xh8dmj.svg" },
-  { name: "Laradir", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752836118/Untitled_design_1_rea2li.svg" },
-  { name: "Locale", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752836118/Untitled_design_hvsksc.svg" },
+  { name: "American", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752837496/Untitled_design_3_zhavvn.svg" },
+  { name: "East Asia", logo: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752837496/Untitled_design_4_enwlbu.svg" },
 ];
 
 export default function FeaturedCompanies() {

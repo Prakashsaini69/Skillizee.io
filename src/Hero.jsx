@@ -61,9 +61,9 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-10 max-w-2xl mx-auto"
+        className="relative z-10 max-w-6xl mx-auto"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 pt-[100px]">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 pt-[100px] lg:whitespace-nowrap">
           Real {" "}
           <span className="text-orange border-r-2 border-purple-400 animate-pulse">
             {displayed}

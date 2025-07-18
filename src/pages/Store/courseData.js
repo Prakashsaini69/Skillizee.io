@@ -75,6 +75,7 @@ const courseData = {
       color: '#042658', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
+    
   ],
   sbpls: [
     {
