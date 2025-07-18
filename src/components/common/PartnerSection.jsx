@@ -28,7 +28,7 @@ export default function PartnerSection() {
             {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">iSTART</span> */}
           </div>
           <div className="flex flex-col items-center">
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663821/stem_png_3_ukv0yb.svg" alt="Stem" className="h-16 md:h-28 w-auto mb-1" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="Stem" className="h-16 md:h-28 w-auto mb-1" />
             {/* <span className="text-black font-normal text-sm md:text-base leading-tight text-center">iSTART</span> */}
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillAssessmentBanner from "./SkillAssessmentBanner";
+import FeaturedCompanies from "./FeaturedCompanies";
 
 const FOUNDERS = [
   // {
@@ -134,6 +135,8 @@ export default function FounderAndMentorsSection() {
           </div>
         </div>
       </div>
+      {/* Add Featured Companies section here */}
+      <FeaturedCompanies />
       {/* Mentors Heading */}
       <h3 className="text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-8">Meet Our Mentors</h3>
       {/* Mentors Row */}

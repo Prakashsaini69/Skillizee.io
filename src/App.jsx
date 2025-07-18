@@ -16,6 +16,7 @@ import "./index.css";
 import { motion, AnimatePresence } from "framer-motion";
 import WallOfFame from "./pages/WallOfFame/WallOfFame";
 import Store from "./pages/Store";
+import StudentStoryCard from "./components/common/StudentStoryCard";
 // import Lanyard from "./components/ui/Lanyard";
 
 const mainMenuLinks = [
@@ -138,6 +139,7 @@ function Home() {
       <SkillProjectSlider />
       <MembershipPlans />
       <FounderAndMentorsSection />
+      <StudentStoryCard />
       <CombinedShowcaseSection />
       <Faq />
       <Footer />
