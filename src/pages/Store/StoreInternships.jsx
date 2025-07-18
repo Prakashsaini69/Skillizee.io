@@ -4,7 +4,7 @@ import TiltedCard from "../../components/ui/TiltedCard";
 
 export default function StoreInternships({ gradeGroup }) {
   const internships = gradeGroup && gradeGroup !== 'all'
-    ? courseData.internships.filter(c => c.gradeGroup === gradeGroup)
+    ? courseData.internships.filter(c => Array.isArray(c.gradeGroup) ? c.gradeGroup.includes(gradeGroup) : c.gradeGroup === gradeGroup)
     : courseData.internships;
 
   const handleEnroll = (course) => {

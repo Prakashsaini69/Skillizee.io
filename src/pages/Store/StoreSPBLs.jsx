@@ -4,7 +4,7 @@ import TiltedCard from "../../components/ui/TiltedCard";
 
 export default function StoreSPBLs({ gradeGroup }) {
   const sbpls = gradeGroup && gradeGroup !== 'all'
-    ? courseData.sbpls.filter(c => c.gradeGroup === gradeGroup)
+    ? courseData.sbpls.filter(c => Array.isArray(c.gradeGroup) ? c.gradeGroup.includes(gradeGroup) : c.gradeGroup === gradeGroup)
     : courseData.sbpls;
 
   const handleEnroll = (course) => {

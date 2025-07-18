@@ -4,7 +4,7 @@ import TiltedCard from "../../components/ui/TiltedCard";
 
 export default function StoreCourses({ gradeGroup }) {
   const shortCourses = gradeGroup && gradeGroup !== 'all'
-    ? courseData.shortCourses.filter(c => c.gradeGroup === gradeGroup)
+    ? courseData.shortCourses.filter(c => Array.isArray(c.gradeGroup) ? c.gradeGroup.includes(gradeGroup) : c.gradeGroup === gradeGroup)
     : courseData.shortCourses;
 
   const handleEnroll = (course) => {

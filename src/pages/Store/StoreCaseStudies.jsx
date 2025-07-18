@@ -4,7 +4,7 @@ import TiltedCard from "../../components/ui/TiltedCard";
 
 export default function StoreCaseStudies({ gradeGroup }) {
   const caseStudies = gradeGroup && gradeGroup !== 'all'
-    ? courseData.caseStudies.filter(c => c.gradeGroup === gradeGroup)
+    ? courseData.caseStudies.filter(c => Array.isArray(c.gradeGroup) ? c.gradeGroup.includes(gradeGroup) : c.gradeGroup === gradeGroup)
     : courseData.caseStudies;
 
   const handleEnroll = (course) => {
