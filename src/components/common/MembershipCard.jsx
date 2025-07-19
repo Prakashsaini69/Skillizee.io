@@ -16,7 +16,7 @@ const MembershipCard = () => {
           --pattern-color: #cfcfcf;
 
           position: relative;
-          width: 20em;
+          width: 22em;
           background: var(--bg);
           border: 0.35em solid var(--text);
           border-radius: 0.6em;
@@ -173,6 +173,10 @@ const MembershipCard = () => {
           font-size: 0.95em;
           line-height: 1.4;
           font-weight: 500;
+        }
+
+        .Competition-description{
+          text-align: center;
         }
 
         .feature-grid {
@@ -430,7 +434,7 @@ const MembershipCard = () => {
                   ></path>
                 </svg>
               </div>
-              <span className="feature-text">Short Courses</span>
+              <span className="feature-text">2 Short Courses</span>
             </div>
 
             <div className="feature-item">
@@ -441,7 +445,7 @@ const MembershipCard = () => {
                   ></path>
                 </svg>
               </div>
-              <span className="feature-text">Case Studies</span>
+              <span className="feature-text">3 Case Studies</span>
             </div>
 
             <div className="feature-item">
@@ -452,7 +456,7 @@ const MembershipCard = () => {
                   ></path>
                 </svg>
               </div>
-              <span className="feature-text">Internships</span>
+              <span className="feature-text">2 Internships</span>
             </div>
 
             <div className="feature-item">
@@ -463,9 +467,15 @@ const MembershipCard = () => {
                   ></path>
                 </svg>
               </div>
-              <span className="feature-text">SBPLs</span>
+              <span className="feature-text">4 SBPLs</span>
             </div>
           </div>
+
+          <div className="card-description Competition-description">
+          National and International level Competition notifications.
+
+          </div>
+
 
           <div className="card-actions">
             <div className="price">
