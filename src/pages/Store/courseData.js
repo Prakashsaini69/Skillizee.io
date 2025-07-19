@@ -77,12 +77,12 @@ const courseData = {
     },
     {
       id: 'intern1',
-      title: 'How to be confident?',
+      title: 'Create Your Own Avatar',
       image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752922977/6868dd1f59b07a3c22205f9d_scaled_cover_nztkhv.png',
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/How-to-be-confident-68679ebf3ca3af0b8ea9210b',
+      link: 'https://login.skillizee.io/courses/Create-our-own-avatar-6868dd1f59b07a3c22205f9d',
       gradeGroup: ['4-6', '7-12'],
       color: '#0c4041', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
