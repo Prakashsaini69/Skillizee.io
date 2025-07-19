@@ -75,7 +75,42 @@ const courseData = {
       color: '#042658', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
-      
+    {
+      id: 'intern1',
+      title: 'How to be confident?',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752922977/6868dd1f59b07a3c22205f9d_scaled_cover_nztkhv.png',
+      price: 2999,
+      rating: 4.8,
+      studentsEnrolled: 5200,
+      link: 'https://login.skillizee.io/courses/How-to-be-confident-68679ebf3ca3af0b8ea9210b',
+      gradeGroup: ['4-6', '7-12'],
+      color: '#0c4041', // <--- Change this to any valid CSS color
+      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
+    },
+    {
+      id: 'intern1',
+      title: 'Personal Finance - Mutual Funds',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752925703/Untitled_design_5_qd2b5x.svg',
+      price: 2999,
+      rating: 4.8,
+      studentsEnrolled: 5200,
+      link: 'https://login.skillizee.io/courses/Personal-Finance---Mutual-Funds-6862414109a82120854797f3',
+      gradeGroup: ['4-6', '7-12'],
+      color: '#fff8e6', // <--- Change this to any valid CSS color
+      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
+    },
+    {
+      id: 'intern1',
+      title: 'Integrated Financial Modelling',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752925839/Untitled_design_6_bpxs4k.svg',
+      price: 2999,
+      rating: 4.8,
+      studentsEnrolled: 5200,
+      link: 'https://login.skillizee.io/courses/Integrated-Financial-Modelling--68621468b7eca7768562f995',
+      gradeGroup: ['4-6', '7-12'],
+      color: '#f8e7cb', // <--- Change this to any valid CSS color
+      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
+    },
   ],
   sbpls: [
     {
@@ -152,67 +187,31 @@ const courseData = {
       color: '#01f4bc', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
-  ],
-  packages: [
     {
-      id: 'pack1',
-      title: 'Tech Explorer Pack',
-      image: 'https://via.placeholder.com/300x180?text=Tech+Explorer+Pack',
-      price: 449,
+      id: 'intern1',
+      title: 'Nykaa - Case Study',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752925274/686273b47b08021dd486b0f7_scaled_cover_xradl0.jpg',
+      price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: '#',
+      link: 'https://login.skillizee.io/courses/Nykaa---Case-Study--686273b47b08021dd486b0f7',
       gradeGroup: ['4-6', '7-12'],
-      color: '#FFB300', // <--- Change this to any valid CSS color
+      color: '#f42276', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
     {
-      id: 'pack2',
-      title: 'Creative Genius Bundle',
-      image: 'https://via.placeholder.com/300x180?text=Creative+Genius',
-      price: 399,
-      rating: 4.9,
-      studentsEnrolled: 4600,
-      link: '#',
+      id: 'intern1',
+      title: 'Apple - Case Study',
+      image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752925411/68625a476659fa3d41a8e7e4_scaled_cover_gaqfym.png',
+      price: 2999,
+      rating: 4.8,
+      studentsEnrolled: 5200,
+      link: 'https://login.skillizee.io/courses/Apple---Case-Study-68625a476659fa3d41a8e7e4',
       gradeGroup: ['4-6', '7-12'],
-      color: '#FFB300', // <--- Change this to any valid CSS color
+      color: '#c1c8dd', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
     },
-  ],
-  memberships: [
-    {
-      id: 'mem1',
-      title: 'Annual Membership',
-      image: 'https://via.placeholder.com/300x180?text=Annual+Membership',
-      price: 999,
-      originalPrice: 1999,
-      duration: '12 Months',
-      features: ['Access to all courses', '1:1 Mentorship', 'Exclusive webinars', 'Career counseling', 'Certificate'],
-      rating: 4.9,
-      studentsEnrolled: 8000,
-      link: '#',
-      gradeGroup: 'all',
-      popular: true,
-      color: '#FFB300', // <--- Change this to any valid CSS color
-      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
-    },
-    {
-      id: 'mem2',
-      title: 'Monthly Membership',
-      image: 'https://via.placeholder.com/300x180?text=Monthly+Membership',
-      price: 199,
-      originalPrice: 399,
-      duration: '1 Month',
-      features: ['Access to all courses', 'Community support'],
-      rating: 4.7,
-      studentsEnrolled: 2000,
-      link: '#',
-      gradeGroup: 'all',
-      popular: false,
-      color: '#FFB300', // <--- Change this to any valid CSS color
-      badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
-    },
-  ],
+  ], 
 };
 
 export default courseData; 

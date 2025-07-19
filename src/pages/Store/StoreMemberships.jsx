@@ -6,17 +6,16 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#3B82F6"/><path d="M28 13v14a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z" fill="#fff"/><path d="M16 11v2M24 11v2" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Basic",
-    language: "English | Notes Only",
+    name: "LITE",
+    language: "English | Online Self-Paced",
     price: "₹5399/-",
     features: [
-      { text: "Live Classes", included: true },
-      { text: "Skill Assessment Test", included: true },
-      { text: "3 Short Courses", included: true },
-      { text: "1 Internship", included: true },
-      { text: "2 SBPLs", included: true },
-      { text: "6 Months Access", included: true },
-      { text: "Certificate", included: true }
+      { text: "1 Skill based project", included: true },
+      { text: "1 Short Course", included: true },
+      { text: "2 Case Studies", included: true },
+      { text: "1 Internship (SkilliZee+ Internship)", included: true },
+      { text: "Certificate after Project submission and review for each category", included: true },
+      
     ],
     highlight: false
   },
@@ -24,17 +23,16 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#6366F1"/><path d="M20 12a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z" fill="#fff"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4M12.93 12.93l2.83 2.83M24.24 24.24l2.83 2.83M12.93 27.07l2.83-2.83M24.24 15.76l2.83-2.83" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Standard",
-    language: "English and Hindi | Videos & Notes",
+    name: "CORE",
+    language: "English | Online Self-Paced",
     price: "₹6499/-",
     features: [
-      { text: "Live Classes", included: true },
-      { text: "Skill Assessment Test", included: true },
-      { text: "5 Short Courses", included: true },
-      { text: "2 Internships", included: true },
-      { text: "4 SBPLs", included: true },
-      { text: "12 Months Access", included: true },
-      { text: "Certificate", included: true }
+      { text: "1 Skill based project", included: true },
+      { text: "2 Short Courses", included: true },
+      { text: "2 Case Studies", included: true },
+      { text: "1 Internship (SkilliZee Internship)", included: true },
+      { text: "Certificate after Project submission and review for each category", included: true },
+      
     ],
     highlight: false
   },
@@ -42,17 +40,17 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#1E293B"/><path d="M20 12l2.472 5.012 5.528.803-4 3.902.944 5.5L20 23.25l-4.944 2.967.944-5.5-4-3.902 5.528-.803L20 12Z" fill="#fff"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4M12.93 12.93l2.83 2.83M24.24 24.24l2.83 2.83M12.93 27.07l2.83-2.83M24.24 15.76l2.83-2.83" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Premium",
-    language: "English and Hindi | Access Everything",
+    name: "PREMIUM",
+    language: "English | Online Self-Paced",
     price: "₹7699/-",
     features: [
-      { text: "Live Classes", included: true },
-      { text: "Skill Assessment Test", included: true },
-      { text: "10 Short Courses", included: true },
-      { text: "4 Internships", included: true },
-      { text: "8 SBPLs", included: true },
-      { text: "24 Months Access", included: true },
-      { text: "Certificate", included: true }
+      { text: "1 Skill based project", included: true },
+      { text: "2 Short Courses", included: true },
+      { text: "2 SBPL", included: true },
+      { text: "3 Case Studies", included: true },
+      { text: "2 Internships (SkilliZee Internship + NGO internship)", included: true },
+      { text: "Certificate after Project submission and review for each category", included: true },
+      
     ],
     highlight: true
   }
@@ -95,10 +93,10 @@ export default function StoreMemberships() {
               <div className="text-3xl font-extrabold mb-3 tracking-tight">
                 {plan.price}
               </div>
-              <ul className="mb-4 w-full text-sm font-medium flex flex-col gap-1.5 items-center">
+              <ul className="mb-4 w-full text-sm font-medium flex flex-col gap-1.5 items-start list-disc pl-5 text-left">
                 {plan.features.map((feature, i) => (
-                  <li key={feature.text} className="flex items-center gap-2">
-                    <span className={plan.highlight ? "text-white" : "text-blue-900"}>{feature.text}</span>
+                  <li key={feature.text} className={plan.highlight ? "text-white" : "text-blue-900"}>
+                    {feature.text}
                   </li>
                 ))}
               </ul>
