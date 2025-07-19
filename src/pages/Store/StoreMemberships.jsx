@@ -6,7 +6,7 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#3B82F6"/><path d="M28 13v14a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z" fill="#fff"/><path d="M16 11v2M24 11v2" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Basic Plan",
+    name: "Basic",
     language: "English | Notes Only",
     price: "₹5399/-",
     features: [
@@ -24,7 +24,7 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#6366F1"/><path d="M20 12a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z" fill="#fff"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4M12.93 12.93l2.83 2.83M24.24 24.24l2.83 2.83M12.93 27.07l2.83-2.83M24.24 15.76l2.83-2.83" stroke="#6366F1" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Standard Plan",
+    name: "Standard",
     language: "English and Hindi | Videos & Notes",
     price: "₹6499/-",
     features: [
@@ -42,7 +42,7 @@ const plans = [
     icon: (
       <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#1E293B"/><path d="M20 12l2.472 5.012 5.528.803-4 3.902.944 5.5L20 23.25l-4.944 2.967.944-5.5-4-3.902 5.528-.803L20 12Z" fill="#fff"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4M12.93 12.93l2.83 2.83M24.24 24.24l2.83 2.83M12.93 27.07l2.83-2.83M24.24 15.76l2.83-2.83" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
-    name: "Premium Plan",
+    name: "Premium",
     language: "English and Hindi | Access Everything",
     price: "₹7699/-",
     features: [
@@ -66,7 +66,7 @@ const cardVariants = {
 export default function StoreMemberships() {
   return (
     <section className="w-full max-w-6xl mx-auto px-2 py-10">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Membership Packages</h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Packages</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan, idx) => (
           <motion.div

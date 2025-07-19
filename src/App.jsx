@@ -14,6 +14,119 @@ import Footer from "./components/common/Footer";
 import Faq from "./components/common/Faq";
 import "./index.css";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Dashboard button styles
+const dashboardButtonStyles = `
+  .dashboard-button {
+    --stone-50: #fafaf9;
+    --stone-800: #292524;
+    --yellow-400: #00308A;
+
+    font-size: 0.875rem;
+    cursor: pointer;
+    position: relative;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    padding: 1px;
+    transform: translate(-3px, -3px);
+    outline: 2px solid transparent;
+    outline-offset: 5px;
+    border-radius: 9999px;
+    background-color: var(--stone-800);
+    color: #ffff;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease;
+    text-align: center;
+    box-shadow:
+      0.4px 0.4px 0 0 var(--stone-800),
+      0.8px 0.8px 0 0 var(--stone-800),
+      1.2px 1.2px 0 0 var(--stone-800),
+      1.6px 1.6px 0 0 var(--stone-800),
+      2px 2px 0 0 var(--stone-800),
+      2.4px 2.4px 0 0 var(--stone-800),
+      0 0 0 2px var(--stone-50),
+      0.4px 0.4px 0 2px var(--stone-50),
+      0.8px 0.8px 0 2px var(--stone-50),
+      1.2px 1.2px 0 2px var(--stone-50),
+      1.6px 1.6px 0 2px var(--stone-50),
+      2px 2px 0 2px var(--stone-50),
+      2.4px 2.4px 0 2px var(--stone-50),
+      2.8px 2.8px 0 2px var(--stone-50),
+      3.2px 3.2px 0 2px var(--stone-50);
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .dashboard-button:hover {
+    transform: translate(0, 0);
+    box-shadow: 0 0 0 2px var(--stone-50);
+  }
+
+  .dashboard-button:active,
+  .dashboard-button:focus-visible {
+    outline-color: var(--yellow-400);
+  }
+
+  .dashboard-button:focus-visible {
+    outline-style: dashed;
+  }
+
+  .dashboard-button > div {
+    position: relative;
+    pointer-events: none;
+    background-color: var(--yellow-400);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+  }
+
+  .dashboard-button > div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    opacity: 0.5;
+    background-image: radial-gradient(
+        rgb(255 255 255 / 80%) 20%,
+        transparent 20%
+      ),
+      radial-gradient(rgb(255 255 255 / 100%) 20%, transparent 20%);
+    background-position:
+      0 0,
+      4px 4px;
+    background-size: 8px 8px;
+    mix-blend-mode: hard-light;
+    animation: dots 0.5s infinite linear;
+  }
+
+  .dashboard-button > div > span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    gap: 0.25rem;
+    filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.25));
+  }
+
+  .dashboard-button > div > span:active {
+    transform: translateY(2px);
+  }
+
+  @keyframes dots {
+    0% {
+      background-position:
+        0 0,
+        4px 4px;
+    }
+    100% {
+      background-position:
+        8px 0,
+        12px 4px;
+    }
+  }
+`;
 import WallOfFame from "./pages/WallOfFame/WallOfFame";
 import Store from "./pages/Store";
 import StudentStoryCard from "./components/common/StudentStoryCard";
@@ -106,26 +219,31 @@ function Header({ hide }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return (
-    <header
-      className={`transition-opacity duration-500 ${hide || !visible ? 'opacity-0 pointer-events-none' : 'opacity-100'} z-50 shadow-lg`}
-      style={{ background: '#00308A', position: 'relative' }}
-    >
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
-        <div className="flex items-center gap-3">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" alt="SkilliZee Logo" className="h-16 drop-shadow-lg" />
+    <>
+      <style>{dashboardButtonStyles}</style>
+      <header
+        className={`transition-opacity duration-500 ${hide || !visible ? 'opacity-0 pointer-events-none' : 'opacity-100'} z-50 shadow-lg`}
+        style={{ background: '#00308A', position: 'relative' }}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
+          <div className="flex items-center gap-3">
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" alt="SkilliZee Logo" className="h-16 drop-shadow-lg" />
+          </div>
+          <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
+            <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>
+            <Link to="/store" element={<Store />} className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Store</Link>
+            <a href="https://login.skillizee.io/s/authenticate" target="_blank" rel="noopener noreferrer" className="dashboard-button">
+              <div><span>Dashboard</span></div>
+            </a>
+          </nav>
+          {/* Mobile Hamburger Menu */}
+          <div className="md:hidden flex items-center">
+            <MobileMainMenu />
+          </div>
+          {/* Lanyard Card removed as per user request */}
         </div>
-        <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
-          <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>
-          <Link to="/store" element={<Store />} className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Store</Link>
-          <a href="https://login.skillizee.io/s/authenticate" target="_blank" rel="noopener noreferrer" className="bg-[#00308A] text-white px-4 py-1.5 rounded-full shadow hover:bg-purple-600 transition">Dashboard</a>
-        </nav>
-        {/* Mobile Hamburger Menu */}
-        <div className="md:hidden flex items-center">
-          <MobileMainMenu />
-        </div>
-        {/* Lanyard Card removed as per user request */}
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 

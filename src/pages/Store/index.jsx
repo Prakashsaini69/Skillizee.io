@@ -11,6 +11,7 @@ import StoreFAQTabs from "./StoreFAQTabs";
 import Footer from "../../components/common/Footer";
 import StoreMemberships from "./StoreMemberships";
 import HeroSection from "./HeroSection";
+import MembershipCard from "../../components/common/MembershipCard";
 import { HoverBorderGradient } from "../../components/ui/hover-border-gradient";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
@@ -276,54 +277,13 @@ export default function Store() {
             <StoreCaseStudies gradeGroup={selectedGradeGroup} />
           </section>
           <section className="scroll-mt-32 mt-12" id="packages">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#00308A] mb-4">Packages</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-6 md:p-10 ">
-              <motion.div
-                className="flex flex-col md:flex-row items-stretch justify-start rounded-xl shadow-lg bg-[#F3F4F6] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-[#00308A]/50"
-              >
-                <div className="w-full md:w-2/5 h-40 md:h-auto bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80)' }}></div>
-                <div className="flex flex-1 flex-col items-start justify-between p-3 sm:p-5 gap-2 sm:gap-3">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold leading-tight tracking-[-0.015em] text-[#1F2937]">Tech Explorer Pack</h3>
-                    <p className="text-[#4B5563] text-xs sm:text-sm leading-normal mt-1">Includes: 1 Short Course (AI for Beginners), 1 Internship (Web Developer Internship), 1 SBPL (Startup Pitch Challenge).</p>
-                    <div className="flex items-center justify-between mt-2 sm:mt-3 text-xs text-[#4B5563]">
-                      <span>4.8 (Avg. Rating)</span>
-                      <span>5.2k Enrolled</span>
-                    </div>
-                    <p className="text-base sm:text-xl font-bold text-[#00308A] mt-2">₹449 <span className="text-xs sm:text-sm text-[#4B5563] line-through">₹497</span></p>
-                  </div>
-                  <motion.button
-                    className="min-w-[84px] max-w-full md:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 sm:px-4 bg-transparent border border-[#00308A] text-[#00308A] text-xs font-medium leading-normal hover:bg-[#00308A] hover:text-white transition-colors"
-                  >
-                    <span className="truncate">Explore Package</span>
-                  </motion.button>
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex flex-col md:flex-row items-stretch justify-start rounded-xl shadow-lg bg-[#F3F4F6] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-[#00308A]/50"
-              >
-                <div className="w-full md:w-2/5 h-40 md:h-auto bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80)' }}></div>
-                <div className="flex flex-1 flex-col items-start justify-between p-3 sm:p-5 gap-2 sm:gap-3">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold leading-tight tracking-[-0.015em] text-[#1F2937]">Creative Genius Bundle</h3>
-                    <p className="text-[#4B5563] text-xs sm:text-sm leading-normal mt-1">Includes: 1 Short Course (Creative Animation), 1 Internship (AI Research Internship), 1 SBPL (Eco Warriors Project).</p>
-                    <div className="flex items-center justify-between mt-2 sm:mt-3 text-xs text-[#4B5563]">
-                      <span>4.9 (Avg. Rating)</span>
-                      <span>4.6k Enrolled</span>
-                    </div>
-                    <p className="text-base sm:text-xl font-bold text-[#00308A] mt-2">₹399 <span className="text-xs sm:text-sm text-[#4B5563] line-through">₹477</span></p>
-                  </div>
-                  <motion.button
-                    className="min-w-[84px] max-w-full md:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 sm:px-4 bg-transparent border border-[#00308A] text-[#00308A] text-xs font-medium leading-normal hover:bg-[#00308A] hover:text-white transition-colors"
-                  >
-                    <span className="truncate">Explore Package</span>
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
+            <StoreMemberships />
           </section>
           <section className="scroll-mt-32 mt-12" id="membership">
-            <StoreMemberships />
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Premium Membership</h2>
+            <div className="flex justify-center">
+              <MembershipCard />
+            </div>
           </section>
           <section className="scroll-mt-32" id="faq">
             <StoreFAQTabs />
