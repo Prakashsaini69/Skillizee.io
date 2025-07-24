@@ -130,6 +130,7 @@ const dashboardButtonStyles = `
 import WallOfFame from "./pages/WallOfFame/WallOfFame";
 import Store from "./pages/Store";
 import StudentStoryCard from "./components/common/StudentStoryCard";
+import LinkedIn from "./pages/LinkedIn";
 // import Lanyard from "./components/ui/Lanyard";
 
 const mainMenuLinks = [
@@ -274,6 +275,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/wall-of-fame" element={<WallOfFame />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/linkedin" element={<LinkedIn />} />
         <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308A]'>404 - Page Not Found<Footer /></div>} />
       </Routes>
     </Router>

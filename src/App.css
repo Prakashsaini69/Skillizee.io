@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes bounceZoom {
+  0%, 100% {
+    transform: scale(1) rotate(20deg);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: scale(1.15) rotate(20deg);
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.animate-bounce-zoom {
+  animation: bounceZoom 3s infinite;
+}
