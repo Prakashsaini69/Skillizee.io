@@ -55,22 +55,27 @@ function ProblemsFacedSection() {
         {/* Left: Sliding Arrows Card */}
         <div className="bg-blue-100 rounded-3xl p-8 flex flex-col justify-end min-h-[340px] relative shadow-md">
           {/* Sliding Arrows */}
-          <div className="absolute top-10 left-0 w-full flex overflow-hidden h-32 pointer-events-none select-none">
-            <div className="flex flex-nowrap animate-slide-arrows gap-8 w-max">
-              {[...Array(2)].flatMap(() =>
-                Array.from({ length: 8 }).map((_, i) => (
-                  <img
-                    key={i + Math.random()}
-                    src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
-                    alt="Arrow"
-                    className="w-32 h-32 mx-2 opacity-80"
-                    style={{
-                      transform: 'rotate(-30deg)', // Adjust rotation degree here
-                    }}
-                  />
-                ))
-              )}
-            </div>
+          <div className="absolute top-10 left-0 w-full h-32 overflow-hidden pointer-events-none select-none">
+            <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full h-32 overflow-hidden">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <img
+                  key={i}
+                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
+                  alt="Arrow"
+                  className="w-28 h-28 mx-2 opacity-80"
+                  style={{ transform: 'rotate(-30deg)' }}
+                />
+              ))}
+              {Array.from({ length: 8 }).map((_, i) => (
+                <img
+                  key={i + 100}
+                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
+                  alt="Arrow"
+                  className="w-28 h-28 mx-2 opacity-80"
+                  style={{ transform: 'rotate(-30deg)' }}
+                />
+              ))}
+            </Marquee>
           </div>
           <div className="mt-32" />
           <div className="mt-auto">
@@ -101,16 +106,20 @@ function ProblemsFacedSection() {
             {/* Struggle to get visibility card (square, white, border, visible icons, infinite loop) */}
             <div className="bg-white border border-blue-200 rounded-2xl shadow-md p-2 flex flex-col items-center h-full justify-center">
               <div className="flex items-center justify-center mb-2 w-full overflow-hidden">
-                <div className="flex flex-nowrap animate-infinite-slide-icons gap-2 w-max">
-                  {[...Array(2)].flatMap(() =>
-                    Array.from({ length: 5 }).map((_, i) => (
-                      <div
-                        key={i + Math.random()}
-                        className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
-                      >👍</div>
-                    ))
-                  )}
-                </div>
+                <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
+                    >👍</div>
+                  ))}
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      key={i + 100}
+                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
+                    >👍</div>
+                  ))}
+                </Marquee>
               </div>
               <div className="font-bold text-base text-[#0a2540] text-center leading-tight">Struggle to get<br />visibility!</div>
             </div>
