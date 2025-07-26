@@ -1,9 +1,9 @@
 import React from 'react';
-import DotPattern from '../components/ui/DotPattern';
+import DotPattern from './DotPattern';
 import { Typewriter } from 'react-simple-typewriter';
 import StickyBox from 'react-sticky-box';
 import * as Accordion from '@radix-ui/react-accordion';
-import animationData from '../assets/animation.json';
+import animationData from '../../../assets/animation.json';
 import Lottie from 'lottie-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -11,11 +11,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Marquee from 'react-fast-marquee';
-import SlantedScrollingBanner from "../components/ui/SlantedScrollingBanner";
-import Footer from "../components/common/Footer";
+import SlantedScrollingBanner from "./SlantedScrollingBanner";
+import Footer from "../../../components/common/Footer";
 
 const logoAnim = `
-@keyframes linkedinLogoZoom {
+@keyframes goodGumLogoZoom {
   0%, 100% {
     transform: scale(1) rotate(15deg);
   }
@@ -899,7 +899,7 @@ function FAQSection() {
 }
 
 
-const LinkedIn = () => {
+const GoodGum = () => {
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-100 ">
       <style>{logoAnim}</style>
@@ -921,7 +921,7 @@ const LinkedIn = () => {
         />
         {/* Content */}
         <div className="relative z-10 w-full flex flex-col items-center px-2 pt-6 pb-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-[#00308A] mb-2">Learn To LinkedIn</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-center text-[#00308A] mb-2">Learn To GoodGum</h1>
           <p className="text-lg md:text-xl text-center font-bold text-[#00308A] mb-3">The Ultimate LinkedIn Mastery Course</p>
           <div className="flex gap-6 justify-center items-center mb-5">
             <span className="flex items-center gap-2 text-base md:text-lg text-[#00308A]"><span role="img" aria-label="enrolled">🎓</span> 2,937+ Enrolled</span>
@@ -932,10 +932,10 @@ const LinkedIn = () => {
           <div className="relative z-20 flex justify-center items-center" style={{ margin: '0 0 18px 0' }}>
             <img
               src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753341296/8379992_ke4jfx.png"
-              alt="LinkedIn Logo"
+              alt="GoodGum Logo"
               className="w-56 h-56 object-contain"
               style={{
-                animation: 'linkedinLogoZoom 4s ease-in-out infinite',
+                animation: 'goodGumLogoZoom 4s ease-in-out infinite',
                 pointerEvents: 'none',
                 userSelect: 'none',
                 background: 'none',
@@ -999,4 +999,4 @@ const LinkedIn = () => {
   );
 };
 
-export default LinkedIn; 
+export default GoodGum; 
