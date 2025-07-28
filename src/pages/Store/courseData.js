@@ -1,3 +1,5 @@
+var interestFormLink = 'https://docs.google.com/forms/d/e/1FAIpQLScrMS18_uixGoaBuQS1PfEvd-WLl2RfofzxNhzyy-NzPxGHkQ/viewform?usp=dialog';
+
 const courseData = {
   internships: [
     {
@@ -7,7 +9,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/SALTYCO---Internship-for-school-students--6868db3ecf70c7310edcaee2',
       gradeGroup: ['4-6', '7-12'],
       color: '#c345ff', // <--- Change this to any valid CSS color
       badgeIcon: "https://www.flaticon.com/free-animated-icon/fire_16767287?term=fire&page=1&position=1&origin=search&related_id=16767287" // or a GIF/SVG/PNG
@@ -19,7 +22,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Startup-Sprint--Youngpreneurs-in-Action-686b892ab27c214b8c9f103d',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Startup-Sprint--Youngpreneurs-in-Action-686b892ab27c214b8c9f103d',
       gradeGroup: ['4-6', '7-12'],
       color: '#1c2965', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -31,7 +35,8 @@ const courseData = {
       price: 2999,
       rating: null,
       studentsEnrolled: 0,
-      link: 'https://login.skillizee.io/courses/Gud-Gum---Internship-1752474022582-6874a1a661ef9553b3eb43da',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Gud-Gum---Internship-1752474022582-6874a1a661ef9553b3eb43da',
       gradeGroup: ['4-6', '7-12'],
       color: '#90a153', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -46,7 +51,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Why-is-your-phone-making-you-sad-686798aa8cd4e06fbaec8c96',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Why-is-your-phone-making-you-sad-686798aa8cd4e06fbaec8c96',
       gradeGroup: ['7-12'],
       color: '#2d2e40', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -58,7 +64,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/How-do-solar-panels-work-686780f59120923fa5e35455',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/How-do-solar-panels-work-686780f59120923fa5e35455',
       gradeGroup: ['4-6', '7-12'],
       color: '#00a064', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -70,7 +77,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Introduction-to-Stock-Markets-6860f6a09ab702572be9e553',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Introduction-to-Stock-Markets-6860f6a09ab702572be9e553',
       gradeGroup: ['4-6', '7-12'],
       color: '#042658', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -82,7 +90,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Create-our-own-avatar-6868dd1f59b07a3c22205f9d',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Create-our-own-avatar-6868dd1f59b07a3c22205f9d',
       gradeGroup: ['4-6', '7-12'],
       color: '#0c4041', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -94,7 +103,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Personal-Finance---Mutual-Funds-6862414109a82120854797f3',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Personal-Finance---Mutual-Funds-6862414109a82120854797f3',
       gradeGroup: ['4-6', '7-12'],
       color: '#fff8e6', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -106,7 +116,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Integrated-Financial-Modelling--68621468b7eca7768562f995',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Integrated-Financial-Modelling--68621468b7eca7768562f995',
       gradeGroup: ['4-6', '7-12'],
       color: '#f8e7cb', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -120,7 +131,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Budget-Boss--Virtual-Finance-Fair-68638cb36b74c511f3f9c297',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Budget-Boss--Virtual-Finance-Fair-68638cb36b74c511f3f9c297',
       gradeGroup: ['4-6', '7-12'],
       color: '#1b478c', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -132,7 +144,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Sector-Analysis-68635f85c1e58f69db698c2f',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Sector-Analysis-68635f85c1e58f69db698c2f',
       gradeGroup: ['4-6', '7-12'],
       color: '#4c984d', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -144,7 +157,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Personal-Finance---Insurance-6863760d347740632a849a65',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Personal-Finance---Insurance-6863760d347740632a849a65',
       gradeGroup: ['4-6', '7-12'],
       color: '#ffb800', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -158,7 +172,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Blinkit-vs-Zepto-The-Battle-of-Quick-Commerce-685b9bc3a2d6f04c83e5065e',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Blinkit-vs-Zepto-The-Battle-of-Quick-Commerce-685b9bc3a2d6f04c83e5065e',
       gradeGroup: ['4-6', '7-12'],
       color: '#f7ca45', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -170,7 +185,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/How-Starbucks-became-a-80-trillion-company---case-study--68664d6350c102186cc848db',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/How-Starbucks-became-a-80-trillion-company---case-study--68664d6350c102186cc848db',
       gradeGroup: ['4-6', '7-12'],
       color: '#026240', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -182,7 +198,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Zerodha-vs-Grow-6862204646772259150fff48',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Zerodha-vs-Grow-6862204646772259150fff48',
       gradeGroup: ['4-6', '7-12'],
       color: '#01f4bc', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -194,7 +211,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Nykaa---Case-Study--686273b47b08021dd486b0f7',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Nykaa---Case-Study--686273b47b08021dd486b0f7',
       gradeGroup: ['4-6', '7-12'],
       color: '#f42276', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
@@ -206,7 +224,8 @@ const courseData = {
       price: 2999,
       rating: 4.8,
       studentsEnrolled: 5200,
-      link: 'https://login.skillizee.io/courses/Apple---Case-Study-68625a476659fa3d41a8e7e4',
+      link: interestFormLink,
+      // link: 'https://login.skillizee.io/courses/Apple---Case-Study-68625a476659fa3d41a8e7e4',
       gradeGroup: ['4-6', '7-12'],
       color: '#c1c8dd', // <--- Change this to any valid CSS color
       badgeIcon: "https://assets10.lottiefiles.com/packages/lf20_xxxxx.json" // or a GIF/SVG/PNG
