@@ -3,48 +3,48 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const stories = [
   {
-    name: "Eleanor",
-    action: "BROUGHT",
+    name: "Satvik",
+    action: "TRANSFORMED",
     actionColor: "#00308A",
-    headline: "CREATIVITY TO HER FAMILY'S BUSINESS",
+    headline: "HIS PASSION INTO IMPACT",
     age: 10,
+    pronounce: "HE",
     achievements: [
       {
-        text: (
-          <>Built a website and marketing materials for her family's bee far, <br /><a href="#" className="underline">Hive Hideaway</a>, and expanded the product line to "Adopt a Hive" subscription and farm tours – which made over $1500</>
-        ),
+        text: "Launched an online platform where people can explore unique eco-friendly stationery, made with sustainable materials. Every product is crafted with attention to detail and environmental care."
       },
-      { text: "Wrote a book that educates kids about the natural world" },
-      { text: "Building a website and blog to teach kids about space travel, and working to land an interview with her role model, Neil de Grasse Tyson" },
+      { text: "Created engaging tutorials to help kids learn about recycling and upcycling everyday objects into useful tools for school and home." },
+      { text: "Published a digital magazine featuring stories and interviews with young inventors, aiming to inspire creativity and problem-solving." },
     ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832707/6691475f8163d78ea014dac5_Eleanor_Student_Story_with_Product-min_kbcwvc.webp", // Replace with your combined image
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753694845/10_znj7f0.svg", // Replace with your combined image
   },
   {
-    name: "Millie",
-    action: "WROTE",
+    name: "Daksh",
+    action: "REVOLUTIONIZED",
     actionColor: "#00308A",
-    headline: "A NEWSLETTER & BOOK ON NATURE & SUSTAINABILITY",
+    headline: "THE WAY KIDS LEARN",
+    age: 13,
+    pronounce: "HE",
+    achievements: [
+      { text: "Designed a prototype for a mobile app where kids can learn through interactive, gamified experiences that make education fun and engaging." },
+      { text: "Integrated quizzes, rewards, and challenges to motivate young learners and help them track their progress." },
+      { text: "Developed colorful animations and playful characters to create an immersive learning environment tailored for children." },
+    ],
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753694845/12_ryjvnh.svg", // Replace with your combined image
+  },
+  {
+    name: "Manya",
+    action: "CRAFTED  ",
+    actionColor: "#00308A",
+    headline: "INNOVATION FOR FOOD LOVERS",
     age: 12,
+    pronounce: "SHE",
     achievements: [
-      { text: "Created her own blog and newsletter, Adventures of a Young Naturalist" },
-      { text: "Interviewed conservationists, professors, and nonprofit directors to share their work" },
-      { text: "Published a book that educates kids about the natural world" },
-      { text: "Had her blog featured by Harvard Business Publishing after covering the Mt. Everest teamwork simulation" },
+      { text: "Developed a website featuring an amazing UI where users can instantly generate the recipe for any dish, simply by searching its name." },
+      { text: "Designed interactive features that help users customize ingredient options, making the experience personal and engaging for cooks of all skill levels." },
+      { text: "Added helpful cooking tips and techniques, empowering fellow young chefs to try out global cuisines from the comfort of their homes." },
     ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832695/6691475ea1fa17ba48849c4e_Frame_175-min_jufneg.webp", // Replace with your combined image
-  },
-  {
-    name: "Matthew",
-    action: "CREATED",
-    actionColor: "#00308A",
-    headline: "& SOLD HIS OWN SPACE-THEMED COLORING BOOKS",
-    age: 11,
-    achievements: [
-      { text: "Created Spacecraft Designs, a company that sells coloring books on Etsy with 34+ sales" },
-      { text: "Built video games and videos using AI" },
-      { text: "Wrote a book that educates kids about the natural world" },
-    ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752832707/6691475e26c1206d3319f922_Mathew_Student_Story_with_Product_1-min_t1n5pj.webp", // Replace with your combined image
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753694845/11_y32dfg.svg", // Replace with your combined image
   },
 ];
 
@@ -118,7 +118,7 @@ export default function StudentStoryCard() {
               <div className="text-lg font-semibold text-gray-800 mb-1">{story.name}</div>
               <div className="text-5xl md:text-6xl font-extrabold mb-2" style={{ color: story.actionColor, lineHeight: 1 }}>{story.action}</div>
               <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style={{ lineHeight: 1.1 }}>{story.headline}</div>
-              <div className="text-lg font-bold text-gray-900 mb-2 mt-2 uppercase tracking-wide">AT THE AGE OF {story.age}{story.name === "Matthew" ? ", MATTHEW HAS:" : story.name === "Millie" ? ", SHE HAS:" : ", SHE HAS:"}</div>
+              <div className="text-lg font-bold text-gray-900 mb-2 mt-2 uppercase tracking-wide">AT THE AGE OF {story.age} {story.pronounce} Has</div>
               <ul className="space-y-4">
                 {story.achievements.map((ach, i) => (
                   <li key={i} className="flex items-start gap-2 text-lg md:text-xl text-gray-800">
