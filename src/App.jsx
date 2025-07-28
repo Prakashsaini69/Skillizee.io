@@ -14,6 +14,12 @@ import Footer from "./components/common/Footer";
 import Faq from "./components/common/Faq";
 import "./index.css";
 import { motion, AnimatePresence } from "framer-motion";
+import WallOfFame from "./pages/WallOfFame/WallOfFame";
+import Store from "./pages/Store";
+import LinkedIn from "./pages/Course Landing Pages/LinkedIn/LinkedIn";
+import GoodGum from "./pages/Course Landing Pages/GoodGum/GoodGum";
+import DemoComponents from "./pages/DemoComponents";
+import StudentStoryCard from "./components/common/StudentStoryCard";
 
 // Dashboard button styles
 const dashboardButtonStyles = `
@@ -127,12 +133,6 @@ const dashboardButtonStyles = `
     }
   }
 `;
-import WallOfFame from "./pages/WallOfFame/WallOfFame";
-import Store from "./pages/Store";
-import StudentStoryCard from "./components/common/StudentStoryCard";
-import LinkedIn from "./pages/Course Landing Pages/LinkedIn/LinkedIn";
-import GoodGum from "./pages/Course Landing Pages/GoodGum/GoodGum";
-// import Lanyard from "./components/ui/Lanyard";
 
 const mainMenuLinks = [
   { label: "Home", to: "/" },
@@ -278,6 +278,7 @@ function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/linkedin" element={<LinkedIn />} />
         <Route path="/store/gudgum" element={<GoodGum />} />
+        <Route path="/demo" element={<DemoComponents />} />
         <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308A]'>404 - Page Not Found<Footer /></div>} />
       </Routes>
     </Router>
