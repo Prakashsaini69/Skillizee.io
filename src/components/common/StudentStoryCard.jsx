@@ -30,7 +30,7 @@ const stories = [
       { text: "Integrated quizzes, rewards, and challenges to motivate young learners and help them track their progress." },
       { text: "Developed colorful animations and playful characters to create an immersive learning environment tailored for children." },
     ],
-    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753694845/12_ryjvnh.svg", // Replace with your combined image
+    mainImage: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753856159/Package_Registration_1_iee8uy.svg", // Replace with your combined image
   },
   {
     name: "Manya",
