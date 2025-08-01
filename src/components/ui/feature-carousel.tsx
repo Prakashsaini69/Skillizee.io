@@ -17,7 +17,7 @@ import {
   type MotionStyle,
   type MotionValue,
   type Variants,
-} from "motion/react"
+} from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import { cn } from "../../lib/utils"
@@ -81,27 +81,27 @@ const TOTAL_STEPS = 4
 const steps = [
   {
     id: "1",
-    name: "Step 1",
-    title: "Feature 1",
-    description: "Feature 1 description  ",
+    name: "Featured",
+    title: "Featured on Shark Tank",
+    description: "GudGum was featured on Shark Tank, Gud Gum secured an investment from Aman Gupta, Vineeta Singh, Anupam Mittal, and Ritesh Agarwal. The deal involved ₹80 Lakhs for 10% equity plus a 4% royalty until the initial investment is recouped, valuing the company at ₹8 Crore. ",
   },
   {
     id: "2",
-    name: "Step 2",
-    title: "Feature 2",
-    description: "Feature 2 description",
+    name: "",
+    title: "Market Research",
+    description: "Dive deep into consumer behavior and identify opportunities in the eco-friendly market segment.",
   },
   {
     id: "3",
-    name: "Step 3",
-    title: "Feature 3",
-    description: "Feature 3 description",
+    name: "",
+    title: "Creative Strategy",
+    description: "Develop compelling brand messaging and visual identity that resonates with environmentally conscious consumers.",
   },
   {
     id: "4",
-    name: "Step 4",
-    title: "Feature 4",
-    description: "Feature 4 description",
+    name: "",
+    title: "Impact Creation",
+    description: "Execute real-world projects and campaigns that drive positive environmental change and brand growth.",
   },
 ] as const
 

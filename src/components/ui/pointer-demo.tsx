@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "./card";
 import { Pointer } from "../magicui/pointer";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export function PointerDemo1() {
   return (

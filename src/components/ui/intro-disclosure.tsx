@@ -6,7 +6,7 @@ import {
   motion,
   useAnimation,
   type PanInfo,
-} from "motion/react"
+} from "framer-motion"
 import { CheckIcon, ExternalLinkIcon } from "lucide-react"
 
 import { cn } from "../../lib/utils"

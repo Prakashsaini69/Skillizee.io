@@ -192,7 +192,7 @@ const DemoComponents = () => {
       </div>
       
       {/* Footer */}
-      <div className="w-screen relative left-1/2 right-1/2 -translate-x-1/2">
+      <div className="w-full relative left-1/2 right-1/2 -translate-x-1/2">
         <Footer />
       </div>
     </div>
