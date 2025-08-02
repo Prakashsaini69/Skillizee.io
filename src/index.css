@@ -37,6 +37,24 @@
   }
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .animate-marquee {
   animation: marquee var(--duration, 20s) linear infinite;
 }
@@ -45,8 +63,20 @@
   animation: marquee-reverse var(--duration, 20s) linear infinite;
 }
 
+.animate-scroll {
+  animation: scroll var(--animation-duration, 300s) linear infinite;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse var(--animation-duration, 300s) linear infinite;
+}
+
 .hover\:pause:hover {
   animation-play-state: paused;
+}
+
+.hover\:pause-animation:hover {
+  animation-play-state: paused !important;
 }
 
 .animated-cards::before {

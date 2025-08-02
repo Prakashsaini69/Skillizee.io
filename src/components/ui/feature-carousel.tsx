@@ -35,27 +35,15 @@ interface CardProps {
 }
 
 interface ImageSet {
-  step1dark1?: string
-  step1dark2?: string
-  step1light1: string
-  step1light2: string
-  step2dark1?: string
-  step2dark2?: string
-  step2light1: string
-  step2light2: string
-  step3dark?: string
-  step3light: string
-  step4light: string
+  image: string
+  step2Image?: string
+  step3Image?: string
+  step4Image?: string
   alt: string
 }
 
 interface FeatureCarouselProps extends CardProps {
-  step1img1Class?: string
-  step1img2Class?: string
-  step2img1Class?: string
-  step2img2Class?: string
-  step3imgClass?: string
-  step4imgClass?: string
+  imageClass?: string
   image: ImageSet
 }
 
@@ -87,21 +75,21 @@ const steps = [
   },
   {
     id: "2",
-    name: "",
-    title: "Market Research",
-    description: "Dive deep into consumer behavior and identify opportunities in the eco-friendly market segment.",
+    name: "Products",
+    title: "Their Products",
+    description: "Explore GudGum's innovative product line and sustainable solutions that are making a difference in the eco-friendly market.",
   },
   {
     id: "3",
-    name: "",
+    name: "Strategy",
     title: "Creative Strategy",
-    description: "Develop compelling brand messaging and visual identity that resonates with environmentally conscious consumers.",
+    description: "Discover GudGum's unique creative approach and strategic methodology that sets them apart in the sustainable products industry.",
   },
   {
     id: "4",
-    name: "",
+    name: "Impact",
     title: "Impact Creation",
-    description: "Execute real-world projects and campaigns that drive positive environmental change and brand growth.",
+    description: "Learn about the significant environmental impact GudGum has made through sustainable practices and eco-friendly product development.",
   },
 ] as const
 
@@ -274,7 +262,7 @@ const StepImage = forwardRef<
   StepImageProps & { [key: string]: any }
 >(
   (
-    { src, alt, className, style, width = 1200, height = 630, ...props },
+    { src, alt, className, style, width = 400, height = 210, ...props },
     ref
   ) => {
     return (
@@ -543,12 +531,7 @@ const defaultClasses = {
  */
 export function FeatureCarousel({
   image,
-  step1img1Class = defaultClasses.step1img1,
-  step1img2Class = defaultClasses.step1img2,
-  step2img1Class = defaultClasses.step2img1,
-  step2img2Class = defaultClasses.step2img2,
-  step3imgClass = defaultClasses.step3img,
-  step4imgClass = defaultClasses.step4img,
+  imageClass = "pointer-events-none w-[90%] border border-border-100/10 dark:border-border-700 rounded-2xl transition-all duration-500 overflow-hidden",
   ...props
 }: FeatureCarouselProps) {
   const { currentNumber: step, increment } = useNumberCycler()
@@ -569,13 +552,9 @@ export function FeatureCarousel({
       switch (step) {
         case 0:
           /**
-           * Layout: Two images side by side
-           * - Left image (step1img1): 50% width, positioned left
-           * - Right image (step1img2): 60% width, positioned right
-           * Animation:
-           * - Left image slides in from left
-           * - Right image slides in from right with 0.1s delay
-           * - Both use spring animation for smooth motion
+           * Layout: Single image positioned at bottom right
+           * - Image: 40% width, positioned at bottom right
+           * Animation: Fades in and scales up from 95%
            */
           return (
             <motion.div
@@ -584,28 +563,17 @@ export function FeatureCarousel({
             >
               <AnimatedStepImage
                 alt={image.alt}
-                className={clsx(step1img1Class)}
-                src={image.step1light1}
-                preset="slideInLeft"
-              />
-              <AnimatedStepImage
-                alt={image.alt}
-                className={clsx(step1img2Class)}
-                src={image.step1light2}
-                preset="slideInRight"
-                delay={0.1}
+                className={clsx(imageClass, "absolute bottom-4 right-4 w-[35%] max-w-[280px]")}
+                src={image.image}
+                preset="fadeInScale"
               />
             </motion.div>
           )
         case 1:
           /**
-           * Layout: Two images with overlapping composition
-           * - First image (step2img1): 50% width, positioned left
-           * - Second image (step2img2): 40% width, overlaps first image
-           * Animation:
-           * - Both images fade in and scale up from 95%
-           * - Second image has 0.1s delay for staggered effect
-           * - Uses spring physics for natural motion
+           * Layout: Single image positioned at bottom right
+           * - Image: 40% width, positioned at bottom right
+           * Animation: Fades in and scales up from 95%
            */
           return (
             <motion.div
@@ -614,63 +582,41 @@ export function FeatureCarousel({
             >
               <AnimatedStepImage
                 alt={image.alt}
-                className={clsx(step2img1Class, "rounded-2xl")}
-                src={image.step2light1}
+                className={clsx(imageClass, "absolute bottom-4 right-4 w-[35%] max-w-[280px]")}
+                src={image.step2Image || image.image}
                 preset="fadeInScale"
-              />
-              <AnimatedStepImage
-                alt={image.alt}
-                className={clsx(step2img2Class, "rounded-2xl")}
-                src={image.step2light2}
-                preset="fadeInScale"
-                delay={0.1}
               />
             </motion.div>
           )
         case 2:
           /**
-           * Layout: Single centered image
-           * - Full width image (step3img): 90% width, centered
-           * Animation:
-           * - Fades in and scales up from 95%
-           * - Uses spring animation for smooth scaling
-           * - Triggers animation complete callback
+           * Layout: Single image positioned at bottom right
+           * - Image: 40% width, positioned at bottom right
+           * Animation: Fades in and scales up from 95%
            */
           return (
             <AnimatedStepImage
               alt={image.alt}
-              className={clsx(step3imgClass, "rounded-2xl")}
-              src={image.step3light}
+              className={clsx(imageClass, "absolute bottom-4 right-4 w-[35%] max-w-[280px]")}
+              src={image.step3Image || image.image}
               preset="fadeInScale"
               onAnimationComplete={handleAnimationComplete}
             />
           )
         case 3:
           /**
-           * Layout: Final showcase layout
-           * - Container: Centered, 60% width on desktop
-           * - Image (step4light): 90% width, positioned slightly up
-           * Animation:
-           * - Container fades in and scales up
-           * - Image follows with 0.1s delay
-           * - Both use spring physics for natural motion
+           * Layout: Single image positioned at bottom right
+           * - Image: 40% width, positioned at bottom right
+           * Animation: Fades in and scales up from 95%
            */
           return (
-            <motion.div
-              className={clsx(
-                "absolute left-2/4 top-1/3 flex w-[100%] -translate-x-1/2 -translate-y-[33%] flex-col gap-12 text-center text-2xl font-bold md:w-[60%]"
-              )}
-              {...ANIMATION_PRESETS.fadeInScale}
+            <AnimatedStepImage
+              alt={image.alt}
+              className={clsx(imageClass, "absolute bottom-4 right-4 w-[35%] max-w-[280px]")}
+              src={image.step4Image || image.image}
+              preset="fadeInScale"
               onAnimationComplete={handleAnimationComplete}
-            >
-              <AnimatedStepImage
-                alt={image.alt}
-                className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 md:left-[35px] md:top-[30%] md:w-full dark:border-zinc-700"
-                src={image.step4light}
-                preset="fadeInScale"
-                delay={0.1}
-              />
-            </motion.div>
+            />
           )
         default:
           return null

@@ -15,6 +15,9 @@ import SlantedScrollingBanner from "./SlantedScrollingBanner";
 import Footer from "../../../components/common/Footer";
 import ProfileCard from './ProfileCard';
 import { FeatureCarousel } from '../../../components/ui/feature-carousel';
+import { cn } from "../../../lib/utils";
+import { Marquee as MagicMarquee } from "../../../components/magicui/marquee";
+
 
 const logoAnim = `
 @keyframes goodGumLogoZoom {
@@ -50,108 +53,7 @@ const infoCards = [
   },
 ];
 
-function ProblemsFacedSection() {
-  return (
-    <section className="w-full flex flex-col items-center justify-center mt-8 mb-8">
-      <div className="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Left: Sliding Arrows Card */}
-        <div className="rounded-3xl p-8 flex flex-col justify-end min-h-[340px] relative shadow-md" style={{ backgroundColor: '#9fcdbc' }}>
-          {/* Sliding Arrows */}
-          <div className="absolute top-10 left-0 w-full h-32 overflow-hidden pointer-events-none select-none">
-            <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full h-32 overflow-hidden">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <img
-                  key={i}
-                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
-                  alt="Arrow"
-                  className="w-28 h-28 mx-2 opacity-80"
-                  style={{ transform: 'rotate(-30deg)' }}
-                />
-              ))}
-              {Array.from({ length: 8 }).map((_, i) => (
-                <img
-                  key={i + 100}
-                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
-                  alt="Arrow"
-                  className="w-28 h-28 mx-2 opacity-80"
-                  style={{ transform: 'rotate(-30deg)' }}
-                />
-              ))}
-            </Marquee>
-          </div>
-          <div className="mt-32" />
-          <div className="mt-auto">
-            <div className="font-bold text-lg text-[#532c56] mb-1">Lack of practical skills?</div>
-            <div className="text-[#532c56] text-base">Learn real-world entrepreneurship and sustainability.</div>
-          </div>
-        </div>
-        {/* Right: Animated Heading and Cards */}
-        <div className="flex flex-col gap-4 h-full">
-          {/* Typing Animation Heading Card */}
-          <div className="rounded-3xl p-6 shadow-md" style={{ backgroundColor: '#9fcdbc' }}>
-            <div className="text-2xl md:text-3xl font-bold text-[#532c56] mb-2">
-              <Typewriter
-                words={["Plastics in Everyday Life...", "Can brands eco-change?", "Let’s brainstorm!"]}
-                loop={0}
-                cursor
-                cursorStyle="|"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1200}
-              />
-            </div>
-            <div className="font-bold text-lg text-[#532c56] mb-1">Struggling to create impactful sustainable brands</div>
-            <div className="text-[#532c56] text-base">Master the skills to build and promote planet-friendly products.</div>
-          </div>
-          {/* Bottom Cards Row as 2-col grid, with gap between cards */}
-          <div className="grid grid-cols-2 gap-4 h-full">
-            {/* Struggle to get visibility card (square, white, border, visible icons, infinite loop) */}
-            <div className="bg-[#9fcdbc] border rounded-2xl shadow-md p-2 flex flex-col items-center h-full justify-center" style={{ borderColor: '#53a184' }}>
-              <div className="flex items-center justify-center mb-2 w-full overflow-hidden">
-                <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
-                    >👍</div>
-                  ))}
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div
-                      key={i + 100}
-                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
-                    >👍</div>
-                  ))}
-                </Marquee>
-              </div>
-              <div className="font-bold text-base text-[#532c56] text-center leading-tight">Want to <br />stand out!</div>
-            </div>
-            {/* Monetize card (rectangle) */}
-            <div className="rounded-2xl shadow-md p-4 flex flex-col items-start h-full justify-center" style={{ backgroundColor: '#9fcdbc' }}>
-              <div className="font-bold text-base text-[#532c56] mb-1">Build a portfolio that showcases your creativity and eco-consciousness.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Animations */}
-      <style>{`
-        @keyframes slide-arrows {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-slide-arrows {
-          animation: slide-arrows 6s linear infinite;
-        }
-        @keyframes infinite-slide-icons {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-infinite-slide-icons {
-          animation: infinite-slide-icons 5s linear infinite;
-        }
-      `}</style>
-    </section>
-  );
-}
+
 
 function SlantedBanner() {
   return (
@@ -189,7 +91,7 @@ function SlantedBanner() {
 
 function SneakPeekBanner() {
   return (
-    <div className="w-full mt-12 flex justify-center items-center">
+    <div className="w-full mt-8 md:mt-12 flex justify-center items-center">
       <div
         className="w-full"
         style={{
@@ -201,12 +103,12 @@ function SneakPeekBanner() {
         <div className="w-full" style={{ paddingTop: '12px' }}>
           <div className="w-full h-0.5 bg-white opacity-70" />
         </div>
-        <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
-          <div className="text-white text-4xl md:text-5xl font-bold mb-10" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>
+        <div className="flex flex-col items-center justify-center py-8 md:py-16 px-4 text-center">
+          <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 px-2" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>
             Sneak Peek Into The Internship
           </div>
-          <div className="flex justify-center w-full">
-            <div className="rounded-2xl overflow-hidden shadow-lg mx-auto" style={{ maxWidth: 640, width: '100%' }}>
+          <div className="flex justify-center w-full px-2">
+            <div className="rounded-2xl overflow-hidden shadow-lg mx-auto w-full" style={{ maxWidth: 640 }}>
               <iframe
                 width="100%"
                 height="360"
@@ -215,7 +117,7 @@ function SneakPeekBanner() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="w-full h-[240px] md:h-[360px]"
+                className="w-full h-[200px] sm:h-[240px] md:h-[360px]"
               ></iframe>
             </div>
           </div>
@@ -243,12 +145,12 @@ function NextSneakPeekBanner() {
         <div className="w-full" style={{ paddingTop: '12px' }}>
           <div className="w-full h-0.5 bg-white opacity-70" />
         </div>
-        <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
-          <div className="text-white text-4xl md:text-5xl font-bold mb-10" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>
+        <div className="flex flex-col items-center justify-center py-8 md:py-16 px-4 text-center">
+          <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-10 px-2" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>
             Still not convinced?
           </div>
-          <div className="flex justify-center w-full">
-            <div className="rounded-2xl overflow-hidden shadow-lg mx-auto" style={{ maxWidth: 640, width: '100%' }}>
+          <div className="flex justify-center w-full px-2">
+            <div className="rounded-2xl overflow-hidden shadow-lg mx-auto w-full" style={{ maxWidth: 640 }}>
               <iframe
                 width="100%"
                 height="360"
@@ -257,7 +159,7 @@ function NextSneakPeekBanner() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="w-full h-[240px] md:h-[360px]"
+                className="w-full h-[200px] sm:h-[240px] md:h-[360px]"
               ></iframe>
             </div>
           </div>
@@ -325,12 +227,12 @@ function CurriculumSection() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16">
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    <section className="w-full flex flex-col items-center justify-center py-8 md:py-16 px-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start">
         {/* Left: Sticky animated icon and heading */}
         <StickyBox offsetTop={120} offsetBottom={40} className="h-full">
-          <div className="flex flex-col items-center justify-center md:items-start md:justify-start sticky top-32">
-            <div className="text-2xl md:text-3xl font-medium text-[#532c56] text-center md:text-left mb-2">Self-paced modules, watch anytime, anywhere.</div>
+          <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start sticky top-32 mb-8 lg:mb-0">
+            <div className="text-xl sm:text-2xl md:text-3xl font-medium text-[#532c56] text-center lg:text-left mb-2 px-2">Self-paced modules, watch anytime, anywhere.</div>
             <svg height="16" width="220" className="mb-4" viewBox="0 0 220 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10" stroke="#53a184" strokeWidth="3" fill="none" />
             </svg>
@@ -339,24 +241,32 @@ function CurriculumSection() {
               animationData={animationData}
               loop
               autoplay
-              style={{ width: 264, height: 264 }}
+              style={{ width: 200, height: 200 }}
+              className="hidden lg:block"
+            />
+            <Lottie
+              animationData={animationData}
+              loop
+              autoplay
+              style={{ width: 150, height: 150 }}
+              className="block lg:hidden"
             />
           </div>
         </StickyBox>
         {/* Right: Accordion */}
-        <Accordion.Root type="single" collapsible className="flex flex-col gap-4 w-full">
+        <Accordion.Root type="single" collapsible className="flex flex-col gap-3 md:gap-4 w-full">
           {modules.map((mod, i) => (
             <Accordion.Item key={i} value={mod.title} className={`rounded-2xl border overflow-hidden ${mod.color}`} style={{ borderColor: '#53a184' }} >
               <Accordion.Header>
-                <Accordion.Trigger className="flex justify-between items-center w-full px-6 py-6 text-left cursor-pointer group focus:outline-none">
+                <Accordion.Trigger className="flex justify-between items-center w-full px-4 md:px-6 py-4 md:py-6 text-left cursor-pointer group focus:outline-none">
                   <div>
                     <div className="uppercase text-xs tracking-widest text-[#532c56] opacity-80 mb-1">{mod.subtitle}</div>
-                    <div className="text-2xl font-bold text-[#532c56]">{mod.title}</div>
+                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#532c56]">{mod.title}</div>
                   </div>
-                  <span className="text-3xl text-[#532c56] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
+                  <span className="text-2xl md:text-3xl text-[#532c56] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
                 </Accordion.Trigger>
               </Accordion.Header>
-              <Accordion.Content className="px-6 pb-6 text-[#532c56] text-base animate-fade-in">
+              <Accordion.Content className="px-4 md:px-6 pb-4 md:pb-6 text-[#532c56] text-sm md:text-base animate-fade-in">
                 {mod.content}
               </Accordion.Content>
             </Accordion.Item>
@@ -375,30 +285,31 @@ function CurriculumSection() {
 
 function FoundersCollaborationSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center mt-16 mb-16">
+    <section className="w-full flex flex-col items-center justify-center mt-8 md:mt-16 mb-8 md:mb-16">
       <div className="w-full max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#532c56] mb-4">Meet the Founders</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#532c56] mb-3 md:mb-4 px-2">Meet the Founders</h2>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             Three passionate entrepreneurs coming together to bring you the ultimate sustainable branding experience
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 min-h-[450px]">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-16 min-h-[350px] md:min-h-[450px]">
           {/* First Founder Card */}
           <div className="w-full lg:w-auto flex justify-center">
-            <div className="w-[320px] h-[450px]">
+            <div className="w-[280px] sm:w-[320px] h-[400px] sm:h-[450px]">
               <ProfileCard
                 name="Mayank Nagori"
                 title="Founder & CEO"
                 handle="mayanknagori"
-                status="Online"
+                status="LinkedIn  "
                 contactText="Connect"
-                avatarUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/mayank_nagori.png"
+                avatarUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754112154/Package_Registration_6_k6hgxh.png"
+                socialIconUrl="https://media.licdn.com/dms/image/v2/C4E03AQGosyjmynOc5A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517470941882?e=1756944000&v=beta&t=233TtMaovExSthOa3FoRpY6SELS5B1DVtDO3rykzm0o"
+                linkedinUrl="https://www.linkedin.com/in/mayank-b-nagori-52084491/"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Mayank clicked')}
                 avatarSize="75%"
                 miniAvatarSize="40px"
                 iconUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png"
@@ -408,18 +319,19 @@ function FoundersCollaborationSection() {
 
           {/* Second Founder Card */}
           <div className="w-full lg:w-auto flex justify-center">
-            <div className="w-[320px] h-[450px]">
+            <div className="w-[280px] sm:w-[320px] h-[400px] sm:h-[450px]">
               <ProfileCard
                 name="Bhuvan Nagori"
                 title="Co-Founder & CTO"
                 handle="bhuvannagori"
-                status="Online"
+                status="LinkedIn"
                 contactText="Connect"
-                avatarUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/bhuvan_nagori.png"
+                avatarUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754114779/Package_Registration_5_v01vc3.svg"
+                socialIconUrl="https://media.licdn.com/dms/image/v2/D5603AQG8UzGTm41Edg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1705389002805?e=1756944000&v=beta&t=c4Ziv3cGxEdRWwmDmRY4gLzmrtktNSsDGW1eXeV43Ok"
+                linkedinUrl="https://www.linkedin.com/in/bhuvan-nagori-7640501b4/"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Bhuvan clicked')}
                 avatarSize="75%"
                 miniAvatarSize="40px"
                 iconUrl="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png"
@@ -543,182 +455,38 @@ function CourseInstructorsSection() {
   );
 }
 
-function StudentTestimonialsSection() {
-  // Placeholder avatars and testimonials
-  const avatars = [
-    'https://randomuser.me/api/portraits/men/32.jpg',
-    'https://randomuser.me/api/portraits/men/33.jpg',
-    'https://randomuser.me/api/portraits/men/34.jpg',
-    'https://randomuser.me/api/portraits/women/35.jpg',
-    'https://randomuser.me/api/portraits/women/36.jpg',
-    'https://randomuser.me/api/portraits/men/37.jpg',
-  ];
-  const testimonials = [
-    {
-      text: 'This internship opened my eyes to the power of sustainable branding. Working on GudGum’s mission to eliminate plastic waste was inspiring and impactful!',
-      name: 'Aisha Sharma',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-      stats: [
-        { value: '3X', label: 'Project Impact' },
-        { value: '5+', label: 'Eco-Campaigns' },
-        { value: '1', label: 'Digital Badge Earned' }
-      ]
-    },
-    {
-      text: 'I learned how to craft compelling visuals that tell an eco-friendly story. GudGum’s vision is a game-changer for the planet.',
-      name: 'Rahul Verma',
-      avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-      stats: [
-        { value: '40%', label: 'Increase in Awareness' },
-        { value: '2', label: 'Design Projects' },
-        { value: '3K+', label: 'Social Shares' }
-      ]
-    },
-    {
-      text: 'The hands-on experience with real environmental issues made me rethink branding. I’m proud to contribute to a plastic-free future!',
-      name: 'Priya Menon',
-      avatar: 'https://randomuser.me/api/portraits/women/48.jpg',
-      stats: [
-        { value: '85%', label: 'Sustainability Skills' },
-        { value: '1', label: 'Intern Project' },
-        { value: '100%', label: 'Badge Earned' }
-      ]
-    },
-    // Generate an extra testimonial for variety
-    {
-      text: "GudGum's internship not only improved my design skills but helped my school become plastic-free! Highly recommended.",
-      name: "Vikash Rao",
-      avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
-      stats: [
-        { value: '1', label: 'School Eco-Project' },
-        { value: '100%', label: 'Student Satisfaction' },
-        { value: '200+', label: 'Impact Reach' }
-      ]
-    }
-  ];
 
-  return (
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-transparent">
-      {/* Top Row: Banner left, Avatars right */}
-      <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
-        {/* Banner left */}
-        <div className="flex flex-col items-center md:items-start flex-shrink-0" style={{ minWidth: 220 }}>
-          <div className="bg-[#53a184] text-white rounded-2xl px-8 py-4 mb-2 shadow-lg text-left flex flex-col items-start justify-center" style={{ fontFamily: 'inherit' }}>
-            <span className="text-4xl font-bold">2,937+</span>
-            <span className="text-xl font-semibold mt-1" style={{ fontFamily: 'Roasted Chicken, cursive' }}>
-              students have taken this course!
-            </span>
-          </div>
-        </div>
-        {/* Avatars right */}
-        <div className="flex gap-12 flex-nowrap justify-end w-full md:w-auto">
-          {avatars.map((src, i) => (
-            <div key={i} className="w-16 h-16 rounded-full border-4 border-white shadow-lg relative overflow-hidden flex items-center justify-center animate-zoom-in-out" style={{ backgroundColor: '#9fcdbc' }}>
-              <img src={src} alt="avatar" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#000" fillOpacity="0.3" /><polygon points="16,13 28,20 16,27" fill="#fff" /></svg>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Carousel */}
-      <div className="w-full max-w-5xl mx-auto relative">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          spaceBetween={32}
-          slidesPerView={3}
-          navigation
-          pagination={{ clickable: true }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            640: { slidesPerView: 1 },
-            1024: { slidesPerView: 2 },
-            1280: { slidesPerView: 3 },
-          }}
-        >
-          {testimonials.map((t, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="rounded-3xl shadow-lg p-5 flex flex-col h-full min-h-[420px] relative" style={{ backgroundColor: '#9fcdbc', backgroundImage: 'radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)', backgroundSize: '18px 18px' }}>
-                {/* Top: Description */}
-                <div className="flex-1 flex flex-col justify-start">
-                  <div className="text-[#532c56] text-lg font-medium">{t.text}</div>
-                </div>
-                {/* Bottom: User info, separator, insights */}
-                <div className="flex flex-col space-y-0 w-full mt-6">
-                  <div className="flex gap-3 min-h-[56px] items-center">
-                    <img src={t.avatar} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-white shadow" />
-                    <span className="font-bold text-[#532c56] text-lg">{t.name}</span>
-                  </div>
-                  <div className="w-full flex justify-center my-3">
-                    <div className="h-0.5 w-11/12 bg-[#bcd2e6] rounded-full" />
-                  </div>
-                  <div className="flex justify-between gap-4 w-full">
-                    {t.stats.map((s, i) => (
-                      <div key={i} className="flex flex-col items-center flex-1">
-                        <span className="text-[#111] font-bold text-xl">{s.value}</span>
-                        <span className="text-xs text-[#532c56] text-center font-medium">{s.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        {/* Swiper pagination will be styled below */}
-        <style>{`
-          .swiper-pagination {
-            position: static !important;
-            margin-top: 32px;
-            display: flex;
-            justify-content: center;
-          }
-        `}</style>
-      </div>
-      <style>{`
-        @keyframes zoomInOut {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.13); }
-        }
-        .animate-zoom-in-out {
-          animation: zoomInOut 2.8s ease-in-out infinite;
-        }
-      `}</style>
-    </section>
-  );
-}
 
 function OurPromiseSection() {
   // Placeholder badge image (replace with your actual badge if available)
-  const badgeImg = 'https://framerusercontent.com/images/B8LOfz4fDe6nrnYG0lt4E6KHUM.png'; // Use your badge image URL
+  const badgeImg = 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1754126899/Package_Registration_9_pcmzjm.svg'; // Use your badge image URL
   return (
-    <section className="w-full flex flex-col items-center justify-center py-12 bg-transparent scale-[0.8]">
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-0">
+    <section className="w-full flex flex-col items-center justify-center py-8 md:py-12 bg-transparent px-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-0">
         {/* Left: Badge */}
         <div className="flex justify-center items-center">
           <div className="relative flex flex-col items-center">
-            <img src={badgeImg} alt="Our Promise Badge" className="w-72 h-72 object-contain drop-shadow-xl animate-zoom-in-out" style={{ borderRadius: '32px' }} />
+            <img src={badgeImg} alt="Our Promise Badge" className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 object-contain drop-shadow-xl animate-zoom-in-out" style={{ borderRadius: '24px' }} />
           </div>
         </div>
         {/* Right: Text */}
         <div className="flex flex-col items-start justify-center">
-          <div className="text-3xl md:text-4xl font-semibold text-[#532c56] mb-6 leading-tight">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#532c56] mb-4 md:mb-6 leading-tight px-2">
             No-nonsense Approach.<br />
             <span className="text-[#53a184]">Practical Delivery.</span><br />
             Risk-free Investment.
           </div>
-          <div className="mb-4">
-            <span className="text-[#53a184] font-bold text-lg">Lifetime Access</span>
-            <span className="block text-[#222] text-base">Get access forever on a one-time payment and watch anytime, anywhere as per your convenience.</span>
+          <div className="mb-3 md:mb-4">
+            <span className="text-[#53a184] font-bold text-base md:text-lg">Lifetime Access</span>
+            <span className="block text-[#222] text-sm md:text-base">Get access forever on a one-time payment and watch anytime, anywhere as per your convenience.</span>
           </div>
-          <div className="mb-4">
-            <span className="text-[#53a184] font-bold text-lg">100% Refund Policy</span>
-            <span className="block text-[#222] text-base">Cancel anytime within 14 days of purchase and get a full refund, no questions asked.</span>
+          <div className="mb-3 md:mb-4">
+            <span className="text-[#53a184] font-bold text-base md:text-lg">100% Refund Policy</span>
+            <span className="block text-[#222] text-sm md:text-base">Cancel anytime within 14 days of purchase and get a full refund, no questions asked.</span>
           </div>
-          <div className="mb-4">
-            <span className="text-[#53a184] font-bold text-lg">Free Upgrades</span>
-            <span className="block text-[#222] text-base">Gain all future updates, additions and changes made to the course at no additional cost.</span>
+          <div className="mb-3 md:mb-4">
+            <span className="text-[#53a184] font-bold text-base md:text-lg">Free Upgrades</span>
+            <span className="block text-[#222] text-sm md:text-base">Gain all future updates, additions and changes made to the course at no additional cost.</span>
           </div>
         </div>
       </div>
@@ -786,24 +554,24 @@ function PricingPlansSection() {
     },
   ];
   return (
-    <section className="w-full flex flex-col items-center justify-center py-20 bg-transparent">
-      <div className="w-full flex flex-col items-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#532c56] text-center">Pricing Plans</h2>
+    <section className="w-full flex flex-col items-center justify-center py-12 md:py-20 bg-transparent px-4">
+      <div className="w-full flex flex-col items-center mb-8 md:mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#532c56] text-center px-2">Pricing Plans</h2>
         <svg height="16" width="220" className="mt-1" viewBox="0 0 220 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10" stroke="#53a184" strokeWidth="3" fill="none" />
         </svg>
       </div>
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {plans.map((plan, i) => (
           <div
             key={plan.name}
             className={
-              `relative flex flex-col items-center rounded-2xl border transition-all duration-200 shadow-lg px-8 py-10 bg-white scale-[0.99] ` +
+              `relative flex flex-col items-center rounded-2xl border transition-all duration-200 shadow-lg px-4 sm:px-6 md:px-8 py-6 md:py-10 bg-white scale-[0.99] ` +
               (plan.highlight
                 ? 'bg-gradient-to-br from-[#532c56] to-[#1a2a4f] text-white border-blue-200 z-10 scale-105 shadow-2xl'
                 : 'border-blue-100 text-[#532c56] bg-white')
             }
-            style={{ minHeight: 560, boxShadow: plan.highlight ? '0 8px 32px 0 rgba(0,0,0,0.12)' : undefined }}
+            style={{ minHeight: 480, boxShadow: plan.highlight ? '0 8px 32px 0 rgba(0,0,0,0.12)' : undefined }}
           >
             {/* Ribbon */}
             {plan.ribbon && (
@@ -812,24 +580,24 @@ function PricingPlansSection() {
               </div>
             )}
             {/* Icon */}
-            <div className={plan.highlight ? 'text-3xl mb-3' : 'text-3xl mb-3'} style={{ color: plan.highlight ? 'white' : '#53a184' }}>{plan.icon}</div>
+            <div className={plan.highlight ? 'text-2xl md:text-3xl mb-3' : 'text-2xl md:text-3xl mb-3'} style={{ color: plan.highlight ? 'white' : '#53a184' }}>{plan.icon}</div>
             {/* Plan Name */}
-            <div className={plan.highlight ? 'text-lg font-bold mb-1 text-white' : 'text-lg font-bold mb-1 text-[#532c56]'}>{plan.name}</div>
-            <div className={plan.highlight ? 'text-sm mb-4 text-white/80' : 'text-sm mb-4 text-[#888]'}>{plan.subtitle}</div>
+            <div className={plan.highlight ? 'text-base md:text-lg font-bold mb-1 text-white' : 'text-base md:text-lg font-bold mb-1 text-[#532c56]'}>{plan.name}</div>
+            <div className={plan.highlight ? 'text-xs md:text-sm mb-4 text-white/80' : 'text-xs md:text-sm mb-4 text-[#888]'}>{plan.subtitle}</div>
             {/* Price */}
-            <div className={plan.highlight ? 'text-3xl font-bold mb-6 text-white' : 'text-3xl font-bold mb-6 text-[#532c56]'}>{plan.price}</div>
+            <div className={plan.highlight ? 'text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white' : 'text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#532c56]'}>{plan.price}</div>
             {/* Features */}
-            <ul className="w-full flex-1 flex flex-col gap-1 mb-6">
+            <ul className="w-full flex-1 flex flex-col gap-1 mb-4 md:mb-6">
               {plan.features.map((f, idx) => (
                 <li key={f.text} className={
-                  'flex items-center gap-2 text-sm ' +
+                  'flex items-center gap-2 text-xs md:text-sm ' +
                   (f.available
                     ? (plan.highlight ? 'text-white' : 'text-[#532c56]')
                     : (plan.highlight ? 'text-white/50' : 'text-[#bbb] line-through'))
                 }>
                   {f.available
-                    ? <span className="text-green-500 text-lg">✔</span>
-                    : <span className="text-red-400 text-lg">✖</span>
+                    ? <span className="text-green-500 text-base md:text-lg">✔</span>
+                    : <span className="text-red-400 text-base md:text-lg">✖</span>
                   }
                   {f.text}
                 </li>
@@ -838,7 +606,7 @@ function PricingPlansSection() {
             {/* Button */}
             <button
               className={
-                'w-full rounded-full py-3 text-base font-bold transition-all duration-200 ' +
+                'w-full rounded-full py-2 md:py-3 text-sm md:text-base font-bold transition-all duration-200 ' +
                 (plan.highlight
                   ? 'bg-white text-[#532c56] hover:bg-[#9fcdbc]'
                   : 'text-white hover:bg-[#9b53a1]')
@@ -948,35 +716,39 @@ function FAQSection() {
     },
   ];
   return (
-    <section className="w-full min-h-[600px] py-24 px-2 md:px-0 flex flex-col items-center justify-center bg-white relative" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}>
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <section className="w-full min-h-[600px] py-12 md:py-24 px-4 flex flex-col items-center justify-center bg-white relative" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}>
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* Sticky Heading */}
         <StickyBox offsetTop={120} offsetBottom={40}>
-          <div className="flex flex-col items-start">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#532c56] mb-2">Frequently Asked<br />Questions</h2>
+          <div className="flex flex-col items-start mb-8 lg:mb-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#532c56] mb-2 px-2">Frequently Asked<br />Questions</h2>
             <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#53a184" strokeWidth="3" fill="none" />
             </svg>
           </div>
         </StickyBox>
         {/* Accordion */}
-        <Accordion.Root type="single" collapsible className="flex flex-col gap-4 w-full">
-          {faqs.map((faq, i) => (
-            <Accordion.Item key={i} value={faq.title} className={`rounded-2xl border overflow-hidden`} style={{ borderColor: '#53a184', backgroundColor: '#9fcdbc' }} >
+        <Accordion.Root type="single" collapsible className="flex flex-col gap-3 md:gap-4 w-full">
+          {faqs.map((faq, i) => {
+            const colorClasses = ['bg-cyan-100', 'bg-yellow-50', 'bg-blue-100'];
+            const bgColor = colorClasses[i % colorClasses.length];
+            return (
+              <Accordion.Item key={i} value={faq.title} className={`rounded-2xl border overflow-hidden ${bgColor}`} style={{ borderColor: '#53a184' }} >
               <Accordion.Header>
-                <Accordion.Trigger className="flex justify-between items-center w-full px-6 py-6 text-left cursor-pointer group focus:outline-none">
+                <Accordion.Trigger className="flex justify-between items-center w-full px-4 md:px-6 py-4 md:py-6 text-left cursor-pointer group focus:outline-none">
                   <div className="flex flex-col items-start">
-                    {faq.icon}
-                    <div className="text-2xl text-black font-semibold">{faq.title}</div>
+                    <div className="w-6 h-6 md:w-8 md:h-8 mb-2">{faq.icon}</div>
+                    <div className="text-lg sm:text-xl md:text-2xl text-black font-semibold">{faq.title}</div>
                   </div>
-                  <span className="text-3xl text-[#532c56] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
+                  <span className="text-2xl md:text-3xl text-[#532c56] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
                 </Accordion.Trigger>
               </Accordion.Header>
-              <Accordion.Content className="px-6 pb-6 text-[#532c56] text-base animate-fade-in">
+              <Accordion.Content className="px-4 md:px-6 pb-4 md:pb-6 text-[#532c56] text-sm md:text-base animate-fade-in">
                 {faq.content}
               </Accordion.Content>
             </Accordion.Item>
-          ))}
+            );
+          })}
         </Accordion.Root>
         <style>{`
           @keyframes fade-in { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: none; } }
@@ -989,32 +761,24 @@ function FAQSection() {
 
 function FeatureCarouselSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-transparent">
-      <div className="w-full flex flex-col items-center mb-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#532c56] text-center">About Gud Gum</h2>
+    <section className="w-full flex flex-col items-center justify-center py-8 md:py-16 bg-transparent px-4">
+      <div className="w-full flex flex-col items-center mb-6 md:mb-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#532c56] text-center px-2">About Gud Gum</h2>
         <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#53a184" strokeWidth="3" fill="none" />
         </svg>
       </div>
       <div className="w-full max-w-5xl mx-auto">
-        <div className="rounded-[34px] bg-neutral-700 p-2">
-          <div className="relative z-10 grid w-full gap-8 rounded-[28px] bg-neutral-950 p-2">
+        <div className="rounded-[24px] md:rounded-[34px] bg-neutral-700 p-1 md:p-2">
+          <div className="relative z-10 grid w-full gap-4 md:gap-8 rounded-[20px] md:rounded-[28px] bg-neutral-950 p-1 md:p-2">
             <FeatureCarousel
               title="Interactive Course Features"
               description="Experience the comprehensive learning journey with hands-on projects and expert guidance"
-              step1img1Class="pointer-events-none w-[50%] border border-stone-100/10 transition-all duration-500 dark:border-stone-700/50 max-md:scale-[160%] max-md:rounded-[24px] rounded-[24px] left-[25%] top-[57%] md:left-[35px] md:top-[29%] md:group-hover:translate-y-2"
-              step1img2Class="pointer-events-none w-[60%] border border-stone-100/10 dark:border-stone-700/50 transition-all duration-500 overflow-hidden max-md:scale-[160%] rounded-2xl max-md:rounded-[24px] left-[69%] top-[53%] md:top-[21%] md:left-[calc(50%+35px+1rem)] md:group-hover:-translate-y-6"
-              step2img1Class="pointer-events-none w-[50%] rounded-t-[24px] overflow-hidden border border-stone-100/10 transition-all duration-500 dark:border-stone-700 max-md:scale-[160%] left-[25%] top-[69%] md:left-[35px] md:top-[30%] md:group-hover:translate-y-2"
-              step2img2Class="pointer-events-none w-[40%] rounded-t-[24px] border border-stone-100/10 dark:border-stone-700 transition-all duration-500 rounded-2xl overflow-hidden max-md:scale-[140%] left-[70%] top-[53%] md:top-[25%] md:left-[calc(50%+27px+1rem)] md:group-hover:-translate-y-6"
-              step3imgClass="pointer-events-none w-[90%] border border-stone-100/10 dark:border-stone-700 rounded-t-[24px] transition-all duration-500 overflow-hidden left-[5%] top-[50%] md:top-[30%] md:left-[68px]"
-              step4imgClass="pointer-events-none w-[90%] border border-stone-100/10 dark:border-stone-700 rounded-t-[24px] transition-all duration-500 overflow-hidden left-[5%] top-[50%] md:top-[30%] md:left-[68px]"
               image={{
-                step1light1: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_1_1.png",
-                step1light2: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_1_2.png",
-                step2light1: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_2_1.png",
-                step2light2: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_2_2.png",
-                step3light: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_3.png",
-                step4light: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1753775549/gudgum_feature_4.png",
+                image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1754116268/GudGum_-_1_wcywzd.svg",
+                step2Image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1754121019/TheirProduct_sre4pw.svg",
+                step3Image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1754122973/Package_Registration_7_zixca7.svg",
+                step4Image: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1754122973/Package_Registration_7_zixca7.svg",
                 alt: "GudGum Course Features",
               }}
               bgClass="bg-gradient-to-tr from-neutral-900/90 to-neutral-800/90"
@@ -1026,14 +790,138 @@ function FeatureCarouselSection() {
   );
 }
 
+function TestimonialsSection() {
+  const reviews = [
+    {
+      name: "Aisha Sharma",
+      username: "@aisha_sharma",
+      body: "This internship opened my eyes to the power of sustainable branding. Working on GudGum's mission to eliminate plastic waste was inspiring and impactful!",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      name: "Rahul Verma",
+      username: "@rahul_verma",
+      body: "I learned how to craft compelling visuals that tell an eco-friendly story. GudGum's vision is a game-changer for the planet.",
+      img: "https://randomuser.me/api/portraits/men/45.jpg",
+    },
+    {
+      name: "Priya Menon",
+      username: "@priya_menon",
+      body: "The hands-on experience with real environmental issues made me rethink branding. I'm proud to contribute to a plastic-free future!",
+      img: "https://randomuser.me/api/portraits/women/48.jpg",
+    },
+    {
+      name: "Vikash Rao",
+      username: "@vikash_rao",
+      body: "GudGum's internship not only improved my design skills but helped my school become plastic-free! Highly recommended.",
+      img: "https://randomuser.me/api/portraits/men/34.jpg",
+    },
+    {
+      name: "Zara Khan",
+      username: "@zara_khan",
+      body: "Creating sustainable brand strategies for GudGum taught me the importance of purpose-driven design. Amazing experience!",
+      img: "https://randomuser.me/api/portraits/women/52.jpg",
+    },
+    {
+      name: "Arjun Patel",
+      username: "@arjun_patel",
+      body: "The eco-friendly packaging design project was challenging but rewarding. GudGum's commitment to sustainability is inspiring.",
+      img: "https://randomuser.me/api/portraits/men/38.jpg",
+    },
+    {
+      name: "Meera Singh",
+      username: "@meera_singh",
+      body: "Working on GudGum's social media campaigns helped me understand how to communicate environmental messages effectively.",
+      img: "https://randomuser.me/api/portraits/women/56.jpg",
+    },
+    {
+      name: "Karan Malhotra",
+      username: "@karan_malhotra",
+      body: "The internship gave me real-world experience in sustainable marketing. GudGum's mission resonates with my values.",
+      img: "https://randomuser.me/api/portraits/men/42.jpg",
+    },
+    {
+      name: "Ananya Reddy",
+      username: "@ananya_reddy",
+      body: "I learned to create compelling content that promotes eco-friendly products. GudGum's approach is innovative and necessary.",
+      img: "https://randomuser.me/api/portraits/women/60.jpg",
+    },
+    {
+      name: "Rohan Gupta",
+      username: "@rohan_gupta",
+      body: "The hands-on projects with GudGum taught me how to balance creativity with environmental responsibility. Great learning experience!",
+      img: "https://randomuser.me/api/portraits/men/46.jpg",
+    },
+  ];
+
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
+
+  const ReviewCard = ({
+    img,
+    name,
+    username,
+    body,
+  }) => {
+    return (
+      <figure
+        className={cn(
+          "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+          // light styles
+          "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+          // dark styles
+          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        )}
+      >
+        <div className="flex flex-row items-center gap-2">
+          <img className="rounded-full" width="32" height="32" alt="" src={img} />
+          <div className="flex flex-col">
+            <figcaption className="text-sm font-medium dark:text-white">
+              {name}
+            </figcaption>
+            <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          </div>
+        </div>
+        <blockquote className="mt-2 text-sm">{body}</blockquote>
+      </figure>
+    );
+  };
+
+  return (
+    <section className="w-full flex flex-col items-center justify-center py-16 bg-transparent px-4">
+      <div className="w-full flex flex-col items-center mb-6 md:mb-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#532c56] text-center px-2">What Our Students Say</h2>
+        <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#53a184" strokeWidth="3" fill="none" />
+        </svg>
+      </div>
+      
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <MagicMarquee pauseOnHover className="[--duration:60s]">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </MagicMarquee>
+        <MagicMarquee reverse pauseOnHover className="[--duration:60s]">
+          {secondRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </MagicMarquee>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white"></div>
+      </div>
+    </section>
+  );
+}
+
 
 const GoodGum = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #9fcdbc, white, #90a153)' }}>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-white">
       <style>{logoAnim}</style>
       <div
-        className="w-full max-w-4xl rounded-3xl shadow-xl flex flex-col items-center relative overflow-hidden bg-white mt-8"
-        style={{ minHeight: '480px', padding: '32px 0' }}
+        className="w-full max-w-4xl rounded-3xl shadow-xl flex flex-col items-center relative overflow-hidden bg-white mt-4 md:mt-8 mx-4 md:mx-0"
+        style={{ minHeight: '400px', padding: '24px 0' }}
       >
         {/* Background image only on bottom half, edge-to-edge */}
         <div
@@ -1048,20 +936,20 @@ const GoodGum = () => {
           }}
         />
         {/* Content */}
-        <div className="relative z-10 w-full flex flex-col items-center px-2 pt-6 pb-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-[#532c56] mb-2">Inside GudGum</h1>
-          <p className="text-lg md:text-xl text-center font-bold text-[#532c56] mb-3">Join the movement to combat plastic pollution and reimagine branding for a greener future.</p>
-          <div className="flex gap-6 justify-center items-center mb-5">
-            <span className="flex items-center gap-2 text-base md:text-lg text-[#532c56]"><span role="img" aria-label="enrolled">🎓</span> 500+ Student Interns</span>
-            <span className="flex items-center gap-2 text-base md:text-lg text-[#532c56]"><span role="img" aria-label="star">⭐</span> 4.95 Course Rating</span>
+        <div className="relative z-10 w-full flex flex-col items-center px-4 pt-4 pb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#532c56] mb-2 px-2">Inside GudGum</h1>
+          <p className="text-base sm:text-lg md:text-xl text-center font-bold text-[#532c56] mb-3 px-2">Join the movement to combat plastic pollution and reimagine branding for a greener future.</p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center mb-4 md:mb-5">
+            <span className="flex items-center gap-2 text-sm sm:text-base md:text-lg text-[#532c56]"><span role="img" aria-label="enrolled">🎓</span> 500+ Student Interns</span>
+            <span className="flex items-center gap-2 text-sm sm:text-base md:text-lg text-[#532c56]"><span role="img" aria-label="star">⭐</span> 4.95 Course Rating</span>
           </div>
 
           {/* LinkedIn logo, no background, animated, smaller */}
           <div className="relative z-20 flex justify-center items-center" style={{ margin: '0 0 18px 0' }}>
             <img
-              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753341296/8379992_ke4jfx.png"
+              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754109295/Package_Registration_4_wvnxbn.svg"
               alt="GoodGum Logo"
-              className="w-56 h-56 object-contain"
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain"
               style={{
                 animation: 'goodGumLogoZoom 4s ease-in-out infinite',
                 pointerEvents: 'none',
@@ -1073,32 +961,25 @@ const GoodGum = () => {
             />
           </div>
           {/* Info cards row, icon left, subtext above heading */}
-          <div className="relative z-40 w-full flex flex-wrap gap-4 justify-center items-center mt-4">
+          <div className="relative z-40 w-full flex flex-wrap gap-2 sm:gap-4 justify-center items-center mt-4">
             {infoCards.map((card, i) => (
               <div
                 key={i}
-                className="border rounded-2xl shadow p-2 flex flex-row items-center min-w-[120px] max-w-[160px] gap-2 text-white"
+                className="border rounded-2xl shadow p-2 flex flex-row items-center min-w-[100px] sm:min-w-[120px] max-w-[140px] sm:max-w-[160px] gap-2 text-white"
                 style={{ background: 'rgba(255,255,255,0.35)', borderColor: '#53a184' }}
               >
-                <span className="text-xl flex-shrink-0">{card.icon}</span>
+                <span className="text-lg sm:text-xl flex-shrink-0">{card.icon}</span>
                 <div className="flex flex-col items-start">
                   <span className="text-xs mb-0.5">{card.subtext}</span>
-                  <span className="font-bold text-sm">{card.heading}</span>
+                  <span className="font-bold text-xs sm:text-sm">{card.heading}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      {/* Problems Faced Heading */}
-      <div className="w-full flex flex-col items-center mt-12 mb-2">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#532c56] text-center">Problems Faced</h2>
-        <svg height="16" width="220" className="mt-1" viewBox="0 0 220 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10" stroke="#53a184" strokeWidth="3" fill="none" />
-        </svg>
-      </div>
-      {/* Problems Faced Section */}
-      <ProblemsFacedSection />
+     
+
       {/* Slanted Banner */}
       <SlantedBanner />
       {/* Meet the Founders Section */}
@@ -1111,8 +992,9 @@ const GoodGum = () => {
       <SneakPeekBanner />
       {/* Curriculum Section */}
       <CurriculumSection />
-      {/* Student Testimonials Section */}
-      <StudentTestimonialsSection />
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
       {/* Our Promise Section */}
       <OurPromiseSection />
       {/* Slanted Scrolling Banner */}

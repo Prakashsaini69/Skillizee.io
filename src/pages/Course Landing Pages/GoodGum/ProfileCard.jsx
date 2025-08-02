@@ -54,6 +54,8 @@ const ProfileCardComponent = ({
   contactText = "Contact",
   showUserInfo = true,
   onContactClick,
+  linkedinUrl,
+  socialIconUrl,
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
@@ -270,8 +272,12 @@ const ProfileCardComponent = ({
   );
 
   const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+    if (linkedinUrl) {
+      window.open(linkedinUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      onContactClick?.();
+    }
+  }, [linkedinUrl, onContactClick]);
 
   return (
     <div
@@ -279,6 +285,19 @@ const ProfileCardComponent = ({
       className={`pc-card-wrapper ${className}`.trim()}
       style={cardStyle}
     >
+      <style>
+        {`
+          .pc-card-wrapper .pc-avatar-content .avatar {
+            mix-blend-mode: normal !important;
+            opacity: 1 !important;
+            z-index: 0 !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+          }
+        `}
+      </style>
       <section ref={cardRef} className="pc-card">
         <div className="pc-inside">
           <div className="pc-shine" />
@@ -289,27 +308,51 @@ const ProfileCardComponent = ({
               src={avatarUrl}
               alt={`${name || "User"} avatar`}
               loading="lazy"
-              style={{ width: avatarSize, height: avatarSize, objectFit: 'cover' }}
+                            style={{
+                width: avatarSize,
+                height: avatarSize,
+                objectFit: 'cover',
+                mixBlendMode: 'normal',
+                opacity: '1',
+                zIndex: '0',
+                position: 'absolute',
+                bottom: '0',
+                left: '50%',
+                transform: 'translateX(-50%)'
+              }}
               onError={(e) => {
+                console.error('Avatar image failed to load:', avatarUrl);
                 const target = e.target;
                 target.style.display = "none";
+              }}
+              onLoad={(e) => {
+                console.log('Avatar image loaded successfully:', avatarUrl);
               }}
             />
             {showUserInfo && (
               <div className="pc-user-info">
                 <div className="pc-user-details">
                   <div className="pc-mini-avatar">
-                    <img
-                      src={miniAvatarUrl || avatarUrl}
-                      alt={`${name || "User"} mini avatar`}
-                      loading="lazy"
-                      style={{ width: miniAvatarSize, height: miniAvatarSize, objectFit: 'cover' }}
-                      onError={(e) => {
-                        const target = e.target;
-                        target.style.opacity = "0.5";
-                        target.src = avatarUrl;
-                      }}
-                    />
+                                         <img
+                       src={socialIconUrl || miniAvatarUrl || avatarUrl}
+                       alt={`${name || "User"} mini avatar`}
+                       loading="lazy"
+                       style={{ 
+                         width: miniAvatarSize, 
+                         height: miniAvatarSize, 
+                         objectFit: 'cover',
+                         borderRadius: '50%'
+                       }}
+                       onError={(e) => {
+                         console.error('Mini avatar image failed to load:', socialIconUrl || miniAvatarUrl || avatarUrl);
+                         const target = e.target;
+                         target.style.opacity = "0.5";
+                         target.src = avatarUrl;
+                       }}
+                       onLoad={(e) => {
+                         console.log('Mini avatar image loaded successfully:', socialIconUrl || miniAvatarUrl || avatarUrl);
+                       }}
+                     />
                   </div>
                   <div className="pc-user-text">
                     <div className="pc-handle">@{handle}</div>
