@@ -63,7 +63,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={s.label}
-            whileHover={{ scale: 1.18, backgroundColor: "#3b82f6", color: "#fff" }}
+            whileHover={{ scale: 1.18, backgroundColor: "#00308A", color: "#fff" }}
             whileTap={{ scale: 0.92 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

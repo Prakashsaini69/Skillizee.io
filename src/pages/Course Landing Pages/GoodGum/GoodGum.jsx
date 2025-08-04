@@ -112,7 +112,7 @@ function SneakPeekBanner() {
               <iframe
                 width="100%"
                 height="360"
-                src="https://res.cloudinary.com/dzf88tcpg/video/upload/v1753775549/productpath_finder_pkfohb.mp4"
+                src="https://share.synthesia.io/embeds/videos/eef8e0cf-4465-42ce-a1fe-56452c976b68"
                 title="Sneak Peek Into The Course"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
