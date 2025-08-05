@@ -4,6 +4,7 @@ import React, { useRef, useState, useCallback, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Play, Pause, Volume2, VolumeX } from "lucide-react"
 import { cn } from "../../lib/utils"
+import LazyImage from "../common/LazyImage"
 
 const HoverVideoPlayer = ({
   videoSrc,
@@ -174,7 +175,7 @@ const HoverVideoPlayer = ({
              {/* Thumbnail */}
        {thumbnailSrc && showThumbnail && !videoSrc.includes('vimeo.com') && !videoSrc.includes('synthesia.io') && (
          <div className="absolute inset-0 w-full h-full">
-           <img
+           <LazyImage
              src={thumbnailSrc}
              alt="Video thumbnail"
              className="w-full h-full object-cover"

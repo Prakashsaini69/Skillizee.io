@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Footer from "../../../components/common/Footer";
 import { GudgumTimeline } from "./GudgumTimeline";
@@ -7,6 +7,8 @@ import StickyBox from 'react-sticky-box';
 import * as Accordion from '@radix-ui/react-accordion';
 import { Testimonials } from "../../../components/eldoraui/testimonials";
 import { HoverVideoPlayer } from "../../../components/ui/hover-video-player";
+import Preloader from "../../../components/common/Preloader";
+import LazyImage from "../../../components/common/LazyImage";
 
 function FAQSection() {
   const faqs = [
@@ -129,10 +131,19 @@ function FAQSection() {
 }
 
 const GudgumV2 = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
     <div className="min-h-screen w-full" style={{backgroundColor: '#fffffe'}}>
-      {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center overflow-hidden">
+      <Preloader onLoadingComplete={handleLoadingComplete} />
+      {!isLoading && (
+        <>
+          {/* Hero Section */}
+          <section className="relative w-full min-h-screen flex items-center overflow-hidden">
         {/* Background Image with Gradient White Overlay */}
         <div className="absolute inset-0">
           <div 
@@ -162,7 +173,7 @@ const GudgumV2 = () => {
                 <div className="flex items-center mb-6">
                   {/* Left SVG - Beaker/Flask */}
                   <div className="w-16 h-16 mr-6 flex items-center justify-center">
-                    <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-18 h-18" />
+                    <LazyImage src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-18 h-18" />
                   </div>
                   
                   {/* Course Name Container */}
@@ -175,7 +186,7 @@ const GudgumV2 = () => {
                       
                       {/* Top Right SVG - Plant */}
                       <div className="absolute -top-4 -right-4 w-18 h-18 flex items-center justify-center">
-                        <img 
+                        <LazyImage 
                           src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754305317/Gudgum_Gum_SVG_tto8dd.svg"
                           alt="Plant decoration"
                           className="w-16 h-16"
@@ -508,7 +519,7 @@ const GudgumV2 = () => {
                   {/* Top illustration with pink background */}
                   <div className="bg-[#F59E0B] rounded-t-2xl p-6 text-center">
                     <div className="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
-                      <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-24 h-24" />
+                      <LazyImage src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-24 h-24" />
                     </div>
                   </div>
 
@@ -576,6 +587,8 @@ const GudgumV2 = () => {
       <div className="w-full relative left-1/2 right-1/2 -translate-x-1/2">
         <Footer />
       </div>
+        </>
+      )}
     </div>
   );
 };

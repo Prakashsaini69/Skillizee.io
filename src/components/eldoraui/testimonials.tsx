@@ -168,9 +168,11 @@ export function Testimonials() {
           <span className="text-purple-600 font-semibold"> our interns </span>{" "} are saying about the{" "}
           <span className="text-purple-600 font-semibold">GudGum Internship</span>
         </h3>
-        <div className="relative mt-6 max-h-screen overflow-hidden">
-          <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
-            {Array(Math.ceil(testimonials.length / 3))
+        
+        {/* Container with increased height and centered content */}
+        <div className="relative mt-6 h-[800px] overflow-hidden flex items-center justify-center">
+          <div className="h-full w-full max-w-6xl mx-auto gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
+            {Array(3) // Only show 3 rows
               .fill(0)
               .map((_, i) => (
                 <Marquee vertical key={i} className={cn({
@@ -195,6 +197,8 @@ export function Testimonials() {
                 </Marquee>
               ))}
           </div>
+          
+          {/* Gradient overlays for smooth fade effect */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-white from-20%"></div>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-white from-20%"></div>
         </div>

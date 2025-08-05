@@ -8,6 +8,89 @@
   --muted-foreground: 215.4 16.3% 46.9%;
 }
 
+/* Prevent zoom on input focus */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Ensure consistent sizing across zoom levels */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent browser zoom on input focus */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Ensure consistent viewport behavior */
+body {
+  min-width: 1024px;
+  overflow-x: auto;
+}
+
+/* Responsive container that maintains aspect ratios */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Ensure images scale properly */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent text scaling on zoom */
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Ensure consistent spacing across zoom levels */
+@media (min-resolution: 2dppx) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Testimonials section specific styles */
+#testimonials {
+  min-height: 800px;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+/* Ensure testimonials maintain consistent sizing */
+#testimonials .h-\[800px\] {
+  height: 800px !important;
+  max-height: 800px !important;
+  overflow: hidden !important;
+}
+
+/* Prevent testimonials from expanding on zoom */
+@media (max-width: 768px) {
+  #testimonials {
+    min-height: 600px;
+    max-height: 600px;
+  }
+  
+  #testimonials .h-\[800px\] {
+    height: 600px !important;
+    max-height: 600px !important;
+  }
+}
+
 @theme inline {
   --animate-move: move 5s linear infinite;
  
