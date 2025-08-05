@@ -37,14 +37,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-white font-sans md:px-0"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-black max-w-4xl">
-          Gud Gum Internship Timeline
-        </h2>
-        <p className="text-neutral-700 text-sm md:text-base max-w-sm">
-          Explore the step-by-step journey of the Gud Gum Sustainable Branding Internship. See what you'll learn and create each week!
-        </p>
-      </div>
+      
  
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
@@ -56,7 +49,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full bg-neutral-200 border border-neutral-300 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-4xl font-bold text-neutral-500">
                 {item.title}
               </h3>
             </div>

@@ -4,6 +4,8 @@
 
 :root {
   --foreground: 222.2 84% 4.9%;
+  --background: 0 0% 100%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 }
 
 @theme inline {
@@ -69,6 +71,23 @@
 
 .animate-scroll-reverse {
   animation: scroll-reverse var(--animation-duration, 300s) linear infinite;
+}
+
+/* Testimonials component styles */
+.bg-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.ring-border {
+  --tw-ring-color: hsl(var(--border));
+}
+
+.ring-offset-4 {
+  --tw-ring-offset-width: 4px;
 }
 
 .hover\:pause:hover {
