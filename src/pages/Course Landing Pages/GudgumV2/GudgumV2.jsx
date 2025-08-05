@@ -581,7 +581,9 @@ const GudgumV2 = () => {
       <Testimonials />
 
       {/* FAQ Section */}
-      <FAQSection />
+      <div className="mt-16">
+        <FAQSection />
+      </div>
 
       {/* Footer */}
       <div className="w-full relative left-1/2 right-1/2 -translate-x-1/2">

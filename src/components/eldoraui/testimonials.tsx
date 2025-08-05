@@ -170,37 +170,50 @@ export function Testimonials() {
         </h3>
         
         {/* Container with increased height and centered content */}
-        <div className="relative mt-6 h-[800px] overflow-hidden flex items-center justify-center">
-          <div className="h-full w-full max-w-6xl mx-auto gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
-            {Array(3) // Only show 3 rows
-              .fill(0)
-              .map((_, i) => (
-                <Marquee vertical key={i} className={cn({
-                  "[--duration:60s]": i === 1,
-                  "[--duration:30s]": i === 2,
-                  "[--duration:70s]": i === 3,
-                })}>
-                  {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        delay: Math.random() * 0.8,
-                        duration: 1.2,
-                      }}
-                    >
-                      <TestimonialCard {...card} />
-                    </motion.div>
+        <div className="relative mt-6 h-[800px] overflow-hidden">
+          <div className="h-full w-full max-w-6xl mx-auto px-4">
+            <div className="flex justify-center items-center h-full">
+              <div className="flex flex-col md:flex-row xl:flex-row 2xl:flex-row gap-6 w-full max-w-5xl justify-center">
+                {Array(3) // Only show 3 rows
+                  .fill(0)
+                  .map((_, i) => (
+                    <div key={i} className="flex flex-col justify-center items-center w-full md:w-1/3 xl:w-1/4 2xl:w-1/4">
+                      <div className="w-full max-w-sm mx-auto">
+                        <Marquee vertical className={cn(
+                          "w-full",
+                          {
+                            "[--duration:60s]": i === 1,
+                            "[--duration:30s]": i === 2,
+                            "[--duration:70s]": i === 3,
+                          }
+                        )}>
+                          {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0 }}
+                              whileInView={{ opacity: 1 }}
+                              viewport={{ once: true }}
+                              transition={{
+                                delay: Math.random() * 0.8,
+                                duration: 1.2,
+                              }}
+                            >
+                              <TestimonialCard {...card} />
+                            </motion.div>
+                          ))}
+                        </Marquee>
+                      </div>
+                    </div>
                   ))}
-                </Marquee>
-              ))}
+              </div>
+            </div>
           </div>
           
           {/* Gradient overlays for smooth fade effect */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-white from-20%"></div>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-white from-20%"></div>
+          
+          {/* Bottom gradient for smooth fade effect */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full bg-gradient-to-t from-white via-white/90 to-transparent"></div>
         </div>
       </div>
     </section>
