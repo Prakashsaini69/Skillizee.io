@@ -1,10 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Footer from "../../../components/common/Footer";
 import { GudgumTimeline } from "./GudgumTimeline";
 import { InteractiveHoverButton } from "../../../components/magicui/interactive-hover-button";
 import StickyBox from 'react-sticky-box';
 import * as Accordion from '@radix-ui/react-accordion';
 import { Testimonials } from "../../../components/eldoraui/testimonials";
+import { HoverVideoPlayer } from "../../../components/ui/hover-video-player";
 
 function FAQSection() {
   const faqs = [
@@ -447,6 +449,40 @@ const GudgumV2 = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Sneak Peek Section */}
+                <div className="mt-16">
+                  <div className="flex flex-col items-start mb-8">
+                    <h3 className="text-2xl font-bold mb-4" style={{color: '#272343'}}>Sneak Peek</h3>
+                    <h2 className="text-lg md:text-4xl mb-4 text-black max-w-4xl">
+                      Sneak Peak into the Internship
+                    </h2>
+                    <p className="text-neutral-700 text-sm md:text-base max-w-sm">
+                      Get a glimpse of what you'll experience during the GudGum Sustainable Branding Internship. Hover over the video to see it in action!
+                    </p>
+                  </div>
+                  
+                  <motion.div
+                    initial={{ maxWidth: "24rem" }}
+                    whileHover={{ maxWidth: "100%" }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.32, 0.72, 0, 1],
+                    }}
+                    className="group relative flex flex-col overflow-hidden rounded-lg w-full h-full bg-white shadow-sm ring-1 ring-black/5"
+                  >
+                    <HoverVideoPlayer
+                      videoSrc="https://share.synthesia.io/embeds/videos/eef8e0cf-4465-42ce-a1fe-56452c976b68"
+                      thumbnailSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                      enableControls
+                      style={{
+                        width: "100%",
+                        maxWidth: "100vw",
+                        aspectRatio: "16/9",
+                      }}
+                    />
+                  </motion.div>
                 </div>
 
                 {/* Timeline Section */}
