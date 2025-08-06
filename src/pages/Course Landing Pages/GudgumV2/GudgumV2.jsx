@@ -10,21 +10,36 @@ import { HoverVideoPlayer } from "../../../components/ui/hover-video-player";
 import Preloader from "../../../components/common/Preloader";
 import LazyImage from "../../../components/common/LazyImage";
 
+
+
+// Popup window function
+const openEnrollmentPopup = () => {
+  const url = 'https://login.skillizee.io/courses/Skillizee-x-GudGum-Internship-688093b21e8aec5c3378ca92';
+  const width = 1200;
+  const height = 800;
+  const left = (window.screen.width - width) / 2;
+  const top = (window.screen.height - height) / 2;
+  
+  const popup = window.open(
+    url,
+    'enrollmentPopup',
+    `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no`
+  );
+  
+  // Focus the popup
+  if (popup) {
+    popup.focus();
+  }
+};
+
 function FAQSection() {
   const faqs = [
-    {
-             icon: (
-         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-       ),
-      title: "How long will it take to get access to the course?",
-      content: "Your credentials to access the course will be delivered to your inbox within 5–10 minutes of your purchase. Please check your promotions/updates tab and spam folder as well.",
-    },
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
       title: "What is the time commitment required for the course?",
-      content: "The course is self-paced and will require 10+ hours. If you have the Premium version, you'll also have access to bonus content and monthly live group Q&A sessions.",
+      content: "The course is self-paced and will require 10+ hours. You'll also have access to bonus content and monthly live group Q&A sessions.",
     },
     {
       icon: (
@@ -33,26 +48,13 @@ function FAQSection() {
       title: "Which language is the course in?",
       content: "The course is available in English with subtitles. The primary language of the course is in English and there maybe some discussions and banter in Hindi. Rest assured, all videos have English subtitles.",
     },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-[#1976b2]" fill="currentColor" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1976b2"/><path d="M7 17v-7h3v7m-1.5-8.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm6.25 8.25v-3.5c0-.966-.784-1.75-1.75-1.75s-1.75.784-1.75 1.75v3.5m3.5 0v-7h3v7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-      ),
-      title: "Do I need to have a LinkedIn account for this course?",
-      content: "To make the most of this course and to action your learnings, we highly recommend you to have a LinkedIn account. The course is designed to be relevant for all LinkedIn accounts, irrespective of the number of followers or connections.",
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" stroke="#1976b2" strokeWidth="2"/><circle cx="16" cy="8" r="3" stroke="#1976b2" strokeWidth="2"/><path d="M2 20v-2a4 4 0 0 1 4-4h2m8 0h2a4 4 0 0 1 4 4v2" stroke="#1976b2" strokeWidth="2"/></svg>
-      ),
-      title: "Is this course only for individual creators?",
-      content: "Both individuals and/or a group/team of a creator(s) working together can enroll into the course.",
-    },
+    
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
       title: "Does the course come with any live interaction?",
-      content: "Yes, the premium version of this course consists of live group Q&A sessions with Ankur Warikoo.",
+      content: "Yes, this course consists of live group Q&A sessions with our mentors.",
     },
     {
       icon: (
@@ -63,17 +65,10 @@ function FAQSection() {
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2"/><circle cx="12" cy="12" r="3" stroke="#1976b2" strokeWidth="2"/></svg>
-      ),
-      title: "Will the recording of the live group Q&A sessions be available?",
-      content: "Yes, the monthly live group Q&A session recordings are available with lifetime access. The recording of the session is added to the course and available on the course platform within one week of the session.",
-    },
-    {
-      icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2"/><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2"/></svg>
       ),
       title: "What is the community experience in the course?",
-      content: "The Premium version of the course includes exclusive access to a virtual chat based community that WebVeda does not moderate. It is a student space where you can interact with other course students, ask questions, and build a network with like-minded students in this community.",
+      content: "The course includes exclusive access to a virtual chat based community that Skillizee does not moderate. It is a student space where you can interact with other course students, ask questions, and build a network with like-minded students in this community.",
     },
     {
       icon: (
@@ -87,7 +82,7 @@ function FAQSection() {
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="17" r="1" fill="#1976b2"/></svg>
       ),
       title: "How can I clear my doubts during the course, if I have any?",
-      content: "The Premium version of this course consists of monthly live group Q&A sessions with Ankur Warikoo where you can ask your questions. Additionally, you can also use the virtual course community available in the Premium version inside the course platform to ask questions and learn with other students.",
+      content: "This course consists of monthly live group Q&A sessions with our mentors where you can ask your questions. Additionally, you can also use the virtual course community available inside the course platform to ask questions and learn with other students.",
     },
   ];
   return (
@@ -172,8 +167,8 @@ const GudgumV2 = () => {
                 {/* Course Header */}
                 <div className="flex items-center mb-6">
                   {/* Left SVG - Beaker/Flask */}
-                  <div className="w-16 h-16 mr-6 flex items-center justify-center">
-                    <LazyImage src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-18 h-18" />
+                  <div className="w-20 h-20 mr-6 flex items-center justify-center">
+                    <LazyImage src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-20 h-20" />
                   </div>
                   
                   {/* Course Name Container */}
@@ -197,23 +192,26 @@ const GudgumV2 = () => {
                 </div>
 
                 {/* Course Description */}
-                <p className="text-lg mb-6" style={{color: '#2d334a'}}>
+                <p className="text-lg mb-6 text-center" style={{color: '#2d334a'}}>
                   Explore sustainable branding principles through fun, hands-on learning and real-world projects.
                 </p>
 
                 {/* Ratings and Stats */}
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="flex items-center">
-                    <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" style={{color: '#ffd700'}}>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" style={{color: '#ffd700'}}>
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     <span className="font-semibold" style={{color: '#272343'}}>4.95/5</span>
-                    <span className="text-sm ml-1" style={{color: '#2d334a'}}>(2,847 Ratings)</span>
+                    <span className="text-sm" style={{color: '#2d334a'}}>(478 Ratings)</span>
                   </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 rounded-full mr-2" style={{backgroundColor: '#ff4444'}}></div>
-                    <span className="text-sm font-semibold" style={{color: '#ff4444'}}>LIVE</span>
-                    <span className="text-sm ml-1" style={{color: '#2d334a'}}>120 Live Sessions</span>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{color: '#272343'}}>
+                      <circle cx="8" cy="8" r="3" stroke="#272343" strokeWidth="1.5"/>
+                      <circle cx="16" cy="8" r="3" stroke="#272343" strokeWidth="1.5"/>
+                      <path d="M2 20v-2a4 4 0 0 1 4-4h2m8 0h2a4 4 0 0 1 4 4v2" stroke="#272343" strokeWidth="1.5"/>
+                    </svg>
+                    <span className="text-sm" style={{color: '#2d334a'}}>2859 Students Enrolled</span>
                   </div>
                 </div>
 
@@ -223,31 +221,20 @@ const GudgumV2 = () => {
                     <div>
                       <div className="flex items-center mb-2">
                         <span className="text-white/70 line-through text-lg">₹4,999</span>
-                        <span className="text-white text-3xl font-bold ml-3">₹3,999</span>
+                        <span className="text-white text-3xl font-bold ml-3">₹2,999</span>
                       </div>
-                      <p className="text-white/80 text-sm">Price/Class ₹33.33</p>
+                    
                     </div>
-                    <button className="px-6 py-3 bg-white rounded-lg font-semibold transition-all duration-300 hover:scale-105" style={{color: '#00308A'}}>
+                    <button 
+                      className="px-6 py-3 bg-white rounded-lg font-semibold transition-all duration-300 hover:scale-105" 
+                      style={{color: '#00308A'}}
+                      onClick={openEnrollmentPopup}
+                    >
                       Enroll Now
                     </button>
                   </div>
                 </div>
 
-                {/* Additional Features */}
-                <div className="flex items-center justify-between text-sm" style={{color: '#2d334a'}}>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>10+ Hours Content</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Certificate</span>
-                  </div>
-                </div>
               </div>
             </div>
             
@@ -414,50 +401,9 @@ const GudgumV2 = () => {
 
                     {/* Right Side - Science Laboratory Graphic */}
                     <div className="w-full lg:w-1/2 flex justify-center">
-                      <div className="relative w-48 h-48">
-                        {/* Orange Molecular Model */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-                          <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none">
-                            {/* Central atom */}
-                            <circle cx="12" cy="12" r="3" fill="#F97316"/>
-                            {/* Bonds to other atoms */}
-                            <line x1="12" y1="9" x2="12" y2="6" stroke="#F97316" strokeWidth="2"/>
-                            <line x1="12" y1="15" x2="12" y2="18" stroke="#F97316" strokeWidth="2"/>
-                            <line x1="9" y1="12" x2="6" y2="12" stroke="#F97316" strokeWidth="2"/>
-                            <line x1="15" y1="12" x2="18" y2="12" stroke="#F97316" strokeWidth="2"/>
-                            {/* Connected atoms */}
-                            <circle cx="12" cy="6" r="2" fill="#F97316"/>
-                            <circle cx="12" cy="18" r="2" fill="#F97316"/>
-                            <circle cx="6" cy="12" r="2" fill="#F97316"/>
-                            <circle cx="18" cy="12" r="2" fill="#F97316"/>
-                          </svg>
-                        </div>
-
-                        {/* Purple Erlenmeyer Flask */}
-                        <div className="absolute bottom-8 right-4">
-                          <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none">
-                            <path d="M8 4h8l1.5 16.5c0 1.1-.9 2-2 2h-9c-1.1 0-2-.9-2-2L8 4z" fill="none" stroke="#8B5CF6" strokeWidth="2"/>
-                            <rect x="8" y="18" width="8" height="2" fill="#8B5CF6" opacity="0.8"/>
-                          </svg>
-                        </div>
-
-                        {/* Green Round-bottom Flask */}
-                        <div className="absolute bottom-4 left-4">
-                          <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-                            <ellipse cx="12" cy="18" rx="4" ry="2" fill="none" stroke="#10B981" strokeWidth="2"/>
-                            <path d="M8 6h8l1 12c0 1.1-.9 2-2 2h-6c-1.1 0-2-.9-2-2L8 6z" fill="none" stroke="#10B981" strokeWidth="2"/>
-                            <rect x="9" y="14" width="6" height="2" fill="#10B981" opacity="0.8"/>
-                          </svg>
-                        </div>
-
-                        {/* Red Test Tube */}
-                        <div className="absolute bottom-12 right-8">
-                          <svg className="w-6 h-8" viewBox="0 0 24 24" fill="none">
-                            <rect x="9" y="4" width="6" height="16" rx="3" fill="none" stroke="#EF4444" strokeWidth="2"/>
-                            <rect x="9" y="16" width="6" height="2" fill="#EF4444" opacity="0.8"/>
-                          </svg>
-                        </div>
-                      </div>
+                      
+                       <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754467578/handsonexpericence_tx1h6x.svg" alt="Hands On Experience" style={{width: '100%', height: '100%'}} />
+                      
                     </div>
                   </div>
                 </div>
@@ -518,24 +464,22 @@ const GudgumV2 = () => {
                 <div className="bg-white rounded-2xl shadow-xl border transform scale-90" style={{borderColor: '#e5e7eb'}}>
                   {/* Top illustration with pink background */}
                   <div className="bg-[#F59E0B] rounded-t-2xl p-6 text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-28 h-28 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
                       <LazyImage src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg" alt="GudGum Logo" className="w-24 h-24" />
                     </div>
                   </div>
 
                   {/* Live classes bar */}
                   <div className="bg-gray-200 rounded-lg p-3 mx-6 -mt-3 text-center">
-                    <span className="text-sm font-medium text-gray-900">120 </span>
-                    <span className="text-sm font-bold text-red-500">LIVE</span>
-                    <span className="text-sm font-medium text-gray-900"> 1:1 Classes</span>
+                    <span className="text-sm font-medium text-gray-900">💡 Only 120 Slots Available — Book Yours Now!</span>
+                  
                   </div>
 
                   {/* Pricing */}
                   <div className="text-center mb-6 px-6 pt-4">
-                    <div className="text-3xl font-bold text-gray-900 mb-2">$133.30</div>
-                    <div className="text-gray-600 text-sm mb-4">per month</div>
-                    <div className="text-gray-900 text-sm mb-2">4 Classes per month</div>
-                    <div className="text-gray-500 text-xs">(x USD33.33 per class)</div>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">₹2,999</div>
+                    <div className="text-gray-900 text-sm mb-2">Complete Access to All 7 Internship Modules</div>
+                    <div className="text-gray-500 text-xs">(Self-Paced | Certificate Included)</div>
                   </div>
 
                   {/* Features */}
@@ -557,7 +501,7 @@ const GudgumV2 = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                       </svg>
-                      <span className="text-sm">Ages 8-12</span>
+                      <span className="text-sm">Ages 8-16</span>
                     </div>
                   </div>
 
@@ -566,6 +510,7 @@ const GudgumV2 = () => {
                                            <InteractiveHoverButton 
                         className="w-full py-4 rounded-xl font-semibold text-lg flex justify-center items-center" 
                         style={{backgroundColor: '#8B5CF6', color: '#fffffe', borderColor: '#8B5CF6'}}
+                        onClick={openEnrollmentPopup}
                       >
                         Enroll Now
                       </InteractiveHoverButton>

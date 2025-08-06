@@ -35,7 +35,7 @@ const courseData = {
       price: 2999,
       rating: null,
       studentsEnrolled: 0,
-      link: interestFormLink,
+      link: "https://skillizee.io/store/gudgum-v2",
       // link: 'https://login.skillizee.io/courses/Gud-Gum---Internship-1752474022582-6874a1a661ef9553b3eb43da',
       gradeGroup: ['4-6', '7-12'],
       color: '#90a153', // <--- Change this to any valid CSS color

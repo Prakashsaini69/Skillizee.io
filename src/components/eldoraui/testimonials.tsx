@@ -55,102 +55,122 @@ export function TestimonialCard({ description, name, img, role, className, ...pr
 
 const testimonials = [
   {
-    name: "Priya Sharma",
-    role: "Marketing Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/women/91.jpg",
+    name: "Sneha Iyengar",
+    role: "Grade 10",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234974/c998e26464fcf80e2a31e683c6f181e1_dcsvfp.jpg",
     description: (
       <p>
-        The GudGum internship completely transformed my understanding of sustainable branding. <Highlight> I learned to create impactful campaigns that resonate with eco-conscious consumers. </Highlight>{" "} The hands-on experience was invaluable.
+        The GudGum internship completely transformed my understanding of sustainable branding. <Highlight> The hands-on experience was invaluable </Highlight>{" "}, helping me build campaigns that resonate with eco-conscious consumers.
       </p>
     ),
   },
   {
-    name: "Rahul Verma",
-    role: "Brand Strategy Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/men/12.jpg",
+    name: "Ishita Rajput",
+    role: "Grade 5",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234972/4dddcfc826925d62934cefdb6e331fd4_choonf.jpg",
     description: (
       <p>
-        Working on real sustainable branding projects gave me practical skills I couldn&apos;t learn in a classroom. <Highlight> I now understand how to balance creativity with environmental responsibility. </Highlight>{" "} Highly recommend this internship.
+        Through the internship, I learned how to design brand stories that matter. <Highlight> Eco-conscious creativity became my superpower </Highlight>{" "}, and I loved seeing how small ideas can lead to big impact.
       </p>
     ),
   },
   {
-    name: "Anjali Patel",
-    role: "Design Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/women/45.jpg",
+    name: "Kunal Desai",
+    role: "Grade 8",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234971/1b6866e21f59b354222026abd6f5bdd3_a4lpo1.jpg",
     description: (
       <p>
-        The mentorship and guidance I received during the GudGum internship were exceptional. <Highlight> I learned to design with purpose and create brands that make a positive impact. </Highlight>{" "} This experience shaped my career path.
+        I never realized how much plastic waste gum could generate. <Highlight> This internship opened my eyes to sustainable solutions </Highlight>{" "} and gave me the confidence to build campaigns with purpose.
       </p>
     ),
   },
   {
-    name: "Arjun Singh",
-    role: "Digital Marketing Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/men/83.jpg",
+    name: "Tanvi Bhargava",
+    role: "Grade 6",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234969/2ff7ed87c2d0fcaeaf1c949ace493df1_j7onci.jpg",
     description: (
       <p>
-        The internship taught me how to build authentic connections with audiences through sustainable messaging. <Highlight> I gained practical experience in digital marketing for eco-friendly brands. </Highlight>{" "} The skills I learned are directly applicable.
+        The product packaging module was my favorite. <Highlight> I discovered the joy of designing eco-friendly wrappers </Highlight>{" "}, and I now see every brand through a green lens.
       </p>
     ),
   },
   {
-    name: "Zara Khan",
-    role: "Content Strategy Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/women/1.jpg",
+    name: "Yash Singh",
+    role: "Grade 6",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234968/1e6a3a9107ae15f456b1a614db1bf03d_awa4hq.jpg",
     description: (
       <p>
-        Creating content for sustainable brands requires a unique approach. <Highlight> The GudGum internship showed me how to craft compelling narratives that drive real change. </Highlight>{" "} I feel confident in my ability to make a difference.
+        I used to think branding was all about logos. <Highlight> Now I know it's about values, impact, and planet care </Highlight>{" "}—thanks to GudGum!
       </p>
     ),
   },
   {
-    name: "Vikram Reddy",
-    role: "Social Media Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/men/5.jpg",
+    name: "Devansh Nair",
+    role: "Grade 10",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234966/c71d4d2d58891ffb17d31616d451789a_bokai0.jpg",
     description: (
       <p>
-        Managing social media for sustainable brands is challenging but rewarding. <Highlight> I learned to engage audiences authentically while promoting environmental values. </Highlight>{" "} The internship exceeded my expectations.
+        The market analysis activity was super exciting. <Highlight> It made me think like a real eco-entrepreneur </Highlight>{" "}, and now I dream of starting my own sustainable venture.
       </p>
     ),
   },
   {
-    name: "Meera Iyer",
-    role: "Brand Research Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/women/14.jpg",
+    name: "Aarav Mehta",
+    role: "Grade 5",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234965/f83755d48f5455e0250b1cb230154b0c_nap9h8.jpg",
     description: (
       <p>
-        The research skills I developed during this internship are invaluable. <Highlight> I learned to analyze market trends and consumer behavior in the sustainable space. </Highlight>{" "} This experience opened many career opportunities.
+        The storytelling aspect of the brand really stayed with me. <Highlight> I learned how purpose-driven narratives create powerful brands </Highlight>{" "} that consumers truly connect with.
       </p>
     ),
   },
   {
-    name: "Karan Malhotra",
-    role: "Creative Strategy Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/men/56.jpg",
+    name: "Riya Kapoor",
+    role: "Grade 7",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234965/2b5067a9a4c4bdd4342b3a226c579113_x1mz1t.jpg",
     description: (
       <p>
-        Working on real client projects gave me confidence in my creative abilities. <Highlight> I learned to develop strategic solutions that align with sustainable values. </Highlight>{" "} The mentorship was exceptional.
+        Exploring GudGum's challenges made the internship feel real. <Highlight> I understood how sustainability isn't always easy </Highlight>{" "}, but it's always worth pursuing.
       </p>
     ),
   },
   {
-    name: "Neha Gupta",
-    role: "Market Analysis Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/women/18.jpg",
+    name: "Simran Kaur",
+    role: "Grade 10",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234964/26c5f5db415df689733d4eaab6cc51ca_wf2yun.jpg",
     description: (
       <p>
-        Understanding the sustainable market landscape is crucial for modern branding. <Highlight> The internship provided deep insights into consumer behavior and market dynamics. </Highlight>{" "} I feel prepared for any branding challenge.
+        I loved creating a customer persona that matched my own values. <Highlight> This activity made me realize the importance of relatable branding </Highlight>{" "} in sustainability marketing.
       </p>
     ),
   },
   {
-    name: "Aditya Joshi",
-    role: "Brand Development Intern at GudGum",
-    img: "https://randomuser.me/api/portraits/men/73.jpg",
+    name: "Vivaan Joshi",
+    role: "Grade 6",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235359/f74084f7ae61c25e78f5ad33147eb7b6_vmwjje.jpg",
     description: (
       <p>
-        Building brands from the ground up requires both creativity and strategy. <Highlight> The GudGum internship taught me to balance both while maintaining sustainable principles. </Highlight>{" "} This experience was truly transformative.
+        I had never thought of chewing gum as a problem before. <Highlight> This internship completely changed my perspective on everyday products </Highlight>{" "} and the waste they create.
+      </p>
+    ),
+  },
+  {
+    name: "Ananya Dutta",
+    role: "Grade 4",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235358/26443a270dcbde7704c2d27f3c2f1adf_cphkpc.jpg",
+    description: (
+      <p>
+        Every module gave me a fresh new insight. <Highlight> The hands-on approach made it feel like I was already part of the GudGum team </Highlight>{" "} and building something meaningful.
+      </p>
+    ),
+  },
+  {
+    name: "Raghav Malhotra",
+    role: "Grade 11",
+    img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752235357/c4d85461bb1b4740bc3905f2b9e0a9c3_jlh1jl.jpg",
+    description: (
+      <p>
+        The Instagram campaign analysis was my favorite. <Highlight> I realized how sustainability can trend if marketed creatively </Highlight>{" "}—just like GudGum did!
       </p>
     ),
   },
