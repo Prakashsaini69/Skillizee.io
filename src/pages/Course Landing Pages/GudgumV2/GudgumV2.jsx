@@ -9,7 +9,7 @@ import { Testimonials } from "../../../components/eldoraui/testimonials";
 import { HoverVideoPlayer } from "../../../components/ui/hover-video-player";
 import Preloader from "../../../components/common/Preloader";
 import LazyImage from "../../../components/common/LazyImage";
-
+import { Award, Briefcase, TrendingUp } from 'lucide-react';
 
 
 // Popup window function
@@ -120,6 +120,198 @@ function FAQSection() {
           @keyframes fade-in { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: none; } }
           .animate-fade-in { animation: fade-in 0.5s; }
         `}</style>
+      </div>
+    </section>
+  );
+}
+
+// Certificate Component
+function CertificateCTA() {
+  return (
+    <div className="relative bg-white rounded-3xl shadow-2xl overflow-visible max-w-5xl w-full flex flex-col lg:flex-row transform transition-all duration-500 hover:scale-[1.01]">
+      {/* Certificate Icon on top of component */}
+      <div className="absolute -top-8 -left-8 w-32 h-32 flex items-center justify-center z-50">
+        <img
+          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754478975/certificateImage_ibomt9.png"
+          alt="Certificate Icon"
+          className="w-full h-full object-contain transform -rotate-12"
+          onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x100/FFFFFF/6B46C1?text=Cert'; }}
+        />
+      </div>
+      {/* Custom CSS for icon animations */}
+      <style>
+        {`
+        @keyframes bounce-scale {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-5px) scale(1.05); }
+        }
+
+        @keyframes rotate-fade {
+          0%, 100% { transform: rotate(0deg); opacity: 1; }
+          50% { transform: rotate(5deg); opacity: 0.8; }
+        }
+
+        .icon-bounce {
+          animation: bounce-scale 2s infinite ease-in-out;
+        }
+
+        .icon-rotate {
+          animation: rotate-fade 3s infinite ease-in-out;
+        }
+        `}
+      </style>
+
+      {/* Left Section: Animated Icons */}
+      <div className="lg:w-1/2 p-3 flex flex-col items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-700 text-white relative overflow-hidden rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none min-h-[140px] lg:min-h-[200px]">
+        {/* Abstract background pattern for visual appeal */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="h-full w-full" fill="none" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="pattern-circles" x="0" y="0" width=".7" height=".7" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+                <circle id="circle-pattern" cx="10" cy="10" r="1.5" fill="currentColor"></circle>
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+          </svg>
+        </div>
+
+        {/* Animated Icons and Text Content */}
+        <div className="relative z-10 text-center flex flex-col items-center justify-center space-y-2 pt-8 px-4 pb-2">
+          <div className="flex space-x-4">
+            <Award size={40} className="text-white icon-bounce" style={{ animationDelay: '0s' }} />
+            <Briefcase size={40} className="text-white icon-rotate" style={{ animationDelay: '0.5s' }} />
+          </div>
+          <TrendingUp size={40} className="text-white icon-bounce" style={{ animationDelay: '1s' }} />
+          <h2 className="text-lg sm:text-xl font-extrabold mt-2 leading-tight">
+            Elevate Your Career
+          </h2>
+          <p className="text-xs opacity-90">
+            Certified skills for real-world impact.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Section: Content and CTA */}
+      <div className="lg:w-1/2 p-4 sm:p-6 flex flex-col justify-center">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 leading-tight">
+          <span className="text-purple-700">Get Certified</span> with This Internship!
+        </h3>
+        <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+          Earn a valuable certificate that validates your skills and dedication. This official recognition is crucial for building a strong portfolio that stands out to potential employers.
+          <br /><br />
+          <span className="font-semibold text-purple-700">This certificate accelerates your career journey</span> - showcase your practical experience and specialized knowledge, opening doors to advanced opportunities.
+        </p>
+
+                            <button
+                      onClick={openEnrollmentPopup}
+                      className="w-full lg:w-auto px-4 py-2 text-white font-semibold text-sm rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                      style={{ backgroundColor: '#00308A' }}
+                    >
+                      Enroll and Get Certified!
+                    </button>
+        <p className="text-xs text-gray-500 mt-2 text-center lg:text-left">
+          Click to learn more about our certification process.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// Star icon component (using inline SVG as lucide-react might not be available in all environments,
+// and to ensure exact visual matching for the stars)
+const StarIcon = ({ filled }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill={filled ? "currentColor" : "none"}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`w-4 h-4 ${filled ? 'text-yellow-400' : 'text-gray-300'}`}
+  >
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+  </svg>
+);
+
+// Enrollment CTA Component
+function EnrollmentCTA() {
+  return (
+    <section className="w-full py-12 px-4 font-sans antialiased bg-white">
+      {/* Heading and Subheading - Outside the card */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">So! what are you waiting for?</h2>
+        <h3 className="text-xl md:text-2xl font-semibold text-gray-700 mb-2">Enroll in the Internship</h3>
+        <p className="text-lg text-gray-600">Approved by students and trusted by parents</p>
+      </div>
+
+      {/* Main container with gradient border effect */}
+      <div className="flex items-center justify-center">
+        <div className="relative p-0.5 rounded-3xl overflow-hidden shadow-xl
+                      bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400"> {/* Gradient border */}
+          <div className="bg-white rounded-[calc(1.5rem-2px)] p-6 md:p-10 max-w-4xl w-full text-center"> {/* Inner white content */}
+            {/* Gud Gum Internship Pricing Card */}
+            <div className="bg-white border border-blue-200 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
+
+                             {/* Left Section - GudGum Product Image */}
+               <div className="w-full md:w-1/3 flex-shrink-0 bg-[#e0f2fe] rounded-xl p-4 flex items-center justify-center overflow-hidden aspect-square">
+                 <img
+                   src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg"
+                   alt="GudGum Logo"
+                   className="w-full h-full object-contain rounded-lg"
+                   onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/200x200/4299e1/ffffff?text=Image+Error"; }}
+                 />
+               </div>
+
+              {/* Right Section - Content */}
+              <div className="flex-grow text-left space-y-3 md:space-y-4">
+                {/* Rating */}
+                <div className="flex items-center space-x-2">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon key={i} filled={i < 4.8} />
+                    ))}
+                  </div>
+                  <span className="text-gray-600 text-sm md:text-base">4.8 out of 5</span>
+                </div>
+
+                {/* Course Title */}
+                <h3 className="text-lg md:text-xl font-bold text-[#0a2540]">Gud Gum Internship</h3>
+                {/* Course Description */}
+                <p className="text-gray-700 text-sm md:text-base">
+                  Real brand experience, guaranteed.
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <span className="bg-blue-100 text-blue-700 text-xs md:text-sm px-3 py-1 rounded-full font-medium">Self-paced</span>
+                  <span className="bg-green-100 text-green-700 text-xs md:text-sm px-3 py-1 rounded-full font-medium">Live Q&A Sessions</span>
+                  <span className="bg-yellow-100 text-yellow-700 text-xs md:text-sm px-3 py-1 rounded-full font-medium">Certificate Included</span>
+                  <span className="bg-purple-100 text-purple-700 text-xs md:text-sm px-3 py-1 rounded-full font-medium">Community Access</span>
+                </div>
+              </div>
+
+              {/* Price and Button Section */}
+              <div className="flex-shrink-0 w-full md:w-auto text-center md:text-right mt-6 md:mt-0">
+                <p className="text-[#1976b2] text-xs uppercase font-semibold tracking-wider mb-1">GUDGUM INTERNSHIP</p>
+                <p className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">₹2999</p>
+                {/* Gradient at the bottom of the price */}
+                <div className="relative inline-block">
+                  <p className="text-gray-400 text-sm line-through mb-4">₹4999</p>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"></div>
+                </div>
+                <p className="text-gray-400 text-xs mb-4">One-time payment. Lifetime access.</p>
+                <button 
+                  className="bg-[#00308A] hover:bg-[#12508a] text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full md:w-auto"
+                  onClick={openEnrollmentPopup}
+                >
+                  Enroll Now
+                </button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -321,7 +513,7 @@ const GudgumV2 = () => {
                        </svg>
                      </div>
                      <div>
-                       <h3 className="text-lg font-semibold mb-3" style={{color: '#272343'}}>120 Interactive lessons</h3>
+                       <h3 className="text-lg font-semibold mb-3" style={{color: '#272343'}}>7 Interactive Modules</h3>
                        <p className="text-base" style={{color: '#2d334a'}}>Built to engage</p>
                      </div>
                    </div>
@@ -455,6 +647,11 @@ const GudgumV2 = () => {
                   </div>
                   <GudgumTimeline />
                 </div>
+
+                {/* Certificate CTA Section */}
+                <div className="mt-16">
+                  <CertificateCTA />
+                </div>
               </div>
             </div>
 
@@ -509,7 +706,7 @@ const GudgumV2 = () => {
                    <div className="px-6 pb-6">
                                            <InteractiveHoverButton 
                         className="w-full py-4 rounded-xl font-semibold text-lg flex justify-center items-center" 
-                        style={{backgroundColor: '#8B5CF6', color: '#fffffe', borderColor: '#8B5CF6'}}
+                        style={{backgroundColor: '#00308A', color: '#fffffe', borderColor: '#8B5CF6'}}
                         onClick={openEnrollmentPopup}
                       >
                         Enroll Now
@@ -524,6 +721,9 @@ const GudgumV2 = () => {
 
       {/* Testimonials Section */}
       <Testimonials />
+
+      {/* Enrollment CTA Section */}
+      <EnrollmentCTA />
 
       {/* FAQ Section */}
       <div className="mt-16">
