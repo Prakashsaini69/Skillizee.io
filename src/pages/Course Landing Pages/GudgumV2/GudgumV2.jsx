@@ -209,9 +209,6 @@ function CertificateCTA() {
                     >
                       Enroll and Get Certified!
                     </button>
-        <p className="text-xs text-gray-500 mt-2 text-center lg:text-left">
-          Click to learn more about our certification process.
-        </p>
       </div>
     </div>
   );
@@ -336,7 +333,7 @@ const GudgumV2 = () => {
           <div 
             className="w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: 'url("https://res.cloudinary.com/dpstp4ovd/image/upload/v1754305699/Package_Registration_10_jibn7s.svg")',
+              backgroundImage: 'url("https://res.cloudinary.com/dpstp4ovd/image/upload/v1754482938/Package_Registration_20_spjniw.svg")',
               backgroundPosition: 'center',
               backgroundSize: 'cover'
             }}
