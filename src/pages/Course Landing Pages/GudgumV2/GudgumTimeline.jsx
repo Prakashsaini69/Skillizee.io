@@ -189,7 +189,7 @@ export function GudgumTimeline() {
       title: (
         <div>
           <div>Module 6:</div>
-          <div>Competitive Analysis</div>
+          <div>Marketing & Competitive Analysis</div>
         </div>
       ),
       content: (
@@ -223,28 +223,28 @@ export function GudgumTimeline() {
       title: (
         <div>
           <div>Module 7:</div>
-          <div>Marketing & Future</div>
+          <div>Final Capstone Project</div>
         </div>
       ),
       content: (
         <div>
           <p className="mb-4 text-xs font-normal text-black md:text-sm">
-            Learn how GudGum shines. Discover #GudMove campaigns on Instagram and future goals like global expansion.
+            Put your learning into action! In this final module, you'll create a launch plan for GudGum, combining your research, design, and marketing ideas from previous modules. You'll present your plan as a creative pitch—just like a real brand strategist.
           </p>
           <div className="mb-4">
             <div className="flex items-center gap-2 text-xs text-black md:text-sm mb-2">
-              <span className="text-lg">🌍</span>
-              <span className="font-semibold">Key Insight:</span> 75% of sustainable products thrive online with vibrant storytelling.
+              <span className="text-lg">🌟</span>
+              <span className="font-semibold">Key Insight:</span> Great brands stand out with a clear story, strong visuals, and a smart launch strategy.
             </div>
             <div className="flex items-center gap-2 text-xs text-black md:text-sm">
               <span className="text-lg">📚</span>
-              <span className="font-semibold">Activity:</span> None (focus on marketing strategies).
+              <span className="font-semibold">Activity:</span> Capstone Project — Build and present your GudGum launch plan!
             </div>
           </div>
           <div className="w-full">
             <img
               src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754475584/Package_Registration_18_oh6etb.svg"
-              alt="GudGum Logo"
+              alt="GudGum Capstone"
               width={800}
               height={400}
               className="w-full h-32 md:h-48 lg:h-56 rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
