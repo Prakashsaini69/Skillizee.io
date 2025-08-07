@@ -13,9 +13,9 @@ export default function HeroSection() {
       colors={["#38bdf8", "#818cf8", "#c084fc", "#e879f9", "#22d3ee"]}
       backgroundFill="#fff"
     >
-      <div className="flex flex-col items-center justify-center gap-4 relative z-10">
+      <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 relative z-10 px-4 sm:px-0">
         <motion.h1
-          className="text-4xl md:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg leading-tight"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -23,7 +23,7 @@ export default function HeroSection() {
           All the <FlipWords words={["Skills", "Knowledge", "Experience"]} className="inline-block" />
         </motion.h1>
         <motion.h2
-          className="text-4xl md:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-[#00308A] text-center drop-shadow-lg leading-tight"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}

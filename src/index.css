@@ -27,8 +27,7 @@ input, textarea, select {
 
 /* Ensure consistent viewport behavior */
 body {
-  min-width: 1024px;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 /* Responsive container that maintains aspect ratios */
@@ -44,14 +43,20 @@ img {
   height: auto;
 }
 
-/* Prevent text scaling on zoom */
-@media screen and (max-width: 1200px) {
+/* Responsive font sizing */
+@media screen and (max-width: 640px) {
   html {
     font-size: 14px;
   }
 }
 
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
   html {
     font-size: 16px;
   }
@@ -66,28 +71,40 @@ img {
 
 /* Testimonials section specific styles */
 #testimonials {
-  min-height: 800px;
+  min-height: 600px;
   max-height: 800px;
   overflow: hidden;
 }
 
 /* Ensure testimonials maintain consistent sizing */
 #testimonials .h-\[800px\] {
-  height: 800px !important;
+  height: 600px !important;
   max-height: 800px !important;
   overflow: hidden !important;
 }
 
-/* Prevent testimonials from expanding on zoom */
-@media (max-width: 768px) {
+/* Responsive testimonials sizing */
+@media (min-width: 768px) {
   #testimonials {
-    min-height: 600px;
-    max-height: 600px;
+    min-height: 700px;
+    max-height: 800px;
   }
   
   #testimonials .h-\[800px\] {
-    height: 600px !important;
-    max-height: 600px !important;
+    height: 700px !important;
+    max-height: 800px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #testimonials {
+    min-height: 800px;
+    max-height: 800px;
+  }
+  
+  #testimonials .h-\[800px\] {
+    height: 800px !important;
+    max-height: 800px !important;
   }
 }
 

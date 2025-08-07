@@ -31,31 +31,31 @@ export default function CourseCard({
     <CardContainer className="inter-var">
       <CardBody
         style={{ background: color?.trim() || '#ffb300' }}
-        className="w-full sm:w-[22rem] h-auto rounded-xl p-4 border transition-all"
+        className="w-full h-auto rounded-xl p-3 sm:p-4 border transition-all"
       >
         <CardItem translateZ={100} className="w-full mb-4">
           <img
             src={image}
             alt="Course Thumbnail"
-            className="h-48 w-full object-cover rounded-lg shadow-sm group-hover/card:shadow-lg border-2 border-black"
+            className="h-40 sm:h-48 w-full object-cover rounded-lg shadow-sm group-hover/card:shadow-lg border-2 border-black"
             style={{ background: 'transparent' }}
           />
         </CardItem>
-        <CardItem translateZ={60} className="text-lg font-semibold text-white drop-shadow text-left w-full">
+        <CardItem translateZ={60} className="text-base sm:text-lg font-semibold text-white drop-shadow text-left w-full">
           {title}
         </CardItem>
-        <CardItem translateZ={40} className="text-sm text-white drop-shadow mt-1 text-left w-full">
+        <CardItem translateZ={40} className="text-xs sm:text-sm text-white drop-shadow mt-1 text-left w-full">
           {enrolled} students enrolled • ⭐ {rating}
         </CardItem>
-        <CardItem translateZ={30} className="text-base font-bold text-white drop-shadow mt-2 text-left w-full">
+        <CardItem translateZ={30} className="text-sm sm:text-base font-bold text-white drop-shadow mt-2 text-left w-full">
           ₹{price}
         </CardItem>
-        <div className="flex justify-start mt-6 w-full">
+        <div className="flex justify-start mt-4 sm:mt-6 w-full">
           <CardItem
             translateZ={20}
             as="button"
             onClick={onEnroll}
-            className="px-4 py-2 rounded-md bg-black text-white text-sm font-semibold hover:scale-105 transition-transform w-full text-left"
+            className="px-3 sm:px-4 py-2 rounded-md bg-black text-white text-xs sm:text-sm font-semibold hover:scale-105 transition-transform w-full text-left"
           >
             <span className="w-full block text-center">Enroll Now</span>
           </CardItem>

@@ -154,14 +154,14 @@ export default function Store() {
         <div ref={mobileBarRef}
           className={`sm:hidden ${mobileBarSticky
             ? 'fixed top-0 left-0 right-0 z-[110] bg-white/60 backdrop-blur-xl border border-white/30 shadow-md mx-2 rounded-xl mt-2 max-w-screen-sm mx-auto'
-            : 'relative bg-white mx-2 mt-2'} px-4 py-3 transition-all duration-300`}
+            : 'relative bg-white mx-2 mt-2'} px-3 sm:px-4 py-3 transition-all duration-300`}
         >
           <Menu as="div" className="relative w-full">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-[#00308A] text-lg">Categories</span>
-              <Menu.Button className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow font-semibold text-[#00308A] focus:outline-none">
+              <span className="font-bold text-[#00308A] text-base sm:text-lg">Categories</span>
+              <Menu.Button className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white shadow font-semibold text-[#00308A] focus:outline-none text-sm sm:text-base">
                 <span>Browse</span>
-                <ChevronDownIcon className="w-5 h-5 text-[#00308A]" aria-hidden="true" />
+                <ChevronDownIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#00308A]" aria-hidden="true" />
               </Menu.Button>
             </div>
             <Transition
@@ -187,7 +187,7 @@ export default function Store() {
                               window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                             }
                           }}
-                          className={`w-full text-left px-4 py-2 rounded font-semibold text-[#00308A] ${active ? 'bg-blue-50' : ''}`}
+                          className={`w-full text-left px-3 sm:px-4 py-2 rounded font-semibold text-[#00308A] text-sm sm:text-base ${active ? 'bg-blue-50' : ''}`}
                         >
                           {link.label}
                         </button>
@@ -261,26 +261,26 @@ export default function Store() {
             </select>
           </nav>
           <section className="scroll-mt-32" id="internship">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#00308A] mb-4">Internships</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#00308A] mb-4">Internships</h2>
             <StoreInternships gradeGroup={selectedGradeGroup} />
           </section>
-          <section className="scroll-mt-32 mt-12" id="short-courses">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#00308A] mb-4">Short Courses</h2>
+          <section className="scroll-mt-32 mt-8 sm:mt-12" id="short-courses">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#00308A] mb-4">Short Courses</h2>
             <StoreCourses gradeGroup={selectedGradeGroup} />
           </section>
-          <section className="scroll-mt-32 mt-12" id="sbpl">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#00308A] mb-4">SBPLs</h2>
+          <section className="scroll-mt-32 mt-8 sm:mt-12" id="sbpl">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#00308A] mb-4">SBPLs</h2>
             <StoreSPBLs gradeGroup={selectedGradeGroup} />
           </section>
-          <section className="scroll-mt-32 mt-12" id="case-studies">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#00308A] mb-4">Case Studies</h2>
+          <section className="scroll-mt-32 mt-8 sm:mt-12" id="case-studies">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#00308A] mb-4">Case Studies</h2>
             <StoreCaseStudies gradeGroup={selectedGradeGroup} />
           </section>
-          <section className="scroll-mt-32 mt-12" id="packages">
+          <section className="scroll-mt-32 mt-8 sm:mt-12" id="packages">
             <StoreMemberships />
           </section>
-          <section className="scroll-mt-32 mt-12" id="membership">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Premium Membership</h2>
+          <section className="scroll-mt-32 mt-8 sm:mt-12" id="membership">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-6 sm:mb-10 px-4 sm:px-0" style={{ color: "#00308A" }}>Premium Membership</h2>
             <div className="flex justify-center">
               <MembershipCard />
             </div>

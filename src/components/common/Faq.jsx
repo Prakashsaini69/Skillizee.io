@@ -69,12 +69,12 @@ export default function Faq() {
   const [open, setOpen] = useState(null);
   // 2 columns for desktop, 1 for mobile
   return (
-    <section className="max-w-6xl mx-auto my-16 px-6 md:px-10 py-8 border border-[#377DFF] border-[1.5px] rounded-2xl min-h-[480px] flex flex-col justify-center">
+    <section className="max-w-6xl mx-auto my-12 sm:my-16 px-4 sm:px-6 md:px-10 py-6 sm:py-8 border border-[#377DFF] border-[1.5px] rounded-2xl min-h-[400px] sm:min-h-[480px] flex flex-col justify-center">
       {/* FAQ Heading */}
-      <h3 className="text-2xl md:text-3xl font-extrabold mb-8 text-center">
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-6 sm:mb-8 text-center px-2 sm:px-0">
         Frequently Asked <span className="text-[#00308A]">Questions</span>
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mx-auto">
         {[0, 1].map(col => (
           <div className="flex flex-col gap-4" key={col}>
             {FAQS.filter((_, i) => i % 2 === col).map((faq, idx) => {
@@ -86,7 +86,7 @@ export default function Faq() {
                 <motion.div
                   key={faq.question}
                   layout
-                  className={`rounded-2xl bg-white shadow-md text-left text-lg font-semibold text-indigo-900 border border-indigo-100 transition focus:outline-none focus:ring-2 focus:ring-indigo-200 min-h-[120px] flex flex-col justify-start ${isOpen ? 'ring-2 ring-indigo-300 bg-indigo-50' : ''}`}
+                  className={`rounded-2xl bg-white shadow-md text-left text-base sm:text-lg font-semibold text-indigo-900 border border-indigo-100 transition focus:outline-none focus:ring-2 focus:ring-indigo-200 min-h-[100px] sm:min-h-[120px] flex flex-col justify-start ${isOpen ? 'ring-2 ring-indigo-300 bg-indigo-50' : ''}`}
                   style={{ overflow: 'hidden' }}
                   custom={idx}
                   initial="hidden"
@@ -95,13 +95,13 @@ export default function Faq() {
                   variants={variants}
                 >
                   <button
-                    className="w-full flex items-center gap-3 px-6 py-5 focus:outline-none"
+                    className="w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-4 sm:py-5 focus:outline-none"
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
                   >
                     {icons[faq.icon]}
-                    <span className="flex-1 text-left">{faq.question}</span>
-                    <span className={`ml-2 w-8 h-8 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-2xl font-bold transition ${isOpen ? 'bg-indigo-500 text-white' : ''}`}>{isOpen ? '-' : '+'}</span>
+                    <span className="flex-1 text-left text-sm sm:text-base">{faq.question}</span>
+                    <span className={`ml-2 w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-lg sm:text-2xl font-bold transition ${isOpen ? 'bg-indigo-500 text-white' : ''}`}>{isOpen ? '-' : '+'}</span>
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -111,7 +111,7 @@ export default function Faq() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.35, ease: 'easeInOut' }}
-                        className="px-6 pb-5 text-indigo-900 text-base font-medium bg-indigo-50"
+                        className="px-4 sm:px-6 pb-4 sm:pb-5 text-indigo-900 text-sm sm:text-base font-medium bg-indigo-50"
                         style={{ borderTop: '1px solid #e0e7ff' }}
                       >
                         {faq.answer}

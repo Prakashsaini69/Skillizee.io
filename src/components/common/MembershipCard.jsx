@@ -16,7 +16,8 @@ const MembershipCard = () => {
           --pattern-color: #cfcfcf;
 
           position: relative;
-          width: 22em;
+          width: 100%;
+          max-width: 22em;
           background: var(--bg);
           border: 0.35em solid var(--text);
           border-radius: 0.6em;
@@ -181,9 +182,16 @@ const MembershipCard = () => {
 
         .feature-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1em;
+          grid-template-columns: 1fr;
+          gap: 0.8em;
           margin-bottom: 1.5em;
+        }
+
+        @media (min-width: 640px) {
+          .feature-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+          }
         }
 
         .feature-item {
@@ -229,12 +237,21 @@ const MembershipCard = () => {
 
         .card-actions {
           display: flex;
+          flex-direction: column;
+          gap: 1em;
           justify-content: space-between;
           align-items: center;
           margin-top: 1.5em;
           padding-top: 1.2em;
           border-top: 0.15em dashed rgba(0, 0, 0, 0.15);
           position: relative;
+        }
+
+        @media (min-width: 640px) {
+          .card-actions {
+            flex-direction: row;
+            gap: 0;
+          }
         }
 
         .card-actions::before {

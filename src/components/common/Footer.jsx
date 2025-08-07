@@ -46,7 +46,7 @@ export default function Footer() {
         viewport={{ once: true }}
       />
       <motion.div
-        className="footer-heading text-[10px] sm:text-xs md:text-base font-extrabold text-white text-center sm:whitespace-nowrap"
+        className="footer-heading text-[10px] sm:text-sm md:text-base font-extrabold text-white text-center px-4 sm:px-0"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
@@ -76,20 +76,20 @@ export default function Footer() {
       </div>
       {/* Contact Details */}
       <motion.div
-        className="mt-2 mb-2 text-lg font-semibold text-[#00308A] flex flex-row items-center justify-center gap-6"
+        className="mt-2 mb-2 text-lg font-semibold text-[#00308A] flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 px-4 sm:px-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.45 }}
         viewport={{ once: true }}
       >
-        <a href="tel:+919773353232" className="flex items-center gap-2 text-base text-white/90 hover:text-blue-200 transition" aria-label="Call us">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-[#00308A]">
+        <a href="tel:+919773353232" className="flex items-center gap-2 text-sm sm:text-base text-white/90 hover:text-blue-200 transition" aria-label="Call us">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 text-[#00308A]">
             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h0a2.25 2.25 0 002.25-2.25v-2.25a1.5 1.5 0 00-1.5-1.5h-2.25a.75.75 0 01-.75-.75v-2.25a.75.75 0 01.75-.75h2.25a1.5 1.5 0 001.5-1.5V6.75A2.25 2.25 0 0017.25 4.5h0c-8.284 0-15 6.716-15 15z" />
           </svg>
           (+91) 97733 53232
         </a>
-        <a href="mailto:info.skillizee@gmail.com" className="flex items-center gap-2 text-base text-white/90 hover:text-blue-200 transition" aria-label="Email us">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-[#00308A]">
+        <a href="mailto:info.skillizee@gmail.com" className="flex items-center gap-2 text-sm sm:text-base text-white/90 hover:text-blue-200 transition" aria-label="Email us">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 text-[#00308A]">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.876 1.8l-7.5 5.625a2.25 2.25 0 01-2.748 0l-7.5-5.625a2.25 2.25 0 01-.876-1.8V6.75" />
           </svg>
           info.skillizee@gmail.com

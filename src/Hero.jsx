@@ -63,7 +63,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="relative z-10 max-w-6xl mx-auto"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 pt-[100px] lg:whitespace-nowrap">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 pt-[60px] sm:pt-[80px] lg:pt-[100px] leading-tight">
           Real {" "}
           <span className="text-orange border-r-2 border-purple-400 animate-pulse">
             {displayed}
@@ -73,13 +73,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-lg md:text-1xl text-white/80 mb-6 font-normal"
+          className="text-base sm:text-lg md:text-xl text-white/80 mb-6 font-normal px-4 sm:px-0"
         > 
-          Colleges and careers demand skills, not just scores. With SkilliZee Online Skill Center,<br />
+          Colleges and careers demand skills, not just scores. With SkilliZee Online Skill Center,<br className="hidden sm:block" />
           they gain skills, internships, & case study mastery—before it's too late to stand out.
         </motion.p>
         <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-8"
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 px-4 sm:px-0"
           initial="hidden"
           animate="visible"
           variants={{
@@ -92,7 +92,7 @@ export default function Hero() {
           {["🔁 Lifetime Access", "👥 2.2+ Lakh Enrolled"].map((badge, i) => (
             <motion.span
               key={badge}
-              className="text-[#ffffff] px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md "
+              className="text-[#ffffff] px-3 sm:px-4 py-2 rounded-full font-semibold shadow backdrop-blur-md text-sm sm:text-base"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.2 }}
@@ -104,7 +104,7 @@ export default function Hero() {
         <motion.button
           whileHover={{ scale: 1.07, boxShadow: "0 8px 32px 0 rgba(76,110,245,0.25)" }}
           whileTap={{ scale: 0.97 }}
-          className="relative group bg-gradient-to-r from-blue-600 to-purple-500 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-purple-200"
+          className="relative group bg-gradient-to-r from-blue-600 to-purple-500 text-white px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg shadow-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-purple-200"
           onClick={() => {
             const el = document.getElementById('courses-section');
             if (el) {
@@ -116,7 +116,7 @@ export default function Hero() {
           <span className="absolute left-0 top-0 w-full h-full bg-white opacity-0 group-hover:opacity-10 transition-all duration-500 rounded-full blur-xl"></span>
         </motion.button>
         <motion.div
-          className="mt-10 flex justify-center"
+          className="mt-8 sm:mt-10 flex justify-center px-4 sm:px-0"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}

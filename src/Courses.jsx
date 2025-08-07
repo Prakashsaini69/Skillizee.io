@@ -26,9 +26,9 @@ export default function Courses() {
   const cards = getFilteredCourses();
 
   return (
-    <section id="courses-section" className="py-16 px-4 bg-gradient-to-l from-blue-50 to-purple-50">
+    <section id="courses-section" className="py-12 sm:py-16 px-4 bg-gradient-to-l from-blue-50 to-purple-50">
       <motion.h2
-        className="text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-6"
+        className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-[#00308A] mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -36,14 +36,14 @@ export default function Courses() {
       >
         Courses
       </motion.h2>
-      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 sm:gap-10">
         {/* Category Tabs + Grade Dropdown */}
-        <div className="flex flex-wrap gap-4 justify-center md:justify-center mb-8 items-center">
+        <div className="flex flex-wrap gap-2 sm:gap-4 justify-center mb-6 sm:mb-8 items-center px-2 sm:px-0">
           {categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setCategory(cat.key)}
-              className={`px-6 py-2 rounded-full font-semibold border-2 transition-all duration-300 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-200 ${
+              className={`px-4 sm:px-6 py-2 rounded-full font-semibold border-2 transition-all duration-300 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-200 ${
                 category === cat.key
                   ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white border-purple-600 scale-105"
                   : "bg-white text-purple-700 border-purple-200 hover:bg-purple-50"
@@ -55,7 +55,7 @@ export default function Courses() {
           <select
             value={grade}
             onChange={e => setGrade(e.target.value)}
-            className="ml-2 px-4 py-2 rounded-full border-2 border-blue-300 bg-white text-blue-700 font-semibold shadow focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all duration-200 cursor-pointer"
+            className="ml-2 px-3 sm:px-4 py-2 rounded-full border-2 border-blue-300 bg-white text-blue-700 font-semibold shadow focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all duration-200 cursor-pointer text-sm sm:text-base"
           >
             <option value="all">All Grades</option>
             <option value="4-6">4-6 Grade</option>
@@ -67,7 +67,7 @@ export default function Courses() {
           <AnimatePresence mode="wait">
             <motion.div
               key={category + grade}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
@@ -97,8 +97,8 @@ export default function Courses() {
           </AnimatePresence>
         </div>
         {/* View More CTA */}
-        <div className="flex justify-center mt-8">
-          <a href="/store" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-200 border-2 border-purple-600 text-lg">
+        <div className="flex justify-center mt-6 sm:mt-8">
+          <a href="/store" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold px-6 sm:px-8 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-200 border-2 border-purple-600 text-base sm:text-lg">
             View More
           </a>
         </div>

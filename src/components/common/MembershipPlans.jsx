@@ -63,18 +63,18 @@ const cardVariants = {
 
 export default function MembershipPlans() {
   return (
-    <section className="w-full max-w-6xl mx-auto px-2 py-10">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" style={{ color: "#00308A" }}>Packages</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="w-full max-w-6xl mx-auto px-4 sm:px-2 py-8 sm:py-10">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-10 px-2 sm:px-0" style={{ color: "#00308A" }}>Packages</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         {plans.map((plan, idx) => (
           <motion.div
             key={plan.name}
-            className={`relative flex flex-col items-center text-center rounded-2xl border transition-all duration-300 px-4 py-7 ${
+            className={`relative flex flex-col items-center text-center rounded-2xl border transition-all duration-300 px-3 sm:px-4 py-6 sm:py-7 ${
               plan.highlight
                 ? "bg-gradient-to-br from-[#00308A] to-blue-800 text-white border-blue-800 scale-105 z-10 shadow-2xl premium-glow-shadow"
                 : "bg-white border-blue-200 shadow-lg"
             }`}
-            style={{ minHeight: 400 }}
+            style={{ minHeight: 350 }}
             custom={idx}
             initial="hidden"
             whileInView="visible"
@@ -82,18 +82,18 @@ export default function MembershipPlans() {
             variants={cardVariants}
           >
             {plan.highlight && (
-              <span className="absolute top-4 right-4 bg-blue-600 text-xs font-bold px-2 py-0.5 rounded-full text-white tracking-wide shadow">BEST VALUE</span>
+              <span className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-blue-600 text-xs font-bold px-2 py-0.5 rounded-full text-white tracking-wide shadow">BEST VALUE</span>
             )}
             <div className="flex flex-col items-center mb-2 w-full">
               <div className="mb-1">{plan.icon}</div>
-              <span className="text-xl font-bold mb-1 flex items-center gap-2">
+              <span className="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2">
                 {plan.name}
               </span>
-              <span className={`mb-3 text-sm font-medium ${plan.highlight ? "text-blue-100" : "text-gray-500"}`}>{plan.language}</span>
-              <div className="text-3xl font-extrabold mb-3 tracking-tight">
+              <span className={`mb-3 text-xs sm:text-sm font-medium ${plan.highlight ? "text-blue-100" : "text-gray-500"}`}>{plan.language}</span>
+              <div className="text-2xl sm:text-3xl font-extrabold mb-3 tracking-tight">
                 {plan.price}
               </div>
-              <ul className="mb-4 w-full text-sm font-medium flex flex-col gap-1.5 items-start list-disc pl-5 text-left">
+              <ul className="mb-4 w-full text-xs sm:text-sm font-medium flex flex-col gap-1.5 items-start list-disc pl-4 sm:pl-5 text-left">
                 {plan.features.map((feature, i) => (
                   <li key={feature.text} className={plan.highlight ? "text-white" : "text-blue-900"}>
                     {feature.text}
@@ -105,7 +105,7 @@ export default function MembershipPlans() {
               href="https://docs.google.com/forms/d/e/1FAIpQLSe1MsVLVJbLjNjPUQ4rq10KYDpYMQhum7ICCycN3PDE9jDT1w/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
-              className={`mt-auto w-full py-2.5 rounded-full font-bold text-base transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-center ${
+              className={`mt-auto w-full py-2 sm:py-2.5 rounded-full font-bold text-sm sm:text-base transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-center ${
                 plan.highlight
                   ? "bg-white text-blue-900 hover:bg-blue-100"
                   : "bg-[#00308A] text-white hover:bg-blue-700"
