@@ -1506,7 +1506,7 @@ const LinkedIn = () => {
 
             <img
 
-              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755165345/image-4YgqFomK3IPstJMGcAzOFcdMfTg5C0_lwpeoj.png"
+              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755170155/Package_Registration_25_uvvqnu.svg"
 
               alt="LinkedIn Logo"
 
