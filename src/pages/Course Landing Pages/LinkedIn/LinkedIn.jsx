@@ -648,7 +648,7 @@ const AnkurWarikooBanner = () => {
       {/* Desktop Layout - Original layout for larger screens */}
       <div className="hidden md:block relative">
         {/* Book Component - Absolutely positioned */}
-        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-20">
+        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10">
           <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-4 py-3 shadow-sm flex items-center gap-4">
             <img 
               src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" 
@@ -662,7 +662,7 @@ const AnkurWarikooBanner = () => {
         </div>
 
         {/* Ankur Warikoo Image - Absolutely positioned */}
-        <div className="absolute right-72 bottom-0 z-10">
+        <div className="absolute right-72 bottom-0 z-20">
           <img
             src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg"
             alt="Ankur Warikoo"
@@ -1675,7 +1675,7 @@ const LinkedIn = () => {
       <div className="w-full max-w-7xl mx-auto h-px bg-gray-300 mt-8"></div>
 
       {/* Bundled Experience Section - Complete */}
-      <section className="w-full flex flex-col items-center justify-center py-16 px-4">
+      <section className="w-full flex flex-col items-center justify-center py-16 px-2 md:px-4">
         {/* Main Heading */}
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] text-center mb-2">THE BUNDLED EXPERIENCE</h2>
         <p className="text-[#0a2540] text-center max-w-3xl mb-12">For Students Who Want To Gain Real-World Exposure, Tech Skills, And Life Insights— All In One Pack!</p>
@@ -1686,7 +1686,7 @@ const LinkedIn = () => {
           
           <div className="w-full scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl overflow-hidden">
             {/* Cards Section */}
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 md:pt-6 px-4 md:px-6">
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 md:pt-6 px-2 md:px-6">
               <InfoCard cardData={warikooCard1Data} onViewContent={handleViewContent} />
               <InfoCard cardData={warikooCard3Data} onViewContent={handleViewContent} />
             </div>
