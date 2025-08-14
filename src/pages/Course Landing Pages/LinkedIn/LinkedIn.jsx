@@ -255,7 +255,7 @@ function ProblemsFacedSection() {
 
   return (
 
-    <section className="w-full flex flex-col items-center justify-center mt-8 mb-8">
+    <section className="w-full flex flex-col items-center justify-center mt-8 mb-8 px-4 md:px-0">
 
       <div className="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -417,7 +417,7 @@ const FontStyles = () => (
 function MotivationalQuote() {
     return (
         <div className="w-full mt-12 flex justify-center items-center">
-            <div className="relative bg-transparent rounded-2xl p-8 flex items-center justify-center text-center max-w-7xl" style={{fontFamily: "'Patrick Hand', cursive"}}>
+            <div className="relative bg-transparent rounded-2xl p-8 flex items-center justify-center text-center max-w-7xl" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>
                 {/* Dotted pattern background */}
                 <div 
                     className="absolute top-0 left-0 h-full w-1/4"
@@ -432,16 +432,16 @@ function MotivationalQuote() {
                          <svg className="absolute -left-10 -top-2 w-8 h-8 text-gray-800" viewBox="0 0 100 100">
                             <path d="M85,20 C70,20 30,50 30,80 L15,70 M30,80 L45,70" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                        <p className="text-2xl text-gray-700">EVERY TIME</p>
-                        <p className="text-2xl text-gray-700">YOU STEP OUTSIDE YOUR</p>
-                        <p className="text-2xl text-gray-700">COMFORT ZONE,</p>
+                        <p className="text-2xl text-gray-700" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>EVERY TIME</p>
+                        <p className="text-2xl text-gray-700" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>YOU STEP OUTSIDE YOUR</p>
+                        <p className="text-2xl text-gray-700" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>COMFORT ZONE,</p>
                         <svg className="absolute -right-10 -top-2 w-8 h-8 text-gray-800" viewBox="0 0 100 100">
                             <path d="M15,20 C30,20 70,50 70,80 L55,70 M70,80 L85,70" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <h2 className="text-5xl font-bold text-gray-900 mt-2">YOUR</h2>
-                    <h2 className="text-5xl font-bold text-gray-900">COMFORT ZONE</h2>
-                    <h2 className="text-5xl font-bold text-gray-900">EXPANDS.</h2>
+                    <h2 className="text-5xl font-bold text-gray-900 mt-2" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>YOUR</h2>
+                    <h2 className="text-5xl font-bold text-gray-900" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>COMFORT ZONE</h2>
+                    <h2 className="text-5xl font-bold text-gray-900" style={{fontFamily: "'Patrick Hand', 'Comic Sans MS', cursive, sans-serif"}}>EXPANDS.</h2>
                 </div>
             </div>
         </div>
@@ -578,46 +578,133 @@ const InfoCard = ({ cardData, onViewContent }) => {
 // Banner component
 const AnkurWarikooBanner = () => {
   return (
-    <div className="bg-blue-50 rounded-2xl p-8 col-span-1 md:col-span-3 relative overflow-hidden">
-      {/* Book Component - Absolutely positioned */}
-      <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20">
-        <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-3 py-2 md:px-4 md:py-3 shadow-sm flex items-center gap-3 md:gap-4">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" alt="Beyond the Syllabus Book" className="h-32 md:h-40 w-auto transform hover:scale-110 transition-transform duration-300" />
-          <div className="text-[#0B4D9A] font-extrabold leading-none text-2xl md:text-4xl whitespace-nowrap">FREE<br />BOOK</div>
+    <div className="bg-blue-50 rounded-2xl p-4 md:p-8 col-span-1 md:col-span-3 relative overflow-hidden">
+      {/* Mobile Layout - Stacked vertically on small screens */}
+      <div className="md:hidden flex flex-col space-y-6">
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center space-y-4">
+          <img 
+            src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755070650/AnkurWarikoText_wnrovn.svg" 
+            alt="#AnkurWarikoo" 
+            className="h-16 md:h-20 flex-shrink-0" 
+          />
+          <p className="bg-black text-white px-4 py-2 rounded-lg inline-block font-semibold text-sm">
+            Entrepreneur | Author | Mentor | Youth Icon
+          </p>
+          <p className="text-lg text-gray-700 text-center">
+            For every student who's ever wondered <span className="font-bold">What now? What next?</span>
+          </p>
+        </div>
+
+        {/* Book Component and Skillizee Powered Section - Side by side on mobile */}
+        <div className="flex justify-center">
+          <div className="flex items-center gap-4">
+            {/* Book Component */}
+            <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-3 py-2 shadow-sm flex items-center gap-2">
+              <img 
+                src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" 
+                alt="Beyond the Syllabus Book" 
+                className="h-20 w-auto transform hover:scale-110 transition-transform duration-300" 
+              />
+              <div className="text-[#0B4D9A] font-extrabold leading-none text-lg">
+                FREE<br />BOOK
+              </div>
+            </div>
+
+            {/* Skillizee Powered Section */}
+            <div className="bg-white border border-blue-200 rounded-xl p-2 inline-flex flex-col items-center">
+              <img 
+                src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" 
+                alt="Skillizee" 
+                className="h-8 w-8 object-contain" 
+              />
+              <p className="text-xs text-gray-600 mt-1">Powered by</p>
+              <p className="font-semibold text-gray-800 text-xs">Skillizee</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Ankur Warikoo Image - Centered on mobile */}
+        <div className="flex justify-center">
+          <img
+            src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg"
+            alt="Ankur Warikoo"
+            className="h-48 md:h-64 w-auto object-contain"
+          />
+        </div>
+
+        {/* Accreditation Section */}
+        <div className="text-center">
+          <h4 className="font-semibold text-gray-800 mb-3 text-sm">Accreditation & Collaborations</h4>
+          <div className="flex flex-wrap justify-center gap-3 items-center">
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663818/Group_1618872730_lqcxsn.svg" alt="IIT Bombay" className="h-8 object-contain" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663819/Group_1618872732_jmddsr.svg" alt="BITS Hyderabad" className="h-8 object-contain" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-12 object-contain" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-12 object-contain" />
+          </div>
         </div>
       </div>
 
-      {/* Ankur Warikoo Image - Absolutely positioned in front of everything */}
-      <div className="absolute right-16 md:right-72 bottom-0 z-[999]">
-        <img
-          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg"
-          alt="Ankur Warikoo"
-          className="h-80 md:h-96 w-auto object-contain"
-        />
-      </div>
-
-      {/* Content - Left side */}
-      <div className="relative z-30 flex-1 space-y-8 max-w-2xl">
-        <div className="flex flex-col sm:flex-row items-start gap-6">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755070650/AnkurWarikoText_wnrovn.svg" alt="#AnkurWarikoo" className="h-20 flex-shrink-0" />
-          <div className="mt-2">
-            <p className="bg-black text-white px-4 py-2 rounded-lg inline-block font-semibold">Entrepreneur | Author | Mentor | Youth Icon</p>
-            <p className="mt-4 text-xl text-gray-700">For every student who's ever <br />wondered <span className="font-bold">What now? What next?</span></p>
+      {/* Desktop Layout - Original layout for larger screens */}
+      <div className="hidden md:block relative">
+        {/* Book Component - Absolutely positioned */}
+        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-20">
+          <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-4 py-3 shadow-sm flex items-center gap-4">
+            <img 
+              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" 
+              alt="Beyond the Syllabus Book" 
+              className="h-40 w-auto transform hover:scale-110 transition-transform duration-300" 
+            />
+            <div className="text-[#0B4D9A] font-extrabold leading-none text-4xl whitespace-nowrap">
+              FREE<br />BOOK
+            </div>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row items-start gap-6">
-          <div className="bg-white border border-blue-200 rounded-xl p-3 inline-flex flex-col items-center flex-shrink-0">
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" alt="Skillizee" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
-            <p className="text-xs text-gray-600 mt-2">Powered by</p>
-            <p className="font-semibold text-gray-800">Skillizee</p>
+
+        {/* Ankur Warikoo Image - Absolutely positioned */}
+        <div className="absolute right-72 bottom-0 z-10">
+          <img
+            src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg"
+            alt="Ankur Warikoo"
+            className="h-96 w-auto object-contain"
+          />
+        </div>
+
+        {/* Content - Left side */}
+        <div className="relative z-30 flex-1 space-y-8 max-w-2xl">
+          <div className="flex flex-row items-start gap-6">
+            <img 
+              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755070650/AnkurWarikoText_wnrovn.svg" 
+              alt="#AnkurWarikoo" 
+              className="h-20 flex-shrink-0" 
+            />
+            <div className="mt-2">
+              <p className="bg-black text-white px-4 py-2 rounded-lg inline-block font-semibold">
+                Entrepreneur | Author | Mentor | Youth Icon
+              </p>
+              <p className="mt-4 text-xl text-gray-700">
+                For every student who's ever <br />wondered <span className="font-bold">What now? What next?</span>
+              </p>
+            </div>
           </div>
-          <div className="mt-2">
-            <h4 className="font-semibold text-gray-800 mb-2">Accreditation & Collaborations</h4>
-            <div className="flex flex-wrap gap-4 items-center">
-              <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663818/Group_1618872730_lqcxsn.svg" alt="IIT Bombay" className="h-12 object-contain" />
-              <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663819/Group_1618872732_jmddsr.svg" alt="BITS Hyderabad" className="h-12 object-contain" />
-              <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-12 object-contain" />
-              <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-12 object-contain" />
+          <div className="flex flex-row items-start gap-6">
+            <div className="bg-white border border-blue-200 rounded-xl p-3 inline-flex flex-col items-center flex-shrink-0">
+              <img 
+                src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" 
+                alt="Skillizee" 
+                className="h-14 w-14 object-contain" 
+              />
+              <p className="text-xs text-gray-600 mt-2">Powered by</p>
+              <p className="font-semibold text-gray-800">Skillizee</p>
+            </div>
+            <div className="mt-2">
+              <h4 className="font-semibold text-gray-800 mb-2">Accreditation & Collaborations</h4>
+              <div className="flex flex-wrap gap-4 items-center">
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" alt="IIT Bombay" className="h-12 object-contain" />
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" alt="BITS Hyderabad" className="h-12 object-contain" />
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-12 object-contain" />
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-12 object-contain" />
+              </div>
             </div>
           </div>
         </div>
@@ -1043,55 +1130,60 @@ function FAQSection() {
 
   return (
 
-    <section className="w-full min-h-[600px] py-24 px-2 md:px-0 flex flex-col items-center justify-center bg-white relative" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}>
+    <section className="w-full min-h-[600px] py-24 px-4 md:px-0 flex flex-col items-center justify-center bg-white relative" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}>
 
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start px-4 md:px-0">
 
-        {/* Sticky Heading */}
-
-        <StickyBox offsetTop={120} offsetBottom={40}>
-
+        {/* Sticky Heading - Only on Desktop */}
+        {/* Sticky Heading - Sticky on Desktop, Normal on Mobile */}
+        <StickyBox offsetTop={120} offsetBottom={40} className="hidden md:block">
           <div className="flex flex-col items-start">
-
             <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] mb-2">Frequently Asked<br />Questions</h2>
-
             <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-
               <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none" />
-
             </svg>
-
           </div>
-
         </StickyBox>
+
+        {/* Mobile Heading - Non-sticky */}
+        <div className="md:hidden">
+          <div className="flex flex-col items-start">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] mb-2">Frequently Asked<br />Questions</h2>
+            <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none" />
+            </svg>
+          </div>
+        </div>
 
         {/* Accordion */}
 
-        <Accordion.Root type="single" collapsible className="flex flex-col gap-4 w-full">
+        <Accordion.Root type="single" collapsible className="flex flex-col gap-3 md:gap-4 w-full">
 
           {faqs.map((faq, i) => (
 
-            <Accordion.Item key={i} value={faq.title} className={`rounded-2xl border border-blue-200 overflow-hidden bg-blue-50`} >
+            <Accordion.Item key={i} value={faq.title} className={`rounded-xl md:rounded-2xl border border-blue-200 overflow-hidden bg-blue-50`} >
 
               <Accordion.Header>
 
-                <Accordion.Trigger className="flex justify-between items-center w-full px-6 py-6 text-left cursor-pointer group focus:outline-none">
+                <Accordion.Trigger className="flex justify-between items-center w-full px-4 md:px-6 py-4 md:py-6 text-left cursor-pointer group focus:outline-none">
 
                   <div className="flex flex-col items-start">
 
-                    {faq.icon}
+                    <div className="w-5 h-5 md:w-6 md:h-6">
+                      {faq.icon}
+                    </div>
 
-                    <div className="text-2xl text-black font-semibold">{faq.title}</div>
+                    <div className="text-lg md:text-2xl text-black font-semibold">{faq.title}</div>
 
                   </div>
 
-                  <span className="text-3xl text-[#1976b2] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
+                  <span className="text-2xl md:text-3xl text-[#1976b2] group-data-[state=open]:rotate-45 transition-transform duration-300">+</span>
 
                 </Accordion.Trigger>
 
               </Accordion.Header>
 
-              <Accordion.Content className="px-6 pb-6 text-[#0a2540] text-base animate-fade-in">
+              <Accordion.Content className="px-4 md:px-6 pb-4 md:pb-6 text-[#0a2540] text-sm md:text-base animate-fade-in">
 
                 {faq.content}
 
@@ -1557,7 +1649,7 @@ const LinkedIn = () => {
 
       {/* Problems Faced Heading */}
 
-      <div className="w-full flex flex-col items-center mt-12 mb-2">
+      <div className="w-full flex flex-col items-center mt-12 mb-2 px-4 md:px-0">
 
         <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] text-center">Who is it for?</h2>
         <svg height="16" width="220" className="mt-1" viewBox="0 0 220 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1774,7 +1866,7 @@ const CountdownTimer = ({ targetDate }) => {
 function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice = "₹2550+ GST" }) {
   const earlyBirdDeadline = "2025-08-30T23:59:59";
   return (
-    <section className="w-full flex items-center justify-center p-3 font-sans scale-[0.85] md:scale-[0.9] origin-top mt-[-12rem]">
+    <section className="w-full flex items-center justify-center p-3 font-sans scale-[0.85] md:scale-[0.9] origin-top mt-[-20rem] md:mt-[-12rem]">
       <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
         <div className="lg:flex lg:items-center">
           <div className="p-4 md:p-6 lg:w-1/2">
