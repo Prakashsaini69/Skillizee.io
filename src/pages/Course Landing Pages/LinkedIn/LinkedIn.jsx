@@ -19,6 +19,7 @@ import 'swiper/css/pagination';
 import Marquee from 'react-fast-marquee';
 
 import SlantedScrollingBanner from "./SlantedScrollingBanner";
+import SignupModal from "./SignupModal";
 
 import Footer from "../../../components/common/Footer";
 
@@ -35,48 +36,48 @@ const ListItem = ({ children }) => (
 // The main component that replicates the image with the requested fixes
 const InvestmentHighlight = () => {
   return (
-    <div className="bg-gray-100 flex items-center justify-center p-4 font-sans">
+    <div className="bg-transparent flex items-center justify-center p-4 font-sans">
       {/* Main container with yellow background and rounded corners.
           overflow-hidden is key to clip the children's corners. */}
-      <div className="bg-yellow-400 rounded-3xl max-w-4xl w-full shadow-lg overflow-hidden">
-        
+      <div className="bg-[#E6F0FF] rounded-3xl max-w-4xl w-full shadow-lg overflow-hidden border border-blue-200">
+
         {/* Header section with blue background. It is now the first child,
             so it sticks to the top. The parent's overflow-hidden property
             will handle clipping the top corners. */}
-        <div className="bg-blue-800 text-white text-center shadow-xl py-4 px-6">
+        <div className="bg-[#0a2540] text-white text-center shadow-xl py-4 px-6">
           <h2 className="text-2xl md:text-3xl font-bold">
-            Why <span className="text-yellow-400">Model #2</span> Is The Smartest Investment For YOU
+            Why <span className="text-blue-400">Model #2</span> Is The Smartest Investment For YOU
           </h2>
         </div>
 
         {/* Content section with padding and relative positioning for the dots. */}
         <div className="pt-6 px-8 pb-8 relative">
-            {/* Decorative dots in the background */}
-            <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-30">
-              {Array.from({ length: 15 }).map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-white rounded-full"></div>
-              ))}
-            </div>
+          {/* Decorative dots in the background */}
+          <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-30">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <div key={i} className="w-2 h-2 bg-blue-300 rounded-full"></div>
+            ))}
+          </div>
 
-            {/* Content section with two columns */}
-            <div className="relative z-10 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-8">
-              {/* Left Column with updated styles */}
-              <ul className="space-y-2">
-                <ListItem>1. 4-In-1 Power Learning Combo</ListItem>
-                <ListItem>2. Limited Seats For Brand Internship</ListItem>
-                <ListItem>3. Learn From Real Brands Like Starbucks & GudGum</ListItem>
-              </ul>
+          {/* Content section with two columns */}
+          <div className="relative z-10 flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-8">
+            {/* Left Column with updated styles */}
+            <ul className="space-y-2">
+              <ListItem>1. 4-In-1 Power Learning Combo</ListItem>
+              <ListItem>2. Limited Seats For Brand Internship</ListItem>
+              <ListItem>3. Learn From Real Brands Like Starbucks & GudGum</ListItem>
+            </ul>
 
-              {/* Right Column with updated styles */}
-              <ul className="space-y-2">
-                <ListItem>4. Get Certified</ListItem>
-                <ListItem>5. Build Your College Ready Portfolio</ListItem>
-                <ListItem>6. Mini MBA For Students</ListItem>
-                <ListItem>
-                  7. All-In-One Value - <span className="bg-white px-2 py-1 rounded text-gray-800">Just ₹2550/-</span> + GST
-                </ListItem>
-              </ul>
-            </div>
+            {/* Right Column with updated styles */}
+            <ul className="space-y-2">
+              <ListItem>4. Get Certified</ListItem>
+              <ListItem>5. Build Your College Ready Portfolio</ListItem>
+              <ListItem>6. Mini MBA For Students</ListItem>
+              <ListItem>
+                7. All-In-One Value - <span className="bg-white px-2 py-1 rounded text-gray-800">Just ₹2550/-</span> + GST
+              </ListItem>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +133,7 @@ const infoCards = [
 
   },
 
-  
+
 ];
 
 function ProblemsFacedSection() {
@@ -147,49 +148,20 @@ function ProblemsFacedSection() {
 
         <div className="bg-blue-100 rounded-3xl p-8 flex flex-col justify-end min-h-[340px] relative shadow-md">
 
-          {/* Sliding Arrows */}
+          {/* Lottie Animation */}
 
-          <div className="absolute top-10 left-0 w-full h-32 overflow-hidden pointer-events-none select-none">
+          <div className="absolute top-10 left-0 w-full h-32 flex items-center justify-center pointer-events-none select-none">
 
-            <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full h-32 overflow-hidden">
-
-              {Array.from({ length: 8 }).map((_, i) => (
-
-                <img
-
-                  key={i}
-
-                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
-
-                  alt="Arrow"
-
-                  className="w-28 h-28 mx-2 opacity-80"
-
-                  style={{ transform: 'rotate(-30deg)' }}
-
-                />
-
-              ))}
-
-              {Array.from({ length: 8 }).map((_, i) => (
-
-                <img
-
-                  key={i + 100}
-
-                  src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753353221/down-arrow_emvfxk.png"
-
-                  alt="Arrow"
-
-                  className="w-28 h-28 mx-2 opacity-80"
-
-                  style={{ transform: 'rotate(-30deg)' }}
-
-                />
-
-              ))}
-
-            </Marquee>
+            <div className="w-64 h-64 flex items-center justify-center">
+              <iframe
+                src="https://lottie.host/embed/3e34bbf2-da74-4028-b5ab-d66442edcfb1/bhui7QdHv4.lottie"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+                style={{ border: 'none' }}
+              />
+            </div>
 
           </div>
 
@@ -215,7 +187,7 @@ function ProblemsFacedSection() {
 
               <Typewriter
 
-                words={["Hi everyone...|", "in this post...|", "Uhhhhhhhh|"]}
+                words={["Overthinking...|", "Can't decide|", "Stuck again|"]}
 
                 loop={0}
 
@@ -247,37 +219,20 @@ function ProblemsFacedSection() {
 
               <div className="flex items-center justify-center mb-2 w-full overflow-hidden">
 
-                <Marquee gradient={false} speed={30} pauseOnHover={false} className="w-full">
-
-                  {Array.from({ length: 5 }).map((_, i) => (
-
-                    <div
-
-                      key={i}
-
-                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
-
-                    >👍</div>
-
-                  ))}
-
-                  {Array.from({ length: 5 }).map((_, i) => (
-
-                    <div
-
-                      key={i + 100}
-
-                      className="w-10 h-10 flex items-center justify-center text-2xl mx-1"
-
-                    >👍</div>
-
-                  ))}
-
-                </Marquee>
+                <div className="w-20 h-20 flex items-center justify-center mb-2">
+                  <iframe
+                    src="https://lottie.host/embed/1a29bea5-be7d-404c-a9f4-f062a253482a/BNWl6TF1uT.lottie"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen
+                    style={{ border: 'none' }}
+                  />
+                </div>
 
               </div>
 
-              <div className="font-bold text-base text-[#0a2540] text-center leading-tight">Questioning if You're<br/>Good Enough</div>
+              <div className="font-bold text-base text-[#0a2540] text-center leading-tight">Questioning if You're<br />Good Enough</div>
             </div>
 
             {/* Monetize card (rectangle) */}
@@ -335,70 +290,47 @@ function ProblemsFacedSection() {
 
 
 
-function SlantedBanner() {
+// --- Font Import ---
+const FontStyles = () => (
+  <style>
+    {`
+      @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+    `}
+  </style>
+);
 
-  return (
-
-    <div className="w-full mt-12 flex justify-center items-center">
-
-      <div
-
-        className="w-full border-0"
-
-        style={{
-
-          background: '#0071a1',
-
-          clipPath: 'polygon(0 6%, 100% 0, 100% 94%, 0 100%)',
-
-        }}
-
-      >
-
-        {/* Top parallel line */}
-
-        <div className="w-full flex justify-center" style={{paddingTop: '12px'}}>
-
-          <div className="w-[98%] h-0.5 bg-white opacity-70" />
-
+function MotivationalQuote() {
+    return (
+        <div className="w-full mt-12 flex justify-center items-center">
+            <div className="relative bg-transparent rounded-2xl p-8 flex items-center justify-center text-center max-w-7xl" style={{fontFamily: "'Patrick Hand', cursive"}}>
+                {/* Dotted pattern background */}
+                <div 
+                    className="absolute top-0 left-0 h-full w-1/4"
+                    style={{
+                        backgroundImage: 'radial-gradient(#D6E4FF 2px, transparent 2px)',
+                        backgroundSize: '16px 16px',
+                    }}
+                ></div>
+                
+                <div className="relative z-10">
+                    <div className="relative inline-block">
+                         <svg className="absolute -left-10 -top-2 w-8 h-8 text-gray-800" viewBox="0 0 100 100">
+                            <path d="M85,20 C70,20 30,50 30,80 L15,70 M30,80 L45,70" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <p className="text-2xl text-gray-700">EVERY TIME</p>
+                        <p className="text-2xl text-gray-700">YOU STEP OUTSIDE YOUR</p>
+                        <p className="text-2xl text-gray-700">COMFORT ZONE,</p>
+                        <svg className="absolute -right-10 -top-2 w-8 h-8 text-gray-800" viewBox="0 0 100 100">
+                            <path d="M15,20 C30,20 70,50 70,80 L55,70 M70,80 L85,70" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 className="text-5xl font-bold text-gray-900 mt-2">YOUR</h2>
+                    <h2 className="text-5xl font-bold text-gray-900">COMFORT ZONE</h2>
+                    <h2 className="text-5xl font-bold text-gray-900">EXPANDS.</h2>
+                </div>
+            </div>
         </div>
-
-        <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
-
-          <div className="text-white text-3xl md:text-5xl font-bold mb-4" style={{textShadow: '0 2px 8px rgba(0,0,0,0.10)'}}>
-
-            "Grow Professionally Through LinkedIn"
-
-          </div>
-
-          <div className="text-white text-2xl md:text-3xl italic mb-2" style={{textShadow: '0 2px 8px rgba(0,0,0,0.10)'}}>
-
-            Build A Network. Grow Visibility.
-
-          </div>
-
-          <div className="text-white text-2xl md:text-4xl font-bold italic" style={{textShadow: '0 2px 8px rgba(0,0,0,0.10)'}}>
-
-            Generate Leads!
-
-          </div>
-
-        </div>
-
-        {/* Bottom parallel line */}
-
-        <div className="w-full flex justify-center" style={{paddingBottom: '12px'}}>
-
-          <div className="w-[98%] h-0.5 bg-white opacity-70" />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  );
-
+    );
 }
 
 
@@ -415,7 +347,7 @@ function SlantedBanner() {
 const StarIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
+  </svg>
 
 );
 
@@ -446,7 +378,7 @@ const InfoCard = ({ cardData, onViewContent }) => {
     <div className="bg-white rounded-2xl border border-gray-200 p-4 flex flex-col space-y-4 shadow-md hover:shadow-xl transition-shadow duration-300">
       <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '650 / 440' }}>
         <img src={imageUrl} alt={title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-          </div>
+      </div>
 
       <div className="flex flex-wrap gap-2 mt-2">
         {tags.map((tag, index) => {
@@ -500,7 +432,7 @@ const InfoCard = ({ cardData, onViewContent }) => {
           </div>
           <span className="text-gray-800 font-semibold text-sm md:text-base">{logoName}</span>
         </div>
-        <button 
+        <button
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300 transform hover:scale-105 text-sm md:text-base"
           onClick={() => onViewContent(title)}
         >
@@ -536,16 +468,16 @@ const AnkurWarikooBanner = () => {
       <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20">
         <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-3 py-2 md:px-4 md:py-3 shadow-sm flex items-center gap-3 md:gap-4">
           <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" alt="Beyond the Syllabus Book" className="h-32 md:h-40 w-auto transform hover:scale-110 transition-transform duration-300" />
-          <div className="text-[#0B4D9A] font-extrabold leading-none text-2xl md:text-4xl whitespace-nowrap">FREE<br/>BOOK</div>
+          <div className="text-[#0B4D9A] font-extrabold leading-none text-2xl md:text-4xl whitespace-nowrap">FREE<br />BOOK</div>
         </div>
       </div>
 
       {/* Ankur Warikoo Image - Absolutely positioned in front of everything */}
       <div className="absolute right-16 md:right-72 bottom-0 z-[999]">
-        <img 
-          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg" 
-          alt="Ankur Warikoo" 
-          className="h-80 md:h-96 w-auto object-contain" 
+        <img
+          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg"
+          alt="Ankur Warikoo"
+          className="h-80 md:h-96 w-auto object-contain"
         />
       </div>
 
@@ -555,7 +487,7 @@ const AnkurWarikooBanner = () => {
           <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755070650/AnkurWarikoText_wnrovn.svg" alt="#AnkurWarikoo" className="h-20 flex-shrink-0" />
           <div className="mt-2">
             <p className="bg-black text-white px-4 py-2 rounded-lg inline-block font-semibold">Entrepreneur | Author | Mentor | Youth Icon</p>
-            <p className="mt-4 text-xl text-gray-700">For every student who's ever <br/>wondered <span className="font-bold">What now? What next?</span></p>
+            <p className="mt-4 text-xl text-gray-700">For every student who's ever <br />wondered <span className="font-bold">What now? What next?</span></p>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-start gap-6">
@@ -619,7 +551,7 @@ const card3Data = {
 function WarikooSection() {
   return (
     <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
-          <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
         <InfoCard cardData={card1Data} />
         <InfoCard cardData={card2Data} />
         <InfoCard cardData={card3Data} />
@@ -633,7 +565,7 @@ function WarikooSection() {
 }
 
 
- 
+
 
 
 function CourseInstructorsSection() {
@@ -658,7 +590,7 @@ function CourseInstructorsSection() {
 
         <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none"/>
+          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none" />
 
         </svg>
 
@@ -706,7 +638,7 @@ function CourseInstructorsSection() {
 
               className="hidden md:block absolute right-0 bottom-0 h-[21.6rem] object-contain"
 
-         style={{
+              style={{
 
                 right: '-72px', // Slide image to the right, partially hidden
 
@@ -754,7 +686,7 @@ function CourseInstructorsSection() {
 
           {/* Bottom Banner */}
 
-          <div className="absolute left-0 right-0 bottom-0 bg-[#0a2540] text-white text-center text-base font-medium rounded-b-3xl py-3 px-4" style={{letterSpacing: 0.2, zIndex: 10}}>
+          <div className="absolute left-0 right-0 bottom-0 bg-[#0a2540] text-white text-center text-base font-medium rounded-b-3xl py-3 px-4" style={{ letterSpacing: 0.2, zIndex: 10 }}>
 
             Ankur is 1 of the only 4 people in the world with 2 Million+ followers on YouTube, Instagram, and LinkedIn each!
 
@@ -863,7 +795,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M12 6v6l4 2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
 
       ),
 
@@ -879,7 +811,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
 
       ),
 
@@ -895,7 +827,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
 
       ),
 
@@ -911,7 +843,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="currentColor" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1976b2"/><path d="M7 17v-7h3v7m-1.5-8.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm6.25 8.25v-3.5c0-.966-.784-1.75-1.75-1.75s-1.75.784-1.75 1.75v3.5m3.5 0v-7h3v7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="currentColor" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1976b2" /><path d="M7 17v-7h3v7m-1.5-8.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm6.25 8.25v-3.5c0-.966-.784-1.75-1.75-1.75s-1.75.784-1.75 1.75v3.5m3.5 0v-7h3v7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 
       ),
 
@@ -927,7 +859,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" stroke="#1976b2" strokeWidth="2"/><circle cx="16" cy="8" r="3" stroke="#1976b2" strokeWidth="2"/><path d="M2 20v-2a4 4 0 0 1 4-4h2m8 0h2a4 4 0 0 1 4 4v2" stroke="#1976b2" strokeWidth="2"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" stroke="#1976b2" strokeWidth="2" /><circle cx="16" cy="8" r="3" stroke="#1976b2" strokeWidth="2" /><path d="M2 20v-2a4 4 0 0 1 4-4h2m8 0h2a4 4 0 0 1 4 4v2" stroke="#1976b2" strokeWidth="2" /></svg>
 
       ),
 
@@ -943,7 +875,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
 
       ),
 
@@ -959,7 +891,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
 
       ),
 
@@ -975,7 +907,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2"/><circle cx="12" cy="12" r="3" stroke="#1976b2" strokeWidth="2"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2" /><circle cx="12" cy="12" r="3" stroke="#1976b2" strokeWidth="2" /></svg>
 
       ),
 
@@ -991,7 +923,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2"/><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2" /><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2" /></svg>
 
       ),
 
@@ -1007,7 +939,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="#1976b2" strokeWidth="2"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="#1976b2" strokeWidth="2" /></svg>
 
       ),
 
@@ -1023,7 +955,7 @@ function FAQSection() {
 
       icon: (
 
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="17" r="1" fill="#1976b2"/></svg>
+        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><circle cx="12" cy="17" r="1" fill="#1976b2" /></svg>
 
       ),
 
@@ -1037,7 +969,7 @@ function FAQSection() {
 
   return (
 
-    <section className="w-full min-h-[600px] py-24 px-2 md:px-0 flex flex-col items-center justify-center bg-white relative" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat'}}>
+    <section className="w-full min-h-[600px] py-24 px-2 md:px-0 flex flex-col items-center justify-center bg-white relative" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect x=\'0.5\' y=\'0.5\' width=\'39\' height=\'39\' rx=\'3.5\' fill=\'white\' stroke=\'%23e5e7eb\' stroke-dasharray=\'2 2\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}>
 
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
@@ -1047,11 +979,11 @@ function FAQSection() {
 
           <div className="flex flex-col items-start">
 
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] mb-2">Frequently Asked<br/>Questions</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] mb-2">Frequently Asked<br />Questions</h2>
 
             <svg height="16" width="260" className="mt-1" viewBox="0 0 260 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-              <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none"/>
+              <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10 T238 10 T258 10" stroke="#1890b7" strokeWidth="3" fill="none" />
 
             </svg>
 
@@ -1124,7 +1056,7 @@ const LinkedIn = () => {
   const timelineData = {
     gudgum: [
       {
-        week: "Week 1",
+        week: "Module 1",
         title: "Introduction to Sustainable Branding",
         description: "Learn the fundamentals of sustainable branding and understand GudGum's mission.",
         activities: [
@@ -1132,11 +1064,11 @@ const LinkedIn = () => {
           "Understanding sustainable packaging",
           "Market research on eco-friendly products"
         ],
-        duration: "5-7 hours",
+        duration: "30 Minutes",
         outcome: "Complete understanding of sustainable branding principles"
       },
       {
-        week: "Week 2",
+        week: "Module 2",
         title: "Product Development & Innovation",
         description: "Explore the product development process and innovation strategies.",
         activities: [
@@ -1144,11 +1076,11 @@ const LinkedIn = () => {
           "Innovation brainstorming sessions",
           "Prototype development"
         ],
-        duration: "6-8 hours",
+        duration: "30 Minutes",
         outcome: "Develop innovative product concepts"
       },
       {
-        week: "Week 3",
+        week: "Module 3",
         title: "Marketing & Campaign Strategy",
         description: "Create comprehensive marketing campaigns for sustainable products.",
         activities: [
@@ -1156,11 +1088,11 @@ const LinkedIn = () => {
           "Social media strategy development",
           "Content creation for eco-conscious audience"
         ],
-        duration: "7-9 hours",
+        duration: "30 Minutes",
         outcome: "Complete marketing campaign portfolio"
       },
       {
-        week: "Week 4",
+        week: "Module 4",
         title: "Business Model & Strategy",
         description: "Understand the business model and strategic planning for sustainable ventures.",
         activities: [
@@ -1168,11 +1100,11 @@ const LinkedIn = () => {
           "Financial planning and projections",
           "Strategic roadmap development"
         ],
-        duration: "8-10 hours",
+        duration: "30 Minutes",
         outcome: "Comprehensive business strategy document"
       },
       {
-        week: "Week 5",
+        week: "Module 5",
         title: "Final Project & Presentation",
         description: "Present your complete sustainable branding project and receive feedback.",
         activities: [
@@ -1180,96 +1112,96 @@ const LinkedIn = () => {
           "Presentation preparation",
           "Peer review and feedback"
         ],
-        duration: "10-12 hours",
+        duration: "30 Minutes",
         outcome: "Professional portfolio and presentation skills"
       }
     ],
     starbucks: [
       {
-        week: "Week 1",
-        title: "Starbucks Foundation & History",
-        description: "Explore Starbucks' journey from a small coffee shop to a global brand.",
-        activities: [
-          "Company history research",
-          "Founder's vision analysis",
-          "Early business model study"
-        ],
-        duration: "4-6 hours",
-        outcome: "Understanding of Starbucks' foundation"
+      week: "Module 1",
+      title: "Starbucks Foundation & History",
+      description: "Explore Starbucks' journey from a small coffee shop to a global brand.",
+      activities: [
+      "Company history research",
+      "Founder's vision analysis",
+      "Early business model study"
+      ],
+      duration: "30 Minutes",
+      outcome: "Understanding of Starbucks' foundation"
       },
       {
-        week: "Week 2",
-        title: "Brand Strategy & Positioning",
-        description: "Analyze Starbucks' brand strategy and market positioning.",
-        activities: [
-          "Brand positioning analysis",
-          "Target audience identification",
-          "Competitive landscape study"
-        ],
-        duration: "5-7 hours",
-        outcome: "Comprehensive brand strategy understanding"
+      week: "Module 2",
+      title: "Brand Strategy & Positioning",
+      description: "Analyze Starbucks' brand strategy and market positioning.",
+      activities: [
+      "Brand positioning analysis",
+      "Target audience identification",
+      "Competitive landscape study"
+      ],
+      duration: "30 Minutes",
+      outcome: "Comprehensive brand strategy understanding"
       },
       {
-        week: "Week 3",
-        title: "Global Expansion Strategy",
-        description: "Study Starbucks' international expansion and localization strategies.",
-        activities: [
-          "Market entry strategies",
-          "Cultural adaptation analysis",
-          "Global supply chain study"
-        ],
-        duration: "6-8 hours",
-        outcome: "Global business expansion insights"
+      week: "Module 3",
+      title: "Global Expansion Strategy",
+      description: "Study Starbucks' international expansion and localization strategies.",
+      activities: [
+      "Market entry strategies",
+      "Cultural adaptation analysis",
+      "Global supply chain study"
+      ],
+      duration: "30 Minutes",
+      outcome: "Global business expansion insights"
       },
       {
-        week: "Week 4",
-        title: "Innovation & Digital Transformation",
-        description: "Explore Starbucks' digital initiatives and innovation strategies.",
-        activities: [
-          "Digital platform analysis",
-          "Mobile app strategy study",
-          "Customer experience innovation"
-        ],
-        duration: "7-9 hours",
-        outcome: "Digital transformation knowledge"
+      week: "Module 4",
+      title: "Innovation & Digital Transformation",
+      description: "Explore Starbucks' digital initiatives and innovation strategies.",
+      activities: [
+      "Digital platform analysis",
+      "Mobile app strategy study",
+      "Customer experience innovation"
+      ],
+      duration: "30 Minutes",
+      outcome: "Digital transformation knowledge"
       },
       {
-        week: "Week 5",
-        title: "Sustainability & Social Impact",
-        description: "Understand Starbucks' commitment to sustainability and social responsibility.",
-        activities: [
-          "Sustainability initiatives analysis",
-          "Social impact programs study",
-          "ESG reporting review"
-        ],
-        duration: "5-7 hours",
-        outcome: "Sustainability and CSR understanding"
+      week: "Module 5",
+      title: "Sustainability & Social Impact",
+      description: "Understand Starbucks' commitment to sustainability and social responsibility.",
+      activities: [
+      "Sustainability initiatives analysis",
+      "Social impact programs study",
+      "ESG reporting review"
+      ],
+      duration: "30 Minutes",
+      outcome: "Sustainability and CSR understanding"
       },
       {
-        week: "Week 6",
-        title: "Financial Performance & Growth",
-        description: "Analyze Starbucks' financial performance and growth strategies.",
-        activities: [
-          "Financial statement analysis",
-          "Revenue model study",
-          "Growth strategy evaluation"
-        ],
-        duration: "6-8 hours",
-        outcome: "Financial analysis skills"
+      week: "Module 6",
+      title: "Financial Performance & Growth",
+      description: "Analyze Starbucks' financial performance and growth strategies.",
+      activities: [
+      "Financial statement analysis",
+      "Revenue model study",
+      "Growth strategy evaluation"
+      ],
+      duration: "30 Minutes",
+      outcome: "Financial analysis skills"
       },
       {
-        week: "Week 7",
-        title: "Future Strategy & Case Study",
-        description: "Develop a comprehensive case study and future strategy recommendations.",
-        activities: [
-          "Case study compilation",
-          "Future strategy recommendations",
-          "Presentation preparation"
-        ],
-        duration: "8-10 hours",
-        outcome: "Complete case study and strategic insights"
+      week: "Module 7",
+      title: "Future Strategy & Case Study",
+      description: "Develop a comprehensive case study and future strategy recommendations.",
+      activities: [
+      "Case study compilation",
+      "Future strategy recommendations",
+      "Presentation preparation"
+      ],
+      duration: "30 Minutes",
+      outcome: "Complete case study and strategic insights"
       }
-    ],
+      ],
     masterclass: [
       {
         week: "Week 1",
@@ -1441,7 +1373,7 @@ const LinkedIn = () => {
 
         <div className="relative z-10 w-full flex flex-col items-center px-2 pt-6 pb-4">
 
-          <h1 className="text-4xl md:text-4xl font-bold text-center text-[#00308A] mb-2">Making Students <span style={{textDecoration: 'line-through'}}>BOOK SMART</span> LIFE SMART</h1>
+          <h1 className="text-4xl md:text-4xl font-bold text-center text-[#00308A] mb-2">Making Students <span style={{ textDecoration: 'line-through' }}>BOOK SMART</span> LIFE SMART</h1>
           <p className="text-lg md:text-xl text-center font-bold text-[#00308A] mb-3">The Ultimate Guide bundle for Teenagers</p>
           <div className="flex gap-6 justify-center items-center mb-5">
 
@@ -1451,7 +1383,7 @@ const LinkedIn = () => {
 
           </div>
 
-          
+
 
           {/* LinkedIn logo, no background, animated, smaller */}
 
@@ -1459,7 +1391,7 @@ const LinkedIn = () => {
 
             <img
 
-              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753341296/8379992_ke4jfx.png"
+              src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755165345/image-4YgqFomK3IPstJMGcAzOFcdMfTg5C0_lwpeoj.png"
 
               alt="LinkedIn Logo"
 
@@ -1528,7 +1460,7 @@ const LinkedIn = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-[#0a2540] text-center">Who is it for?</h2>
         <svg height="16" width="220" className="mt-1" viewBox="0 0 220 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10" stroke="#1890b7" strokeWidth="3" fill="none"/>
+          <path d="M2 10 Q12 2 22 10 T42 10 T62 10 T82 10 T102 10 T122 10 T142 10 T162 10 T182 10 T202 10 T218 10" stroke="#1890b7" strokeWidth="3" fill="none" />
 
         </svg>
 
@@ -1540,49 +1472,76 @@ const LinkedIn = () => {
 
       {/* Slanted Banner */}
 
-      <SlantedBanner />
+      {/* Top divider line */}
+      <div className="w-full max-w-7xl mx-auto h-px bg-gray-300 mb-8"></div>
 
-      {/* Bundled Experience Section (cloned) */}
-      <section className="w-full flex flex-col items-center justify-center py-8">
+      <MotivationalQuote />
+
+      {/* Bottom divider line */}
+      <div className="w-full max-w-7xl mx-auto h-px bg-gray-300 mt-8"></div>
+
+      {/* Bundled Experience Section - Complete */}
+      <section className="w-full flex flex-col items-center justify-center py-16 px-4">
+        {/* Main Heading */}
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] text-center mb-2">THE BUNDLED EXPERIENCE</h2>
-        <h3 className="text-xl md:text-2xl font-bold text-[#0a2540] text-center">Bundle #1 – The Power Pack Experience</h3>
-        <p className="text-[#0a2540] text-center max-w-3xl mb-6">For Students Who Want To Gain Real-World Exposure, Tech Skills, And Life Insights— All In One Pack!</p>
-        {/* Cloned Warikoo with Card1 and Card3 only */}
-        <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
-          <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
-            <InfoCard cardData={warikooCard1Data} onViewContent={handleViewContent} />
-            <InfoCard cardData={warikooCard3Data} onViewContent={handleViewContent} />
-          </div>
-        </section>
+        <p className="text-[#0a2540] text-center max-w-3xl mb-12">For Students Who Want To Gain Real-World Exposure, Tech Skills, And Life Insights— All In One Pack!</p>
         
-        {/* Ankur Warikoo Banner for Bundle #1 */}
-        <section className="w-full flex justify-center -mt-8 md:-mt-12">
-          <div className="w-full max-w-7xl scale-[0.75] origin-top">
-            <AnkurWarikooBanner />
+        {/* Bundle #1 */}
+        <div className="w-full max-w-7xl mb-4 flex flex-col items-center">
+          <h3 className="text-xl md:text-2xl font-bold text-[#0a2540] text-center mb-4">Bundle #1 – The Power Pack Experience</h3>
+          
+          <div className="w-full scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl overflow-hidden">
+            {/* Cards Section */}
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 md:pt-6 px-4 md:px-6">
+              <InfoCard cardData={warikooCard1Data} onViewContent={handleViewContent} />
+              <InfoCard cardData={warikooCard3Data} onViewContent={handleViewContent} />
+            </div>
+            
+            {/* Ankur Warikoo Banner Section */}
+            <div className="p-4 md:p-6">
+              <AnkurWarikooBanner />
+            </div>
           </div>
-        </section>
-        {/* Cloned CTA right below */}
-        <div className="-mt-14 md:-mt-20 w-full"><CTAComponent ctaUrl="https://rzp.io/rzp/6Z1qXVf2" /></div>
-      </section>
-
-      {/* Original Warikoo + CTA */}
-      <h3 className="text-xl md:text-2xl font-bold text-[#0a2540] text-center mt-10 md:mt-14">Bundle #2 – The Complete Experience</h3>
-      <p className="text-[#0a2540] text-center max-w-3xl mb-4">For Students Who Want To Gain Real-World Exposure, Tech Skills, And Life Insights— All In One Pack!</p>
-      <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
-        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
-          <InfoCard cardData={card1Data} onViewContent={handleViewContent} />
-          <InfoCard cardData={card2Data} onViewContent={handleViewContent} />
-          <InfoCard cardData={card3Data} onViewContent={handleViewContent} />
-          <AnkurWarikooBanner />
+        </div>
+        
+        {/* Bundle #1 CTA - Outside the bundle section */}
+        <div className="w-full flex justify-center mb-6">
+          <CTAComponent 
+            ctaUrl="https://rzp.io/rzp/6Z1qXVf2" 
+            originalPrice="₹3550+ GST"
+            offerPrice="₹1770+ GST"
+          />
+        </div>
+        
+        {/* Bundle #2 */}
+        <div className="w-full max-w-7xl mt-[8rem]">
+          <h3 className="text-xl md:text-2xl font-bold text-[#0a2540] text-center mb-6">Bundle #2 – The Complete Experience</h3>
+          
+          <div className="w-full scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 md:p-6">
+              <InfoCard cardData={card1Data} onViewContent={handleViewContent} />
+              <InfoCard cardData={card2Data} onViewContent={handleViewContent} />
+              <InfoCard cardData={card3Data} onViewContent={handleViewContent} />
+              <AnkurWarikooBanner />
+            </div>
+          </div>
+          
+          {/* Bundle #2 CTA */}
+          <div className="mt-6 flex justify-center ">
+            <CTAComponent 
+              ctaUrl="https://rzp.io/rzp/o0q43hlB" 
+              originalPrice="₹4550+ GST"
+              offerPrice="₹2550+ GST"
+            />
+          </div>
         </div>
       </section>
-      <div className="-mt-14 md:-mt-20"><CTAComponent ctaUrl="https://rzp.io/rzp/o0q43hlB" /></div>
-      
+
       {/* Investment Highlight Component */}
       <div className="mt-8">
         <InvestmentHighlight />
       </div>
-      
+
       {/* Course Instructors Section */}
 
       {/* <CourseInstructorsSection /> */}
@@ -1590,7 +1549,9 @@ const LinkedIn = () => {
 
       {/* Student Testimonials Section */}
 
-      <Testimonials />
+      <div className="mb-16">
+        <Testimonials />
+      </div>
 
       {/* FAQ Section */}
 
@@ -1621,6 +1582,9 @@ const LinkedIn = () => {
         </Modal>
       )}
 
+      {/* Signup Modal Component */}
+      <SignupModal />
+
     </div>
 
   );
@@ -1629,7 +1593,7 @@ const LinkedIn = () => {
 
 
 
-export default LinkedIn; 
+export default LinkedIn;
 
 // CTA helpers
 const CheckIcon = () => (
@@ -1700,10 +1664,10 @@ const CountdownTimer = ({ targetDate }) => {
   );
 };
 
-function CTAComponent({ ctaUrl = "#" }) {
+function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice = "₹2550+ GST" }) {
   const earlyBirdDeadline = "2025-08-30T23:59:59";
   return (
-    <section className="w-full flex items-center justify-center p-3 font-sans scale-[0.85] md:scale-[0.9] origin-top">
+    <section className="w-full flex items-center justify-center p-3 font-sans scale-[0.85] md:scale-[0.9] origin-top mt-[-12rem]">
       <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
         <div className="lg:flex lg:items-center">
           <div className="p-4 md:p-6 lg:w-1/2">
@@ -1726,8 +1690,8 @@ function CTAComponent({ ctaUrl = "#" }) {
               <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">(until 30th August, 2025 ONLY)</p>
               <CountdownTimer targetDate={earlyBirdDeadline} />
               <div className="flex items-center justify-center space-x-3">
-                <span className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 line-through">₹2550+ GST</span>
-                <span className="text-3xl md:text-4xl font-extrabold text-green-600 dark:text-green-400">₹1770+ GST</span>
+                <span className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 line-through">{originalPrice}</span>
+                <span className="text-3xl md:text-4xl font-extrabold text-green-600 dark:text-green-400">{offerPrice}</span>
               </div>
             </div>
             <a
