@@ -903,101 +903,60 @@ function CourseInstructorsSection() {
 function FAQSection() {
 
   const faqs = [
-
     {
-
-      // Access time
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M12 6v6l4 2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "How long will it take to get access to the course?",
-
-      content: "Your credentials to access the course will be delivered to your inbox within 5–10 minutes of your purchase. Please check your promotions/updates tab and spam folder as well.",
-
-    },
-
-    {
-
-      // Time commitment
-
-      icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
-
-      ),
-
       title: "What is the time commitment required for the course?",
-
-      content: "The course is self-paced and will require 10+ hours. If you have the Premium version, you'll also have access to bonus content and monthly live group Q&A sessions.",
-
+      content: "The course is self-paced and will require 10+ hours. You'll also have access to bonus content and monthly live group Q&A sessions.",
     },
 
     {
-
-      // Language
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
       title: "Which language is the course in?",
-
-      content: "The course is available in English with subtitiles. The primary language of the course is in English and there maybe some discussions and banter in Hindi. Rest assured, all videos have English subtitles.",
-
+      content: "The course is available in English with subtitles. The primary language of the course is in English and there maybe some discussions and banter in Hindi. Rest assured, all videos have English subtitles.",
     },
 
     {
-
-      // LinkedIn account
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="currentColor" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1976b2" /><path d="M7 17v-7h3v7m-1.5-8.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm6.25 8.25v-3.5c0-.966-.784-1.75-1.75-1.75s-1.75.784-1.75 1.75v3.5m3.5 0v-7h3v7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "Do I need to have a LinkedIn account for this course?",
-
-      content: "To make the most of this course and to action your learnings, we highly recommend you to have a LinkedIn account. The course is designed to be relevant for all LinkedIn accounts, irrespective of the number of followers or connections.",
-
-    },
-
-    {
-
-      // Individual or team
-
-      icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" stroke="#1976b2" strokeWidth="2" /><circle cx="16" cy="8" r="3" stroke="#1976b2" strokeWidth="2" /><path d="M2 20v-2a4 4 0 0 1 4-4h2m8 0h2a4 4 0 0 1 4 4v2" stroke="#1976b2" strokeWidth="2" /></svg>
-
-      ),
-
-      title: "Is this course only for individual creators?",
-
-      content: "Both individuals and/or a group/team of a creator(s) working together can enroll into the course.",
-
-    },
-
-    {
-
-      // Live interaction
-
-      icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
-
-      ),
-
       title: "Does the course come with any live interaction?",
+      content: "Yes, this course consists of live group Q&A sessions with our mentors.",
+    },
 
-      content: "Yes, the premium version of this course consists of live group Q&A sessions with Ankur Warikoo.",
+    {
+      icon: (
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
+      ),
+      title: "When will the live group Q&A sessions be held?",
+      content: "The live group Q&A sessions are held monthly. The date and time of these sessions are updated at the start of every month and available on the course platform. You will also receive WhatsApp notifications about the session details for the first six months of your enrollment.",
+    },
 
+    {
+      icon: (
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2"/><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2"/></svg>
+      ),
+      title: "What is the community experience in the course?",
+      content: "The course includes exclusive access to a virtual chat based community that Skillizee does not moderate. It is a student space where you can interact with other course students, ask questions, and build a network with like-minded students in this community.",
+    },
+
+    {
+      icon: (
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="#1976b2" strokeWidth="2"/></svg>
+      ),
+      title: "Does the course come with a certificate of completion?",
+      content: "Yes, a signed digital certificate is available to the students after successful completion of the course.",
+    },
+
+    {
+      icon: (
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="17" r="1" fill="#1976b2"/></svg>
+      ),
+      title: "How can I clear my doubts during the course, if I have any?",
+      content: "This course consists of monthly live group Q&A sessions with our mentors where you can ask your questions. Additionally, you can also use the virtual course community available inside the course platform to ask questions and learn with other students.",
     },
 
     {
@@ -1449,6 +1408,34 @@ const LinkedIn = () => {
   return (
 
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-100 ">
+
+      {/* Meta Pixel Code */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '984512286401857');
+            fbq('track', 'PageView');
+          `
+        }}
+      />
+      <noscript>
+        <img 
+          height="1" 
+          width="1" 
+          style={{display: 'none'}}
+          src="https://www.facebook.com/tr?id=984512286401857&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
+      {/* End Meta Pixel Code */}
 
       <style>{logoAnim}</style>
 
