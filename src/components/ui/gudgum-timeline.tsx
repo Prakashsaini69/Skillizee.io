@@ -1,20 +1,16 @@
 "use client";
+
 import {
   useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
-} from "motion/react";
+} from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-interface TimelineEntry {
-  title: React.ReactNode;
-  content: React.ReactNode;
-}
-
-export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+export const Timeline = ({ data }) => {
+  const ref = useRef(null);
+  const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
@@ -37,7 +33,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-white font-sans md:px-0"
       ref={containerRef}
     >
-
+ 
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
@@ -79,4 +75,4 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       </div>
     </div>
   );
-}; 
+};

@@ -1,5 +1,5 @@
 import React from "react";
-import { Timeline } from "../../../components/ui/timeline";
+import { Timeline } from "../../../components/ui/gudgum-timeline";
  
 export function GudgumTimeline() {
   const data = [

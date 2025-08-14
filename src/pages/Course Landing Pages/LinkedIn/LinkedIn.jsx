@@ -22,6 +22,11 @@ import SlantedScrollingBanner from "./SlantedScrollingBanner";
 
 import Footer from "../../../components/common/Footer";
 
+import { Testimonials } from "../../../components/eldoraui/testimonials";
+import { Award, Briefcase, TrendingUp } from 'lucide-react';
+import Modal from "../../../components/ui/modal";
+import CourseTimeline from "../../../components/ui/course-timeline";
+
 // Helper component for list items to keep the main component clean
 const ListItem = ({ children }) => (
   <li className="text-lg text-gray-800 font-bold">{children}</li>
@@ -402,87 +407,7 @@ function SlantedBanner() {
 
 
 
-function NextSneakPeekBanner() {
 
-  return (
-
-    <div className="w-full flex justify-center items-center">
-
-      <div
-
-        className="w-full"
-
-        style={{
-
-          background: '#0573a6',
-
-          clipPath: 'polygon(0 4%, 100% 0, 100% 96%, 0 100%)',
-
-        }}
-
-      >
-
-        {/* Top parallel line */}
-
-        <div className="w-full" style={{paddingTop: '12px'}}>
-
-          <div className="w-full h-0.5 bg-white opacity-70" />
-
-        </div>
-
-        <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
-
-          <div className="text-white text-4xl md:text-5xl font-bold mb-10" style={{textShadow: '0 2px 8px rgba(0,0,0,0.10)'}}>
-
-            Still not convinced?
-
-          </div>
-
-          <div className="flex justify-center w-full">
-
-            <div className="rounded-2xl overflow-hidden shadow-lg mx-auto" style={{maxWidth: 640, width: '100%'}}>
-
-              <iframe
-
-                width="100%"
-
-                height="360"
-
-                src="https://www.youtube.com/embed/rpWzlsUiapI"
-
-                title="Still not convinced?"
-
-                frameBorder="0"
-
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-
-                allowFullScreen
-
-                className="w-full h-[240px] md:h-[360px]"
-
-              ></iframe>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Bottom parallel line */}
-
-        <div className="w-full flex justify-center" style={{paddingBottom: '12px'}}>
-
-          <div className="w-[98%] h-0.5 bg-white opacity-70" />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  );
-
-}
 
 
 
@@ -515,7 +440,7 @@ const UsersIcon = () => (
 
 
 // Reusable info card
-const InfoCard = ({ cardData }) => {
+const InfoCard = ({ cardData, onViewContent }) => {
   const { imageUrl, tags, title, logoUrl, logoName, rating, reviews, details } = cardData;
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-4 flex flex-col space-y-4 shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -560,17 +485,27 @@ const InfoCard = ({ cardData }) => {
         <h3 className="text-xl md:text-2xl font-bold text-gray-800 text-left leading-snug flex-grow">{title}</h3>
       </div>
 
-      <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-3 md:space-x-4 ml-2 md:ml-3">
-          <div className="h-12 w-12 md:h-14 md:w-14 relative overflow-visible">
-            <img src={logoUrl} alt={`${logoName} logo`} className="h-full w-full object-contain transform scale-125 md:scale-150 origin-center" />
-          </div>
-          <span className="text-gray-800 font-semibold">{logoName}</span>
-        </div>
+      <div className="flex justify-end items-center">
         <div className="flex items-center space-x-1">
           <StarIcon />
           <span className="text-sm text-gray-600">({rating} {reviews})</span>
         </div>
+      </div>
+
+      {/* View Content Button with Logo */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3 md:space-x-4 ml-2 md:ml-3">
+          <div className="h-14 w-14 md:h-16 md:w-16 relative overflow-visible">
+            <img src={logoUrl} alt={`${logoName} logo`} className="h-full w-full object-contain transform scale-125 md:scale-150 origin-center" />
+          </div>
+          <span className="text-gray-800 font-semibold text-sm md:text-base">{logoName}</span>
+        </div>
+        <button 
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300 transform hover:scale-105 text-sm md:text-base"
+          onClick={() => onViewContent(title)}
+        >
+          View Content
+        </button>
       </div>
 
       <hr className="border-gray-200" />
@@ -596,8 +531,26 @@ const InfoCard = ({ cardData }) => {
 // Banner component
 const AnkurWarikooBanner = () => {
   return (
-    <div className="bg-blue-50 rounded-2xl p-8 col-span-1 md:col-span-3 flex flex-col md:flex-row items-center justify-between gap-8">
-      <div className="flex-1 space-y-8">
+    <div className="bg-blue-50 rounded-2xl p-8 col-span-1 md:col-span-3 relative overflow-hidden">
+      {/* Book Component - Absolutely positioned */}
+      <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20">
+        <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-3 py-2 md:px-4 md:py-3 shadow-sm flex items-center gap-3 md:gap-4">
+          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" alt="Beyond the Syllabus Book" className="h-32 md:h-40 w-auto transform hover:scale-110 transition-transform duration-300" />
+          <div className="text-[#0B4D9A] font-extrabold leading-none text-2xl md:text-4xl whitespace-nowrap">FREE<br/>BOOK</div>
+        </div>
+      </div>
+
+      {/* Ankur Warikoo Image - Absolutely positioned in front of everything */}
+      <div className="absolute right-16 md:right-72 bottom-0 z-[999]">
+        <img 
+          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg" 
+          alt="Ankur Warikoo" 
+          className="h-80 md:h-96 w-auto object-contain" 
+        />
+      </div>
+
+      {/* Content - Left side */}
+      <div className="relative z-30 flex-1 space-y-8 max-w-2xl">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755070650/AnkurWarikoText_wnrovn.svg" alt="#AnkurWarikoo" className="h-20 flex-shrink-0" />
           <div className="mt-2">
@@ -622,54 +575,48 @@ const AnkurWarikooBanner = () => {
           </div>
         </div>
       </div>
-      <div className="relative self-center md:self-end flex items-end gap-4 md:gap-6 -ml-8 md:-ml-12">
-        <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1754999107/AnkurWarikoImage_jjwmw7.svg" alt="Ankur Warikoo" className="h-80 md:h-96 w-auto" />
-        <div className="rounded-2xl border-4 border-[#0B4D9A] bg-white px-4 py-3 md:px-6 md:py-4 shadow-sm flex items-center gap-4 md:gap-6">
-          <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755071168/BookImage_pvstv1.svg" alt="Beyond the Syllabus Book" className="h-40 md:h-48 w-auto transform hover:scale-110 transition-transform duration-300" />
-          <div className="text-[#0B4D9A] font-extrabold leading-none text-3xl md:text-5xl whitespace-nowrap">FREE<br/>BOOK</div>
-        </div>
-      </div>
     </div>
   );
 };
 
+// Card data definitions
+const card1Data = {
+  imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755076706/Internship_3_1_idnajz.svg',
+  tags: [
+    { text: 'Internship', bgColor: '#FFFFFF', textColor: '#000000', position: { top: '1rem', left: '1rem' } },
+    { text: 'GET BRAND CERTIFIED', bgColor: '#FFD700', textColor: '#000000', position: { top: '3.5rem', left: '1rem' } }
+  ],
+  title: 'GudGum Virtual Internship',
+  logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg',
+  rating: '4.8',
+  reviews: 'Reviews',
+  details: { item1: '05', item2: '11h 20m', item3: '2680' }
+};
+
+const card2Data = {
+  imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077110/Starbucks_unphne.svg',
+  tags: [{ text: 'Case Study', bgColor: '#FFFFFF', textColor: '#000000', position: { bottom: '1rem', left: '1rem' } }],
+  title: 'How Starbucks became a 80$ billion industry',
+  logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755080136/skillizee_logo_egnukd.svg',
+  rating: '4.5',
+  reviews: 'Reviews',
+  details: { item1: '07', item2: '17h 10m', item3: '3219' }
+};
+
+const card3Data = {
+  imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755076648/Masterclass_hm9229.svg',
+  tags: [
+    { text: 'Who can Attend : Students from Grades 6-12', bgColor: '#4A90E2', textColor: '#FFFFFF', position: { top: '1rem', right: '1rem' } }
+  ],
+  title: 'Ankur Warikoo Masterclass',
+  logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755080136/skillizee_logo_egnukd.svg',
+  rating: '4.8',
+  reviews: 'Reviews',
+  details: { item1: '05', item2: '11h 20m', item3: '2680' }
+};
+
 // Wrapper section to render cards + banner
 function WarikooSection() {
-  const card1Data = {
-    imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755076706/Internship_3_1_idnajz.svg',
-    tags: [
-      { text: 'Internship', bgColor: '#FFFFFF', textColor: '#000000', position: { top: '1rem', left: '1rem' } },
-      { text: 'GET BRAND CERTIFIED', bgColor: '#FFD700', textColor: '#000000', position: { top: '3.5rem', left: '1rem' } }
-    ],
-    title: 'GudGum Virtual Internship',
-    logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1754307073/GudGum_LOGO_j10poe.svg',
-    rating: '4.8',
-    reviews: 'Reviews',
-    details: { item1: '05', item2: '11h 20m', item3: '2680' }
-  };
-
-  const card2Data = {
-    imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077110/Starbucks_unphne.svg',
-    tags: [{ text: 'Case Study', bgColor: '#FFFFFF', textColor: '#000000', position: { bottom: '1rem', left: '1rem' } }],
-    title: 'How Starbucks became a 80$ billion industry',
-    logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755080136/skillizee_logo_egnukd.svg',
-    rating: '4.5',
-    reviews: 'Reviews',
-    details: { item1: '07', item2: '17h 10m', item3: '3219' }
-  };
-
-  const card3Data = {
-    imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755076648/Masterclass_hm9229.svg',
-    tags: [
-      { text: 'Who can Attend : Students from Grades 6-12', bgColor: '#4A90E2', textColor: '#FFFFFF', position: { top: '1rem', right: '1rem' } }
-    ],
-    title: 'Ankur Warikoo Masterclass',
-    logoUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755080136/skillizee_logo_egnukd.svg',
-    rating: '4.8',
-    reviews: 'Reviews',
-    details: { item1: '05', item2: '11h 20m', item3: '2680' }
-  };
-
   return (
     <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
@@ -904,418 +851,6 @@ function CourseInstructorsSection() {
   );
 
 }
-
-
-
- 
-
-
-function StudentTestimonialsSection() {
-
-  // Placeholder avatars and testimonials
-
-  const avatars = [
-
-    'https://randomuser.me/api/portraits/men/32.jpg',
-
-    'https://randomuser.me/api/portraits/men/33.jpg',
-
-    'https://randomuser.me/api/portraits/men/34.jpg',
-
-    'https://randomuser.me/api/portraits/women/35.jpg',
-
-    'https://randomuser.me/api/portraits/women/36.jpg',
-
-    'https://randomuser.me/api/portraits/men/37.jpg',
-
-  ];
-
-  const testimonials = [
-
-    {
-
-      text: 'I must commend the course for its content, which has been meticulously crafted. One of the highlights for me was learning how to perform my own analytics.',
-
-      name: 'Poorva Panwalkar',
-
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-
-      stats: [
-
-        { value: '98%', label: 'Increase in searches' },
-
-        { value: '62%', label: 'Increase in profile views' },
-
-        { value: '4X', label: 'Increase in impressions' },
-
-      ],
-
-    },
-
-    {
-
-      text: 'This course nudged me to think about why I am doing this, who my audience is, and what really matters. It went into great depth about how LinkedIn works and its algorithm.',
-
-      name: 'Sahil Bansal',
-
-      avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-
-      stats: [
-
-        { value: '84%', label: 'Increase in searches' },
-
-        { value: '2X', label: 'Increase in impressions' },
-
-        { value: '1.5X', label: 'Increase in engagements' },
-
-      ],
-
-    },
-
-    {
-
-      text: 'This course reignited my passion for writing, helping me create a structured process. In the first month, I achieved over 600,000 impressions and generated several inbound leads, showcasing its impact.',
-
-      name: 'Parth Parikh',
-
-      avatar: 'https://randomuser.me/api/portraits/men/46.jpg',
-
-      stats: [
-
-        { value: '237K', label: 'Increase in impressions' },
-
-        { value: '31%', label: 'More search appearances' },
-
-        { value: '2X', label: 'Increase in Profile views' },
-
-      ],
-
-    },
-
-    {
-
-      text: "The course was a great learning experience. It corrected some of the myths I had about LinkedIn's growth. I learnt the importance of Personal Branding and how one should go about it.",
-
-      name: "Sanjay Ahuja",
-
-      avatar: "https://randomuser.me/api/portraits/men/47.jpg",
-
-      stats: [
-
-        { value: "77%", label: "More search appearances" },
-
-        { value: "19%", label: "Increase in profile views" },
-
-        { value: "3X", label: "Increase in impressions" },
-
-      ],
-
-    },
-
-    {
-
-      text: "I loved the detail and clarity the team brought to the course. For anyone looking for insights and an approach towards LinkedIn, I'd highly recommend this course",
-
-      name: "Tara Kapur",
-
-      avatar: "https://randomuser.me/api/portraits/women/48.jpg",
-
-      stats: [
-
-        { value: "44%", label: "Increase in impressions" },
-
-        { value: "14%", label: "Increase in profile views" },
-
-        { value: "23%", label: "More search appearances" },
-
-      ],
-
-    },
-
-    {
-
-      text: "I joined the course to understand LinkedIn content creation. It provides an honest perspective on the process, the emotions involved, and the common challenges one might face.",
-
-      name: "Sonam Mahajan",
-
-      avatar: "https://randomuser.me/api/portraits/women/49.jpg",
-
-      stats: [
-
-        { value: "3X", label: "Increase in impressions" },
-
-        { value: "20%", label: "Increase in profile views" },
-
-        { value: "3X", label: "More search appearances" },
-
-      ],
-
-    },
-
-  ];
-
-  return (
-
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-transparent">
-
-      {/* Top Row: Banner left, Avatars right */}
-
-      <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
-
-        {/* Banner left */}
-
-        <div className="flex flex-col items-center md:items-start flex-shrink-0" style={{minWidth: 220}}>
-
-          <div className="bg-[#0573a6] text-white rounded-2xl px-8 py-4 mb-2 shadow-lg text-left flex flex-col items-start justify-center" style={{fontFamily: 'inherit'}}>
-
-            <span className="text-4xl font-bold">2,937+</span>
-
-            <span className="text-xl font-semibold mt-1" style={{fontFamily: 'Roasted Chicken, cursive'}}>
-
-              students have taken this course!
-
-            </span>
-
-          </div>
-
-        </div>
-
-        {/* Avatars right */}
-
-        <div className="flex gap-12 flex-nowrap justify-end w-full md:w-auto">
-
-          {avatars.map((src, i) => (
-
-            <div key={i} className="w-16 h-16 rounded-full border-4 border-white shadow-lg relative overflow-hidden flex items-center justify-center bg-blue-100 animate-zoom-in-out">
-
-              <img src={src} alt="avatar" className="w-full h-full object-cover" />
-
-              <div className="absolute inset-0 flex items-center justify-center">
-
-                <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#000" fillOpacity="0.3"/><polygon points="16,13 28,20 16,27" fill="#fff"/></svg>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </div>
-
-      {/* Carousel */}
-
-      <div className="w-full max-w-5xl mx-auto relative">
-
-        <Swiper
-
-          modules={[Navigation, Pagination]}
-
-          spaceBetween={32}
-
-          slidesPerView={3}
-
-          navigation
-
-          pagination={{ clickable: true }}
-
-          breakpoints={{
-
-            0: { slidesPerView: 1 },
-
-            640: { slidesPerView: 1 },
-
-            1024: { slidesPerView: 2 },
-
-            1280: { slidesPerView: 3 },
-
-          }}
-
-        >
-
-          {testimonials.map((t, idx) => (
-
-            <SwiperSlide key={idx}>
-
-              <div className="bg-[#e6f0fa] rounded-3xl shadow-lg p-5 flex flex-col h-full min-h-[420px] relative" style={{backgroundImage: 'radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)', backgroundSize: '18px 18px'}}>
-
-                {/* Top: Description */}
-
-                <div className="flex-1 flex flex-col justify-start">
-
-                  <div className="text-[#0a2540] text-lg font-medium">{t.text}</div>
-
-                </div>
-
-                {/* Bottom: User info, separator, insights */}
-
-                <div className="flex flex-col space-y-0 w-full mt-6">
-
-                  <div className="flex gap-3 min-h-[56px] items-center">
-
-                    <img src={t.avatar} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-white shadow" />
-
-                    <span className="font-bold text-[#0a2540] text-lg">{t.name}</span>
-
-                  </div>
-
-                  <div className="w-full flex justify-center my-3">
-
-                    <div className="h-0.5 w-11/12 bg-[#bcd2e6] rounded-full" />
-
-                  </div>
-
-                  <div className="flex justify-between gap-4 w-full">
-
-                    {t.stats.map((s, i) => (
-
-                      <div key={i} className="flex flex-col items-center flex-1">
-
-                        <span className="text-[#111] font-bold text-xl">{s.value}</span>
-
-                        <span className="text-xs text-[#0a2540] text-center font-medium">{s.label}</span>
-
-                      </div>
-
-                    ))}
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </SwiperSlide>
-
-          ))}
-
-        </Swiper>
-
-        {/* Swiper pagination will be styled below */}
-
-        <style>{`
-
-          .swiper-pagination {
-
-            position: static !important;
-
-            margin-top: 32px;
-
-            display: flex;
-
-            justify-content: center;
-
-          }
-
-        `}</style>
-
-      </div>
-
-      <style>{`
-
-        @keyframes zoomInOut {
-
-          0%, 100% { transform: scale(1); }
-
-          50% { transform: scale(1.13); }
-
-        }
-
-        .animate-zoom-in-out {
-
-          animation: zoomInOut 2.8s ease-in-out infinite;
-
-        }
-
-      `}</style>
-
-    </section>
-
-  );
-
-}
-
-
-
-function OurPromiseSection() {
-
-  // Placeholder badge image (replace with your actual badge if available)
-
-  const badgeImg = 'https://framerusercontent.com/images/B8LOfz4fDe6nrnYG0lt4E6KHUM.png'; // Use your badge image URL
-
-  return (
-
-    <section className="w-full flex flex-col items-center justify-center py-12 bg-transparent scale-[0.8]">
-
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-0">
-
-        {/* Left: Badge */}
-
-        <div className="flex justify-center items-center">
-
-          <div className="relative flex flex-col items-center">
-
-            <img src={badgeImg} alt="Our Promise Badge" className="w-72 h-72 object-contain drop-shadow-xl animate-zoom-in-out" style={{borderRadius: '32px'}} />
-
-          </div>
-
-        </div>
-
-        {/* Right: Text */}
-
-        <div className="flex flex-col items-start justify-center">
-
-          <div className="text-3xl md:text-4xl font-semibold text-[#0a2540] mb-6 leading-tight">
-
-            No-nonsense Approach.<br />
-
-            <span className="text-blue-500">Practical Delivery.</span><br />
-
-            Risk-free Investment.
-
-          </div>
-
-          <div className="mb-4">
-
-            <span className="text-blue-500 font-bold text-lg">Lifetime Access</span>
-
-            <span className="block text-[#222] text-base">Get access forever on a one-time payment and watch anytime, anywhere as per your convenience.</span>
-
-          </div>
-
-          <div className="mb-4">
-
-            <span className="text-blue-500 font-bold text-lg">100% Refund Policy</span>
-
-            <span className="block text-[#222] text-base">Cancel anytime within 14 days of purchase and get a full refund, no questions asked.</span>
-
-          </div>
-
-          <div className="mb-4">
-
-            <span className="text-blue-500 font-bold text-lg">Free Upgrades</span>
-
-            <span className="block text-[#222] text-base">Gain all future updates, additions and changes made to the course at no additional cost.</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      
-
-    </section>
-
-  );
-
-}
-
-
-
-
-
 
 
 function FAQSection() {
@@ -1583,6 +1118,222 @@ function FAQSection() {
 
 
 const LinkedIn = () => {
+  const [activeModal, setActiveModal] = useState(null);
+
+  // Timeline data for each course
+  const timelineData = {
+    gudgum: [
+      {
+        week: "Week 1",
+        title: "Introduction to Sustainable Branding",
+        description: "Learn the fundamentals of sustainable branding and understand GudGum's mission.",
+        activities: [
+          "Brand analysis and research",
+          "Understanding sustainable packaging",
+          "Market research on eco-friendly products"
+        ],
+        duration: "5-7 hours",
+        outcome: "Complete understanding of sustainable branding principles"
+      },
+      {
+        week: "Week 2",
+        title: "Product Development & Innovation",
+        description: "Explore the product development process and innovation strategies.",
+        activities: [
+          "Product lifecycle analysis",
+          "Innovation brainstorming sessions",
+          "Prototype development"
+        ],
+        duration: "6-8 hours",
+        outcome: "Develop innovative product concepts"
+      },
+      {
+        week: "Week 3",
+        title: "Marketing & Campaign Strategy",
+        description: "Create comprehensive marketing campaigns for sustainable products.",
+        activities: [
+          "Campaign ideation and planning",
+          "Social media strategy development",
+          "Content creation for eco-conscious audience"
+        ],
+        duration: "7-9 hours",
+        outcome: "Complete marketing campaign portfolio"
+      },
+      {
+        week: "Week 4",
+        title: "Business Model & Strategy",
+        description: "Understand the business model and strategic planning for sustainable ventures.",
+        activities: [
+          "Business model canvas creation",
+          "Financial planning and projections",
+          "Strategic roadmap development"
+        ],
+        duration: "8-10 hours",
+        outcome: "Comprehensive business strategy document"
+      },
+      {
+        week: "Week 5",
+        title: "Final Project & Presentation",
+        description: "Present your complete sustainable branding project and receive feedback.",
+        activities: [
+          "Final project compilation",
+          "Presentation preparation",
+          "Peer review and feedback"
+        ],
+        duration: "10-12 hours",
+        outcome: "Professional portfolio and presentation skills"
+      }
+    ],
+    starbucks: [
+      {
+        week: "Week 1",
+        title: "Starbucks Foundation & History",
+        description: "Explore Starbucks' journey from a small coffee shop to a global brand.",
+        activities: [
+          "Company history research",
+          "Founder's vision analysis",
+          "Early business model study"
+        ],
+        duration: "4-6 hours",
+        outcome: "Understanding of Starbucks' foundation"
+      },
+      {
+        week: "Week 2",
+        title: "Brand Strategy & Positioning",
+        description: "Analyze Starbucks' brand strategy and market positioning.",
+        activities: [
+          "Brand positioning analysis",
+          "Target audience identification",
+          "Competitive landscape study"
+        ],
+        duration: "5-7 hours",
+        outcome: "Comprehensive brand strategy understanding"
+      },
+      {
+        week: "Week 3",
+        title: "Global Expansion Strategy",
+        description: "Study Starbucks' international expansion and localization strategies.",
+        activities: [
+          "Market entry strategies",
+          "Cultural adaptation analysis",
+          "Global supply chain study"
+        ],
+        duration: "6-8 hours",
+        outcome: "Global business expansion insights"
+      },
+      {
+        week: "Week 4",
+        title: "Innovation & Digital Transformation",
+        description: "Explore Starbucks' digital initiatives and innovation strategies.",
+        activities: [
+          "Digital platform analysis",
+          "Mobile app strategy study",
+          "Customer experience innovation"
+        ],
+        duration: "7-9 hours",
+        outcome: "Digital transformation knowledge"
+      },
+      {
+        week: "Week 5",
+        title: "Sustainability & Social Impact",
+        description: "Understand Starbucks' commitment to sustainability and social responsibility.",
+        activities: [
+          "Sustainability initiatives analysis",
+          "Social impact programs study",
+          "ESG reporting review"
+        ],
+        duration: "5-7 hours",
+        outcome: "Sustainability and CSR understanding"
+      },
+      {
+        week: "Week 6",
+        title: "Financial Performance & Growth",
+        description: "Analyze Starbucks' financial performance and growth strategies.",
+        activities: [
+          "Financial statement analysis",
+          "Revenue model study",
+          "Growth strategy evaluation"
+        ],
+        duration: "6-8 hours",
+        outcome: "Financial analysis skills"
+      },
+      {
+        week: "Week 7",
+        title: "Future Strategy & Case Study",
+        description: "Develop a comprehensive case study and future strategy recommendations.",
+        activities: [
+          "Case study compilation",
+          "Future strategy recommendations",
+          "Presentation preparation"
+        ],
+        duration: "8-10 hours",
+        outcome: "Complete case study and strategic insights"
+      }
+    ],
+    masterclass: [
+      {
+        week: "Week 1",
+        title: "Personal Branding Fundamentals",
+        description: "Learn the basics of personal branding and why it matters in today's digital world.",
+        activities: [
+          "Personal brand assessment",
+          "Core values identification",
+          "Target audience analysis"
+        ],
+        duration: "3-4 hours",
+        outcome: "Clear personal brand foundation"
+      },
+      {
+        week: "Week 2",
+        title: "Content Creation & Strategy",
+        description: "Master the art of creating engaging content that resonates with your audience.",
+        activities: [
+          "Content strategy development",
+          "Writing techniques practice",
+          "Visual content creation"
+        ],
+        duration: "4-5 hours",
+        outcome: "Content creation skills"
+      },
+      {
+        week: "Week 3",
+        title: "Social Media Mastery",
+        description: "Learn to leverage social media platforms for maximum impact and engagement.",
+        activities: [
+          "Platform-specific strategies",
+          "Engagement optimization",
+          "Analytics and measurement"
+        ],
+        duration: "5-6 hours",
+        outcome: "Social media expertise"
+      },
+      {
+        week: "Week 4",
+        title: "Networking & Relationship Building",
+        description: "Build meaningful connections and grow your professional network effectively.",
+        activities: [
+          "Networking strategies",
+          "Relationship building techniques",
+          "Collaboration opportunities"
+        ],
+        duration: "4-5 hours",
+        outcome: "Strong professional network"
+      },
+      {
+        week: "Week 5",
+        title: "Monetization & Career Growth",
+        description: "Turn your personal brand into opportunities and advance your career.",
+        activities: [
+          "Monetization strategies",
+          "Career advancement planning",
+          "Portfolio development"
+        ],
+        duration: "5-6 hours",
+        outcome: "Career growth roadmap"
+      }
+    ]
+  };
+
   // Local card data for cloned Warikoo section
   const warikooCard1Data = {
     imageUrl: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1755076706/Internship_3_1_idnajz.svg',
@@ -1607,6 +1358,45 @@ const LinkedIn = () => {
     rating: '4.8',
     reviews: 'Reviews',
     details: { item1: '05', item2: '11h 20m', item3: '2680' }
+  };
+
+  const handleViewContent = (title) => {
+    if (title.includes('GudGum')) {
+      setActiveModal('gudgum');
+    } else if (title.includes('Starbucks')) {
+      setActiveModal('starbucks');
+    } else if (title.includes('Masterclass')) {
+      setActiveModal('masterclass');
+    }
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+  };
+
+  const getModalContent = () => {
+    switch (activeModal) {
+      case 'gudgum':
+        return {
+          title: 'GudGum Virtual Internship Timeline',
+          description: 'Explore the comprehensive 5-week journey of the GudGum Sustainable Branding Internship. Each week focuses on different aspects of sustainable business and branding.',
+          data: timelineData.gudgum
+        };
+      case 'starbucks':
+        return {
+          title: 'Starbucks Case Study Timeline',
+          description: 'Dive deep into Starbucks\' journey from a small coffee shop to an $80 billion global empire. This 7-week case study covers all aspects of their success story.',
+          data: timelineData.starbucks
+        };
+      case 'masterclass':
+        return {
+          title: 'Ankur Warikoo Masterclass Timeline',
+          description: 'Join Ankur Warikoo in this comprehensive 5-week masterclass on personal branding and career growth. Learn from one of India\'s most successful entrepreneurs.',
+          data: timelineData.masterclass
+        };
+      default:
+        return null;
+    }
   };
 
   return (
@@ -1760,8 +1550,8 @@ const LinkedIn = () => {
         {/* Cloned Warikoo with Card1 and Card3 only */}
         <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
-            <InfoCard cardData={warikooCard1Data} />
-            <InfoCard cardData={warikooCard3Data} />
+            <InfoCard cardData={warikooCard1Data} onViewContent={handleViewContent} />
+            <InfoCard cardData={warikooCard3Data} onViewContent={handleViewContent} />
           </div>
         </section>
         
@@ -1778,7 +1568,14 @@ const LinkedIn = () => {
       {/* Original Warikoo + CTA */}
       <h3 className="text-xl md:text-2xl font-bold text-[#0a2540] text-center mt-10 md:mt-14">Bundle #2 – The Complete Experience</h3>
       <p className="text-[#0a2540] text-center max-w-3xl mb-4">For Students Who Want To Gain Real-World Exposure, Tech Skills, And Life Insights— All In One Pack!</p>
-      <WarikooSection />
+      <section className="w-full flex justify-center pt-4 pb-0 px-2 -mb-12 md:-mb-16">
+        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scale-[0.75] origin-top bg-[#E6F0FF] border border-blue-200 rounded-3xl p-4 md:p-6">
+          <InfoCard cardData={card1Data} onViewContent={handleViewContent} />
+          <InfoCard cardData={card2Data} onViewContent={handleViewContent} />
+          <InfoCard cardData={card3Data} onViewContent={handleViewContent} />
+          <AnkurWarikooBanner />
+        </div>
+      </section>
       <div className="-mt-14 md:-mt-20"><CTAComponent ctaUrl="https://rzp.io/rzp/o0q43hlB" /></div>
       
       {/* Investment Highlight Component */}
@@ -1788,24 +1585,12 @@ const LinkedIn = () => {
       
       {/* Course Instructors Section */}
 
-      <CourseInstructorsSection />
+      {/* <CourseInstructorsSection /> */}
 
 
       {/* Student Testimonials Section */}
 
-      <StudentTestimonialsSection />
-
-      {/* Our Promise Section */}
-
-      <OurPromiseSection />
-
-      {/* Slanted Scrolling Banner */}
-
-      <SlantedScrollingBanner className="mt-12" />
-
-      {/* Still not convinced? */}
-
-      <NextSneakPeekBanner />
+      <Testimonials />
 
       {/* FAQ Section */}
 
@@ -1818,6 +1603,23 @@ const LinkedIn = () => {
         <Footer />
 
       </div>
+
+      {/* Modal */}
+      {activeModal && getModalContent() && (
+        <Modal
+          isOpen={!!activeModal}
+          onClose={closeModal}
+          title={getModalContent().title}
+          animation="scale"
+          size="xl"
+        >
+          <CourseTimeline
+            title={getModalContent().title}
+            description={getModalContent().description}
+            timelineData={getModalContent().data}
+          />
+        </Modal>
+      )}
 
     </div>
 

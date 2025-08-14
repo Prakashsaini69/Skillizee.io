@@ -178,7 +178,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="w-full py-24 px-2 md:px-0 bg-white">
+    <section id="testimonials" className="w-full py-24 px-2 md:px-0 bg-transparent">
       <div className="w-full max-w-7xl mx-auto">
         <h2 className="mb-4 text-center text-4xl md:text-5xl font-bold leading-[1.2] tracking-tighter text-[#0a2540]">
           What Our Interns Say
