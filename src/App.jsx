@@ -276,7 +276,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/wall-of-fame" element={<WallOfFame />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/linkedin" element={<LinkedIn />} />
+        <Route path="/store/bundle-registration" element={<LinkedIn />} />
         <Route path="/store/gudgum-v2" element={<GudgumV2 />} />
         <Route path="/demo" element={<DemoComponents />} />
         <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308A]'>404 - Page Not Found<Footer /></div>} />
