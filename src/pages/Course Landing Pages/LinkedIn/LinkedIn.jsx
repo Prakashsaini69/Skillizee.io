@@ -84,6 +84,121 @@ const InvestmentHighlight = () => {
   );
 };
 
+// Helper component for the checkmark icon
+const CheckIconCTA = () => (
+  <svg className="w-5 h-5 mr-2 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+);
+
+// Data for the different bundles
+const bundles = [
+  { 
+    id: 'bundle1', 
+    name: 'Bundle 1', 
+    price: 1770, 
+    url: 'https://rzp.io/rzp/6Z1qXVf2'
+  },
+  { 
+    id: 'bundle2', 
+    name: 'Bundle 2', 
+    price: 2550, 
+    url: 'https://rzp.io/rzp/o0q43hlB'
+  },
+];
+
+// Enrollment CTA Component
+const EnrollmentCTA = () => {
+  // State to track the currently selected bundle, defaulting to Bundle 2
+  const [selectedBundle, setSelectedBundle] = useState(bundles[1]);
+
+  // Handler for when the user changes the selection
+  const handleBundleChange = (event) => {
+    const bundleId = event.target.value;
+    const newBundle = bundles.find(b => b.id === bundleId);
+    setSelectedBundle(newBundle);
+  };
+
+  return (
+    <div className="flex items-center justify-center p-4 font-sans">
+      {/* Increased max-w-5xl for an even wider, more landscape feel */}
+      <div className="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
+        <div className="p-8 md:p-12">
+
+          {/* Urgency Alert */}
+          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-center mb-6 animate-pulse">
+            <p className="font-bold text-lg">🚨 Limited Seats Available – Enroll Before It's Too Late!</p>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
+            Give Your Child a Competitive Edge Before College
+          </h1>
+
+          {/* Sub-headline */}
+          <p className="text-gray-300 text-center text-lg mb-8">
+            This is a unique chance to gain invaluable life skills and real-world business exposure.
+          </p>
+
+          {/* Feature List */}
+          <div className="space-y-4 mb-8">
+            <div className="flex items-start">
+              <CheckIconCTA />
+              <p className="text-gray-300"><span className="font-semibold text-white">Essential Life Skills:</span> Develop confidence, leadership, and critical thinking.</p>
+            </div>
+            <div className="flex items-start">
+              <CheckIconCTA />
+              <p className="text-gray-300"><span className="font-semibold text-white">Business Exposure:</span> Understand the fundamentals of entrepreneurship and finance.</p>
+            </div>
+            <div className="flex items-start">
+              <CheckIconCTA />
+              <p className="text-gray-300"><span className="font-semibold text-white">Future-Proof Advantage:</span> Stand out on college applications and beyond.</p>
+            </div>
+          </div>
+
+          {/* Pricing and Button Container */}
+          <div className="bg-gray-700/50 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            {/* Bundle Selector */}
+            <div className="w-full md:w-auto">
+                <label htmlFor="bundle-select" className="text-gray-400 text-sm mb-1 block">Select Your Bundle</label>
+                <select 
+                    id="bundle-select"
+                    value={selectedBundle.id}
+                    onChange={handleBundleChange}
+                    className="bg-gray-800 border border-gray-600 text-white text-lg rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3.5"
+                >
+                    {bundles.map(bundle => (
+                        <option key={bundle.id} value={bundle.id}>
+                            {bundle.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            {/* Dynamic Price Display */}
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">Investment</p>
+              <p className="text-white font-bold text-3xl">₹{selectedBundle.price} <span className="text-lg font-normal text-gray-400">+ GST</span></p>
+            </div>
+            
+            {/* CTA Button as a Link */}
+            <a 
+              href={selectedBundle.url}
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer"
+              className="w-full text-center md:w-auto bg-indigo-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
+            >
+              📌 Reserve My Seat Now
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const logoAnim = `
 
 @keyframes linkedinLogoZoom {
@@ -1551,6 +1666,11 @@ const LinkedIn = () => {
 
       <div className="mb-16">
         <Testimonials />
+      </div>
+
+      {/* Enrollment CTA Component */}
+      <div className="mb-16">
+        <EnrollmentCTA />
       </div>
 
       {/* FAQ Section */}
