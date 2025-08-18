@@ -97,20 +97,20 @@ const bundles = [
     id: 'bundle1', 
     name: 'Bundle 1', 
     price: 1770, 
-    url: 'https://rzp.io/rzp/6Z1qXVf2'
+    url: 'https://login.skillizee.io/courses/Bundle-1-68a300f07020a54adec685da'
   },
   { 
     id: 'bundle2', 
     name: 'Bundle 2', 
     price: 2550, 
-    url: 'https://rzp.io/rzp/o0q43hlB'
+    url: 'https://login.skillizee.io/courses/Membership-1-6853c2dc37696a15d3213656'
   },
 ];
 
 // Enrollment CTA Component
 const EnrollmentCTA = () => {
-  // State to track the currently selected bundle, defaulting to Bundle 2
-  const [selectedBundle, setSelectedBundle] = useState(bundles[1]);
+  // State to track the currently selected bundle, defaulting to Bundle 1
+  const [selectedBundle, setSelectedBundle] = useState(bundles[0]);
 
   // Handler for when the user changes the selection
   const handleBundleChange = (event) => {
@@ -184,10 +184,18 @@ const EnrollmentCTA = () => {
             
             {/* CTA Button as a Link */}
             <a 
-              href={selectedBundle.url}
-              target="_blank" // Opens the link in a new tab
-              rel="noopener noreferrer"
-              onClick={() => {
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                // Debug: Log the selected bundle and URL
+                console.log('Selected Bundle:', selectedBundle);
+                console.log('Opening URL:', selectedBundle.url);
+                // Open popup window
+                const popup = window.open(selectedBundle.url, 'skillizee_popup', 'width=800,height=600,scrollbars=yes,resizable=yes');
+                if (popup) {
+                  popup.focus();
+                }
+                // Meta Pixel tracking
                 if (typeof fbq !== 'undefined') {
                   fbq('track', 'Lead', {
                     content_name: 'Reserve My Seat Now Button',
@@ -197,7 +205,7 @@ const EnrollmentCTA = () => {
                   });
                 }
               }}
-              className="w-full text-center md:w-auto bg-indigo-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
+              className="w-full text-center md:w-auto bg-indigo-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer"
             >
               📌 Reserve My Seat Now
             </a>
@@ -1711,7 +1719,7 @@ const LinkedIn = () => {
         {/* Bundle #1 CTA - Outside the bundle section */}
         <div className="w-full flex justify-center mb-6">
           <CTAComponent 
-            ctaUrl="https://rzp.io/rzp/6Z1qXVf2" 
+            ctaUrl="https://login.skillizee.io/courses/Bundle-1-68a300f07020a54adec685da" 
             originalPrice="₹3550+ GST"
             offerPrice="₹1770+ GST"
           />
@@ -1733,7 +1741,7 @@ const LinkedIn = () => {
           {/* Bundle #2 CTA */}
           <div className="mt-6 flex justify-center ">
             <CTAComponent 
-              ctaUrl="https://rzp.io/rzp/o0q43hlB" 
+              ctaUrl="https://login.skillizee.io/courses/Membership-1-6853c2dc37696a15d3213656" 
               originalPrice="₹4550+ GST"
               offerPrice="₹2550+ GST"
             />
@@ -1904,10 +1912,15 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
               </div>
             </div>
             <a
-              href={ctaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                // Open popup window
+                const popup = window.open(ctaUrl, 'skillizee_popup', 'width=800,height=600,scrollbars=yes,resizable=yes');
+                if (popup) {
+                  popup.focus();
+                }
+                // Meta Pixel tracking
                 if (typeof fbq !== 'undefined') {
                   fbq('track', 'Lead', {
                     content_name: 'ENROLL NOW Button',
@@ -1917,7 +1930,7 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
                   });
                 }
               }}
-              className="block w-full text-center bg-blue-600 text-white font-bold text-base md:text-lg py-3 px-5 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
+              className="block w-full text-center bg-blue-600 text-white font-bold text-base md:text-lg py-3 px-5 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transform hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer"
             >
               ENROLL NOW
             </a>

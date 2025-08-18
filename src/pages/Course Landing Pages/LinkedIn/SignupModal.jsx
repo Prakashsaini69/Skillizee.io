@@ -42,23 +42,56 @@ export default function SignupModal() {
   // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    
+    if (name === 'phoneNumber') {
+      // Format phone number as user types
+      const cleanValue = value.replace(/\D/g, '');
+      let formattedValue = cleanValue;
+      
+      // Limit to 10 digits
+      if (cleanValue.length <= 10) {
+        formattedValue = cleanValue;
+      }
+      
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: formattedValue
+      }));
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
   
   // Function to validate the form data
   const validateForm = () => {
     let formErrors = {};
-    if (!formData.name) {
+    
+    // Name validation
+    if (!formData.name.trim()) {
         formErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 2) {
+        formErrors.name = "Name must be at least 2 characters long";
     }
+    
+    // Phone number validation
     if (!formData.phoneNumber) {
         formErrors.phoneNumber = "Phone number is required";
-    } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
-        formErrors.phoneNumber = "Please enter a valid 10-digit number";
+    } else {
+        // Remove all non-digit characters
+        const cleanPhone = formData.phoneNumber.replace(/\D/g, '');
+        
+        if (cleanPhone.length !== 10) {
+            formErrors.phoneNumber = "Phone number must be exactly 10 digits";
+        } else if (!/^[6-9]/.test(cleanPhone)) {
+            formErrors.phoneNumber = "Phone number must start with 6, 7, 8, or 9";
+        } else if (!/^\d{10}$/.test(cleanPhone)) {
+            formErrors.phoneNumber = "Please enter a valid 10-digit number";
+        }
     }
+    
     setErrors(formErrors);
     // Return true if there are no errors
     return Object.keys(formErrors).length === 0;
@@ -108,7 +141,11 @@ export default function SignupModal() {
             setIsSubmitted(true);
             // Close the modal automatically after a delay
             setTimeout(() => {
-                closeModal();
+                setIsModalOpen(false);
+                // Reset form state
+                setIsSubmitted(false);
+                setFormData({ name: '', phoneNumber: '' });
+                setErrors({});
             }, 3000);
           } else {
             alert('Failed to submit. Please try again.');
@@ -140,15 +177,7 @@ export default function SignupModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
       <div className="relative bg-white w-full max-w-md rounded-2xl shadow-2xl transform transition-all duration-300 ease-in-out scale-100 overflow-hidden">
         
-        {/* Close Button: Do not show on success screen */}
-        {!isSubmitted && (
-          <button 
-            onClick={closeModal}
-            className="absolute top-3 right-3 z-20 text-gray-500 bg-white bg-opacity-75 rounded-full p-1 hover:bg-opacity-100 hover:text-gray-800 transition-all"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </button>
-        )}
+        {/* No close button - Form is mandatory */}
         
         {/* Header with Image */}
         {!isSubmitted && (
@@ -202,12 +231,14 @@ export default function SignupModal() {
                                 <input
                                     type="tel"
                                     name="phoneNumber"
-                                    placeholder="Enter your phone number"
+                                    placeholder="Enter 10-digit phone number"
                                     value={formData.phoneNumber}
                                     onChange={handleInputChange}
+                                    maxLength="10"
                                     className={phoneInputClasses}
                                 />
                                 {errors.phoneNumber && <p className="text-red-500 text-sm text-left mt-1">{errors.phoneNumber}</p>}
+                                <p className="text-xs text-gray-500 text-left mt-1">Format: 9876543210</p>
                             </div>
                         </div>
 
@@ -221,13 +252,10 @@ export default function SignupModal() {
                         </button>
                     </form>
                     
-                    {/* Secondary Action */}
-                    <button 
-                        onClick={closeModal}
-                        className="mt-3 text-sm text-gray-500 hover:text-gray-700 transition-colors"
-                    >
-                        No, I don't want to join
-                    </button>
+                    {/* Form is mandatory - no option to decline */}
+                    <p className="mt-3 text-sm text-gray-500">
+                        This form is required to continue
+                    </p>
                 </>
             )}
         </div>
