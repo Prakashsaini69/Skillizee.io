@@ -1482,7 +1482,7 @@ const LinkedIn = () => {
     } else if (title.includes('Starbucks')) {
       setActiveModal('starbucks');
     } else if (title.includes('Masterclass')) {
-      setActiveModal('masterclass');
+      setActiveModal('revealing-soon');
     }
   };
 
@@ -1509,6 +1509,12 @@ const LinkedIn = () => {
           title: 'Ankur Warikoo Masterclass Timeline',
           description: 'Join Ankur Warikoo in this comprehensive 5-week masterclass on personal branding and career growth. Learn from one of India\'s most successful entrepreneurs.',
           data: timelineData.masterclass
+        };
+      case 'revealing-soon':
+        return {
+          title: 'Revealing Soon',
+          description: 'The Ankur Warikoo Masterclass content is currently being prepared and will be revealed soon. Get ready for an incredible learning experience with one of India\'s most successful entrepreneurs!',
+          data: []
         };
       default:
         return null;
