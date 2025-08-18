@@ -187,6 +187,16 @@ const EnrollmentCTA = () => {
               href={selectedBundle.url}
               target="_blank" // Opens the link in a new tab
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof fbq !== 'undefined') {
+                  fbq('track', 'Lead', {
+                    content_name: 'Reserve My Seat Now Button',
+                    content_category: 'CTA',
+                    value: 1,
+                    currency: 'INR'
+                  });
+                }
+              }}
               className="w-full text-center md:w-auto bg-indigo-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
             >
               📌 Reserve My Seat Now
@@ -1897,6 +1907,16 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
               href={ctaUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof fbq !== 'undefined') {
+                  fbq('track', 'Lead', {
+                    content_name: 'ENROLL NOW Button',
+                    content_category: 'CTA',
+                    value: 1,
+                    currency: 'INR'
+                  });
+                }
+              }}
               className="block w-full text-center bg-blue-600 text-white font-bold text-base md:text-lg py-3 px-5 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
             >
               ENROLL NOW
