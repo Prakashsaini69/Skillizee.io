@@ -649,8 +649,8 @@ const AnkurWarikooBanner = () => {
           <div className="flex flex-wrap justify-center gap-3 items-center">
             <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663818/Group_1618872730_lqcxsn.svg" alt="IIT Bombay" className="h-8 object-contain" />
             <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663819/Group_1618872732_jmddsr.svg" alt="BITS Hyderabad" className="h-8 object-contain" />
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-12 object-contain" />
-            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-12 object-contain" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-8 object-contain" />
+            <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-8 object-contain" />
           </div>
         </div>
       </div>
@@ -710,8 +710,8 @@ const AnkurWarikooBanner = () => {
             <div className="mt-2">
               <h4 className="font-semibold text-gray-800 mb-2">Accreditation & Collaborations</h4>
               <div className="flex flex-wrap gap-4 items-center">
-                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" alt="IIT Bombay" className="h-12 object-contain" />
-                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1753523789/Untitled_design_11_auyc6a.png" alt="BITS Hyderabad" className="h-12 object-contain" />
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663818/Group_1618872730_lqcxsn.svg" alt="IIT Bombay" className="h-12 object-contain" />
+                <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752663819/Group_1618872732_jmddsr.svg" alt="BITS Hyderabad" className="h-12 object-contain" />
                 <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752664029/stem_png_3_hhgux7.svg" alt="STEM" className="h-12 object-contain" />
                 <img src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1755077708/BestInStem_qqfiuq.svg" alt="Best of Stem" className="h-12 object-contain" />
               </div>
