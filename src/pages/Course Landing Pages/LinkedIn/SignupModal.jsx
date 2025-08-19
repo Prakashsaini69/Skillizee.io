@@ -9,6 +9,7 @@ export default function SignupModal() {
   // State to manage form inputs
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phoneNumber: '',
   });
   
@@ -35,7 +36,7 @@ export default function SignupModal() {
     setIsModalOpen(false);
     // Reset form state for next time it opens
     setIsSubmitted(false);
-    setFormData({ name: '', phoneNumber: '' });
+    setFormData({ name: '', email: '', phoneNumber: '' });
     setErrors({});
   };
 
@@ -76,6 +77,16 @@ export default function SignupModal() {
         formErrors.name = "Name must be at least 2 characters long";
     }
     
+    // Email validation
+    if (!formData.email.trim()) {
+        formErrors.email = "Email is required";
+    } else {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email.trim())) {
+            formErrors.email = "Please enter a valid email address";
+        }
+    }
+    
     // Phone number validation
     if (!formData.phoneNumber) {
         formErrors.phoneNumber = "Phone number is required";
@@ -112,6 +123,7 @@ export default function SignupModal() {
         },
         body: new URLSearchParams({
           name: data.name,
+          email: data.email,
           phoneNumber: data.phoneNumber,
           timestamp: new Date().toISOString(),
           source: 'Bundle Registration Landing Page'
@@ -144,7 +156,7 @@ export default function SignupModal() {
                 setIsModalOpen(false);
                 // Reset form state
                 setIsSubmitted(false);
-                setFormData({ name: '', phoneNumber: '' });
+                setFormData({ name: '', email: '', phoneNumber: '' });
                 setErrors({});
             }, 3000);
           } else {
@@ -170,6 +182,7 @@ export default function SignupModal() {
   const normalInputClass = "border-transparent focus:ring-blue-500";
   
   const nameInputClasses = baseInputClass + ' ' + (errors.name ? errorInputClass : normalInputClass);
+  const emailInputClasses = baseInputClass + ' ' + (errors.email ? errorInputClass : normalInputClass);
   const phoneInputClasses = baseInputClass + ' ' + (errors.phoneNumber ? errorInputClass : normalInputClass);
 
   // Render the modal
@@ -224,6 +237,19 @@ export default function SignupModal() {
                                     className={nameInputClasses}
                                 />
                                 {errors.name && <p className="text-red-500 text-sm text-left mt-1">{errors.name}</p>}
+                            </div>
+                            
+                            {/* Email Input */}
+                            <div>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    className={emailInputClasses}
+                                />
+                                {errors.email && <p className="text-red-500 text-sm text-left mt-1">{errors.email}</p>}
                             </div>
                             
                             {/* Phone Number Input */}
