@@ -263,7 +263,7 @@ export default function SignupModal() {
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="Enter your name"
+                                    placeholder="Enter your full name"
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     className={nameInputClasses}
@@ -296,7 +296,7 @@ export default function SignupModal() {
                                     className={phoneInputClasses}
                                 />
                                 {errors.phoneNumber && <p className="text-red-500 text-sm text-left mt-1">{errors.phoneNumber}</p>}
-                                <p className="text-xs text-gray-500 text-left mt-1">Format: 9876543210</p>
+                                <p className="text-xs text-gray-500 text-left mt-1">Format: 98765432XX</p>
                             </div>
                         </div>
 
