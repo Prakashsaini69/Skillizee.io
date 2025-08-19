@@ -114,7 +114,7 @@ export default function SignupModal() {
           name: data.name,
           phoneNumber: data.phoneNumber,
           timestamp: new Date().toISOString(),
-          source: 'LinkedIn Course Landing Page'
+          source: 'Bundle Registration Landing Page'
         })
       });
       
