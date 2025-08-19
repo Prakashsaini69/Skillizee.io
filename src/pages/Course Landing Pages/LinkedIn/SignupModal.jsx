@@ -22,8 +22,36 @@ export default function SignupModal() {
   // State for loading state during submission
   const [isLoading, setIsLoading] = useState(false);
 
+  // Check if user has already submitted the form
+  const hasUserSubmitted = () => {
+    try {
+      return localStorage.getItem('skillizee_form_submitted') === 'true';
+    } catch (error) {
+      console.error('Error checking localStorage:', error);
+      return false;
+    }
+  };
+
+  // Mark user as having submitted the form
+  const markUserAsSubmitted = () => {
+    try {
+      localStorage.setItem('skillizee_form_submitted', 'true');
+      // Also store submission timestamp for future reference
+      localStorage.setItem('skillizee_form_submitted_at', new Date().toISOString());
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
+  };
+
   // useEffect to open the modal after 5 seconds when the component mounts
+  // Only if the user hasn't submitted the form before
   useEffect(() => {
+    // Check if user has already submitted the form
+    if (hasUserSubmitted()) {
+      console.log('User has already submitted the form, not showing modal');
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsModalOpen(true);
     }, 5000);
@@ -151,6 +179,9 @@ export default function SignupModal() {
           const success = await submitToGoogleSheets(formData);
           if (success) {
             setIsSubmitted(true);
+            // Mark user as having submitted the form
+            markUserAsSubmitted();
+            
             // Close the modal automatically after a delay
             setTimeout(() => {
                 setIsModalOpen(false);
@@ -213,6 +244,7 @@ export default function SignupModal() {
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Thank You!</h2>
                     <p className="text-gray-500 mt-2">You've successfully joined.</p>
+                    <p className="text-sm text-gray-400 mt-2">You won't see this form again on future visits.</p>
                 </div>
             ) : (
                 // --- Form View ---
