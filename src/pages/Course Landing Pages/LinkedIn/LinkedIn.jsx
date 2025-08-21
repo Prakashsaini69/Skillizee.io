@@ -1012,138 +1012,81 @@ function FAQSection() {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-      title: "What is the time commitment required for the course?",
-      content: "The course is self-paced and will require 10+ hours. You'll also have access to bonus content and monthly live group Q&A sessions.",
+      title: "What is the time commitment required?",
+      content: "The total duration of sessions is around 17+ hours, which students can complete at their own pace. The internship includes practical activities designed to fit into school schedules.",
     },
 
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-      title: "Which language is the course in?",
-      content: "The course is available in English with subtitles. The primary language of the course is in English and there maybe some discussions and banter in Hindi. Rest assured, all videos have English subtitles.",
+      title: "Are the sessions live or recorded?",
+      content: "The webinar with Ankur Warikoo is ONLINE live scheduled on 21st September 2025 at 12 noon to 1 pm. The recording will not be shared. The internship and case study modules are online, self-paced, with lifetime access.",
     },
 
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M15 10v4M9 10v4M12 8v8" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-      title: "Does the course come with any live interaction?",
-      content: "Yes, this course consists of live group Q&A sessions with our mentors.",
-    },
-
-    {
-      icon: (
-        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
-      ),
-      title: "When will the live group Q&A sessions be held?",
-      content: "The live group Q&A sessions are held monthly. The date and time of these sessions are updated at the start of every month and available on the course platform. You will also receive WhatsApp notifications about the session details for the first six months of your enrollment.",
-    },
-
-    {
-      icon: (
-        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2"/><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2"/></svg>
-      ),
-      title: "What is the community experience in the course?",
-      content: "The course includes exclusive access to a virtual chat based community that Skillizee does not moderate. It is a student space where you can interact with other course students, ask questions, and build a network with like-minded students in this community.",
+      title: "What language are the sessions in?",
+      content: "All sessions are conducted in English ONLY.",
     },
 
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="#1976b2" strokeWidth="2"/></svg>
       ),
-      title: "Does the course come with a certificate of completion?",
-      content: "Yes, a signed digital certificate is available to the students after successful completion of the course.",
+      title: "Do students get certificates?",
+      content: "✅ Yes! Students receive a Brand-Endorsed Certificate upon completing the GudGum Internship and participation certificates for other sessions.",
     },
 
     {
       icon: (
         <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="17" r="1" fill="#1976b2"/></svg>
       ),
-      title: "How can I clear my doubts during the course, if I have any?",
-      content: "This course consists of monthly live group Q&A sessions with our mentors where you can ask your questions. Additionally, you can also use the virtual course community available inside the course platform to ask questions and learn with other students.",
+      title: "How can doubts or questions be cleared during the course?",
+      content: "Students can reach out directly to mentors via support number: CRM 📞 +91 97733 53232",
     },
 
     {
-
-      // Q&A session schedule
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "When will the live group Q&A sessions be held?",
-
-      content: "The live group Q&A sessions are held monthly. The date and time of these sessions are updated at the start of every month and available on the course platform. You will also receive WhatsApp notifications about the session details for the first six months of your enrollment.",
-
+      title: "What are the benefits of joining this program?",
+      content: "• Real-world exposure through brand internships\n• Career insights from industry leaders like Ankur Warikoo\n• College-ready portfolio building with certifications\n• Exposure to Ivy League-style case studies *(for bundle-2 only)\n• Confidence, leadership, and critical thinking skills development",
     },
 
     {
-
-      // Recordings
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2" /><circle cx="12" cy="12" r="3" stroke="#1976b2" strokeWidth="2" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "Will the recording of the live group Q&A sessions be available?",
-
-      content: "Yes, the monthly live group Q&A session recordings are available with lifetime access. The recording of the session is added to the course and available on the course platform within one week of the session.",
-
+      title: "Are there limited seats?",
+      content: "Yes. Seats for the GudGum Internship and Live Webinar are limited. Early enrollment is highly recommended.",
     },
 
     {
-
-      // Community
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" stroke="#1976b2" strokeWidth="2" /><path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" stroke="#1976b2" strokeWidth="2" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#1976b2" strokeWidth="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/><path d="M12 14v2m0 0h2m-2 0h-2" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "What is the community experience in the course?",
-
-      content: "The Premium version of the course includes exclusive access to a virtual chat based community that WebVeda does not moderate. It is a student space where you can interact with other course students, ask questions, and build a network with like-minded students in this community.",
-
+      title: "What is the pricing and early bird offer?",
+      content: "📌 Early Bird Offer valid until 30th August, 2025.\n\nBundle 1: ₹3550 + GST → Now ₹1770 + GST (limited-time offer)\nBundle 2: ₹4550 + GST → Now ₹2550 + GST (limited-time offer)",
     },
 
     {
-
-      // Certificate
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#1976b2" strokeWidth="2" /><path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="#1976b2" strokeWidth="2" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "Does the course come with a certificate of completion?",
-
-      content: "Yes, a signed digital certificate is available to the students after successful completion of the course.",
-
+      title: "How do I enroll?",
+      content: "1. Choose your bundle from the registration page\n2. Complete the payment process\n3. You will get a confirmation of your payment via WhatsApp\n4. Get instant access to all modules + book delivery over your registered email id.",
     },
 
     {
-
-      // Doubt clearing
-
       icon: (
-
-        <svg className="w-8 h-8 text-[#1976b2] mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2" /><path d="M9 9a3 3 0 1 1 6 0c0 1.5-1.5 2-1.5 2s-1.5.5-1.5 2v1" stroke="#1976b2" strokeWidth="2" strokeLinecap="round" /><circle cx="12" cy="17" r="1" fill="#1976b2" /></svg>
-
+        <svg className="w-6 h-6 text-[#1976b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976b2" strokeWidth="2"/><path d="M8 15h8M9 9h6M12 6v12" stroke="#1976b2" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-
-      title: "How can I clear my doubts during the course, if I have any?",
-
-      content: "The Premium version of this course consists of monthly live group Q&A sessions with Ankur Warikoo where you can ask your questions. Additionally, you can also use the virtual course community available in the Premium version inside the course platform to ask questions and learn with other students.",
-
+      title: "Who can I contact for support?",
+      content: "For queries, reach us at:\n📧 info.skillizee@gmail.com\n📞 +91 97733 53232",
     },
-
   ];
 
   return (
@@ -1203,7 +1146,11 @@ function FAQSection() {
 
               <Accordion.Content className="px-4 md:px-6 pb-4 md:pb-6 text-[#0a2540] text-sm md:text-base animate-fade-in">
 
-                {faq.content}
+                {faq.content.split('\n').map((line, index) => (
+                  <div key={index} className={line.trim() ? 'mb-2' : 'mb-1'}>
+                    {line.trim() ? line : <br />}
+                  </div>
+                ))}
 
               </Accordion.Content>
 

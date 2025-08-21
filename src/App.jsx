@@ -20,6 +20,9 @@ import LinkedIn from "./pages/Course Landing Pages/LinkedIn/LinkedIn";
 import GudgumV2 from "./pages/Course Landing Pages/GudgumV2/GudgumV2";
 import DemoComponents from "./pages/DemoComponents";
 import StudentStoryCard from "./components/common/StudentStoryCard";
+import CaseStudyIndex from "./pages/Case Study";
+import CaseStudyPage from "./pages/Case Study/CaseStudyPage";
+import { getCaseStudyBySlug } from "./pages/Case Study/caseStudyData";
 
 // Dashboard button styles
 const dashboardButtonStyles = `
@@ -279,7 +282,9 @@ function App() {
         <Route path="/store/bundle-registration" element={<LinkedIn />} />
         <Route path="/store/gudgum-v2" element={<GudgumV2 />} />
         <Route path="/demo" element={<DemoComponents />} />
-        <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308A]'>404 - Page Not Found<Footer /></div>} />
+        <Route path="/case-studies" element={<CaseStudyIndex />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+        <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308F]'>404 - Page Not Found<Footer /></div>} />
       </Routes>
     </Router>
   );
