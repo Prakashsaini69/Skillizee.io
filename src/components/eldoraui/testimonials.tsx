@@ -56,7 +56,7 @@ export function TestimonialCard({ description, name, img, role, className, ...pr
 const testimonials = [
   {
     name: "Sneha Iyengar",
-    role: "Grade 10",
+    role: "Grade 11",
     img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234974/c998e26464fcf80e2a31e683c6f181e1_dcsvfp.jpg",
     description: (
       <p>
@@ -76,7 +76,7 @@ const testimonials = [
   },
   {
     name: "Kunal Desai",
-    role: "Grade 8",
+    role: "Grade 11",
     img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234971/1b6866e21f59b354222026abd6f5bdd3_a4lpo1.jpg",
     description: (
       <p>
@@ -106,7 +106,7 @@ const testimonials = [
   },
   {
     name: "Devansh Nair",
-    role: "Grade 10",
+    role: "Grade 7",
     img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234966/c71d4d2d58891ffb17d31616d451789a_bokai0.jpg",
     description: (
       <p>
@@ -136,7 +136,7 @@ const testimonials = [
   },
   {
     name: "Simran Kaur",
-    role: "Grade 10",
+    role: "Grade 12",
     img: "https://res.cloudinary.com/dpstp4ovd/image/upload/v1752234964/26c5f5db415df689733d4eaab6cc51ca_wf2yun.jpg",
     description: (
       <p>
