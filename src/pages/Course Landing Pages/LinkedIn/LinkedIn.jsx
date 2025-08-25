@@ -1871,6 +1871,7 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
         name: COURSES.bundle1.name,
         price: COURSES.bundle1.price,
         courseId: COURSES.bundle1.id,
+        courseSlug: 'bundle1', // Add courseSlug for A/B testing
         description: COURSES.bundle1.description
       };
     } else if (ctaUrl.includes('bundle2-')) {
@@ -1878,6 +1879,7 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
         name: COURSES.bundle2.name,
         price: COURSES.bundle2.price,
         courseId: COURSES.bundle2.id,
+        courseSlug: 'bundle2', // Add courseSlug for A/B testing
         description: COURSES.bundle2.description
       };
     }
@@ -1886,6 +1888,7 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
       name: 'Bundle Course',
       price: parseInt(offerPrice.replace(/[^\d]/g, '')),
       courseId: 'unknown',
+      courseSlug: 'bundle1', // Default to bundle1
       description: 'Join our exclusive bundle and get access to career-defining opportunities.'
     };
   };

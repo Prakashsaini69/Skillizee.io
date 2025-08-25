@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { API_ENDPOINTS, RAZORPAY_CONFIG } from '../config/api';
 import { DEFAULT_COURSE } from '../config/courses';
 
@@ -308,13 +308,15 @@ export const usePayment = (courseData = {}) => {
   };
 
   // Reset payment state
-  const resetPayment = () => {
+  const resetPayment = useCallback(() => {
     setPaymentStatus(null);
     setErrors({});
     setUserCheckResult(null);
     setPaymentMessage('');
     setIsRazorpayOpen(false);
-  };
+    setIsLoading(false); // Reset loading state
+    setIsCheckingUser(false); // Reset checking user state
+  }, []);
 
   return {
     // Course data

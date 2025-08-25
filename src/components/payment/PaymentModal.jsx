@@ -43,6 +43,27 @@ const PaymentModal = ({
     resetPayment
   } = usePayment(courseData);
 
+  // Reset payment status and form when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      console.log('🔄 Modal opened, resetting payment state...');
+      // Reset everything when modal opens
+      setFormData({ 
+        name: '', 
+        email: '', 
+        phone: '', 
+        grade: '', 
+        password: '',
+        schoolName: '', 
+        address: '', 
+        cityState: '', 
+        pincode: '' 
+      });
+      resetPayment();
+      console.log('✅ Payment state reset complete');
+    }
+  }, [isOpen, resetPayment]); // Now safe to include resetPayment since it's memoized
+
   // Load RazorPay script
   useEffect(() => {
     if (isOpen) {
@@ -97,6 +118,8 @@ const PaymentModal = ({
       resetPayment();
     }
   };
+
+
 
   // Grade options
   const gradeOptions = [
@@ -172,7 +195,12 @@ const PaymentModal = ({
   };
 
   // Don't render modal if it's not open
-  if (!isOpen) return null;
+  if (!isOpen) {
+    console.log('🚫 Modal not open, not rendering');
+    return null;
+  }
+  
+  console.log('🎯 Rendering PaymentModal with isOpen:', isOpen);
 
   // If Razorpay is open, show a minimal loading overlay
   if (isRazorpayOpen) {
