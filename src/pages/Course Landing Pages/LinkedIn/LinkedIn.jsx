@@ -231,6 +231,7 @@ const EnrollmentCTA = () => {
           name: selectedBundle.name,
           price: selectedBundle.price,
           courseId: selectedBundle.courseId,
+          courseSlug: selectedBundle.id, // Add courseSlug for A/B testing
           description: selectedBundle.description
         }}
         onSuccess={handlePaymentSuccess}

@@ -26,6 +26,7 @@ export const usePayment = (courseData = {}) => {
   const [errors, setErrors] = useState({});
   const [userCheckResult, setUserCheckResult] = useState(null);
   const [paymentMessage, setPaymentMessage] = useState('');
+  const [isRazorpayOpen, setIsRazorpayOpen] = useState(false);
 
   // Log course data for debugging
   console.log('🎯 Course data for payment:', {
@@ -35,6 +36,35 @@ export const usePayment = (courseData = {}) => {
     description: course.description,
     source: courseData ? 'props' : 'default'
   });
+
+  // Get A/B testing course ID for enrollment
+  const getABTestingCourseId = async (courseSlug) => {
+    try {
+      const response = await fetch(`${API_ENDPOINTS.base}/get-enrollment-course-id?courseSlug=${courseSlug}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('🎯 A/B Testing result:', result);
+
+      if (result.success) {
+        return result.data.courseId;
+      } else {
+        throw new Error(result.message || 'Failed to get A/B testing course ID');
+      }
+    } catch (error) {
+      console.error('A/B Testing error:', error);
+      // Fallback to default course ID
+      return course.courseId;
+    }
+  };
 
   // Validate form data
   const validateForm = (formData) => {
@@ -65,6 +95,13 @@ export const usePayment = (courseData = {}) => {
     setUserCheckResult(null);
 
     try {
+      // Get A/B testing course ID if courseSlug is available
+      let enrollmentCourseId = course.courseId;
+      if (courseData?.courseSlug) {
+        enrollmentCourseId = await getABTestingCourseId(courseData.courseSlug);
+        console.log('🎯 Using A/B testing course ID:', enrollmentCourseId);
+      }
+
       const response = await fetch(API_ENDPOINTS.checkUserEnrollment, {
         method: 'POST',
         headers: {
@@ -72,7 +109,7 @@ export const usePayment = (courseData = {}) => {
         },
         body: JSON.stringify({
           email: formData.email,
-          courseId: course.courseId,
+          courseId: enrollmentCourseId,
           name: formData.name,
           phone: formData.phone,
           grade: formData.grade,
@@ -135,6 +172,13 @@ export const usePayment = (courseData = {}) => {
     setPaymentStatus(null);
 
     try {
+      // Get A/B testing course ID if courseSlug is available
+      let enrollmentCourseId = course.courseId;
+      if (courseData?.courseSlug) {
+        enrollmentCourseId = await getABTestingCourseId(courseData.courseSlug);
+        console.log('🎯 Using A/B testing course ID for payment:', enrollmentCourseId);
+      }
+
       // Create order on backend
       const orderResponse = await fetch(API_ENDPOINTS.createOrder, {
         method: 'POST',
@@ -143,7 +187,7 @@ export const usePayment = (courseData = {}) => {
         },
         body: JSON.stringify({
           ...formData,
-          courseId: course.courseId,
+          courseId: enrollmentCourseId,
           amount: course.price
         })
       });
@@ -157,11 +201,11 @@ export const usePayment = (courseData = {}) => {
       // Initialize RazorPay payment
       const options = {
         key: RAZORPAY_CONFIG.key,
-        amount: orderResult.data.amount,
+        amount: orderResult.data.amount * 100, // Convert to paise for Razorpay
         currency: RAZORPAY_CONFIG.currency,
         name: RAZORPAY_CONFIG.name,
         description: course.name,
-        order_id: orderResult.data.id,
+        order_id: orderResult.data.id, // This is now the Razorpay order ID
         prefill: {
           name: formData.name,
           email: formData.email,
@@ -190,7 +234,7 @@ export const usePayment = (courseData = {}) => {
                 name: formData.name,
                 phone: formData.phone,
                 grade: formData.grade,
-                courseId: course.courseId,
+                courseId: enrollmentCourseId,
                 schoolName: formData.schoolName,
                 address: formData.address,
                 cityState: formData.cityState,
@@ -203,30 +247,34 @@ export const usePayment = (courseData = {}) => {
               const onboardData = await onboardResponse.json();
               console.log('✅ Backend onboarding response:', onboardData);
               
-              if (onboardData.success) {
-                setPaymentStatus('success');
-                console.log('🎉 Complete success! User onboarded and enrolled');
-                
-                // Show success message
-                setPaymentMessage('🎉 Enrollment Complete! You have been successfully enrolled in the course.');
-                
-                // Call success callback if provided
-                if (onSuccess) {
-                  onSuccess(onboardData);
-                }
-              } else {
-                console.error('❌ Onboarding failed:', onboardData.message);
-                setPaymentStatus('error');
-                if (onError) onError(onboardData.message);
-              }
+                        if (onboardData.success) {
+            setPaymentStatus('success');
+            setIsRazorpayOpen(false); // Hide Razorpay loading state
+            console.log('🎉 Complete success! User onboarded and enrolled');
+            
+            // Show success message with course name
+            setPaymentMessage(`🎉 Enrollment Complete! You have been successfully enrolled in "${course.name}".`);
+            
+            // Call success callback if provided
+            if (onSuccess) {
+              onSuccess(onboardData);
+            }
+                    } else {
+            console.error('❌ Onboarding failed:', onboardData.message);
+            setPaymentStatus('error');
+            setIsRazorpayOpen(false); // Hide Razorpay loading state
+            if (onError) onError(onboardData.message);
+          }
             } else {
               console.error('❌ Onboarding failed with status:', onboardResponse.status);
               setPaymentStatus('error');
+              setIsRazorpayOpen(false); // Hide Razorpay loading state
               if (onError) onError('Onboarding failed');
             }
           } catch (onboardError) {
             console.error('❌ Error onboarding user:', onboardError);
             setPaymentStatus('error');
+            setIsRazorpayOpen(false); // Hide Razorpay loading state
             if (onError) onError(onboardError.message);
           }
         },
@@ -234,16 +282,25 @@ export const usePayment = (courseData = {}) => {
           ondismiss: function() {
             setPaymentStatus('cancelled');
             setIsLoading(false);
+            setIsRazorpayOpen(false);
           }
+        },
+        onOpen: function() {
+          setIsRazorpayOpen(true);
         }
       };
 
       const rzp = new window.Razorpay(options);
+      
+      // Set loading state before opening Razorpay
+      setIsRazorpayOpen(true);
+      
       rzp.open();
 
     } catch (error) {
       console.error('Payment error:', error);
       setPaymentStatus('error');
+      setIsRazorpayOpen(false); // Hide Razorpay loading state
       if (onError) onError(error.message);
     } finally {
       setIsLoading(false);
@@ -256,6 +313,7 @@ export const usePayment = (courseData = {}) => {
     setErrors({});
     setUserCheckResult(null);
     setPaymentMessage('');
+    setIsRazorpayOpen(false);
   };
 
   return {
@@ -267,8 +325,10 @@ export const usePayment = (courseData = {}) => {
     isCheckingUser,
     paymentStatus,
     errors,
+    setErrors,
     userCheckResult,
     paymentMessage,
+    isRazorpayOpen,
     
     // Functions
     handlePayment,
