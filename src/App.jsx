@@ -23,6 +23,7 @@ import StudentStoryCard from "./components/common/StudentStoryCard";
 import CaseStudyIndex from "./pages/Case Study";
 import CaseStudyPage from "./pages/Case Study/CaseStudyPage";
 import { getCaseStudyBySlug } from "./pages/Case Study/caseStudyData";
+import APITestComponent from "./components/APITestComponent";
 
 // Dashboard button styles
 const dashboardButtonStyles = `
@@ -237,6 +238,7 @@ function Header({ hide }) {
           <nav className="hidden md:flex gap-6 text-white font-medium text-base justify-center items-center">
             <Link to="/" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Home</Link>
             <Link to="/store" element={<Store />} className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/store" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>Store</Link>
+            <Link to="/api-test" className={`px-4 py-1.5 rounded-full hover:text-purple-600 transition ${location.pathname === "/api-test" ? "bg-white/20 text-[#FFD700] font-bold" : ""}`}>API Test</Link>
             <a href="https://login.skillizee.io/s/authenticate" target="_blank" rel="noopener noreferrer" className="dashboard-button">
               <div><span>Dashboard</span></div>
             </a>
@@ -284,6 +286,7 @@ function App() {
         <Route path="/demo" element={<DemoComponents />} />
         <Route path="/case-studies" element={<CaseStudyIndex />} />
         <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+        <Route path="/api-test" element={<APITestComponent />} />
         <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308F]'>404 - Page Not Found<Footer /></div>} />
       </Routes>
     </Router>

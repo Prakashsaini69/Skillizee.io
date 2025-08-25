@@ -1,0 +1,136 @@
+service: skillizee-lambda-backend
+
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    STAGE: ${self:provider.stage}
+  
+  # IAM permissions for SSM Parameter Store
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - ssm:GetParameter
+            - ssm:GetParameters
+            - ssm:GetParametersByPath
+          Resource: 
+            - "arn:aws:ssm:${self:provider.region}:*:parameter/skillizee/*"
+
+functions:
+  health:
+    handler: lambda.health
+    events:
+      - http:
+          path: /api/health
+          method: get
+          cors: true
+      - http:
+          path: /api/health
+          method: options
+          cors: true
+
+  testWebhook:
+    handler: lambda.testWebhook
+    events:
+      - http:
+          path: /api/test-webhook
+          method: post
+          cors: true
+      - http:
+          path: /api/test-webhook
+          method: options
+          cors: true
+
+  createOrder:
+    handler: lambda.createOrder
+    events:
+      - http:
+          path: /api/create-order
+          method: post
+          cors: true
+      - http:
+          path: /api/create-order
+          method: options
+          cors: true
+
+  paymentWebhook:
+    handler: lambda.paymentWebhook
+    events:
+      - http:
+          path: /api/payment-webhook
+          method: post
+          cors: true
+      - http:
+          path: /api/payment-webhook
+          method: options
+          cors: true
+
+  checkUserEnrollment:
+    handler: lambda.checkUserEnrollment
+    events:
+      - http:
+          path: /api/check-user-enrollment
+          method: post
+          cors: true
+      - http:
+          path: /api/check-user-enrollment
+          method: options
+          cors: true
+
+  verifyPaymentAndOnboard:
+    handler: lambda.verifyPaymentAndOnboard
+    events:
+      - http:
+          path: /api/verify-payment-and-onboard
+          method: post
+          cors: true
+      - http:
+          path: /api/verify-payment-and-onboard
+          method: options
+          cors: true
+
+  courseInfo:
+    handler: lambda.courseInfo
+    events:
+      - http:
+          path: /api/course-info
+          method: get
+          cors: true
+      - http:
+          path: /api/course-info
+          method: options
+          cors: true
+
+# Package configuration
+package:
+  exclude:
+    - "*.md"
+    - "terraform/**"
+    - "deploy-lambda.sh"
+    - "README-LAMBDA.md"
+    - ".env*"
+    - "node_modules/**"
+    - ".git/**"
+
+# Custom domain configuration (optional)
+custom:
+  domainName: ${self:provider.stage}-api.skillizee.io
+
+# Resources for custom domain (optional)
+resources:
+  Resources:
+    ApiGatewayDomainName:
+      Type: AWS::ApiGateway::DomainName
+      Properties:
+        DomainName: ${self:custom.domainName}
+        RegionalCertificateArn: ${ssm:/skillizee/certificate/arn}
+        SecurityPolicy: TLS_1_2
+        EndpointConfiguration:
+          Types:
+            - REGIONAL

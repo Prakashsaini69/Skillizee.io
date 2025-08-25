@@ -1,5 +1,8 @@
 var interestFormLink = 'https://docs.google.com/forms/d/e/1FAIpQLScrMS18_uixGoaBuQS1PfEvd-WLl2RfofzxNhzyy-NzPxGHkQ/viewform?usp=dialog';
 
+// Import centralized course configuration
+import { COURSES } from '../../config/courses';
+
 const courseData = {
   internships: [
     {
@@ -32,7 +35,7 @@ const courseData = {
       id: 'intern3',
       title: 'Gud Gum',
       image: 'https://res.cloudinary.com/dpstp4ovd/image/upload/v1752658464/Coming_Soon_2_nnjfw4.svg',
-      price: 2999,
+      price: COURSES.gudgum.price,
       rating: 4.95,
       studentsEnrolled: 2859,
       link: "https://skillizee.io/store/gudgum-v2",

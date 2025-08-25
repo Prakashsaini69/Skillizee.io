@@ -9,27 +9,17 @@ import { Testimonials } from "../../../components/eldoraui/testimonials";
 import { HoverVideoPlayer } from "../../../components/ui/hover-video-player";
 import Preloader from "../../../components/common/Preloader";
 import LazyImage from "../../../components/common/LazyImage";
+import RazorPayModal from "../../../components/payment/RazorPayModal";
 import { Award, Briefcase, TrendingUp } from 'lucide-react';
+import { COURSES } from '../../../config/courses';
 
 
-// Popup window function
-const openEnrollmentPopup = () => {
-  const url = 'https://login.skillizee.io/courses/Skillizee-x-GudGum-Internship-688093b21e8aec5c3378ca92';
-  const width = 1200;
-  const height = 800;
-  const left = (window.screen.width - width) / 2;
-  const top = (window.screen.height - height) / 2;
-  
-  const popup = window.open(
-    url,
-    'enrollmentPopup',
-    `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no`
-  );
-  
-  // Focus the popup
-  if (popup) {
-    popup.focus();
-  }
+// Course data for payment - now dynamic from config
+const courseData = {
+  name: COURSES.gudgum.name,
+  price: COURSES.gudgum.price,
+  courseId: COURSES.gudgum.id,
+  description: COURSES.gudgum.description
 };
 
 function FAQSection() {
@@ -138,7 +128,7 @@ function FAQSection() {
 }
 
 // Certificate Component
-function CertificateCTA() {
+function CertificateCTA({ onEnrollClick }) {
   return (
     <div className="relative bg-white rounded-3xl shadow-2xl overflow-visible max-w-5xl w-full flex flex-col lg:flex-row transform transition-all duration-500 hover:scale-[1.01]">
       {/* Certificate Icon on top of component */}
@@ -215,7 +205,7 @@ function CertificateCTA() {
         </p>
 
                             <button
-                      onClick={openEnrollmentPopup}
+                      onClick={onEnrollClick}
                       className="w-full lg:w-auto px-4 py-2 text-white font-semibold text-sm rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
                       style={{ backgroundColor: '#00308A' }}
                     >
@@ -244,7 +234,7 @@ const StarIcon = ({ filled }) => (
 );
 
 // Enrollment CTA Component
-function EnrollmentCTA() {
+function EnrollmentCTA({ onEnrollClick }) {
   return (
     <section className="w-full py-12 px-4 font-sans antialiased bg-white">
       {/* Heading and Subheading - Outside the card */}
@@ -312,7 +302,7 @@ function EnrollmentCTA() {
                 <p className="text-gray-400 text-xs mb-4">One-time payment. Lifetime access.</p>
                 <button 
                   className="bg-[#00308A] hover:bg-[#12508a] text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full md:w-auto"
-                  onClick={openEnrollmentPopup}
+                  onClick={onEnrollClick}
                 >
                   Enroll Now
                 </button>
@@ -328,9 +318,18 @@ function EnrollmentCTA() {
 
 const GudgumV2 = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+  };
+
+  const openPaymentModal = () => {
+    setIsPaymentModalOpen(true);
+  };
+
+  const closePaymentModal = () => {
+    setIsPaymentModalOpen(false);
   };
 
   return (
@@ -444,7 +443,7 @@ const GudgumV2 = () => {
                     <button 
                       className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-white rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105" 
                       style={{color: '#00308A'}}
-                      onClick={openEnrollmentPopup}
+                      onClick={openPaymentModal}
                     >
                       Enroll Now
                     </button>
@@ -676,7 +675,7 @@ const GudgumV2 = () => {
 
                 {/* Certificate CTA Section */}
                 <div className="mt-16">
-                  <CertificateCTA />
+                  <CertificateCTA onEnrollClick={openPaymentModal} />
                 </div>
               </div>
             </div>
@@ -733,7 +732,7 @@ const GudgumV2 = () => {
                                            <InteractiveHoverButton 
                         className="w-full py-4 rounded-xl font-semibold text-lg flex justify-center items-center" 
                         style={{backgroundColor: '#00308A', color: '#fffffe', borderColor: '#8B5CF6'}}
-                        onClick={openEnrollmentPopup}
+                        onClick={openPaymentModal}
                       >
                         Enroll Now
                       </InteractiveHoverButton>
@@ -749,7 +748,7 @@ const GudgumV2 = () => {
       <Testimonials />
 
       {/* Enrollment CTA Section */}
-      <EnrollmentCTA />
+      <EnrollmentCTA onEnrollClick={openPaymentModal} />
 
       {/* FAQ Section */}
       <div className="mt-16">
@@ -760,6 +759,13 @@ const GudgumV2 = () => {
       <div className="w-full relative left-1/2 right-1/2 -translate-x-1/2">
         <Footer />
       </div>
+
+      {/* Payment Modal */}
+      <RazorPayModal
+        isOpen={isPaymentModalOpen}
+        onClose={closePaymentModal}
+        courseData={courseData}
+      />
         </>
       )}
     </div>

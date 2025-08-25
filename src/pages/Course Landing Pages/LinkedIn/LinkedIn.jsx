@@ -27,6 +27,8 @@ import { Testimonials } from "../../../components/eldoraui/testimonials";
 import { Award, Briefcase, TrendingUp } from 'lucide-react';
 import Modal from "../../../components/ui/modal";
 import CourseTimeline from "../../../components/ui/course-timeline";
+import PaymentModal from "../../../components/payment/PaymentModal";
+import { COURSES } from "../../../config/courses";
 
 // Helper component for list items to keep the main component clean
 const ListItem = ({ children }) => (
@@ -91,19 +93,21 @@ const CheckIconCTA = () => (
   </svg>
 );
 
-// Data for the different bundles
+// Data for the different bundles - now using centralized configuration
 const bundles = [
   { 
     id: 'bundle1', 
-    name: 'Bundle 1', 
-    price: 1770, 
-    url: 'https://login.skillizee.io/courses/Bundle-1-68a300f07020a54adec685da'
+    name: COURSES.bundle1.name, 
+    price: COURSES.bundle1.price, 
+    courseId: COURSES.bundle1.id,
+    description: COURSES.bundle1.description
   },
   { 
     id: 'bundle2', 
-    name: 'Bundle 2', 
-    price: 2550, 
-    url: 'https://login.skillizee.io/courses/Membership-1-6853c2dc37696a15d3213656'
+    name: COURSES.bundle2.name, 
+    price: COURSES.bundle2.price, 
+    courseId: COURSES.bundle2.id,
+    description: COURSES.bundle2.description
   },
 ];
 
@@ -111,12 +115,37 @@ const bundles = [
 const EnrollmentCTA = () => {
   // State to track the currently selected bundle, defaulting to Bundle 1
   const [selectedBundle, setSelectedBundle] = useState(bundles[0]);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   // Handler for when the user changes the selection
   const handleBundleChange = (event) => {
     const bundleId = event.target.value;
     const newBundle = bundles.find(b => b.id === bundleId);
     setSelectedBundle(newBundle);
+  };
+
+  // Handler for opening payment modal
+  const handleEnrollNow = () => {
+    setIsPaymentModalOpen(true);
+  };
+
+  // Handler for payment success
+  const handlePaymentSuccess = (onboardData) => {
+    console.log('🎉 Bundle enrollment successful:', onboardData);
+    // Meta Pixel tracking
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Purchase', {
+        content_name: selectedBundle.name,
+        content_category: 'Bundle',
+        value: selectedBundle.price,
+        currency: 'INR'
+      });
+    }
+  };
+
+  // Handler for payment error
+  const handlePaymentError = (errorMessage) => {
+    console.error('❌ Bundle enrollment failed:', errorMessage);
   };
 
   return (
@@ -182,37 +211,33 @@ const EnrollmentCTA = () => {
               <p className="text-white font-bold text-3xl">₹{selectedBundle.price} <span className="text-lg font-normal text-gray-400">+ GST</span></p>
             </div>
             
-            {/* CTA Button as a Link */}
-            <a 
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                // Debug: Log the selected bundle and URL
-                console.log('Selected Bundle:', selectedBundle);
-                console.log('Opening URL:', selectedBundle.url);
-                // Open popup window
-                const popup = window.open(selectedBundle.url, 'skillizee_popup', 'width=800,height=600,scrollbars=yes,resizable=yes');
-                if (popup) {
-                  popup.focus();
-                }
-                // Meta Pixel tracking
-                if (typeof fbq !== 'undefined') {
-                  fbq('track', 'Lead', {
-                    content_name: 'Reserve My Seat Now Button',
-                    content_category: 'CTA',
-                    value: 1,
-                    currency: 'INR'
-                  });
-                }
-              }}
+            {/* CTA Button */}
+            <button 
+              onClick={handleEnrollNow}
               className="w-full text-center md:w-auto bg-indigo-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer"
             >
-              📌 Reserve My Seat Now
-            </a>
+              📌 Enroll Now
+            </button>
           </div>
 
         </div>
       </div>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        courseData={{
+          name: selectedBundle.name,
+          price: selectedBundle.price,
+          courseId: selectedBundle.courseId,
+          description: selectedBundle.description
+        }}
+        onSuccess={handlePaymentSuccess}
+        onError={handlePaymentError}
+        title={`Enroll in ${selectedBundle.name}`}
+        subtitle="Complete your enrollment to get access to all modules"
+      />
     </div>
   );
 };
@@ -1672,7 +1697,7 @@ const LinkedIn = () => {
         {/* Bundle #1 CTA - Outside the bundle section */}
         <div className="w-full flex justify-center mb-6">
           <CTAComponent 
-            ctaUrl="https://login.skillizee.io/courses/Bundle-1-68a300f07020a54adec685da" 
+            ctaUrl={`bundle1-${COURSES.bundle1.id}`}
             originalPrice="₹3550+ GST"
             offerPrice="₹1770+ GST"
           />
@@ -1694,7 +1719,7 @@ const LinkedIn = () => {
           {/* Bundle #2 CTA */}
           <div className="mt-6 flex justify-center ">
             <CTAComponent 
-              ctaUrl="https://login.skillizee.io/courses/Membership-1-6853c2dc37696a15d3213656" 
+              ctaUrl={`bundle2-${COURSES.bundle2.id}`}
               originalPrice="₹4550+ GST"
               offerPrice="₹2550+ GST"
             />
@@ -1836,6 +1861,60 @@ const CountdownTimer = ({ targetDate }) => {
 
 function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice = "₹2550+ GST" }) {
   const earlyBirdDeadline = "2025-08-30T23:59:59";
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  
+  // Determine which bundle this CTA represents based on the URL
+  const getBundleData = () => {
+    if (ctaUrl.includes('bundle1-')) {
+      return {
+        name: COURSES.bundle1.name,
+        price: COURSES.bundle1.price,
+        courseId: COURSES.bundle1.id,
+        description: COURSES.bundle1.description
+      };
+    } else if (ctaUrl.includes('bundle2-')) {
+      return {
+        name: COURSES.bundle2.name,
+        price: COURSES.bundle2.price,
+        courseId: COURSES.bundle2.id,
+        description: COURSES.bundle2.description
+      };
+    }
+    // Fallback for unknown URLs
+    return {
+      name: 'Bundle Course',
+      price: parseInt(offerPrice.replace(/[^\d]/g, '')),
+      courseId: 'unknown',
+      description: 'Join our exclusive bundle and get access to career-defining opportunities.'
+    };
+  };
+
+  const bundleData = getBundleData();
+
+  // Handler for opening payment modal
+  const handleEnrollNow = () => {
+    setIsPaymentModalOpen(true);
+  };
+
+  // Handler for payment success
+  const handlePaymentSuccess = (onboardData) => {
+    console.log('🎉 Bundle enrollment successful:', onboardData);
+    // Meta Pixel tracking
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Purchase', {
+        content_name: bundleData.name,
+        content_category: 'Bundle',
+        value: bundleData.price,
+        currency: 'INR'
+      });
+    }
+  };
+
+  // Handler for payment error
+  const handlePaymentError = (errorMessage) => {
+    console.error('❌ Bundle enrollment failed:', errorMessage);
+  };
+
   return (
     <section className="w-full flex items-center justify-center p-3 font-sans scale-[0.85] md:scale-[0.9] origin-top mt-[-20rem] md:mt-[-12rem]">
       <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
@@ -1864,32 +1943,26 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
                 <span className="text-3xl md:text-4xl font-extrabold text-green-600 dark:text-green-400">{offerPrice}</span>
               </div>
             </div>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                // Open popup window
-                const popup = window.open(ctaUrl, 'skillizee_popup', 'width=800,height=600,scrollbars=yes,resizable=yes');
-                if (popup) {
-                  popup.focus();
-                }
-                // Meta Pixel tracking
-                if (typeof fbq !== 'undefined') {
-                  fbq('track', 'Lead', {
-                    content_name: 'ENROLL NOW Button',
-                    content_category: 'CTA',
-                    value: 1,
-                    currency: 'INR'
-                  });
-                }
-              }}
+            <button
+              onClick={handleEnrollNow}
               className="block w-full text-center bg-blue-600 text-white font-bold text-base md:text-lg py-3 px-5 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transform hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer"
             >
               ENROLL NOW
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        courseData={bundleData}
+        onSuccess={handlePaymentSuccess}
+        onError={handlePaymentError}
+        title={`Enroll in ${bundleData.name}`}
+        subtitle="Complete your enrollment to get access to all modules"
+      />
     </section>
   );
 }

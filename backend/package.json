@@ -1,0 +1,31 @@
+{
+  "name": "skillizee-lambda-backend",
+  "version": "1.0.0",
+  "description": "AWS Lambda backend for SkilliZee payment and enrollment system",
+  "main": "lambda.js",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:staging": "serverless deploy --stage staging",
+    "remove": "serverless remove",
+    "offline": "serverless offline",
+    "logs": "serverless logs -f",
+    "info": "serverless info"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1550.0"
+  },
+  "devDependencies": {
+    "serverless": "^4.18.1",
+    "serverless-offline": "^13.3.3"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "serverless",
+    "payment",
+    "enrollment"
+  ],
+  "author": "SkilliZee Team",
+  "license": "MIT"
+}
