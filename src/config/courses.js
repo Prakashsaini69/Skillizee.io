@@ -41,7 +41,7 @@ export const COURSES = {
     id: "68ac4ad033717965a02676fb", // CourseID A (80% of users)
     idB: "6853c2dc37696a15d3213656", // CourseID B (20% of users) - Replace with actual ID
     name: "Bundle #2 - Premium Learning Pack",
-    price: 1,
+    price: 3009,
     description: "Complete access to all internships, short courses, and case studies",
     type: "bundle",
     includes: [
