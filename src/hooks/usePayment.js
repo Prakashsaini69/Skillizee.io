@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { API_ENDPOINTS, RAZORPAY_CONFIG } from '../config/api';
 import { DEFAULT_COURSE } from '../config/courses';
 
@@ -28,19 +28,21 @@ export const usePayment = (courseData = {}) => {
   const [paymentMessage, setPaymentMessage] = useState('');
   const [isRazorpayOpen, setIsRazorpayOpen] = useState(false);
 
-  // Log course data for debugging
-  console.log('🎯 Course data for payment:', {
-    name: course.name,
-    price: course.price,
-    courseId: course.courseId,
-    description: course.description,
-    source: courseData ? 'props' : 'default'
-  });
+  // Log course data for debugging (only when courseData changes)
+  useEffect(() => {
+    console.log('🎯 Course data for payment:', {
+      name: course.name,
+      price: course.price,
+      courseId: course.courseId,
+      description: course.description,
+      source: courseData ? 'props' : 'default'
+    });
+  }, [courseData, course.name, course.price, course.courseId, course.description]);
 
   // Get A/B testing course ID for enrollment
   const getABTestingCourseId = async (courseSlug) => {
     try {
-      const response = await fetch(`${API_ENDPOINTS.base}/get-enrollment-course-id?courseSlug=${courseSlug}`, {
+      const response = await fetch(`${API_ENDPOINTS.getEnrollmentCourseId}?courseSlug=${courseSlug}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -212,6 +214,12 @@ export const usePayment = (courseData = {}) => {
           contact: formData.phone
         },
         theme: RAZORPAY_CONFIG.theme,
+        capture: true, // Ensure payment is captured immediately
+        auto_capture: true, // Additional auto-capture flag
+        onOpen: function() {
+          setIsRazorpayOpen(true);
+          console.log('🚀 Razorpay gateway opened');
+        },
         handler: async function (response) {
           // Payment successful
           setPaymentStatus('success');
@@ -222,14 +230,16 @@ export const usePayment = (courseData = {}) => {
             setPaymentStatus('verifying');
             console.log('🚀 Starting user onboarding to Graphy...');
             
-            // Call backend to onboard user
+            // Call backend to onboard user with payment verification data
             const onboardResponse = await fetch(API_ENDPOINTS.verifyPaymentAndOnboard, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                orderId: orderResult.data.id,
+                orderId: response.razorpay_order_id, // Use Razorpay order ID for signature verification
+                paymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
                 email: formData.email,
                 name: formData.name,
                 phone: formData.phone,
@@ -284,9 +294,6 @@ export const usePayment = (courseData = {}) => {
             setIsLoading(false);
             setIsRazorpayOpen(false);
           }
-        },
-        onOpen: function() {
-          setIsRazorpayOpen(true);
         }
       };
 

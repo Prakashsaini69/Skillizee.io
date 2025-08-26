@@ -1,0 +1,151 @@
+service: skillizee-lambda-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    STAGE: ${self:provider.stage}
+    RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID, 'rzp_live_GuVAJW8fx8JjNi'}
+    RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET, 'your_razorpay_secret_here'}
+    GRAPHY_MERCHANT_ID: ${env:GRAPHY_MERCHANT_ID, 'aarnasingh'}
+    GRAPHY_API_TOKEN: ${env:GRAPHY_API_TOKEN, '74e49a78-296a-4ba5-974c-1141c8713303'}
+    COURSE_NAME: ${env:COURSE_NAME, 'LinkedIn Mastery Course'}
+    COURSE_DESCRIPTION: ${env:COURSE_DESCRIPTION, 'Master LinkedIn for career growth and networking'}
+    COURSE_PRICE: ${env:COURSE_PRICE, '999'}
+    COURSE_DURATION: ${env:COURSE_DURATION, '6 weeks'}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "*"
+
+functions:
+  health:
+    handler: lambda.health
+    events:
+      - http:
+          path: /api/health
+          method: get
+          cors: true
+      - http:
+          path: /api/health
+          method: options
+          cors: true
+          integration: lambda
+
+  testRazorpay:
+    handler: lambda.testRazorpay
+    events:
+      - http:
+          path: /api/test-razorpay
+          method: get
+          cors: true
+      - http:
+          path: /api/test-razorpay
+          method: options
+          cors: true
+          integration: lambda
+
+  createOrder:
+    handler: lambda.createOrder
+    events:
+      - http:
+          path: /api/create-order
+          method: post
+          cors: true
+      - http:
+          path: /api/create-order
+          method: options
+          cors: true
+          integration: lambda
+
+  paymentWebhook:
+    handler: lambda.paymentWebhook
+    events:
+      - http:
+          path: /api/payment-webhook
+          method: post
+          cors: true
+      - http:
+          path: /api/payment-webhook
+          method: options
+          cors: true
+          integration: lambda
+
+  checkUserEnrollment:
+    handler: lambda.checkUserEnrollment
+    events:
+      - http:
+          path: /api/check-user-enrollment
+          method: post
+          cors: true
+      - http:
+          path: /api/check-user-enrollment
+          method: options
+          cors: true
+          integration: lambda
+
+  verifyPaymentAndOnboard:
+    handler: lambda.verifyPaymentAndOnboard
+    events:
+      - http:
+          path: /api/verify-payment-and-onboard
+          method: post
+          cors: true
+      - http:
+          path: /api/verify-payment-and-onboard
+          method: options
+          cors: true
+          integration: lambda
+
+  courseInfo:
+    handler: lambda.courseInfo
+    events:
+      - http:
+          path: /api/course-info
+          method: get
+          cors: true
+      - http:
+          path: /api/course-info
+          method: options
+          cors: true
+          integration: lambda
+
+  getEnrollmentCourseId:
+    handler: lambda.getEnrollmentCourseId
+    events:
+      - http:
+          path: /api/get-enrollment-course-id
+          method: get
+          cors: true
+      - http:
+          path: /api/get-enrollment-course-id
+          method: post
+          cors: true
+      - http:
+          path: /api/get-enrollment-course-id
+          method: options
+          cors: true
+          integration: lambda
+
+# Package configuration
+package:
+  exclude:
+    - "*.md"
+    - "terraform/**"
+    - ".env*"
+    - ".git/**"
+    - "node_modules/.cache/**"
+    - "node_modules/.bin/**"
+    - "node_modules/*/test/**"
+    - "node_modules/*/tests/**"
+    - "node_modules/*/docs/**"
+    - "node_modules/*/examples/**"

@@ -25,8 +25,8 @@ export const COURSES = {
     type: "internship"
   },
   bundle1: {
-    id: "68abf3833a374a37e2bcc994", // CourseID A (80% of users)
-    idB: "68a300f07020a54adec685da", // CourseID B (20% of users) - Replace with actual ID
+    id: "68abf3833a374a37e2bcc994", // CourseID A (80% of users) - Bundle-specific ID
+    idB: "68a300f07020a54adec685da", // CourseID B (20% of users) - Alternative bundle ID
     name: "Bundle #1 - Complete Internship Collection",
     price: 2088,
     description: "Get access to all 3 internships: Salty, Startup Sprint, and Gud Gum",

@@ -259,12 +259,49 @@ exports.testRazorpay = async (event) => {
 
 // Create order endpoint using Razorpay SDK
 exports.createOrder = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return handleOptions();
+  // Handle OPTIONS preflight request - check multiple ways since httpMethod might be undefined
+  if (event.httpMethod === 'OPTIONS' || 
+      event.headers?.['access-control-request-method'] === 'POST' ||
+      event.headers?.['access-control-request-headers']) {
+    console.log('Handling OPTIONS preflight request');
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS'
+      },
+      body: ''
+    };
   }
 
   try {
-    const body = JSON.parse(event.body || '{}');
+    console.log('Raw event body:', event.body);
+    console.log('Event headers:', event.headers);
+    console.log('Event method:', event.httpMethod);
+    
+    // Skip processing if no body or empty body
+    if (!event.body || event.body === '{}' || event.body === '') {
+      return createResponse(400, {
+        success: false,
+        message: 'Request body is required',
+        error: 'Empty or missing request body'
+      });
+    }
+    
+    let body;
+    try {
+      body = JSON.parse(event.body);
+      console.log('Parsed body:', body);
+    } catch (parseError) {
+      console.error('JSON parsing error:', parseError);
+      console.error('Raw body that failed to parse:', event.body);
+      return createResponse(400, {
+        success: false,
+        message: 'Invalid JSON in request body',
+        error: parseError.message
+      });
+    }
     
     // Validate required fields
     const requiredFields = ['name', 'email', 'phone', 'courseId', 'amount'];
@@ -341,9 +378,58 @@ exports.paymentWebhook = async (event) => {
     
     console.log('Payment webhook received:', body);
     
+    // Verify webhook signature for security
+    const signature = event.headers['x-razorpay-signature'];
+    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
+    
+    if (!signature || !webhookSecret) {
+      console.error('Missing signature or webhook secret');
+      return createResponse(400, {
+        success: false,
+        message: 'Invalid webhook signature'
+      });
+    }
+    
+    // Verify webhook signature
+    const crypto = require('crypto');
+    const expectedSignature = crypto
+      .createHmac('sha256', webhookSecret)
+      .update(event.body)
+      .digest('hex');
+    
+    if (signature !== expectedSignature) {
+      console.error('Invalid webhook signature');
+      return createResponse(400, {
+        success: false,
+        message: 'Invalid webhook signature'
+      });
+    }
+    
+    // Process different webhook events
+    if (body.event === 'payment.captured') {
+      console.log('Payment captured successfully:', body.payload.payment.entity);
+      
+      // Payment is already captured by Razorpay
+      // You can add additional business logic here if needed
+      
+    } else if (body.event === 'payment.failed') {
+      console.log('Payment failed:', body.payload.payment.entity);
+      
+      // Handle failed payment
+      // You can add logic to notify user, update database, etc.
+      
+    } else if (body.event === 'order.paid') {
+      console.log('Order paid successfully:', body.payload.order.entity);
+      
+      // Order is paid but payment might not be captured yet
+      // Razorpay automatically captures payments for orders
+      
+    }
+    
     return createResponse(200, {
       success: true,
-      message: 'Webhook processed successfully'
+      message: 'Webhook processed successfully',
+      event: body.event
     });
   } catch (error) {
     console.error('Payment webhook error:', error);
@@ -427,10 +513,12 @@ exports.verifyPaymentAndOnboard = async (event) => {
     const body = JSON.parse(event.body || '{}');
     
     // Validate required fields
-    const requiredFields = ['orderId', 'email', 'name', 'phone', 'courseId', 'password'];
+    const requiredFields = ['orderId', 'paymentId', 'signature', 'email', 'name', 'phone', 'courseId', 'password'];
     const missingFields = requiredFields.filter(field => !body[field]);
     
     if (missingFields.length > 0) {
+      console.error('Missing required fields:', missingFields);
+      console.error('Received body:', body);
       return createResponse(400, {
         success: false,
         message: 'Missing required fields',
@@ -438,11 +526,81 @@ exports.verifyPaymentAndOnboard = async (event) => {
       });
     }
 
-    console.log('Starting user onboarding to Graphy LMS:', {
+    console.log('Verifying payment and starting user onboarding:', {
+      orderId: body.orderId,
+      paymentId: body.paymentId,
       email: body.email,
       name: body.name,
       courseId: body.courseId
     });
+    
+    // Verify payment signature with Razorpay
+    const crypto = require('crypto');
+    const text = body.orderId + '|' + body.paymentId;
+    const expectedSignature = crypto
+      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+      .update(text)
+      .digest('hex');
+    
+    console.log('Signature verification:', {
+      received: body.signature,
+      expected: expectedSignature,
+      text: text,
+      secret: process.env.RAZORPAY_KEY_SECRET ? 'SET' : 'NOT SET'
+    });
+    
+    if (body.signature !== expectedSignature) {
+      console.error('Payment signature verification failed');
+      return createResponse(400, {
+        success: false,
+        message: 'Payment verification failed - invalid signature'
+      });
+    }
+    
+    // Verify payment status with Razorpay
+    try {
+      const payment = await razorpay.payments.fetch(body.paymentId);
+      console.log('Payment details from Razorpay:', payment);
+      
+      // If payment is authorized but not captured, capture it automatically
+      if (payment.status === 'authorized') {
+        console.log('Payment is authorized, attempting auto-capture...');
+        try {
+          const captureResult = await razorpay.payments.capture(body.paymentId, payment.amount);
+          console.log('Auto-capture successful:', captureResult);
+          // Update payment status for further processing
+          payment.status = captureResult.status;
+        } catch (captureError) {
+          console.error('Auto-capture failed:', captureError);
+          return createResponse(400, {
+            success: false,
+            message: 'Payment capture failed',
+            error: captureError.message
+          });
+        }
+      }
+      
+      if (payment.status !== 'captured' && payment.status !== 'authorized') {
+        console.error('Payment not completed:', payment.status);
+        return createResponse(400, {
+          success: false,
+          message: 'Payment not completed - status: ' + payment.status
+        });
+      }
+      
+      // Note: Amount verification removed as it was comparing payment.amount with itself
+      console.log('Payment amount:', payment.amount);
+      console.log('Payment status:', payment.status);
+      
+    } catch (razorpayError) {
+      console.error('Error fetching payment from Razorpay:', razorpayError);
+      return createResponse(400, {
+        success: false,
+        message: 'Failed to verify payment with Razorpay'
+      });
+    }
+    
+    console.log('Payment verified successfully, proceeding with onboarding...');
     
     let onboardingResult = {};
     
@@ -585,8 +743,8 @@ exports.getEnrollmentCourseId = async (event) => {
         idB: '68abf3833a374a37e2bcc996'
       },
       'bundle1': {
-        idA: '688093b21e8aec5c3378ca92',
-        idB: '68abf3833a374a37e2bcc997'
+        idA: '68abf3833a374a37e2bcc994',
+        idB: '68a300f07020a54adec685da'
       },
       'bundle2': {
         idA: 'bundle2-course-id',

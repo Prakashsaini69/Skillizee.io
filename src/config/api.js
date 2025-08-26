@@ -6,11 +6,11 @@ const API_CONFIG = {
     razorpayKey: 'rzp_live_GuVAJW8fx8JjNi'
   },
   staging: {
-    baseURL: 'https://nf7jr9dl19.execute-api.us-east-1.amazonaws.com/dev', // Lambda API Gateway URL
+    baseURL: 'https://wchz1q3gvg.execute-api.us-east-1.amazonaws.com/dev', // Lambda API Gateway URL
     razorpayKey: 'rzp_live_GuVAJW8fx8JjNi'
   },
   production: {
-    baseURL: 'https://nf7jr9dl19.execute-api.us-east-1.amazonaws.com/dev', // Lambda API Gateway URL
+    baseURL: 'https://wchz1q3gvg.execute-api.us-east-1.amazonaws.com/dev', // Lambda API Gateway URL
     razorpayKey: 'rzp_live_GuVAJW8fx8JjNi'
   }
 };

@@ -1,205 +1,146 @@
-# 🎯 Complete Payment Integration Setup Guide
+# Payment Setup Guide for SkilliZee
 
-## 🚨 **CRITICAL ISSUE FIXED**
+## Overview
+This guide covers the complete setup for Razorpay payment integration with automatic payment capture and webhook handling.
 
-The Gud Gum page was not working due to:
-1. **Missing function references** - `openEnrollmentPopup` was removed but still referenced
-2. **Price mismatch** - Frontend: ₹2999, Backend: ₹5.00 (500 paise)
+## Payment Capture Configuration
 
-**✅ Both issues have been fixed!**
+### Why Payments Were Only Authorized
+Previously, payments were only getting **authorized** but not **captured**. This happened because:
+1. The Razorpay integration was missing the `capture: true` option
+2. The webhook wasn't properly configured to handle payment capture events
+3. Payment verification was incomplete
 
----
+### Current Fixes Implemented
+1. **Frontend**: Added `capture: true` to Razorpay options
+2. **Backend**: Enhanced webhook to handle `payment.captured` events
+3. **Backend**: Added payment signature verification in `verifyPaymentAndOnboard`
+4. **Backend**: Added payment status verification with Razorpay API
 
-## 🔧 **Step-by-Step Setup**
+## Webhook Setup
 
-### **Step 1: Backend Setup**
+### 1. Generate Webhook Secret
+1. Go to Razorpay Dashboard → Settings → Webhooks
+2. Create a new webhook or edit existing one
+3. Set the webhook URL: `https://your-lambda-api-gateway-url/dev/api/payment-webhook`
+4. **Important**: Copy the webhook secret that Razorpay generates
 
-1. **Navigate to backend directory:**
-   ```bash
-   cd backend
-   ```
+### 2. Set Environment Variables
+In your AWS Lambda console, add these environment variables:
+```
+RAZORPAY_WEBHOOK_SECRET=your_webhook_secret_from_razorpay_dashboard
+```
 
-2. **Create .env file from template:**
-   ```bash
-   cp env.example .env
-   ```
+### 3. Webhook Events to Handle
+The webhook now handles these events:
+- `payment.captured` - Payment successfully captured
+- `payment.failed` - Payment failed
+- `order.paid` - Order marked as paid
 
-3. **Your .env file should contain:**
-   ```env
-   RAZORPAY_KEY_ID=rzp_live_GuVAJW8fx8JjNi
-   RAZORPAY_KEY_SECRET=YOUR_RAZORPAY_KEY_SECREoTZ0hJegBKfQ2rhWmmUr8T0R
-   GRAPHY_MERCHANT_ID=aarnasingh
-   GRAPHY_API_TOKEN=74e49a78-296a-4ba5-974c-1141c8713303
-   COURSE_ID=68a300f07020a54adec685da
-   COURSE_AMOUNT_IN_PAISE=299900
-   RAZORPAY_WEBHOOK_SECRET=Ski912#24Nm$
-   PORT=3000
-   NODE_ENV=development
-   ```
+## Payment Flow
 
-4. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### 1. Order Creation
+- Frontend creates order via `/api/create-order`
+- Backend creates Razorpay order and returns order ID
 
-5. **Start backend server:**
-   ```bash
-   npm run dev
-   ```
+### 2. Payment Processing
+- Frontend opens Razorpay gateway with `capture: true`
+- User completes payment
+- Razorpay automatically captures the payment
 
-6. **Test backend endpoints:**
-   ```bash
-   npm test
-   ```
+### 3. Payment Verification
+- Frontend receives payment success response
+- Frontend calls `/api/verify-payment-and-onboard` with:
+  - `orderId`: Razorpay order ID
+  - `paymentId`: Razorpay payment ID
+  - `signature`: Payment signature for verification
 
-### **Step 2: RazorPay Webhook Setup**
+### 4. Backend Verification
+- Backend verifies payment signature
+- Backend fetches payment details from Razorpay
+- Backend confirms payment status is "captured"
+- Backend proceeds with user onboarding
 
-1. **Go to RazorPay Dashboard:**
-   - Login to [RazorPay Dashboard](https://dashboard.razorpay.com/)
-   - Navigate to **Settings** → **Webhooks**
+### 5. User Onboarding
+- Check if user exists on Graphy LMS
+- Create user if doesn't exist
+- Enroll user in the course
+- Return success response
 
-2. **Add New Webhook:**
-   - **URL**: `https://yourdomain.com/api/payment-webhook` (replace with your actual domain)
-   - **Events**: Select `payment.captured`
-   - **Secret**: `Ski912#24Nm$` (same as in your .env file)
+## Testing Payment Capture
 
-3. **For Local Testing (using ngrok):**
-   ```bash
-   # Install ngrok globally
-   npm install -g ngrok
-   
-   # Start your backend server
-   cd backend
-   npm run dev
-   
-   # In another terminal, create a tunnel
-   ngrok http 3000
-   ```
-   
-   Then use the ngrok URL: `https://abc123.ngrok.io/api/payment-webhook`
+### 1. Test Order Creation
+```bash
+curl -X POST https://your-api-gateway/dev/api/create-order \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "9999999999",
+    "courseId": "your_course_id",
+    "amount": 999
+  }'
+```
 
-### **Step 3: Frontend Integration**
+### 2. Test Payment Verification
+```bash
+curl -X POST https://your-api-gateway/dev/api/verify-payment-and-onboard \
+  -H "Content-Type: application/json" \
+  -d '{
+    "orderId": "order_xxx",
+    "paymentId": "pay_xxx",
+    "signature": "valid_signature",
+    "email": "test@example.com",
+    "name": "Test User",
+    "phone": "9999999999",
+    "courseId": "your_course_id",
+    "password": "test123"
+  }'
+```
 
-The frontend is now fully integrated! Here's what happens:
+## Troubleshooting
 
-1. **User clicks "Enroll Now"** → Payment modal opens
-2. **User fills enrollment form** → Name, email, phone, grade
-3. **User clicks "Pay ₹2999"** → Backend creates order
-4. **RazorPay gateway opens** → User completes payment
-5. **Payment successful** → Webhook triggers backend
-6. **Backend automatically** → Creates user in Graphy & enrolls in course
+### Payment Still Not Captured
+1. Check if `capture: true` is set in frontend Razorpay options
+2. Verify webhook secret is correctly set in AWS Lambda
+3. Check Razorpay dashboard for webhook delivery status
+4. Review Lambda CloudWatch logs for webhook processing
 
-### **Step 4: Test the Integration**
+### Signature Verification Failed
+1. Ensure `RAZORPAY_KEY_SECRET` is correct
+2. Verify the signature calculation matches Razorpay's format
+3. Check if payment ID and order ID are correct
 
-1. **Test Backend:**
-   ```bash
-   cd backend
-   npm test
-   ```
+### Webhook Not Receiving Events
+1. Verify webhook URL is accessible
+2. Check if webhook is active in Razorpay dashboard
+3. Ensure CORS is properly configured
+4. Review API Gateway logs for webhook requests
 
-2. **Test Frontend:**
-   - Open your Gud Gum landing page
-   - Click any "Enroll Now" button
-   - Fill the form and test payment flow
+## Security Considerations
 
-3. **Test Webhook (with ngrok):**
-   - Use ngrok for local testing
-   - Make a real payment to trigger webhook
-   - Check backend logs for enrollment process
+1. **Webhook Secret**: Never expose the webhook secret in client-side code
+2. **Signature Verification**: Always verify webhook signatures
+3. **Payment Verification**: Double-check payment status with Razorpay API
+4. **Environment Variables**: Use AWS Secrets Manager for production secrets
 
----
+## Monitoring
 
-## 🎯 **What's Working Now**
+### CloudWatch Logs
+Monitor these Lambda functions:
+- `createOrder` - Order creation logs
+- `paymentWebhook` - Webhook processing logs
+- `verifyPaymentAndOnboard` - Payment verification logs
 
-✅ **Backend**: RazorPay integration, Graphy onboarding, webhook handling  
-✅ **Frontend**: Payment modal, form validation, RazorPay gateway  
-✅ **Integration**: Complete payment flow from enrollment to course access  
-✅ **Security**: Input validation, webhook verification, CORS protection  
-✅ **Price Consistency**: Frontend ₹2999 = Backend 299900 paise  
+### Razorpay Dashboard
+- Check webhook delivery status
+- Monitor payment success rates
+- Review failed payment reasons
 
----
+## Next Steps
 
-## 🚨 **Common Issues & Solutions**
-
-### **Issue 1: "openEnrollmentPopup is not defined"**
-- **Solution**: ✅ Fixed! All references updated to use `openPaymentModal`
-
-### **Issue 2: "Payment amount mismatch"**
-- **Solution**: ✅ Fixed! Backend now uses 299900 paise (₹2999.00)
-
-### **Issue 3: "Backend server not running"**
-- **Solution**: 
-  ```bash
-  cd backend
-  npm install
-  npm run dev
-  ```
-
-### **Issue 4: "CORS errors"**
-- **Solution**: Backend CORS configured for localhost:3000 and localhost:5173
-
-### **Issue 5: "Webhook not receiving"**
-- **Solution**: 
-  - Check webhook URL in RazorPay dashboard
-  - Use ngrok for local testing
-  - Verify webhook secret matches
-
----
-
-## 🔍 **Testing Checklist**
-
-- [ ] Backend server starts without errors
-- [ ] `npm test` passes all tests
-- [ ] Frontend loads without console errors
-- [ ] "Enroll Now" buttons open payment modal
-- [ ] Form validation works correctly
-- [ ] Payment modal displays course details
-- [ ] Backend creates orders successfully
-- [ ] RazorPay gateway opens
-- [ ] Webhook receives payment confirmations
-- [ ] Users are enrolled in Graphy courses
-
----
-
-## 🚀 **Production Deployment**
-
-1. **Update API configuration:**
-   ```javascript
-   // src/config/api.js
-   production: {
-     baseURL: 'https://your-actual-domain.com', // Replace this
-     razorpayKey: 'rzp_live_GuVAJW8fx8JjNi'
-   }
-   ```
-
-2. **Update CORS in backend:**
-   ```javascript
-   // backend/server.js
-   origin: ['https://skillizee.io', 'https://www.skillizee.io']
-   ```
-
-3. **Set up RazorPay webhook with production URL:**
-   - **URL**: `https://yourdomain.com/api/payment-webhook`
-   - **Secret**: `Ski912#24Nm$`
-
----
-
-## 📞 **Need Help?**
-
-1. **Check the logs** in your terminal
-2. **Run `npm test`** to verify endpoints
-3. **Check browser console** for frontend errors
-4. **Verify your credentials** are correct
-5. **Ensure backend server** is running on port 3000
-
----
-
-## 🎉 **Success!**
-
-Your payment integration is now complete and working! Users can:
-- Click "Enroll Now" on the Gud Gum landing page
-- Fill out the enrollment form
-- Complete payment through RazorPay
-- Get automatically enrolled in the course via Graphy LMS
-
-**Happy coding! 🚀**
+1. Deploy the updated backend code
+2. Set the webhook secret in AWS Lambda
+3. Test the complete payment flow
+4. Monitor webhook events and payment capture
+5. Verify user onboarding and enrollment

@@ -28,6 +28,12 @@ const PaymentModal = ({
   const [redirectCountdown, setRedirectCountdown] = useState(10);
   const [isRedirecting, setIsRedirecting] = useState(false);
 
+  // Grade options for the dropdown
+  const gradeOptions = [
+    'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10',
+    'Class 11', 'Class 12', 'Graduation', 'Post Graduation', 'Working Professional'
+  ];
+
   // Use the payment hook
   const {
     course,
@@ -121,12 +127,7 @@ const PaymentModal = ({
 
 
 
-  // Grade options
-  const gradeOptions = [
-    'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5',
-    'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10',
-    'Class 11', 'Class 12'
-  ];
+
 
   // Prevent body scroll when modal is open and ensure modal covers everything
   useEffect(() => {
@@ -205,14 +206,16 @@ const PaymentModal = ({
   // If Razorpay is open, show a minimal loading overlay
   if (isRazorpayOpen) {
     return createPortal(
-      <AnimatePresence>
+      <AnimatePresence key="razorpay-overlay">
         <motion.div
+          key="overlay"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="modal-overlay"
         />
         <motion.div
+          key="container"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -231,9 +234,10 @@ const PaymentModal = ({
 
   // Use portal to render modal at document body level
   return createPortal(
-    <AnimatePresence>
+    <AnimatePresence key="main-modal">
       {/* Double overlay for maximum coverage */}
       <motion.div
+        key="overlay"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -242,6 +246,7 @@ const PaymentModal = ({
       
       {/* Modal container */}
       <motion.div
+        key="container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

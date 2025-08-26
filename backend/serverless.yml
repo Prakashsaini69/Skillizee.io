@@ -11,10 +11,11 @@ provider:
     STAGE: ${self:provider.stage}
     RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID, 'rzp_live_GuVAJW8fx8JjNi'}
     RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET, 'your_razorpay_secret_here'}
+    RAZORPAY_WEBHOOK_SECRET: ${env:RAZORPAY_WEBHOOK_SECRET, 'your_webhook_secret_here'}
     GRAPHY_MERCHANT_ID: ${env:GRAPHY_MERCHANT_ID, 'aarnasingh'}
     GRAPHY_API_TOKEN: ${env:GRAPHY_API_TOKEN, '74e49a78-296a-4ba5-974c-1141c8713303'}
     COURSE_NAME: ${env:COURSE_NAME, 'LinkedIn Mastery Course'}
-    COURSE_DESCRIPTION: ${env:COURSE_DESCRIPTION, 'Master LinkedIn for career growth and networking'}
+    COURSE_DESCRIPTION: ${env:COURSE_NAME, 'LinkedIn Mastery Course'}
     COURSE_PRICE: ${env:COURSE_PRICE, '999'}
     COURSE_DURATION: ${env:COURSE_DURATION, '6 weeks'}
   iam:
@@ -39,7 +40,6 @@ functions:
           path: /api/health
           method: options
           cors: true
-          integration: lambda
 
   testRazorpay:
     handler: lambda.testRazorpay
@@ -52,7 +52,6 @@ functions:
           path: /api/test-razorpay
           method: options
           cors: true
-          integration: lambda
 
   createOrder:
     handler: lambda.createOrder
@@ -65,7 +64,6 @@ functions:
           path: /api/create-order
           method: options
           cors: true
-          integration: lambda
 
   paymentWebhook:
     handler: lambda.paymentWebhook
