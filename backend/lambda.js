@@ -3,8 +3,8 @@ const Razorpay = require('razorpay');
 
 // Initialize Razorpay client
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || 'rzp_live_GuVAJW8fx8JjNi',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || 'your_razorpay_secret_here'
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
 // Graphy LMS API Helper Functions
@@ -31,7 +31,7 @@ const checkUserOnGraphy = async (email, courseId) => {
     // URL encode the email for the query parameter - exactly as per documentation
     const encodedEmail = encodeURIComponent(JSON.stringify({ email: email }));
     
-    const url = `${GRAPHY_BASE_URL}/v2/learners?mid=${process.env.GRAPHY_MERCHANT_ID || 'aarnasingh'}&key=${process.env.GRAPHY_API_TOKEN || '74e49a78-296a-4ba5-974c-1141c8713303'}&courseInfo=true&query=${encodedEmail}`;
+    const url = `${GRAPHY_BASE_URL}/v2/learners?mid=${process.env.GRAPHY_MERCHANT_ID}&key=${process.env.GRAPHY_API_TOKEN}&courseInfo=true&query=${encodedEmail}`;
     
     console.log('Checking user on Graphy:', url);
     
@@ -82,8 +82,8 @@ const createUserOnGraphy = async (userData) => {
     // According to documentation: POST https://api.ongraphy.com/public/v1/learners
     // Body: key, email, name, password, sendEmail, mobile
     const formData = new URLSearchParams();
-    formData.append('mid', process.env.GRAPHY_MERCHANT_ID || 'aarnasingh');
-    formData.append('key', process.env.GRAPHY_API_TOKEN || '74e49a78-296a-4ba5-974c-1141c8713303');
+          formData.append('mid', process.env.GRAPHY_MERCHANT_ID);
+          formData.append('key', process.env.GRAPHY_API_TOKEN);
     formData.append('email', userData.email);
     formData.append('name', userData.name);
     formData.append('password', userData.password);
@@ -129,7 +129,7 @@ const createUserOnGraphy = async (userData) => {
 const enrollUserOnGraphy = async (email, courseId) => {
   try {
     // According to documentation: https://api.ongraphy.com/public/v1/assign?Content-Type=<string>&mid=aarnasingh&key=...&email=...&productId=...
-    const url = `${GRAPHY_BASE_URL}/v1/assign?Content-Type=application/x-www-form-urlencoded&mid=${process.env.GRAPHY_MERCHANT_ID || 'aarnasingh'}&key=${process.env.GRAPHY_API_TOKEN || '74e49a78-296a-4ba5-974c-1141c8713303'}&email=${encodeURIComponent(email)}&productId=${encodeURIComponent(courseId)}`;
+    const url = `${GRAPHY_BASE_URL}/v1/assign?Content-Type=application/x-www-form-urlencoded&mid=${process.env.GRAPHY_MERCHANT_ID}&key=${process.env.GRAPHY_API_TOKEN}&email=${encodeURIComponent(email)}&productId=${encodeURIComponent(courseId)}`;
     
     console.log('Enrolling user on Graphy with URL:', url);
     
