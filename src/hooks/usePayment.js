@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { API_ENDPOINTS, RAZORPAY_CONFIG } from '../config/api';
 import { DEFAULT_COURSE } from '../config/courses';
+import { getSharedCourseIdForEnrollment } from '../config/shared-course-config';
 
 /**
  * Custom hook for handling payments
@@ -63,7 +64,15 @@ export const usePayment = (courseData = {}) => {
       }
     } catch (error) {
       console.error('A/B Testing error:', error);
-      // Fallback to default course ID
+      // Fallback to shared configuration A/B testing
+      console.log('🔄 Falling back to shared course configuration...');
+      const fallbackCourseId = getSharedCourseIdForEnrollment(courseSlug);
+      if (fallbackCourseId) {
+        console.log('✅ Using fallback course ID:', fallbackCourseId);
+        return fallbackCourseId;
+      }
+      // Final fallback to default course ID
+      console.log('⚠️ Using default course ID as final fallback');
       return course.courseId;
     }
   };

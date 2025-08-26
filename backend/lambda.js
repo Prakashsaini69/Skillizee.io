@@ -1,5 +1,6 @@
 // Fresh Lambda function for SkilliZee Backend using Razorpay SDK
 const Razorpay = require('razorpay');
+const { getCourseIdForEnrollment: getCourseIdFromConfig, getCourseBySlug } = require('./course-config');
 
 // Initialize Razorpay client
 const razorpay = new Razorpay({
@@ -728,7 +729,7 @@ exports.getEnrollmentCourseId = async (event) => {
       });
     }
 
-    // Course mapping for A/B testing
+    // Temporary hardcoded mapping for immediate testing - will be replaced with shared config
     const courseMapping = {
       'gudgum': {
         idA: '688093b21e8aec5c3378ca92',
@@ -747,8 +748,8 @@ exports.getEnrollmentCourseId = async (event) => {
         idB: '68a300f07020a54adec685da'
       },
       'bundle2': {
-        idA: 'bundle2-course-id',
-        idB: 'bundle2-course-id-b'
+        idA: '68ac4ad033717965a02676fb',
+        idB: '6853c2dc37696a15d3213656'
       }
     };
 
@@ -761,14 +762,19 @@ exports.getEnrollmentCourseId = async (event) => {
       });
     }
 
-    // Use A/B testing to determine course ID
-    const selectedCourseId = getCourseIdForEnrollment(courseSlug, course.idA, course.idB);
+    // Use A/B testing to determine course ID (80% A, 20% B)
+    const random = Math.random();
+    const selectedCourseId = random < 0.8 ? course.idA : course.idB;
     
     return createResponse(200, {
       success: true,
       data: {
         courseSlug,
         courseId: selectedCourseId,
+        courseIdA: course.idA,
+        courseIdB: course.idB,
+        courseName: course.name,
+        coursePrice: course.price,
         distribution: selectedCourseId === course.idA ? 'A (80%)' : 'B (20%)',
         timestamp: new Date().toISOString()
       }
