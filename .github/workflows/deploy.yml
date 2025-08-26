@@ -17,12 +17,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'  # Enable npm caching to reduce registry calls
+          registry-url: 'https://registry.npmjs.org'  # Explicitly set registry
 
       - name: Install dependencies
         run: npm install
 
-      - name: Install Vite globally (CI workaround)
-        run: npm install -g vite
+      - name: Install Vite globally (CI workaround) - with retry logic
+        run: |
+          # Retry logic with exponential backoff for npm rate limiting
+          for i in {1..3}; do
+            echo "Attempt $i: Installing Vite globally..."
+            if npm install -g vite; then
+              echo "Vite installed successfully!"
+              break
+            else
+              echo "Attempt $i failed with exit code $?"
+              if [ $i -lt 3 ]; then
+                wait_time=$((i * 15))
+                echo "Waiting $wait_time seconds before retry..."
+                sleep $wait_time
+              else
+                echo "All attempts failed. Trying alternative approach..."
+                # Fallback: use local vite instead
+                echo "Using local Vite installation..."
+                exit 0
+              fi
+            fi
+          done
 
       - name: Build project using npx
         run: npx vite build
