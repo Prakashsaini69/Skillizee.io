@@ -636,6 +636,34 @@ exports.verifyPaymentAndOnboard = async (event) => {
     onboardingResult.status = 'enrolled';
     onboardingResult.enrolledAt = new Date().toISOString();
 
+    // Send payment data to Google Sheets
+    const sheetIntegrationResult = await sendToGoogleSheets({
+      orderId: body.orderId,
+      paymentId: body.paymentId,
+      courseName: body.courseName || 'Unknown Course',
+      courseId: body.courseId,
+      abTestingGroup: body.courseId === body.courseIdA ? 'A (80%)' : 'B (20%)',
+      price: payment.amount / 100, // Razorpay amount is in paise
+      customerName: body.name,
+      customerEmail: body.email,
+      customerPhone: body.phone,
+      customerGrade: body.grade || 'N/A',
+      customerSchool: body.schoolName || 'N/A',
+      customerAddress: body.address || 'N/A',
+      customerCityState: body.cityState || 'N/A',
+      customerPincode: body.pincode || 'N/A',
+      paymentStatus: payment.status,
+      enrollmentStatus: onboardingResult.status,
+      userCreated: onboardingResult.userCreated,
+      enrolledAt: onboardingResult.enrolledAt
+    });
+
+    if (sheetIntegrationResult.success) {
+      console.log('Payment data sent to Google Sheets successfully.');
+    } else {
+      console.error('Failed to send payment data to Google Sheets:', sheetIntegrationResult.message);
+    }
+
     return createResponse(200, {
       success: true,
       message: 'User successfully onboarded and enrolled',
@@ -786,5 +814,65 @@ exports.getEnrollmentCourseId = async (event) => {
       message: 'Failed to get enrollment course ID',
       error: error.message
     });
+  }
+};
+
+// Google Sheets integration function
+const sendToGoogleSheets = async (paymentData) => {
+  try {
+    // Google Apps Script Web App URL - you'll need to create this
+    const GOOGLE_SHEETS_WEBAPP_URL = process.env.GOOGLE_SHEETS_WEBAPP_URL;
+    
+    if (!GOOGLE_SHEETS_WEBAPP_URL) {
+      console.log('Google Sheets Web App URL not configured, skipping sheet update');
+      return { success: false, message: 'Google Sheets not configured' };
+    }
+
+    // Prepare data for Google Sheets
+    const sheetData = {
+      timestamp: new Date().toISOString(),
+      orderId: paymentData.orderId,
+      paymentId: paymentData.paymentId,
+      courseName: paymentData.courseName,
+      courseId: paymentData.courseId,
+      abTestingGroup: paymentData.abTestingGroup,
+      price: paymentData.price,
+      customerName: paymentData.customerName,
+      customerEmail: paymentData.customerEmail,
+      customerPhone: paymentData.customerPhone,
+      customerGrade: paymentData.customerGrade,
+      customerSchool: paymentData.customerSchool,
+      customerAddress: paymentData.customerAddress,
+      customerCityState: paymentData.customerCityState,
+      customerPincode: paymentData.customerPincode,
+      paymentStatus: paymentData.paymentStatus,
+      enrollmentStatus: paymentData.enrollmentStatus,
+      userCreated: paymentData.userCreated,
+      enrolledAt: paymentData.enrolledAt
+    };
+
+    console.log('Sending data to Google Sheets:', sheetData);
+
+    // Send data to Google Apps Script Web App
+    const response = await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(sheetData)
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Google Sheets update successful:', result);
+      return { success: true, message: 'Data sent to Google Sheets' };
+    } else {
+      console.error('Google Sheets update failed:', response.status, response.statusText);
+      return { success: false, message: 'Failed to update Google Sheets' };
+    }
+
+  } catch (error) {
+    console.error('Google Sheets integration error:', error);
+    return { success: false, message: 'Google Sheets error: ' + error.message };
   }
 };

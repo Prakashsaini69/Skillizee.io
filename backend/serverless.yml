@@ -18,6 +18,7 @@ provider:
     COURSE_DESCRIPTION: ${env:COURSE_NAME, 'LinkedIn Mastery Course'}
     COURSE_PRICE: ${env:COURSE_PRICE, '999'}
     COURSE_DURATION: ${env:COURSE_DURATION, '6 weeks'}
+    GOOGLE_SHEETS_WEBAPP_URL: ${env:GOOGLE_SHEETS_WEBAPP_URL, ''}
   iam:
     role:
       statements:

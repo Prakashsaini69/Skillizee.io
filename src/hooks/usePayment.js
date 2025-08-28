@@ -254,6 +254,9 @@ export const usePayment = (courseData = {}) => {
                 phone: formData.phone,
                 grade: formData.grade,
                 courseId: enrollmentCourseId,
+                courseName: course.name, // Add course name for Google Sheets
+                courseIdA: course.id, // Add CourseID A for A/B testing identification
+                courseIdB: course.idB, // Add CourseID B for A/B testing identification
                 schoolName: formData.schoolName,
                 address: formData.address,
                 cityState: formData.cityState,
