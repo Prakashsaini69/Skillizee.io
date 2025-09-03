@@ -277,7 +277,7 @@ export default function Store() {
             <StoreCaseStudies gradeGroup={selectedGradeGroup} />
           </section>
           <section className="scroll-mt-32 mt-8 sm:mt-12" id="packages">
-            <StoreMemberships />
+            {/* <StoreMemberships /> */}
           </section>
           <section className="scroll-mt-32 mt-8 sm:mt-12" id="membership">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-6 sm:mb-10 px-4 sm:px-0" style={{ color: "#00308A" }}>Premium Membership</h2>
