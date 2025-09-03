@@ -1861,7 +1861,7 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice = "₹2550+ GST" }) {
-  const earlyBirdDeadline = "2025-08-30T23:59:59";
+  const earlyBirdDeadline = "2025-09-10T23:59:59";
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   
   // Determine which bundle this CTA represents based on the URL
@@ -1940,7 +1940,7 @@ function CTAComponent({ ctaUrl = "#", originalPrice = "₹4550+ GST", offerPrice
           <div className="p-4 md:p-6 lg:w-1/2">
             <div className="border-2 border-dashed border-yellow-400 dark:border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-xl text-center mb-4">
               <h3 className="font-bold text-yellow-600 dark:text-yellow-400 text-xs uppercase">Early Bird Offer Ends Soon!</h3>
-              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">(until 30th August, 2025 ONLY)</p>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">(until 10th September, 2025 ONLY)</p>
               <CountdownTimer targetDate={earlyBirdDeadline} />
               <div className="flex items-center justify-center space-x-3">
                 <span className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 line-through">{originalPrice}</span>
