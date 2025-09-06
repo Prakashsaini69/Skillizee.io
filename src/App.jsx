@@ -262,7 +262,7 @@ function Home() {
       <Resources />
       <Courses />
       <SkillProjectSlider />
-      <MembershipPlans />
+      {/* <MembershipPlans /> */}
       <FounderAndMentorsSection />
       <StudentStoryCard />
       <CombinedShowcaseSection />
