@@ -24,6 +24,7 @@ import CaseStudyIndex from "./pages/Case Study";
 import CaseStudyPage from "./pages/Case Study/CaseStudyPage";
 import { getCaseStudyBySlug } from "./pages/Case Study/caseStudyData";
 import APITestComponent from "./components/APITestComponent";
+import CreatorsHub from "./pages/Creators Hub";
 
 // Dashboard button styles
 const dashboardButtonStyles = `
@@ -287,6 +288,7 @@ function App() {
         <Route path="/case-studies" element={<CaseStudyIndex />} />
         <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
         <Route path="/api-test" element={<APITestComponent />} />
+        <Route path="/info/creatorshub" element={<CreatorsHub />} />
         <Route path="*" element={<div className='min-h-screen flex flex-col justify-center items-center text-2xl text-[#00308F]'>404 - Page Not Found<Footer /></div>} />
       </Routes>
     </Router>
