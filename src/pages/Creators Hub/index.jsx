@@ -125,7 +125,7 @@ const CreatorsHub = () => {
           {/* --- HEADER --- */}
           <AnimatedCard delay={100}>
             <header className="text-center mb-8 md:mb-12">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 pb-2">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-blue-600 pb-2">
                 Exclusive Student Events
               </h2>
               <p className="text-lg text-slate-600 mt-2">

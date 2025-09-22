@@ -88,11 +88,11 @@ export default function Footer() {
           </svg>
           (+91) 97733 53232
         </a>
-        <a href="mailto:info.skillizee@gmail.com" className="flex items-center gap-2 text-sm sm:text-base text-white/90 hover:text-blue-200 transition" aria-label="Email us">
+        <a href="mailto:support@skillizee.io" className="flex items-center gap-2 text-sm sm:text-base text-white/90 hover:text-blue-200 transition" aria-label="Email us">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 text-[#00308A]">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.876 1.8l-7.5 5.625a2.25 2.25 0 01-2.748 0l-7.5-5.625a2.25 2.25 0 01-.876-1.8V6.75" />
           </svg>
-          info.skillizee@gmail.com
+          support@skillizee.io
         </a>
       </motion.div>
       <motion.div
