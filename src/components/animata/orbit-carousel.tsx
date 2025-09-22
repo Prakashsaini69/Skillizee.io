@@ -71,9 +71,9 @@ export default function OrbitCarousel() {
   const [isHovering, setIsHovering] = React.useState(false);
   const isMobile = useIsMobile();
 
-  const containerRadius = isMobile ? 180 : 250;
-  const profileSize = isMobile ? 70 : 90;
-  const containerSize = containerRadius * 2 + 120;
+  const containerRadius = isMobile ? 160 : 250;
+  const profileSize = isMobile ? 60 : 90;
+  const containerSize = isMobile ? 320 : containerRadius * 2 + 120;
 
   // Calculate rotation for each profile
   const getRotation = React.useCallback(
@@ -114,7 +114,7 @@ export default function OrbitCarousel() {
 
   return (
     <div 
-      className="flex flex-col items-center p-4 relative min-h-[500px] transition-colors duration-300"
+      className="flex flex-col items-center p-2 md:p-4 relative min-h-[400px] md:min-h-[500px] transition-colors duration-300"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -136,7 +136,7 @@ export default function OrbitCarousel() {
               stiffness: 300,
               damping: 25
             }}
-            className="z-10 bg-white backdrop-blur-sm shadow-xl rounded-xl p-3 md:p-6 w-48 md:w-64 text-center border border-gray-200"
+            className="z-10 bg-white backdrop-blur-sm shadow-xl rounded-xl p-2 md:p-6 w-40 md:w-64 text-center border border-gray-200"
           >
             <motion.img
               initial={{ opacity: 0, scale: 0.8 }}
@@ -145,7 +145,7 @@ export default function OrbitCarousel() {
               src={people[activeIndex].profile}
               alt={people[activeIndex].name}
               onError={safeImage}
-              className="w-16 h-16 md:w-24 md:h-24 rounded-full mx-auto -mt-10 md:-mt-16 border-4 border-white object-cover shadow-md"
+              className="w-12 h-12 md:w-24 md:h-24 rounded-full mx-auto -mt-8 md:-mt-16 border-4 border-white object-cover shadow-md"
             />
             <motion.div
               initial={{ opacity: 0, y: 5 }}

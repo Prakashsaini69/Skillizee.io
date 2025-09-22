@@ -11,13 +11,13 @@ function ImageWithWave() {
     <div className="title-logo relative inline-block text-center w-full">
       <div className="flex items-center justify-center gap-3 mb-4">
         <img 
-          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1752143212/SkilliZee_White_Trans.12_nqmvqx.png" 
+          src="https://res.cloudinary.com/dpstp4ovd/image/upload/v1758009143/SkilliZee_Blue_Trans.1_fbyd8b.png" 
           alt="SkilliZee Logo" 
           className="h-8 w-auto"
         />
       </div>
       <WaveReveal
-        className="my-4 text-slate-800 sm:text-[40px] md:text-[50px] lg:text-[60px] font-bold text-center"
+        className="my-4 text-slate-800 text-[2rem] xs:text-[2.2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.75rem] font-bold text-center leading-tight"
         text="SMC CONNECT"
       />
     </div>
@@ -64,7 +64,7 @@ function InfoContainer() {
         <div className="bg-white rounded-xl p-4 shadow-lg border border-gray-200">
           <Users className="w-6 h-6 text-blue-600 mx-auto mb-2" />
           <div className="font-bold text-sm">Who can Attend</div>
-          <div className="text-gray-600 text-sm">Students from Grades 6-12</div>
+          <div className="text-gray-600 text-sm">Students from Grades 5-12</div>
         </div>
       </div>
     </div>
